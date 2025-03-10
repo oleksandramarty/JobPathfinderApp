@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../buildMultiTargeting/AuthGateway.ClientApi.props" />
+</Project>

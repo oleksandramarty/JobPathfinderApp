@@ -1,0 +1,10 @@
+<div class="not-found-container">
+  <h1 class="not-found-title">404</h1>
+  <p class="not-found-text">Oops! The page you're looking for doesn't exist.</p>
+  <p class="glitch glitch-red not-found-subtext">// Looks like someone forgot a semicolon... 😅</p>
+  @if(isAuthorized$ | async) {
+    <button class="button button__filled__submit" routerLink="/dashboard">Go Home</button>
+  } @else {
+    <button class="button button__filled__submit" routerLink="/auth/sign-in">Back to login</button>
+  }
+</div>

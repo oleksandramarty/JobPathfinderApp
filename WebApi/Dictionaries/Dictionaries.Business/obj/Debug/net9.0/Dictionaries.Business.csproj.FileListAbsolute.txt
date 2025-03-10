@@ -1,0 +1,12 @@
+/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/Dictionaries/Dictionaries.Business/bin/Debug/net9.0/Dictionaries.Business.deps.json
+/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/DIctionaries/Dictionaries.Business/bin/Debug/net9.0/Dictionaries.Business.dll
+/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/DIctionaries/Dictionaries.Business/bin/Debug/net9.0/Dictionaries.Business.pdb
+/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/DIctionaries/Dictionaries.Business/obj/Debug/net9.0/Dictionaries.Business.GeneratedMSBuildEditorConfig.editorconfig
+/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/DIctionaries/Dictionaries.Business/obj/Debug/net9.0/Dictionaries.Business.AssemblyInfoInputs.cache
+/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/DIctionaries/Dictionaries.Business/obj/Debug/net9.0/Dictionaries.Business.AssemblyInfo.cs
+/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/DIctionaries/Dictionaries.Business/obj/Debug/net9.0/Dictionaries.Business.csproj.CoreCompileInputs.cache
+/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/DIctionaries/Dictionaries.Business/obj/Debug/net9.0/Dictionaries.Business.sourcelink.json
+/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/DIctionaries/Dictionaries.Business/obj/Debug/net9.0/Dictionaries.Business.dll
+/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/DIctionaries/Dictionaries.Business/obj/Debug/net9.0/refint/Dictionaries.Business.dll
+/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/DIctionaries/Dictionaries.Business/obj/Debug/net9.0/Dictionaries.Business.pdb
+/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/Dictionaries/Dictionaries.Business/obj/Debug/net9.0/ref/Dictionaries.Business.dll

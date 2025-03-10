@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "tusZSXm2pIZfYfh+qF5dFEgEd+Oh0/FhEoDy2ixbziY=",
+  "Source": "AuditTrail.ClientApi",
+  "BasePath": "_content/AuditTrail.ClientApi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

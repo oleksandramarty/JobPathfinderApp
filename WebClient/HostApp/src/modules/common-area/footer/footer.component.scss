@@ -1,0 +1,58 @@
+@use '@amarty/shared/assets/styles/_mixins.scss' as m;
+@use '@amarty/shared/assets/styles/_variables.scss' as v;
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: m.pxToRem(220);
+  padding: m.pxToRem(8) m.pxToRem(20);
+  background: var(--fh);
+  color: var(--text);
+  font-family: var(--font-stack), serif;
+  box-shadow: 0 m.pxToRem(4) m.pxToRem(10) rgba(0, 0, 0, 0.2);
+
+  &__center {
+    margin-bottom: m.pxToRem(8);
+  }
+
+  &__text {
+    cursor: pointer;
+    font-size: m.pxToRem(14);
+    color: var(--text);
+    opacity: 0.7;
+  }
+
+  &__social-links {
+    display: flex;
+    justify-content: center;
+    gap: m.pxToRem(12);
+
+    .footer__link {
+      font-size: m.pxToRem(16);
+      color: var(--text);
+      text-decoration: none;
+      transition: color 0.3s;
+
+      &:hover {
+        color: var(--secondary);
+      }
+    }
+  }
+
+  &__version-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: m.pxToRem(8);
+
+    .footer__text {
+      font-size: m.pxToRem(12);
+      opacity: 0.7;
+    }
+
+    .footer__text strong {
+      font-weight: bold;
+    }
+  }
+}

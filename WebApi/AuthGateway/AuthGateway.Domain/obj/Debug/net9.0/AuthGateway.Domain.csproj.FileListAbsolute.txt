@@ -1,0 +1,16 @@
+/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/AuthGateway/AuthGateway.Domain/bin/Debug/net9.0/AuthGateway.Domain.deps.json
+/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/AuthGateway/AuthGateway.Domain/bin/Debug/net9.0/AuthGateway.Domain.dll
+/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/AuthGateway/AuthGateway.Domain/bin/Debug/net9.0/AuthGateway.Domain.pdb
+/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/AuthGateway/AuthGateway.Domain/bin/Debug/net9.0/CommonModule.Shared.dll
+/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/AuthGateway/AuthGateway.Domain/bin/Debug/net9.0/CommonModule.Shared.pdb
+/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/AuthGateway/AuthGateway.Domain/obj/Debug/net9.0/AuthGateway.Domain.csproj.AssemblyReference.cache
+/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/AuthGateway/AuthGateway.Domain/obj/Debug/net9.0/AuthGateway.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/AuthGateway/AuthGateway.Domain/obj/Debug/net9.0/AuthGateway.Domain.AssemblyInfoInputs.cache
+/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/AuthGateway/AuthGateway.Domain/obj/Debug/net9.0/AuthGateway.Domain.AssemblyInfo.cs
+/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/AuthGateway/AuthGateway.Domain/obj/Debug/net9.0/AuthGateway.Domain.csproj.CoreCompileInputs.cache
+/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/AuthGateway/AuthGateway.Domain/obj/Debug/net9.0/AuthGateway.Domain.sourcelink.json
+/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/AuthGateway/AuthGateway.Domain/obj/Debug/net9.0/AuthGate.A7DBD63C.Up2Date
+/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/AuthGateway/AuthGateway.Domain/obj/Debug/net9.0/AuthGateway.Domain.dll
+/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/AuthGateway/AuthGateway.Domain/obj/Debug/net9.0/refint/AuthGateway.Domain.dll
+/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/AuthGateway/AuthGateway.Domain/obj/Debug/net9.0/AuthGateway.Domain.pdb
+/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/AuthGateway/AuthGateway.Domain/obj/Debug/net9.0/ref/AuthGateway.Domain.dll

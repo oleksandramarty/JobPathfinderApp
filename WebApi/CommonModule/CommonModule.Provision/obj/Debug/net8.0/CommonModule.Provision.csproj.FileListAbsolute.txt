@@ -1,0 +1,12 @@
+/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/CommonModule/CommonModule.Provision/bin/Debug/net8.0/CommonModule.Provision.deps.json
+/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/CommonModule/CommonModule.Provision/bin/Debug/net8.0/CommonModule.Provision.dll
+/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/CommonModule/CommonModule.Provision/bin/Debug/net8.0/CommonModule.Provision.pdb
+/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/CommonModule/CommonModule.Provision/obj/Debug/net8.0/CommonModule.Provision.GeneratedMSBuildEditorConfig.editorconfig
+/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/CommonModule/CommonModule.Provision/obj/Debug/net8.0/CommonModule.Provision.AssemblyInfoInputs.cache
+/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/CommonModule/CommonModule.Provision/obj/Debug/net8.0/CommonModule.Provision.AssemblyInfo.cs
+/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/CommonModule/CommonModule.Provision/obj/Debug/net8.0/CommonModule.Provision.csproj.CoreCompileInputs.cache
+/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/CommonModule/CommonModule.Provision/obj/Debug/net8.0/CommonModule.Provision.sourcelink.json
+/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/CommonModule/CommonModule.Provision/obj/Debug/net8.0/CommonModule.Provision.dll
+/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/CommonModule/CommonModule.Provision/obj/Debug/net8.0/refint/CommonModule.Provision.dll
+/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/CommonModule/CommonModule.Provision/obj/Debug/net8.0/CommonModule.Provision.pdb
+/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/CommonModule/CommonModule.Provision/obj/Debug/net8.0/ref/CommonModule.Provision.dll

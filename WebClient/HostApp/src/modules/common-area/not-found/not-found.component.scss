@@ -1,0 +1,29 @@
+@use '@amarty/shared/assets/styles/_mixins.scss' as m;
+@use '@amarty/shared/assets/styles/_variables.scss' as v;
+
+.not-found-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: var(--primary-white);
+  color: var(--text-black);
+  min-height: var(--container-min-height);
+}
+
+.not-found-title {
+  font-size: #{m.pxToRem(72)};
+  font-weight: bold;
+  margin-bottom: #{m.pxToRem(16)};
+}
+
+.not-found {
+  &-text {
+    font-size: #{m.pxToRem(18)};
+    margin: 0;
+  }
+  &-subtext {
+    margin-bottom: #{m.pxToRem(32)};
+  }
+}

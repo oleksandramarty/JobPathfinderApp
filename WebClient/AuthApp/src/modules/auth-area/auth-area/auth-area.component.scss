@@ -1,0 +1,33 @@
+@use '@amarty/shared/assets/styles/_mixins.scss' as m;
+@use '@amarty/shared/assets/styles/_variables.scss' as v;
+
+.container {
+  align-items: center;
+}
+
+.sign-in-hint {
+  position: absolute;
+}
+.sign-up-hint {
+  width: max-content;
+  margin: 0 auto;
+}
+.sign-in-hint,
+.sign-up-hint {
+  font-weight: 700;
+  min-width: m.pxToRem(50);
+}
+
+.container__box {
+  &__sign-in, &__sign-up {
+    min-width: m.pxToRem(300);
+  }
+
+  &__sign-in {
+    max-width: m.pxToRem(400);
+  }
+
+  &__sign-up {
+    max-width: m.pxToRem(1000);
+  }
+}

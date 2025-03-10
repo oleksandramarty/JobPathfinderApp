@@ -1,0 +1,16 @@
+/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/CommonModule/CommonModule.Interfaces/bin/Debug/net8.0/CommonModule.Interfaces.deps.json
+/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/CommonModule/CommonModule.Interfaces/bin/Debug/net8.0/CommonModule.Interfaces.dll
+/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/CommonModule/CommonModule.Interfaces/bin/Debug/net8.0/CommonModule.Interfaces.pdb
+/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/CommonModule/CommonModule.Interfaces/bin/Debug/net8.0/CommonModule.Shared.dll
+/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/CommonModule/CommonModule.Interfaces/bin/Debug/net8.0/CommonModule.Shared.pdb
+/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/CommonModule/CommonModule.Interfaces/obj/Debug/net8.0/CommonModule.Interfaces.csproj.AssemblyReference.cache
+/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/CommonModule/CommonModule.Interfaces/obj/Debug/net8.0/CommonModule.Interfaces.GeneratedMSBuildEditorConfig.editorconfig
+/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/CommonModule/CommonModule.Interfaces/obj/Debug/net8.0/CommonModule.Interfaces.AssemblyInfoInputs.cache
+/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/CommonModule/CommonModule.Interfaces/obj/Debug/net8.0/CommonModule.Interfaces.AssemblyInfo.cs
+/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/CommonModule/CommonModule.Interfaces/obj/Debug/net8.0/CommonModule.Interfaces.csproj.CoreCompileInputs.cache
+/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/CommonModule/CommonModule.Interfaces/obj/Debug/net8.0/CommonModule.Interfaces.sourcelink.json
+/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/CommonModule/CommonModule.Interfaces/obj/Debug/net8.0/CommonModule.Interfaces.csproj.CopyComplete
+/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/CommonModule/CommonModule.Interfaces/obj/Debug/net8.0/CommonModule.Interfaces.dll
+/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/CommonModule/CommonModule.Interfaces/obj/Debug/net8.0/refint/CommonModule.Interfaces.dll
+/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/CommonModule/CommonModule.Interfaces/obj/Debug/net8.0/CommonModule.Interfaces.pdb
+/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/CommonModule/CommonModule.Interfaces/obj/Debug/net8.0/ref/CommonModule.Interfaces.dll

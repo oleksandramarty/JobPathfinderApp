@@ -1,0 +1,29 @@
+@use "../../../../assets/styles/_variables.scss" as v;
+@use "../../../../assets/styles/_mixins.scss" as m;
+
+.input-wrapper {
+  position: relative;
+}
+
+.icon {
+  position: absolute;
+  top: m.pxToRem(12);
+  right: m.pxToRem(10);
+}
+
+.input__error__container {
+  position: relative;
+  margin-bottom: m.pxToRem(16);
+
+  &__body {
+    position: absolute;
+    top: m.pxToRem(4);
+    right: m.pxToRem(4);
+
+    &-item {
+      font-size: m.pxToRem(8);
+      color: var(--error);
+    }
+  }
+}
+

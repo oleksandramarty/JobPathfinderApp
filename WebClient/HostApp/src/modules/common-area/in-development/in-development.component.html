@@ -1,0 +1,14 @@
+<div class="not-found-content">
+  <h1>HONK!</h1>
+  <div class="icons">
+    <i class="fa-solid fa-person-digging" style="font-size: 3rem;"></i>
+    <i class="fa-solid fa-laptop-code" style="font-size: 5rem;"></i>
+    <i class="fa-solid fa-person-digging" style="font-size: 3rem; transform: scaleX(-1);"></i>
+  </div>
+  <p>Oops! Page under construction.</p>
+  @if (isAuthorized$ | async) {
+    <button class="button button__filled__submit" routerLink="/dashboard">Go Home</button>
+  } @else {
+    <button class="button button__filled__submit" routerLink="/auth/sign-in">Back to login</button>
+  }
+</div>

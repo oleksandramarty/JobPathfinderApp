@@ -1,0 +1,19 @@
+<header class="header">
+  <div class="header__left">
+    <span class="header__logo">Job Pathfinder</span>
+    <span class="glitch glitch-red">// Cannot read properties of undefined 🤷‍♂️</span>
+  </div>
+  <div class="header__center"></div>
+  <div class="header__right">
+    <nav class="header__nav">
+      <a routerLink="/home" class="nav__link">Home</a>
+      <a routerLink="/jobs" class="nav__link">Jobs</a>
+      <a routerLink="/companies" class="nav__link">Companies</a>
+      <a routerLink="/karma" class="nav__link">Karma</a>
+    </nav>
+
+    <a routerLink="/profile" class="header__profile">
+      <img [src]="userAvatar" alt="Profile" class="header__profile-img" />
+    </a>
+  </div>
+</header>

@@ -1,0 +1,442 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/AuthGateway/AuthGateway.Mediatr/AuthGateway.Mediatr.csproj": {}
+  },
+  "projects": {
+    "/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/AuthGateway/AuthGateway.Domain/AuthGateway.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/AuthGateway/AuthGateway.Domain/AuthGateway.Domain.csproj",
+        "projectName": "AuthGateway.Domain",
+        "projectPath": "/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/AuthGateway/AuthGateway.Domain/AuthGateway.Domain.csproj",
+        "packagesPath": "/Users/oleksandrmartynin/.nuget/packages/",
+        "outputPath": "/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/AuthGateway/AuthGateway.Domain/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/oleksandrmartynin/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "/opt/homebrew/Cellar/dotnet/9.0.101/libexec/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/CommonModule/CommonModule.Shared/CommonModule.Shared.csproj": {
+                "projectPath": "/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/CommonModule/CommonModule.Shared/CommonModule.Shared.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.100"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "AWSSDK.DynamoDBv2": {
+              "target": "Package",
+              "version": "[3.7.405.32, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.2, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[9.0.2, )"
+            },
+            "Microsoft.Extensions.Configuration.FileExtensions": {
+              "target": "Package",
+              "version": "[9.0.2, )"
+            },
+            "Microsoft.Extensions.Configuration.Json": {
+              "target": "Package",
+              "version": "[9.0.2, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[9.0.4, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/opt/homebrew/Cellar/dotnet/9.0.101/libexec/sdk/9.0.101/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/AuthGateway/AuthGateway.Mediatr/AuthGateway.Mediatr.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/AuthGateway/AuthGateway.Mediatr/AuthGateway.Mediatr.csproj",
+        "projectName": "AuthGateway.Mediatr",
+        "projectPath": "/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/AuthGateway/AuthGateway.Mediatr/AuthGateway.Mediatr.csproj",
+        "packagesPath": "/Users/oleksandrmartynin/.nuget/packages/",
+        "outputPath": "/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/AuthGateway/AuthGateway.Mediatr/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/oleksandrmartynin/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "/opt/homebrew/Cellar/dotnet/9.0.101/libexec/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/AuthGateway/AuthGateway.Domain/AuthGateway.Domain.csproj": {
+                "projectPath": "/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/AuthGateway/AuthGateway.Domain/AuthGateway.Domain.csproj"
+              },
+              "/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/CommonModule/CommonModule.Core/CommonModule.Core.csproj": {
+                "projectPath": "/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/CommonModule/CommonModule.Core/CommonModule.Core.csproj"
+              },
+              "/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/CommonModule/CommonModule.Interfaces/CommonModule.Interfaces.csproj": {
+                "projectPath": "/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/CommonModule/CommonModule.Interfaces/CommonModule.Interfaces.csproj"
+              },
+              "/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/CommonModule/CommonModule.Shared/CommonModule.Shared.csproj": {
+                "projectPath": "/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/CommonModule/CommonModule.Shared/CommonModule.Shared.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.100"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "Autofac": {
+              "target": "Package",
+              "version": "[8.2.0, )"
+            },
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[11.11.0, )"
+            },
+            "MediatR": {
+              "target": "Package",
+              "version": "[12.4.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/opt/homebrew/Cellar/dotnet/9.0.101/libexec/sdk/9.0.101/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/CommonModule/CommonModule.Core/CommonModule.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/CommonModule/CommonModule.Core/CommonModule.Core.csproj",
+        "projectName": "CommonModule.Core",
+        "projectPath": "/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/CommonModule/CommonModule.Core/CommonModule.Core.csproj",
+        "packagesPath": "/Users/oleksandrmartynin/.nuget/packages/",
+        "outputPath": "/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/CommonModule/CommonModule.Core/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/oleksandrmartynin/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "/opt/homebrew/Cellar/dotnet/9.0.101/libexec/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/CommonModule/CommonModule.Interfaces/CommonModule.Interfaces.csproj": {
+                "projectPath": "/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/CommonModule/CommonModule.Interfaces/CommonModule.Interfaces.csproj"
+              },
+              "/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/CommonModule/CommonModule.Shared/CommonModule.Shared.csproj": {
+                "projectPath": "/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/CommonModule/CommonModule.Shared/CommonModule.Shared.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.100"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "Autofac": {
+              "target": "Package",
+              "version": "[8.2.0, )"
+            },
+            "Confluent.Kafka": {
+              "target": "Package",
+              "version": "[2.8.0, )"
+            },
+            "MediatR": {
+              "target": "Package",
+              "version": "[12.4.1, )"
+            },
+            "Microsoft.AspNetCore.Http": {
+              "target": "Package",
+              "version": "[2.3.0, )"
+            },
+            "Microsoft.AspNetCore.Mvc": {
+              "target": "Package",
+              "version": "[2.3.0, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.2, )"
+            },
+            "Swashbuckle.AspNetCore.SwaggerGen": {
+              "target": "Package",
+              "version": "[7.3.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/opt/homebrew/Cellar/dotnet/9.0.101/libexec/sdk/9.0.101/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/CommonModule/CommonModule.Interfaces/CommonModule.Interfaces.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/CommonModule/CommonModule.Interfaces/CommonModule.Interfaces.csproj",
+        "projectName": "CommonModule.Interfaces",
+        "projectPath": "/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/CommonModule/CommonModule.Interfaces/CommonModule.Interfaces.csproj",
+        "packagesPath": "/Users/oleksandrmartynin/.nuget/packages/",
+        "outputPath": "/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/CommonModule/CommonModule.Interfaces/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/oleksandrmartynin/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "/opt/homebrew/Cellar/dotnet/9.0.101/libexec/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/CommonModule/CommonModule.Shared/CommonModule.Shared.csproj": {
+                "projectPath": "/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/CommonModule/CommonModule.Shared/CommonModule.Shared.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.100"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[11.11.0, )"
+            },
+            "MediatR": {
+              "target": "Package",
+              "version": "[12.4.1, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.2, )"
+            },
+            "StackExchange.Redis": {
+              "target": "Package",
+              "version": "[2.8.24, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/opt/homebrew/Cellar/dotnet/9.0.101/libexec/sdk/9.0.101/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/CommonModule/CommonModule.Shared/CommonModule.Shared.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/CommonModule/CommonModule.Shared/CommonModule.Shared.csproj",
+        "projectName": "CommonModule.Shared",
+        "projectPath": "/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/CommonModule/CommonModule.Shared/CommonModule.Shared.csproj",
+        "packagesPath": "/Users/oleksandrmartynin/.nuget/packages/",
+        "outputPath": "/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/CommonModule/CommonModule.Shared/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/oleksandrmartynin/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "/opt/homebrew/Cellar/dotnet/9.0.101/libexec/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.100"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/opt/homebrew/Cellar/dotnet/9.0.101/libexec/sdk/9.0.101/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

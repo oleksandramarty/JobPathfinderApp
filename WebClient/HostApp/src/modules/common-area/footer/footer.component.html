@@ -1,0 +1,36 @@
+<footer class="footer">
+  <div class="footer__center">
+    <span class="footer__text">We are honking since 2024!</span>
+  </div>
+
+  <div class="footer__social-links">
+    <a href="https://www.linkedin.com/in/oleksandr-martynin/" target="_blank" rel="noopener noreferrer" class="footer__link">
+      <i class="fab fa-linkedin"></i> LinkedIn
+    </a>
+    <a href="https://github.com/oleksandramarty/" target="_blank" rel="noopener noreferrer" class="footer__link">
+      <i class="fab fa-github"></i> GitHub
+    </a>
+  </div>
+
+  <div class="footer__version-wrapper">
+    <span class="footer__text" style="color: #f44336; text-transform: uppercase;">
+      [<strong>DO NOT STORE ANY SENSITIVE DATA HERE!</strong>]
+    </span>
+    @if(buildVersion !== 'production'){
+      <span class="footer__text"> | </span>
+      <span class="footer__text" (click)="turnOffLoader()">
+        [<strong>Turn off loader</strong>]
+      </span>
+      <span class="footer__text"> | </span>
+      <span class="footer__text">[<strong>{{ buildVersion }}</strong>]</span>
+      <span class="footer__text"> | </span>
+      <span class="footer__text" (click)="toggleTheme()">
+        [<strong>{{ darkTheme ? 'Light theme' : 'Dark theme' }}</strong>]
+      </span>
+      <span class="footer__text"> | </span>
+      <span class="footer__text" (click)="resetSite()">
+        [<strong>Hard reset</strong>]
+      </span>
+    }
+  </div>
+</footer>

@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "5HrKvhDVSSiODXBAMz4Ok/rPaJFLLhdyG1g8c8BCMiM=",
+  "Source": "Dictionaries.ClientApi",
+  "BasePath": "_content/Dictionaries.ClientApi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

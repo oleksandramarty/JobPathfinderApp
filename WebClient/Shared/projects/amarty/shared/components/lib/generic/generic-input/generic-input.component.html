@@ -1,0 +1,120 @@
+@if(formGroup) {
+  <div
+       [ngClass]="className ? 'input-wrapper ' + className : 'input-wrapper'"
+       (click)="showDebugInfo()"
+       [formGroup]="formGroup">
+
+    @if(type === 'input') {
+      @if(label) {
+        <label [for]="inputId">{{ label }}<span class="asterisk">{{isRequired ? '*' : ''}}</span></label>
+      }
+      <input
+        class="input"
+        [class.invalid]="isInvalid"
+        [id]="inputId"
+        (input)="onInput($event)"
+        [placeholder]="placeholder ?? ''"
+        [required]="!!isRequired"
+        [formControlName]="controlName">
+    }
+
+    @if(type === 'select') {
+      @if(label) {
+        <label [for]="inputId">{{ label }}<span class="asterisk">{{isRequired ? '*' : ''}}</span></label>
+      }
+      <select
+        class="select"
+        [class.invalid]="isInvalid"
+        [id]="inputId"
+        [formControlName]="controlName">
+        @for(dataItem of dataItems; track $index) {
+          <option [value]="dataItem.id">{{  dataItem.name }}</option>
+        }
+      </select>
+    }
+
+    @if(type === 'textarea') {
+      @if(label) {
+        <label [for]="inputId">{{ label }}<span class="asterisk">{{isRequired ? '*' : ''}}</span></label>
+      }
+      <textarea
+        class="textarea"
+        [class.invalid]="isInvalid"
+        [id]="inputId"
+        [placeholder]="placeholder ?? ''"
+        [rows]="rows ?? 4"
+        [cols]="cols ?? 50"
+        [formControlName]="controlName"></textarea>
+    }
+
+    @if(type === 'password') {
+      @if(label) {
+        <label [for]="inputId">{{ label }}<span class="asterisk">{{isRequired ? '*' : ''}}</span></label>
+      }
+      <input
+        class="input input-icon"
+        [class.invalid]="isInvalid"
+        [id]="inputId"
+        [type]="hide() ? 'password' : 'text'"
+        (input)="onInput($event)"
+        [placeholder]="placeholder ?? ''"
+        [required]="!!isRequired"
+        [formControlName]="controlName">
+      <i [class.fa-eye]="hide()" [class.fa-eye-slash]="!hide()" class="icon fa-solid" (click)="clickEvent($event)"></i>
+    }
+
+    @if(type === 'datepicker') {
+      @if(label) {
+        <label [for]="inputId">{{ label }}<span class="asterisk">{{isRequired ? '*' : ''}}</span></label>
+      }
+      <div class="datepicker">
+        <input
+          [class.invalid]="isInvalid"
+          type="date"
+          class="input date-input"
+          [id]="inputId"
+          [formControlName]="controlName"
+        >
+      </div>
+    }
+
+    @if(type === 'radio') {
+      @for(dataItem of dataItems; track $index) {
+        <label class="radio">
+          <input
+            [class.invalid]="isInvalid"
+            type="radio"
+            name="radio-group"
+            [value]="dataItem.id"
+            [formControlName]="controlName">{{ dataItem.name }}
+        </label>
+      }
+    }
+
+    @if(type === 'checkbox') {
+      <label class="checkbox">
+        <input type="checkbox" [formControlName]="controlName"> {{ label }} <span class="asterisk">{{isRequired ? '*' : ''}}</span>
+      </label>
+    }
+  </div>
+  <div class="input__error__container">
+    @if(isInvalid) {
+        <div class="input__error__container__body">
+          @if(currentControl.hasError('required')) {
+            <div class="input__error__container__body-item">The field is required!</div>
+          }
+          @if(currentControl.hasError('requiredTrue')) {
+            <div class="input__error__container__body-item">Please check the box!</div>
+          }
+          @if(currentControl.hasError('email')) {
+            <div class="input__error__container__body-item">Invalid email format!</div>
+          }
+          @if(errorArray) {
+            @for(errorItem of errorArray; track $index) {
+              <div class="input__error__container__body-item">{{ errorItem.error }}</div>
+            }
+          }
+        </div>
+    }
+  </div>
+}

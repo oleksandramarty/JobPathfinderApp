@@ -1,0 +1,31 @@
+@if(authFormGroup) {
+    <div class="container__box container__box__sign-in">
+      <div class="container__box__header">
+        <h2 class="container__box__header-title">Job Pathfinder</h2>
+        <div class="container__box__header-hint">
+          <div class="sign-up-hint glitch glitch-red" [@fadeInOut]>{{langArray[langIndex]}}</div>
+        </div>
+      </div>
+
+      <form [formGroup]="authFormGroup" class="container__box__body">
+        <div class="container__box__body-item">
+          <app-generic-input [submitted]="submitted" type="input" placeholder="Email" [formGroup]="authFormGroup" controlName="email"></app-generic-input>
+        </div>
+        <div class="container__box__body-item">
+          <app-generic-input [submitted]="submitted" type="input" placeholder="Login" [formGroup]="authFormGroup" controlName="login"></app-generic-input>
+        </div>
+      </form>
+
+      <div class="container__box__footer">
+        <div class="container__box__footer-item">
+          <button class="button button__link" routerLink="/auth/sign-in">Sign in</button>
+        </div>
+        <div class="container__box__footer-item">
+          <button class="button button__filled__submit" (click)="forgot()">Proceed</button>
+        </div>
+      </div>
+      <div class="container__box__footer line">
+        <button class="button button__link" routerLink="/auth/sign-up">Dont have an account? Sign Up</button>
+      </div>
+    </div>
+}
