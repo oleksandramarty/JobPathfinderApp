@@ -1,0 +1,49 @@
+@if(authFormGroup) {
+    <div class="container__box container__box__sign-up">
+      <div class="container__box__header">
+        <h2 class="container__box__header-title">Job Pathfinder</h2>
+        <div class="container__box__header-hint">
+          <div class="sign-up-hint glitch glitch-red" [@fadeInOut]>{{langArray[langIndex]}}</div>
+        </div>
+      </div>
+
+      <form [formGroup]="authFormGroup" class="container__box__body grid-2fr">
+        <div class="container__box__body-item">
+          <app-generic-input [submitted]="submitted" type="input" placeholder="COMMON.FIRST_NAME" [formGroup]="authFormGroup" controlName="firstName"></app-generic-input>
+        </div>
+        <div class="container__box__body-item">
+          <app-generic-input [submitted]="submitted" type="input" placeholder="COMMON.LAST_NAME" [formGroup]="authFormGroup" controlName="lastName"></app-generic-input>
+        </div>
+
+        <div class="container__box__body-item">
+          <app-generic-input [submitted]="submitted" type="input" placeholder="COMMON.EMAIL" [formGroup]="authFormGroup" controlName="email" [errorArray]="emailInputError"></app-generic-input>
+        </div>
+        <div class="container__box__body-item">
+          <app-generic-input [submitted]="submitted" type="input" placeholder="COMMON.CONFIRM_EMAIL" [formGroup]="authFormGroup" controlName="confirmEmail" [errorArray]="emailInputError"></app-generic-input>
+        </div>
+
+        <div class="container__box__body-item">
+          <app-generic-input [submitted]="submitted" type="password" placeholder="COMMON.PASSWORD" [formGroup]="authFormGroup" controlName="newPassword" [errorArray]="passwordInputError"></app-generic-input>
+        </div>
+        <div class="container__box__body-item">
+          <app-generic-input [submitted]="submitted" type="password" placeholder="COMMON.CONFIRM_PASSWORD" [formGroup]="authFormGroup" controlName="confirmNewPassword" [errorArray]="passwordInputError"></app-generic-input>
+        </div>
+
+        <div class="container__box__body-item">
+          <app-generic-input [submitted]="submitted" type="checkbox" label="COMMON.NO_COMPLAINTS" [formGroup]="authFormGroup" controlName="noComplaints"></app-generic-input>
+        </div>
+      </form>
+
+      <div class="container__box__footer">
+        <div class="container__box__footer-item">
+          <button class="button button__link" routerLink="/auth/forgot">{{ 'COMMON.FORGOT' | translation }}</button>
+        </div>
+        <div class="container__box__footer-item">
+          <button class="button button__filled__submit" (click)="register()">{{ 'COMMON.SIGN_UP' | translation }}</button>
+        </div>
+      </div>
+      <div class="container__box__footer line">
+        <button class="button button__link" routerLink="/auth/sign-in">{{ 'AUTH.HAS_ACCOUNT.SIGN_IN' | translation }}</button>
+      </div>
+    </div>
+}

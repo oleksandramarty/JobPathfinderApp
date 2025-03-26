@@ -25,6 +25,8 @@ public class LocalizationResponse
         Items = new List<LocalizationItemResponse>();
     }
     public string? Locale { get; set; }
+    public List<string> ShortMonths { get; set; }
+    public List<string> ShortDays { get; set; }
     public ICollection<LocalizationItemResponse> Items { get; set; }
 }
 

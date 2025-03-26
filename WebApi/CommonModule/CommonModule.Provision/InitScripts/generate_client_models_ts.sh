@@ -1,15 +1,15 @@
 #!/bin/bash
 
-# Получаем базовые директории
+# Get base dir
 BASE_DIR=$(cd "$(dirname "$0")" && pwd | sed 's|/CommonModule/CommonModule.Provision/InitScripts||')
 ANGULAR_BASE_DIR=$(cd "$(dirname "$0")" && pwd | sed 's|/WebApi/CommonModule/CommonModule.Provision/InitScripts||')
 
-# Определяем микросервисы и их соответствующие файлы API-клиентов
+# Microservices arrays
 microserviceNames=("AuthGateway" "Dictionaries" "AuditTrail" "Localizations" "CommonModule")
 microserviceClientApiNames=("user-api.service.ts" "dictionary-api.service.ts" "audit-trail-api.service.ts" "localization-api.service.ts" "api.model.ts")
 microserviceClientApiClassNames=("UserApiClient" "DictionaryApiClient" "AuditTrailApiClient" "LocalizationApiClient" "ApiModel")
 
-# 🔄 Генерируем API-клиенты
+# 🔄 Generating API clients
 for i in "${!microserviceNames[@]}"; do
   microserviceName="${microserviceNames[$i]}"
   microserviceClientApiName="${microserviceClientApiNames[$i]}"
@@ -19,7 +19,7 @@ for i in "${!microserviceNames[@]}"; do
   outputFileName="nswagconfig.nswag"
   outputClientFile="$ANGULAR_BASE_DIR/WebClient/Shared/projects/amarty/api/lib/$microserviceClientApiName"
 
-  # ✅ Создаем папку, если она отсутствует
+  # ✅ Create folder if not exist
   mkdir -p "$outputDir"
 
 # Write the content to the specified file
@@ -90,7 +90,7 @@ cat <<EOL > "$outputDir/$outputFileName"
       "promiseType": "Promise",
       "httpClass": "HttpClient",
       "withCredentials": false,
-      "useSingletonProvider": false,
+      "useSingletonProvider": true,
       "injectionTokenType": "InjectionToken",
       "rxJsVersion": 7.8,
       "dateTimeType": "Date",
@@ -146,17 +146,45 @@ cat <<EOL > "$outputDir/$outputFileName"
 }
 EOL
 
-  # ✅ Удаляем старый API-клиент перед генерацией
+  # ✅ Removing all clients
   rm -f "$outputClientFile"
 
-  # ✅ Разрешаем запись в нужную папку
+  # ✅ Grant access to write clients
   chmod -R u+w "$outputDir"
 
-  # ✅ Запускаем генерацию клиента
+  # ✅ Launching clients configs 
   cd "$outputDir" && nswag run "$outputFileName"
 
-  # ✅ Удаляем временный файл конфигурации
+  # ✅ Removing temp files
   rm -f "$outputFileName"
+  
+# ✅ Path to generated client file
+  CLIENT_FILE="$outputClientFile"
+  
+  # ✅ Skip processing if file is api.model.ts
+  if [[ "$CLIENT_FILE" != *"api.model.ts" ]]; then
+  
+      # ✅ Remove ApiException class and throwException from generated file
+      sed -E -i '' '/^export class ApiException/,/^}/d' "$CLIENT_FILE"
+      sed -E -i '' '/^function throwException/,/^}/d' "$CLIENT_FILE"
+    
+      # ✅ Add import for shared exception (at the very top)
+      sed -i '' '1s|^|import { ApiException, throwException } from "./api-extension.model";\n|' "$CLIENT_FILE"
+    
+      # ✅ Insert api.model import as the second line (after the first import)
+      sed -i '' '1a\
+    import {\
+      AuthSignInRequest,\
+      ErrorMessageModel,\
+      JwtTokenResponse,\
+      UpdateUserPreferencesCommand,\
+      LocalizationsResponse,\
+      SiteSettingsResponse,\
+      UserResponse\
+    } from "./api.model";
+    ' "$CLIENT_FILE"
+  
+  fi
 
   echo "Client API for $microserviceName successfully generated."
 done

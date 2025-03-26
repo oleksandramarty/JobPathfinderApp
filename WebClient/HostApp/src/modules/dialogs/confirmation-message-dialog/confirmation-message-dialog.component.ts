@@ -2,19 +2,21 @@ import { Component, Inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
-import { SanitizeHtmlPipe } from '@amarty/shared/pipes'
-import { generateRandomId } from '@amarty/utils'
+import {SanitizeHtmlPipe, TranslationPipe} from '@amarty/utils/pipes'
+import {generateRandomId, traceCreation} from '@amarty/utils'
 
 @Component({
     selector: 'app-confirmation-message-dialog',
     imports: [
-        CommonModule,
-        SanitizeHtmlPipe,
-        MatButtonModule,
-        MatDialogTitle
+      CommonModule,
+      TranslationPipe,
+      SanitizeHtmlPipe,
+      MatButtonModule,
+      MatDialogTitle
     ],
-    templateUrl: './confirmation-message-dialog.component.html',
-    styleUrls: ['./confirmation-message-dialog.component.scss'],
+  standalone: true,
+  templateUrl: './confirmation-message-dialog.component.html',
+  styleUrls: ['./confirmation-message-dialog.component.scss'],
   host: { 'data-id': generateRandomId(12) }
 })
 export class ConfirmationMessageDialogComponent {
@@ -34,6 +36,7 @@ export class ConfirmationMessageDialogComponent {
       htmlBlock?: string | undefined;
     } | undefined,
   ) {
+    traceCreation(this);
     this.yesBtn = data?.yesBtn;
     this.noBtn = data?.noBtn;
     this.title = data?.title;

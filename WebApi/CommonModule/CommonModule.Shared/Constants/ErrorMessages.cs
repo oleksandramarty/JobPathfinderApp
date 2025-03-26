@@ -6,6 +6,7 @@ public class ErrorMessages
     public const string EntityNotFound = "ERROR.ENTITY_NOT_FOUND";
     public const string EntityWithIdNotFound = "ERROR.ENTITY_WITH_ID_NOT_FOUND";
     public const string EntityWithEmailAlreadyExists = "ERROR.ENTITY_WITH_EMAIL_ALREADY_EXISTS";
+    public const string EntityWithLoginAlreadyExists = "ERROR.ENTITY_WITH_LOGIN_ALREADY_EXISTS";
     public const string ValidationError = "ERROR.VALIDATION_ERROR";
     public const string EntityAlreadyExists = "ERROR.ENTITY_ALREADY_EXISTS";
     public const string InternalServerError = "ERROR.INTERNAL_SERVER_ERROR";
@@ -37,4 +38,8 @@ public class ErrorMessages
     public const string StatusCompleted = "STATUS.COMPLETED";
     public const string StatusCancelled = "STATUS.CANCELLED";
     public const string StatusArchived = "STATUS.ARCHIVED";
+    public const string UpdateOnlyOwnSettings = "ERROR.UPDATE_ONLY_OWN_SETTINGS";
+    public const string InvalidUrl = "ERROR.INVALID_URL";
+    public const string InvalidHttpsUrl = "ERROR.URL_NOT_HTTPS";
+    public const string UnknownUrl = "ERROR.UNKNOWN_URL_TYPE";
 }

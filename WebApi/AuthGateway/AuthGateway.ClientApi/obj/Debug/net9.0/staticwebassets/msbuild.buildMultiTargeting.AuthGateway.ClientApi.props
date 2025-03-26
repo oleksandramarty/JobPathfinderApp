@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="../build/AuthGateway.ClientApi.props" />
-</Project>

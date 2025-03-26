@@ -1,6 +1,5 @@
 using AuthGateway.Domain;
 using AuthGateway.Domain.Models.Users;
-using AuthGateway.Mediatr.Mediatr.Auth.Commands;
 using AuthGateway.Mediatr.Mediatr.Auth.Requests;
 using AuthGateway.Mediatr.Validators.Auth;
 using CommonModule.Core.Exceptions;

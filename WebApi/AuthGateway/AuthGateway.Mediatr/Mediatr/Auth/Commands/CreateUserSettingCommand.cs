@@ -12,4 +12,5 @@ public class CreateUserSettingCommand: IRequest<BaseEntityIdResponse<Guid>>
     public int? CountryId { get; set; }
     public int? DefaultUserProjectCurrencyId { get; set; }
     public Guid? DefaultUserProjectId { get; set; }
+    public bool ApplicationAiPrompt { get; set; }
 }

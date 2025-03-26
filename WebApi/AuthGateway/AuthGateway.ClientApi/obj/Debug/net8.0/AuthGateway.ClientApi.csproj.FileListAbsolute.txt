@@ -1,8 +1,0 @@
-/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/AuthGateway/AuthGateway.ClientApi/obj/Debug/net8.0/AuthGateway.ClientApi.csproj.AssemblyReference.cache
-/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/AuthGateway/AuthGateway.ClientApi/obj/Debug/net8.0/AuthGateway.ClientApi.GeneratedMSBuildEditorConfig.editorconfig
-/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/AuthGateway/AuthGateway.ClientApi/obj/Debug/net8.0/AuthGateway.ClientApi.AssemblyInfoInputs.cache
-/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/AuthGateway/AuthGateway.ClientApi/obj/Debug/net8.0/AuthGateway.ClientApi.AssemblyInfo.cs
-/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/AuthGateway/AuthGateway.ClientApi/obj/Debug/net8.0/AuthGateway.ClientApi.csproj.CoreCompileInputs.cache
-/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/AuthGateway/AuthGateway.ClientApi/obj/Debug/net8.0/AuthGateway.ClientApi.MvcApplicationPartsAssemblyInfo.cs
-/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/AuthGateway/AuthGateway.ClientApi/obj/Debug/net8.0/AuthGateway.ClientApi.MvcApplicationPartsAssemblyInfo.cache
-/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/AuthGateway/AuthGateway.ClientApi/obj/Debug/net8.0/AuthGateway.ClientApi.sourcelink.json

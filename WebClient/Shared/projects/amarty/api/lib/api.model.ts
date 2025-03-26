@@ -246,6 +246,123 @@ export class AuthForgotRequest implements IAuthForgotRequest {
 export interface IAuthForgotRequest {
 }
 
+export class BaseIdEntityOfGuid implements IBaseIdEntityOfGuid {
+    id?: string;
+
+    constructor(data?: IBaseIdEntityOfGuid) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.id = _data["id"];
+        }
+    }
+
+    static fromJS(data: any): BaseIdEntityOfGuid {
+        data = typeof data === 'object' ? data : {};
+        let result = new BaseIdEntityOfGuid();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["id"] = this.id;
+        return data;
+    }
+}
+
+export interface IBaseIdEntityOfGuid {
+    id?: string;
+}
+
+export class UpdateUserPreferencesCommand extends BaseIdEntityOfGuid implements IUpdateUserPreferencesCommand {
+    login?: string;
+    phone?: string | undefined;
+    firstName?: string | undefined;
+    lastName?: string | undefined;
+    defaultLocale?: string | undefined;
+    timeZone?: number | undefined;
+    countryId?: number | undefined;
+    currencyId?: number | undefined;
+    applicationAiPrompt?: boolean;
+    linkedInUrl?: string | undefined;
+    npmUrl?: string | undefined;
+    gitHubUrl?: string | undefined;
+    portfolioUrl?: string | undefined;
+
+    constructor(data?: IUpdateUserPreferencesCommand) {
+        super(data);
+    }
+
+    override init(_data?: any) {
+        super.init(_data);
+        if (_data) {
+            this.login = _data["login"];
+            this.phone = _data["phone"];
+            this.firstName = _data["firstName"];
+            this.lastName = _data["lastName"];
+            this.defaultLocale = _data["defaultLocale"];
+            this.timeZone = _data["timeZone"];
+            this.countryId = _data["countryId"];
+            this.currencyId = _data["currencyId"];
+            this.applicationAiPrompt = _data["applicationAiPrompt"];
+            this.linkedInUrl = _data["linkedInUrl"];
+            this.npmUrl = _data["npmUrl"];
+            this.gitHubUrl = _data["gitHubUrl"];
+            this.portfolioUrl = _data["portfolioUrl"];
+        }
+    }
+
+    static override fromJS(data: any): UpdateUserPreferencesCommand {
+        data = typeof data === 'object' ? data : {};
+        let result = new UpdateUserPreferencesCommand();
+        result.init(data);
+        return result;
+    }
+
+    override toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["login"] = this.login;
+        data["phone"] = this.phone;
+        data["firstName"] = this.firstName;
+        data["lastName"] = this.lastName;
+        data["defaultLocale"] = this.defaultLocale;
+        data["timeZone"] = this.timeZone;
+        data["countryId"] = this.countryId;
+        data["currencyId"] = this.currencyId;
+        data["applicationAiPrompt"] = this.applicationAiPrompt;
+        data["linkedInUrl"] = this.linkedInUrl;
+        data["npmUrl"] = this.npmUrl;
+        data["gitHubUrl"] = this.gitHubUrl;
+        data["portfolioUrl"] = this.portfolioUrl;
+        super.toJSON(data);
+        return data;
+    }
+}
+
+export interface IUpdateUserPreferencesCommand extends IBaseIdEntityOfGuid {
+    login?: string;
+    phone?: string | undefined;
+    firstName?: string | undefined;
+    lastName?: string | undefined;
+    defaultLocale?: string | undefined;
+    timeZone?: number | undefined;
+    countryId?: number | undefined;
+    currencyId?: number | undefined;
+    applicationAiPrompt?: boolean;
+    linkedInUrl?: string | undefined;
+    npmUrl?: string | undefined;
+    gitHubUrl?: string | undefined;
+    portfolioUrl?: string | undefined;
+}
+
 export class BaseVersionEntity implements IBaseVersionEntity {
     version!: string;
 
@@ -779,7 +896,6 @@ export interface IBaseAmountRangeFilterRequest {
 }
 
 export class SiteSettingsResponse implements ISiteSettingsResponse {
-    locale?: string | undefined;
     version?: CacheVersionResponse | undefined;
 
     constructor(data?: ISiteSettingsResponse) {
@@ -793,7 +909,6 @@ export class SiteSettingsResponse implements ISiteSettingsResponse {
 
     init(_data?: any) {
         if (_data) {
-            this.locale = _data["locale"];
             this.version = _data["version"] ? CacheVersionResponse.fromJS(_data["version"]) : <any>undefined;
         }
     }
@@ -807,23 +922,18 @@ export class SiteSettingsResponse implements ISiteSettingsResponse {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data["locale"] = this.locale;
         data["version"] = this.version ? this.version.toJSON() : <any>undefined;
         return data;
     }
 }
 
 export interface ISiteSettingsResponse {
-    locale?: string | undefined;
     version?: CacheVersionResponse | undefined;
 }
 
 export class CacheVersionResponse implements ICacheVersionResponse {
     localizationPublic?: string | undefined;
     localization?: string | undefined;
-    country?: string | undefined;
-    locale?: string | undefined;
-    skill?: string | undefined;
 
     constructor(data?: ICacheVersionResponse) {
         if (data) {
@@ -838,9 +948,6 @@ export class CacheVersionResponse implements ICacheVersionResponse {
         if (_data) {
             this.localizationPublic = _data["localizationPublic"];
             this.localization = _data["localization"];
-            this.country = _data["country"];
-            this.locale = _data["locale"];
-            this.skill = _data["skill"];
         }
     }
 
@@ -855,9 +962,6 @@ export class CacheVersionResponse implements ICacheVersionResponse {
         data = typeof data === 'object' ? data : {};
         data["localizationPublic"] = this.localizationPublic;
         data["localization"] = this.localization;
-        data["country"] = this.country;
-        data["locale"] = this.locale;
-        data["skill"] = this.skill;
         return data;
     }
 }
@@ -865,9 +969,6 @@ export class CacheVersionResponse implements ICacheVersionResponse {
 export interface ICacheVersionResponse {
     localizationPublic?: string | undefined;
     localization?: string | undefined;
-    country?: string | undefined;
-    locale?: string | undefined;
-    skill?: string | undefined;
 }
 
 export class JwtTokenResponse implements IJwtTokenResponse {
@@ -904,42 +1005,6 @@ export class JwtTokenResponse implements IJwtTokenResponse {
 
 export interface IJwtTokenResponse {
     token?: string | undefined;
-}
-
-export class BaseIdEntityOfGuid implements IBaseIdEntityOfGuid {
-    id?: string;
-
-    constructor(data?: IBaseIdEntityOfGuid) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.id = _data["id"];
-        }
-    }
-
-    static fromJS(data: any): BaseIdEntityOfGuid {
-        data = typeof data === 'object' ? data : {};
-        let result = new BaseIdEntityOfGuid();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["id"] = this.id;
-        return data;
-    }
-}
-
-export interface IBaseIdEntityOfGuid {
-    id?: string;
 }
 
 export class BaseDateTimeEntityOfGuid extends BaseIdEntityOfGuid implements IBaseDateTimeEntityOfGuid {
@@ -981,17 +1046,19 @@ export interface IBaseDateTimeEntityOfGuid extends IBaseIdEntityOfGuid {
 
 export class UserResponse extends BaseDateTimeEntityOfGuid implements IUserResponse {
     login?: string | undefined;
-    loginNormalized?: string | undefined;
+    firstName?: string;
+    lastName?: string;
     email?: string | undefined;
-    emailNormalized?: string | undefined;
-    passwordHash?: string | undefined;
-    salt?: string | undefined;
+    phone?: string | undefined;
     status?: StatusEnum;
     isTemporaryPassword?: boolean;
     authType?: UserAuthMethodEnum;
     lastForgotPassword?: Date | undefined;
     lastForgotPasswordRequest?: Date | undefined;
     roles?: RoleResponse[];
+    languages?: UserLanguageResponse[];
+    skills?: UserSkillResponse[];
+    profileItems?: UserProfileItemResponse[];
     userSetting?: UserSettingResponse | undefined;
     version!: string;
 
@@ -1003,11 +1070,10 @@ export class UserResponse extends BaseDateTimeEntityOfGuid implements IUserRespo
         super.init(_data);
         if (_data) {
             this.login = _data["login"];
-            this.loginNormalized = _data["loginNormalized"];
+            this.firstName = _data["firstName"];
+            this.lastName = _data["lastName"];
             this.email = _data["email"];
-            this.emailNormalized = _data["emailNormalized"];
-            this.passwordHash = _data["passwordHash"];
-            this.salt = _data["salt"];
+            this.phone = _data["phone"];
             this.status = _data["status"];
             this.isTemporaryPassword = _data["isTemporaryPassword"];
             this.authType = _data["authType"];
@@ -1017,6 +1083,21 @@ export class UserResponse extends BaseDateTimeEntityOfGuid implements IUserRespo
                 this.roles = [] as any;
                 for (let item of _data["roles"])
                     this.roles!.push(RoleResponse.fromJS(item));
+            }
+            if (Array.isArray(_data["languages"])) {
+                this.languages = [] as any;
+                for (let item of _data["languages"])
+                    this.languages!.push(UserLanguageResponse.fromJS(item));
+            }
+            if (Array.isArray(_data["skills"])) {
+                this.skills = [] as any;
+                for (let item of _data["skills"])
+                    this.skills!.push(UserSkillResponse.fromJS(item));
+            }
+            if (Array.isArray(_data["profileItems"])) {
+                this.profileItems = [] as any;
+                for (let item of _data["profileItems"])
+                    this.profileItems!.push(UserProfileItemResponse.fromJS(item));
             }
             this.userSetting = _data["userSetting"] ? UserSettingResponse.fromJS(_data["userSetting"]) : <any>undefined;
             this.version = _data["version"];
@@ -1033,11 +1114,10 @@ export class UserResponse extends BaseDateTimeEntityOfGuid implements IUserRespo
     override toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["login"] = this.login;
-        data["loginNormalized"] = this.loginNormalized;
+        data["firstName"] = this.firstName;
+        data["lastName"] = this.lastName;
         data["email"] = this.email;
-        data["emailNormalized"] = this.emailNormalized;
-        data["passwordHash"] = this.passwordHash;
-        data["salt"] = this.salt;
+        data["phone"] = this.phone;
         data["status"] = this.status;
         data["isTemporaryPassword"] = this.isTemporaryPassword;
         data["authType"] = this.authType;
@@ -1048,6 +1128,21 @@ export class UserResponse extends BaseDateTimeEntityOfGuid implements IUserRespo
             for (let item of this.roles)
                 data["roles"].push(item.toJSON());
         }
+        if (Array.isArray(this.languages)) {
+            data["languages"] = [];
+            for (let item of this.languages)
+                data["languages"].push(item.toJSON());
+        }
+        if (Array.isArray(this.skills)) {
+            data["skills"] = [];
+            for (let item of this.skills)
+                data["skills"].push(item.toJSON());
+        }
+        if (Array.isArray(this.profileItems)) {
+            data["profileItems"] = [];
+            for (let item of this.profileItems)
+                data["profileItems"].push(item.toJSON());
+        }
         data["userSetting"] = this.userSetting ? this.userSetting.toJSON() : <any>undefined;
         data["version"] = this.version;
         super.toJSON(data);
@@ -1057,17 +1152,19 @@ export class UserResponse extends BaseDateTimeEntityOfGuid implements IUserRespo
 
 export interface IUserResponse extends IBaseDateTimeEntityOfGuid {
     login?: string | undefined;
-    loginNormalized?: string | undefined;
+    firstName?: string;
+    lastName?: string;
     email?: string | undefined;
-    emailNormalized?: string | undefined;
-    passwordHash?: string | undefined;
-    salt?: string | undefined;
+    phone?: string | undefined;
     status?: StatusEnum;
     isTemporaryPassword?: boolean;
     authType?: UserAuthMethodEnum;
     lastForgotPassword?: Date | undefined;
     lastForgotPasswordRequest?: Date | undefined;
     roles?: RoleResponse[];
+    languages?: UserLanguageResponse[];
+    skills?: UserSkillResponse[];
+    profileItems?: UserProfileItemResponse[];
     userSetting?: UserSettingResponse | undefined;
     version: string;
 }
@@ -1171,11 +1268,342 @@ export enum UserRoleEnum {
     SuperAdmin = 4,
 }
 
+export class UserLanguageResponse extends BaseDateTimeEntityOfGuid implements IUserLanguageResponse {
+    userId?: string;
+    languageId?: number;
+    languageLevelId?: number;
+    userProfileItems?: UserProfileItemLanguageResponse[];
+    status?: StatusEnum;
+    version!: string;
+
+    constructor(data?: IUserLanguageResponse) {
+        super(data);
+    }
+
+    override init(_data?: any) {
+        super.init(_data);
+        if (_data) {
+            this.userId = _data["userId"];
+            this.languageId = _data["languageId"];
+            this.languageLevelId = _data["languageLevelId"];
+            if (Array.isArray(_data["userProfileItems"])) {
+                this.userProfileItems = [] as any;
+                for (let item of _data["userProfileItems"])
+                    this.userProfileItems!.push(UserProfileItemLanguageResponse.fromJS(item));
+            }
+            this.status = _data["status"];
+            this.version = _data["version"];
+        }
+    }
+
+    static override fromJS(data: any): UserLanguageResponse {
+        data = typeof data === 'object' ? data : {};
+        let result = new UserLanguageResponse();
+        result.init(data);
+        return result;
+    }
+
+    override toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["userId"] = this.userId;
+        data["languageId"] = this.languageId;
+        data["languageLevelId"] = this.languageLevelId;
+        if (Array.isArray(this.userProfileItems)) {
+            data["userProfileItems"] = [];
+            for (let item of this.userProfileItems)
+                data["userProfileItems"].push(item.toJSON());
+        }
+        data["status"] = this.status;
+        data["version"] = this.version;
+        super.toJSON(data);
+        return data;
+    }
+}
+
+export interface IUserLanguageResponse extends IBaseDateTimeEntityOfGuid {
+    userId?: string;
+    languageId?: number;
+    languageLevelId?: number;
+    userProfileItems?: UserProfileItemLanguageResponse[];
+    status?: StatusEnum;
+    version: string;
+}
+
+export class UserProfileItemLanguageResponse extends BaseIdEntityOfGuid implements IUserProfileItemLanguageResponse {
+    userSkillId?: string;
+    userLanguage?: UserLanguageResponse | undefined;
+    userProfileItemId?: string;
+    userProfileItem?: UserProfileItemResponse | undefined;
+
+    constructor(data?: IUserProfileItemLanguageResponse) {
+        super(data);
+    }
+
+    override init(_data?: any) {
+        super.init(_data);
+        if (_data) {
+            this.userSkillId = _data["userSkillId"];
+            this.userLanguage = _data["userLanguage"] ? UserLanguageResponse.fromJS(_data["userLanguage"]) : <any>undefined;
+            this.userProfileItemId = _data["userProfileItemId"];
+            this.userProfileItem = _data["userProfileItem"] ? UserProfileItemResponse.fromJS(_data["userProfileItem"]) : <any>undefined;
+        }
+    }
+
+    static override fromJS(data: any): UserProfileItemLanguageResponse {
+        data = typeof data === 'object' ? data : {};
+        let result = new UserProfileItemLanguageResponse();
+        result.init(data);
+        return result;
+    }
+
+    override toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["userSkillId"] = this.userSkillId;
+        data["userLanguage"] = this.userLanguage ? this.userLanguage.toJSON() : <any>undefined;
+        data["userProfileItemId"] = this.userProfileItemId;
+        data["userProfileItem"] = this.userProfileItem ? this.userProfileItem.toJSON() : <any>undefined;
+        super.toJSON(data);
+        return data;
+    }
+}
+
+export interface IUserProfileItemLanguageResponse extends IBaseIdEntityOfGuid {
+    userSkillId?: string;
+    userLanguage?: UserLanguageResponse | undefined;
+    userProfileItemId?: string;
+    userProfileItem?: UserProfileItemResponse | undefined;
+}
+
+export class UserProfileItemResponse extends BaseDateTimeEntityOfGuid implements IUserProfileItemResponse {
+    userId?: string;
+    profileItemType?: UserProfileItemEnum;
+    startDate?: Date;
+    endDate?: Date | undefined;
+    position!: string;
+    description?: string | undefined;
+    company?: string | undefined;
+    location?: string | undefined;
+    countryId?: number | undefined;
+    jobTypeId?: number | undefined;
+    workArrangementsId?: number | undefined;
+    languages?: UserProfileItemLanguageResponse[];
+    skills?: UserProfileItemSkillResponse[];
+    status?: StatusEnum;
+    version!: string;
+
+    constructor(data?: IUserProfileItemResponse) {
+        super(data);
+    }
+
+    override init(_data?: any) {
+        super.init(_data);
+        if (_data) {
+            this.userId = _data["userId"];
+            this.profileItemType = _data["profileItemType"];
+            this.startDate = _data["startDate"] ? new Date(_data["startDate"].toString()) : <any>undefined;
+            this.endDate = _data["endDate"] ? new Date(_data["endDate"].toString()) : <any>undefined;
+            this.position = _data["position"];
+            this.description = _data["description"];
+            this.company = _data["company"];
+            this.location = _data["location"];
+            this.countryId = _data["countryId"];
+            this.jobTypeId = _data["jobTypeId"];
+            this.workArrangementsId = _data["workArrangementsId"];
+            if (Array.isArray(_data["languages"])) {
+                this.languages = [] as any;
+                for (let item of _data["languages"])
+                    this.languages!.push(UserProfileItemLanguageResponse.fromJS(item));
+            }
+            if (Array.isArray(_data["skills"])) {
+                this.skills = [] as any;
+                for (let item of _data["skills"])
+                    this.skills!.push(UserProfileItemSkillResponse.fromJS(item));
+            }
+            this.status = _data["status"];
+            this.version = _data["version"];
+        }
+    }
+
+    static override fromJS(data: any): UserProfileItemResponse {
+        data = typeof data === 'object' ? data : {};
+        let result = new UserProfileItemResponse();
+        result.init(data);
+        return result;
+    }
+
+    override toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["userId"] = this.userId;
+        data["profileItemType"] = this.profileItemType;
+        data["startDate"] = this.startDate ? this.startDate.toISOString() : <any>undefined;
+        data["endDate"] = this.endDate ? this.endDate.toISOString() : <any>undefined;
+        data["position"] = this.position;
+        data["description"] = this.description;
+        data["company"] = this.company;
+        data["location"] = this.location;
+        data["countryId"] = this.countryId;
+        data["jobTypeId"] = this.jobTypeId;
+        data["workArrangementsId"] = this.workArrangementsId;
+        if (Array.isArray(this.languages)) {
+            data["languages"] = [];
+            for (let item of this.languages)
+                data["languages"].push(item.toJSON());
+        }
+        if (Array.isArray(this.skills)) {
+            data["skills"] = [];
+            for (let item of this.skills)
+                data["skills"].push(item.toJSON());
+        }
+        data["status"] = this.status;
+        data["version"] = this.version;
+        super.toJSON(data);
+        return data;
+    }
+}
+
+export interface IUserProfileItemResponse extends IBaseDateTimeEntityOfGuid {
+    userId?: string;
+    profileItemType?: UserProfileItemEnum;
+    startDate?: Date;
+    endDate?: Date | undefined;
+    position: string;
+    description?: string | undefined;
+    company?: string | undefined;
+    location?: string | undefined;
+    countryId?: number | undefined;
+    jobTypeId?: number | undefined;
+    workArrangementsId?: number | undefined;
+    languages?: UserProfileItemLanguageResponse[];
+    skills?: UserProfileItemSkillResponse[];
+    status?: StatusEnum;
+    version: string;
+}
+
+export enum UserProfileItemEnum {
+    Experience = 1,
+    Achievement = 2,
+    Education = 3,
+    Project = 4,
+    Certification = 5,
+}
+
+export class UserProfileItemSkillResponse extends BaseIdEntityOfGuid implements IUserProfileItemSkillResponse {
+    userSkillId?: string;
+    userSkill?: UserSkillResponse | undefined;
+    userProfileItemId?: string;
+    userProfileItem?: UserProfileItemResponse | undefined;
+
+    constructor(data?: IUserProfileItemSkillResponse) {
+        super(data);
+    }
+
+    override init(_data?: any) {
+        super.init(_data);
+        if (_data) {
+            this.userSkillId = _data["userSkillId"];
+            this.userSkill = _data["userSkill"] ? UserSkillResponse.fromJS(_data["userSkill"]) : <any>undefined;
+            this.userProfileItemId = _data["userProfileItemId"];
+            this.userProfileItem = _data["userProfileItem"] ? UserProfileItemResponse.fromJS(_data["userProfileItem"]) : <any>undefined;
+        }
+    }
+
+    static override fromJS(data: any): UserProfileItemSkillResponse {
+        data = typeof data === 'object' ? data : {};
+        let result = new UserProfileItemSkillResponse();
+        result.init(data);
+        return result;
+    }
+
+    override toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["userSkillId"] = this.userSkillId;
+        data["userSkill"] = this.userSkill ? this.userSkill.toJSON() : <any>undefined;
+        data["userProfileItemId"] = this.userProfileItemId;
+        data["userProfileItem"] = this.userProfileItem ? this.userProfileItem.toJSON() : <any>undefined;
+        super.toJSON(data);
+        return data;
+    }
+}
+
+export interface IUserProfileItemSkillResponse extends IBaseIdEntityOfGuid {
+    userSkillId?: string;
+    userSkill?: UserSkillResponse | undefined;
+    userProfileItemId?: string;
+    userProfileItem?: UserProfileItemResponse | undefined;
+}
+
+export class UserSkillResponse extends BaseDateTimeEntityOfGuid implements IUserSkillResponse {
+    userId?: string;
+    skillId?: number;
+    skillLevelId?: number;
+    userProfileItems?: UserProfileItemSkillResponse[];
+    status?: StatusEnum;
+    version!: string;
+
+    constructor(data?: IUserSkillResponse) {
+        super(data);
+    }
+
+    override init(_data?: any) {
+        super.init(_data);
+        if (_data) {
+            this.userId = _data["userId"];
+            this.skillId = _data["skillId"];
+            this.skillLevelId = _data["skillLevelId"];
+            if (Array.isArray(_data["userProfileItems"])) {
+                this.userProfileItems = [] as any;
+                for (let item of _data["userProfileItems"])
+                    this.userProfileItems!.push(UserProfileItemSkillResponse.fromJS(item));
+            }
+            this.status = _data["status"];
+            this.version = _data["version"];
+        }
+    }
+
+    static override fromJS(data: any): UserSkillResponse {
+        data = typeof data === 'object' ? data : {};
+        let result = new UserSkillResponse();
+        result.init(data);
+        return result;
+    }
+
+    override toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["userId"] = this.userId;
+        data["skillId"] = this.skillId;
+        data["skillLevelId"] = this.skillLevelId;
+        if (Array.isArray(this.userProfileItems)) {
+            data["userProfileItems"] = [];
+            for (let item of this.userProfileItems)
+                data["userProfileItems"].push(item.toJSON());
+        }
+        data["status"] = this.status;
+        data["version"] = this.version;
+        super.toJSON(data);
+        return data;
+    }
+}
+
+export interface IUserSkillResponse extends IBaseDateTimeEntityOfGuid {
+    userId?: string;
+    skillId?: number;
+    skillLevelId?: number;
+    userProfileItems?: UserProfileItemSkillResponse[];
+    status?: StatusEnum;
+    version: string;
+}
+
 export class UserSettingResponse extends BaseIdEntityOfGuid implements IUserSettingResponse {
     defaultLocale?: string | undefined;
     timeZone?: number;
     countryId?: number | undefined;
+    currencyId?: number | undefined;
+    applicationAiPrompt?: boolean;
     userId?: string;
+    linkedInUrl?: string | undefined;
+    npmUrl?: string | undefined;
+    gitHubUrl?: string | undefined;
+    portfolioUrl?: string | undefined;
     version!: string;
 
     constructor(data?: IUserSettingResponse) {
@@ -1188,7 +1616,13 @@ export class UserSettingResponse extends BaseIdEntityOfGuid implements IUserSett
             this.defaultLocale = _data["defaultLocale"];
             this.timeZone = _data["timeZone"];
             this.countryId = _data["countryId"];
+            this.currencyId = _data["currencyId"];
+            this.applicationAiPrompt = _data["applicationAiPrompt"];
             this.userId = _data["userId"];
+            this.linkedInUrl = _data["linkedInUrl"];
+            this.npmUrl = _data["npmUrl"];
+            this.gitHubUrl = _data["gitHubUrl"];
+            this.portfolioUrl = _data["portfolioUrl"];
             this.version = _data["version"];
         }
     }
@@ -1205,7 +1639,13 @@ export class UserSettingResponse extends BaseIdEntityOfGuid implements IUserSett
         data["defaultLocale"] = this.defaultLocale;
         data["timeZone"] = this.timeZone;
         data["countryId"] = this.countryId;
+        data["currencyId"] = this.currencyId;
+        data["applicationAiPrompt"] = this.applicationAiPrompt;
         data["userId"] = this.userId;
+        data["linkedInUrl"] = this.linkedInUrl;
+        data["npmUrl"] = this.npmUrl;
+        data["gitHubUrl"] = this.gitHubUrl;
+        data["portfolioUrl"] = this.portfolioUrl;
         data["version"] = this.version;
         super.toJSON(data);
         return data;
@@ -1216,7 +1656,13 @@ export interface IUserSettingResponse extends IBaseIdEntityOfGuid {
     defaultLocale?: string | undefined;
     timeZone?: number;
     countryId?: number | undefined;
+    currencyId?: number | undefined;
+    applicationAiPrompt?: boolean;
     userId?: string;
+    linkedInUrl?: string | undefined;
+    npmUrl?: string | undefined;
+    gitHubUrl?: string | undefined;
+    portfolioUrl?: string | undefined;
     version: string;
 }
 
@@ -1263,6 +1709,8 @@ export interface ILocalizationsResponse extends IBaseVersionEntity {
 
 export class LocalizationResponse implements ILocalizationResponse {
     locale?: string | undefined;
+    shortMonths?: string[];
+    shortDays?: string[];
     items?: LocalizationItemResponse[];
 
     constructor(data?: ILocalizationResponse) {
@@ -1277,6 +1725,16 @@ export class LocalizationResponse implements ILocalizationResponse {
     init(_data?: any) {
         if (_data) {
             this.locale = _data["locale"];
+            if (Array.isArray(_data["shortMonths"])) {
+                this.shortMonths = [] as any;
+                for (let item of _data["shortMonths"])
+                    this.shortMonths!.push(item);
+            }
+            if (Array.isArray(_data["shortDays"])) {
+                this.shortDays = [] as any;
+                for (let item of _data["shortDays"])
+                    this.shortDays!.push(item);
+            }
             if (Array.isArray(_data["items"])) {
                 this.items = [] as any;
                 for (let item of _data["items"])
@@ -1295,6 +1753,16 @@ export class LocalizationResponse implements ILocalizationResponse {
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["locale"] = this.locale;
+        if (Array.isArray(this.shortMonths)) {
+            data["shortMonths"] = [];
+            for (let item of this.shortMonths)
+                data["shortMonths"].push(item);
+        }
+        if (Array.isArray(this.shortDays)) {
+            data["shortDays"] = [];
+            for (let item of this.shortDays)
+                data["shortDays"].push(item);
+        }
         if (Array.isArray(this.items)) {
             data["items"] = [];
             for (let item of this.items)
@@ -1306,6 +1774,8 @@ export class LocalizationResponse implements ILocalizationResponse {
 
 export interface ILocalizationResponse {
     locale?: string | undefined;
+    shortMonths?: string[];
+    shortDays?: string[];
     items?: LocalizationItemResponse[];
 }
 
@@ -1592,7 +2062,7 @@ export interface IVersionedListResponseOfSkillResponse extends IBaseVersionEntit
     items?: SkillResponse[];
 }
 
-export class SkillResponse extends BaseIdEntityOfGuid implements ISkillResponse {
+export class SkillResponse extends BaseIdEntityOfInteger implements ISkillResponse {
     title?: string | undefined;
     status?: StatusEnum;
 
@@ -1624,8 +2094,676 @@ export class SkillResponse extends BaseIdEntityOfGuid implements ISkillResponse 
     }
 }
 
-export interface ISkillResponse extends IBaseIdEntityOfGuid {
+export interface ISkillResponse extends IBaseIdEntityOfInteger {
     title?: string | undefined;
+    status?: StatusEnum;
+}
+
+export class VersionedListResponseOfCurrencyResponse extends BaseVersionEntity implements IVersionedListResponseOfCurrencyResponse {
+    items?: CurrencyResponse[];
+
+    constructor(data?: IVersionedListResponseOfCurrencyResponse) {
+        super(data);
+    }
+
+    override init(_data?: any) {
+        super.init(_data);
+        if (_data) {
+            if (Array.isArray(_data["items"])) {
+                this.items = [] as any;
+                for (let item of _data["items"])
+                    this.items!.push(CurrencyResponse.fromJS(item));
+            }
+        }
+    }
+
+    static override fromJS(data: any): VersionedListResponseOfCurrencyResponse {
+        data = typeof data === 'object' ? data : {};
+        let result = new VersionedListResponseOfCurrencyResponse();
+        result.init(data);
+        return result;
+    }
+
+    override toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (Array.isArray(this.items)) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        super.toJSON(data);
+        return data;
+    }
+}
+
+export interface IVersionedListResponseOfCurrencyResponse extends IBaseVersionEntity {
+    items?: CurrencyResponse[];
+}
+
+export class CurrencyResponse extends BaseIdEntityOfInteger implements ICurrencyResponse {
+    code?: string | undefined;
+    symbol?: string | undefined;
+    title?: string | undefined;
+    titleEn?: string | undefined;
+    status?: StatusEnum;
+
+    constructor(data?: ICurrencyResponse) {
+        super(data);
+    }
+
+    override init(_data?: any) {
+        super.init(_data);
+        if (_data) {
+            this.code = _data["code"];
+            this.symbol = _data["symbol"];
+            this.title = _data["title"];
+            this.titleEn = _data["titleEn"];
+            this.status = _data["status"];
+        }
+    }
+
+    static override fromJS(data: any): CurrencyResponse {
+        data = typeof data === 'object' ? data : {};
+        let result = new CurrencyResponse();
+        result.init(data);
+        return result;
+    }
+
+    override toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["code"] = this.code;
+        data["symbol"] = this.symbol;
+        data["title"] = this.title;
+        data["titleEn"] = this.titleEn;
+        data["status"] = this.status;
+        super.toJSON(data);
+        return data;
+    }
+}
+
+export interface ICurrencyResponse extends IBaseIdEntityOfInteger {
+    code?: string | undefined;
+    symbol?: string | undefined;
+    title?: string | undefined;
+    titleEn?: string | undefined;
+    status?: StatusEnum;
+}
+
+export class VersionedListResponseOfExperienceLevelResponse extends BaseVersionEntity implements IVersionedListResponseOfExperienceLevelResponse {
+    items?: ExperienceLevelResponse[];
+
+    constructor(data?: IVersionedListResponseOfExperienceLevelResponse) {
+        super(data);
+    }
+
+    override init(_data?: any) {
+        super.init(_data);
+        if (_data) {
+            if (Array.isArray(_data["items"])) {
+                this.items = [] as any;
+                for (let item of _data["items"])
+                    this.items!.push(ExperienceLevelResponse.fromJS(item));
+            }
+        }
+    }
+
+    static override fromJS(data: any): VersionedListResponseOfExperienceLevelResponse {
+        data = typeof data === 'object' ? data : {};
+        let result = new VersionedListResponseOfExperienceLevelResponse();
+        result.init(data);
+        return result;
+    }
+
+    override toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (Array.isArray(this.items)) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        super.toJSON(data);
+        return data;
+    }
+}
+
+export interface IVersionedListResponseOfExperienceLevelResponse extends IBaseVersionEntity {
+    items?: ExperienceLevelResponse[];
+}
+
+export class ExperienceLevelResponse extends BaseIdEntityOfInteger implements IExperienceLevelResponse {
+    title?: string | undefined;
+    titleEn?: string | undefined;
+    status?: StatusEnum;
+
+    constructor(data?: IExperienceLevelResponse) {
+        super(data);
+    }
+
+    override init(_data?: any) {
+        super.init(_data);
+        if (_data) {
+            this.title = _data["title"];
+            this.titleEn = _data["titleEn"];
+            this.status = _data["status"];
+        }
+    }
+
+    static override fromJS(data: any): ExperienceLevelResponse {
+        data = typeof data === 'object' ? data : {};
+        let result = new ExperienceLevelResponse();
+        result.init(data);
+        return result;
+    }
+
+    override toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["title"] = this.title;
+        data["titleEn"] = this.titleEn;
+        data["status"] = this.status;
+        super.toJSON(data);
+        return data;
+    }
+}
+
+export interface IExperienceLevelResponse extends IBaseIdEntityOfInteger {
+    title?: string | undefined;
+    titleEn?: string | undefined;
+    status?: StatusEnum;
+}
+
+export class VersionedListResponseOfJobSourceResponse extends BaseVersionEntity implements IVersionedListResponseOfJobSourceResponse {
+    items?: JobSourceResponse[];
+
+    constructor(data?: IVersionedListResponseOfJobSourceResponse) {
+        super(data);
+    }
+
+    override init(_data?: any) {
+        super.init(_data);
+        if (_data) {
+            if (Array.isArray(_data["items"])) {
+                this.items = [] as any;
+                for (let item of _data["items"])
+                    this.items!.push(JobSourceResponse.fromJS(item));
+            }
+        }
+    }
+
+    static override fromJS(data: any): VersionedListResponseOfJobSourceResponse {
+        data = typeof data === 'object' ? data : {};
+        let result = new VersionedListResponseOfJobSourceResponse();
+        result.init(data);
+        return result;
+    }
+
+    override toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (Array.isArray(this.items)) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        super.toJSON(data);
+        return data;
+    }
+}
+
+export interface IVersionedListResponseOfJobSourceResponse extends IBaseVersionEntity {
+    items?: JobSourceResponse[];
+}
+
+export class JobSourceResponse extends BaseIdEntityOfInteger implements IJobSourceResponse {
+    title?: string | undefined;
+    titleEn?: string | undefined;
+    status?: StatusEnum;
+
+    constructor(data?: IJobSourceResponse) {
+        super(data);
+    }
+
+    override init(_data?: any) {
+        super.init(_data);
+        if (_data) {
+            this.title = _data["title"];
+            this.titleEn = _data["titleEn"];
+            this.status = _data["status"];
+        }
+    }
+
+    static override fromJS(data: any): JobSourceResponse {
+        data = typeof data === 'object' ? data : {};
+        let result = new JobSourceResponse();
+        result.init(data);
+        return result;
+    }
+
+    override toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["title"] = this.title;
+        data["titleEn"] = this.titleEn;
+        data["status"] = this.status;
+        super.toJSON(data);
+        return data;
+    }
+}
+
+export interface IJobSourceResponse extends IBaseIdEntityOfInteger {
+    title?: string | undefined;
+    titleEn?: string | undefined;
+    status?: StatusEnum;
+}
+
+export class VersionedListResponseOfJobTypeResponse extends BaseVersionEntity implements IVersionedListResponseOfJobTypeResponse {
+    items?: JobTypeResponse[];
+
+    constructor(data?: IVersionedListResponseOfJobTypeResponse) {
+        super(data);
+    }
+
+    override init(_data?: any) {
+        super.init(_data);
+        if (_data) {
+            if (Array.isArray(_data["items"])) {
+                this.items = [] as any;
+                for (let item of _data["items"])
+                    this.items!.push(JobTypeResponse.fromJS(item));
+            }
+        }
+    }
+
+    static override fromJS(data: any): VersionedListResponseOfJobTypeResponse {
+        data = typeof data === 'object' ? data : {};
+        let result = new VersionedListResponseOfJobTypeResponse();
+        result.init(data);
+        return result;
+    }
+
+    override toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (Array.isArray(this.items)) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        super.toJSON(data);
+        return data;
+    }
+}
+
+export interface IVersionedListResponseOfJobTypeResponse extends IBaseVersionEntity {
+    items?: JobTypeResponse[];
+}
+
+export class JobTypeResponse extends BaseIdEntityOfInteger implements IJobTypeResponse {
+    title?: string | undefined;
+    titleEn?: string | undefined;
+    status?: StatusEnum;
+
+    constructor(data?: IJobTypeResponse) {
+        super(data);
+    }
+
+    override init(_data?: any) {
+        super.init(_data);
+        if (_data) {
+            this.title = _data["title"];
+            this.titleEn = _data["titleEn"];
+            this.status = _data["status"];
+        }
+    }
+
+    static override fromJS(data: any): JobTypeResponse {
+        data = typeof data === 'object' ? data : {};
+        let result = new JobTypeResponse();
+        result.init(data);
+        return result;
+    }
+
+    override toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["title"] = this.title;
+        data["titleEn"] = this.titleEn;
+        data["status"] = this.status;
+        super.toJSON(data);
+        return data;
+    }
+}
+
+export interface IJobTypeResponse extends IBaseIdEntityOfInteger {
+    title?: string | undefined;
+    titleEn?: string | undefined;
+    status?: StatusEnum;
+}
+
+export class VersionedListResponseOfLanguageResponse extends BaseVersionEntity implements IVersionedListResponseOfLanguageResponse {
+    items?: LanguageResponse[];
+
+    constructor(data?: IVersionedListResponseOfLanguageResponse) {
+        super(data);
+    }
+
+    override init(_data?: any) {
+        super.init(_data);
+        if (_data) {
+            if (Array.isArray(_data["items"])) {
+                this.items = [] as any;
+                for (let item of _data["items"])
+                    this.items!.push(LanguageResponse.fromJS(item));
+            }
+        }
+    }
+
+    static override fromJS(data: any): VersionedListResponseOfLanguageResponse {
+        data = typeof data === 'object' ? data : {};
+        let result = new VersionedListResponseOfLanguageResponse();
+        result.init(data);
+        return result;
+    }
+
+    override toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (Array.isArray(this.items)) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        super.toJSON(data);
+        return data;
+    }
+}
+
+export interface IVersionedListResponseOfLanguageResponse extends IBaseVersionEntity {
+    items?: LanguageResponse[];
+}
+
+export class LanguageResponse extends BaseIdEntityOfInteger implements ILanguageResponse {
+    isoCode?: string | undefined;
+    title?: string | undefined;
+    titleEn?: string | undefined;
+    status?: StatusEnum;
+
+    constructor(data?: ILanguageResponse) {
+        super(data);
+    }
+
+    override init(_data?: any) {
+        super.init(_data);
+        if (_data) {
+            this.isoCode = _data["isoCode"];
+            this.title = _data["title"];
+            this.titleEn = _data["titleEn"];
+            this.status = _data["status"];
+        }
+    }
+
+    static override fromJS(data: any): LanguageResponse {
+        data = typeof data === 'object' ? data : {};
+        let result = new LanguageResponse();
+        result.init(data);
+        return result;
+    }
+
+    override toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["isoCode"] = this.isoCode;
+        data["title"] = this.title;
+        data["titleEn"] = this.titleEn;
+        data["status"] = this.status;
+        super.toJSON(data);
+        return data;
+    }
+}
+
+export interface ILanguageResponse extends IBaseIdEntityOfInteger {
+    isoCode?: string | undefined;
+    title?: string | undefined;
+    titleEn?: string | undefined;
+    status?: StatusEnum;
+}
+
+export class VersionedListResponseOfLanguageLevelResponse extends BaseVersionEntity implements IVersionedListResponseOfLanguageLevelResponse {
+    items?: LanguageLevelResponse[];
+
+    constructor(data?: IVersionedListResponseOfLanguageLevelResponse) {
+        super(data);
+    }
+
+    override init(_data?: any) {
+        super.init(_data);
+        if (_data) {
+            if (Array.isArray(_data["items"])) {
+                this.items = [] as any;
+                for (let item of _data["items"])
+                    this.items!.push(LanguageLevelResponse.fromJS(item));
+            }
+        }
+    }
+
+    static override fromJS(data: any): VersionedListResponseOfLanguageLevelResponse {
+        data = typeof data === 'object' ? data : {};
+        let result = new VersionedListResponseOfLanguageLevelResponse();
+        result.init(data);
+        return result;
+    }
+
+    override toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (Array.isArray(this.items)) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        super.toJSON(data);
+        return data;
+    }
+}
+
+export interface IVersionedListResponseOfLanguageLevelResponse extends IBaseVersionEntity {
+    items?: LanguageLevelResponse[];
+}
+
+export class LanguageLevelResponse extends BaseIdEntityOfInteger implements ILanguageLevelResponse {
+    title?: string | undefined;
+    titleEn?: string | undefined;
+    status?: StatusEnum;
+
+    constructor(data?: ILanguageLevelResponse) {
+        super(data);
+    }
+
+    override init(_data?: any) {
+        super.init(_data);
+        if (_data) {
+            this.title = _data["title"];
+            this.titleEn = _data["titleEn"];
+            this.status = _data["status"];
+        }
+    }
+
+    static override fromJS(data: any): LanguageLevelResponse {
+        data = typeof data === 'object' ? data : {};
+        let result = new LanguageLevelResponse();
+        result.init(data);
+        return result;
+    }
+
+    override toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["title"] = this.title;
+        data["titleEn"] = this.titleEn;
+        data["status"] = this.status;
+        super.toJSON(data);
+        return data;
+    }
+}
+
+export interface ILanguageLevelResponse extends IBaseIdEntityOfInteger {
+    title?: string | undefined;
+    titleEn?: string | undefined;
+    status?: StatusEnum;
+}
+
+export class VersionedListResponseOfSkillLevelResponse extends BaseVersionEntity implements IVersionedListResponseOfSkillLevelResponse {
+    items?: SkillLevelResponse[];
+
+    constructor(data?: IVersionedListResponseOfSkillLevelResponse) {
+        super(data);
+    }
+
+    override init(_data?: any) {
+        super.init(_data);
+        if (_data) {
+            if (Array.isArray(_data["items"])) {
+                this.items = [] as any;
+                for (let item of _data["items"])
+                    this.items!.push(SkillLevelResponse.fromJS(item));
+            }
+        }
+    }
+
+    static override fromJS(data: any): VersionedListResponseOfSkillLevelResponse {
+        data = typeof data === 'object' ? data : {};
+        let result = new VersionedListResponseOfSkillLevelResponse();
+        result.init(data);
+        return result;
+    }
+
+    override toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (Array.isArray(this.items)) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        super.toJSON(data);
+        return data;
+    }
+}
+
+export interface IVersionedListResponseOfSkillLevelResponse extends IBaseVersionEntity {
+    items?: SkillLevelResponse[];
+}
+
+export class SkillLevelResponse extends BaseIdEntityOfInteger implements ISkillLevelResponse {
+    title?: string | undefined;
+    titleEn?: string | undefined;
+    status?: StatusEnum;
+
+    constructor(data?: ISkillLevelResponse) {
+        super(data);
+    }
+
+    override init(_data?: any) {
+        super.init(_data);
+        if (_data) {
+            this.title = _data["title"];
+            this.titleEn = _data["titleEn"];
+            this.status = _data["status"];
+        }
+    }
+
+    static override fromJS(data: any): SkillLevelResponse {
+        data = typeof data === 'object' ? data : {};
+        let result = new SkillLevelResponse();
+        result.init(data);
+        return result;
+    }
+
+    override toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["title"] = this.title;
+        data["titleEn"] = this.titleEn;
+        data["status"] = this.status;
+        super.toJSON(data);
+        return data;
+    }
+}
+
+export interface ISkillLevelResponse extends IBaseIdEntityOfInteger {
+    title?: string | undefined;
+    titleEn?: string | undefined;
+    status?: StatusEnum;
+}
+
+export class VersionedListResponseOfWorkArrangementResponse extends BaseVersionEntity implements IVersionedListResponseOfWorkArrangementResponse {
+    items?: WorkArrangementResponse[];
+
+    constructor(data?: IVersionedListResponseOfWorkArrangementResponse) {
+        super(data);
+    }
+
+    override init(_data?: any) {
+        super.init(_data);
+        if (_data) {
+            if (Array.isArray(_data["items"])) {
+                this.items = [] as any;
+                for (let item of _data["items"])
+                    this.items!.push(WorkArrangementResponse.fromJS(item));
+            }
+        }
+    }
+
+    static override fromJS(data: any): VersionedListResponseOfWorkArrangementResponse {
+        data = typeof data === 'object' ? data : {};
+        let result = new VersionedListResponseOfWorkArrangementResponse();
+        result.init(data);
+        return result;
+    }
+
+    override toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (Array.isArray(this.items)) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        super.toJSON(data);
+        return data;
+    }
+}
+
+export interface IVersionedListResponseOfWorkArrangementResponse extends IBaseVersionEntity {
+    items?: WorkArrangementResponse[];
+}
+
+export class WorkArrangementResponse extends BaseIdEntityOfInteger implements IWorkArrangementResponse {
+    title?: string | undefined;
+    titleEn?: string | undefined;
+    status?: StatusEnum;
+
+    constructor(data?: IWorkArrangementResponse) {
+        super(data);
+    }
+
+    override init(_data?: any) {
+        super.init(_data);
+        if (_data) {
+            this.title = _data["title"];
+            this.titleEn = _data["titleEn"];
+            this.status = _data["status"];
+        }
+    }
+
+    static override fromJS(data: any): WorkArrangementResponse {
+        data = typeof data === 'object' ? data : {};
+        let result = new WorkArrangementResponse();
+        result.init(data);
+        return result;
+    }
+
+    override toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["title"] = this.title;
+        data["titleEn"] = this.titleEn;
+        data["status"] = this.status;
+        super.toJSON(data);
+        return data;
+    }
+}
+
+export interface IWorkArrangementResponse extends IBaseIdEntityOfInteger {
+    title?: string | undefined;
+    titleEn?: string | undefined;
     status?: StatusEnum;
 }
 

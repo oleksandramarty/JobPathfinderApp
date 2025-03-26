@@ -1,6 +1,0 @@
-/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/CommonModule/CommonModule.Core/obj/Debug/net8.0/CommonModule.Core.csproj.AssemblyReference.cache
-/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/CommonModule/CommonModule.Core/obj/Debug/net8.0/CommonModule.Core.GeneratedMSBuildEditorConfig.editorconfig
-/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/CommonModule/CommonModule.Core/obj/Debug/net8.0/CommonModule.Core.AssemblyInfoInputs.cache
-/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/CommonModule/CommonModule.Core/obj/Debug/net8.0/CommonModule.Core.AssemblyInfo.cs
-/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/CommonModule/CommonModule.Core/obj/Debug/net8.0/CommonModule.Core.csproj.CoreCompileInputs.cache
-/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebApi/CommonModule/CommonModule.Core/obj/Debug/net8.0/CommonModule.Core.sourcelink.json

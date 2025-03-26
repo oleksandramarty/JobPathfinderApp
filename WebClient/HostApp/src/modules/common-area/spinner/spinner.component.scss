@@ -1,0 +1,27 @@
+@use '@amarty/shared/assets/styles/_mixins.scss' as m;
+@use '@amarty/shared/assets/styles/_variables.scss' as v;
+
+.spinner {
+  &__container{
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    gap: #{m.pxToRem(16)};
+    top: 0;
+    width:  calc(100vw - #{m.pxToRem(32)});
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.6588235294);
+    z-index: 99999;
+    flex-direction: column;
+    align-items: center;
+    padding: #{m.pxToRem(16)};
+  }
+
+  &__hint {
+    font-size: #{m.pxToRem(16)};
+    font-family: var(--font-stack), serif;
+    font-weight: 900;
+    border: #{m.pxToRem(2)} solid var(--color-blue);
+    text-align: center;
+  }
+}

@@ -33,6 +33,10 @@ chmod +x "$SCRIPT_DIR/reinitialize_db_data.sh"
 chmod +x "$SCRIPT_DIR/InitScripts/generate_client_models_ts.sh"
 "$SCRIPT_DIR/InitScripts/generate_client_models_ts.sh"
 
+# Initialize generator
+chmod +x "$SCRIPT_DIR/provision_generator.sh"
+"$SCRIPT_DIR/provision_generator.sh"
+
 # Initialize Kafka
 chmod +x "$SCRIPT_DIR/InitScripts/init_kafka.sh"
 "$SCRIPT_DIR/InitScripts/init_kafka.sh"

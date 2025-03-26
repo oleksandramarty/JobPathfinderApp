@@ -1,0 +1,88 @@
+<div class="modal">
+  <div class="modal__header">
+    <div class="modal__header">
+      <h2 class="modal__header-title" mat-dialog-title>{{ 'COMMON.USER_PREFERENCES' | translation }}</h2>
+      <span class="modal__close" (click)="dialogRef.close()">
+      <i class="fa-solid fa-robot"></i><i class="fa-solid fa-stopwatch"></i>
+    </span>
+    </div>
+    <span class="modal__close" (click)="dialogRef.close()">
+      <i class="fa-solid fa-xmark"></i>
+    </span>
+  </div>
+  @if(userPreferencesForm) {
+    <div class="modal__body">
+      <div class="grid-2fr grid-gap">
+        <app-generic-input
+          label="COMMON.EMAIL" placeholder="COMMON.EMAIL" [formGroup]="userPreferencesForm"
+          controlName="email" [maxLength]="100" [submitted]="submitted"
+        ></app-generic-input>
+
+        <app-generic-input
+          label="COMMON.LOGIN" placeholder="COMMON.LOGIN" [formGroup]="userPreferencesForm"
+          controlName="login" [submitted]="submitted"
+        ></app-generic-input>
+
+        <app-generic-input
+          label="COMMON.FIRST_NAME" placeholder="COMMON.FIRST_NAME" [formGroup]="userPreferencesForm"
+          controlName="firstName" [maxLength]="100" [submitted]="submitted"
+        ></app-generic-input>
+
+        <app-generic-input
+          label="COMMON.LAST_NAME" placeholder="COMMON.LAST_NAME" [formGroup]="userPreferencesForm"
+          controlName="lastName" [submitted]="submitted"
+        ></app-generic-input>
+
+        <app-generic-input
+          label="COMMON.LANGUAGE" type="autocomplete" placeholder="COMMON.LANGUAGE" [formGroup]="userPreferencesForm"
+          controlName="defaultLocale" [dataItems]="locales" [submitted]="submitted"
+        ></app-generic-input>
+
+        <app-generic-input
+          label="COMMON.TIME_ZONE" type="autocomplete" placeholder="COMMON.TIME_ZONE" [formGroup]="userPreferencesForm"
+          controlName="timeZone" [dataItems]="[]" [submitted]="submitted"
+        ></app-generic-input>
+
+        <app-generic-input
+          label="COMMON.COUNTRY" type="autocomplete" placeholder="COMMON.COUNTRY" [formGroup]="userPreferencesForm"
+          controlName="countryId" [dataItems]="countries" [submitted]="submitted"
+        ></app-generic-input>
+
+        <app-generic-input
+          label="COMMON.CURRENCY" placeholder="COMMON.CURRENCY" type="autocomplete" [formGroup]="userPreferencesForm"
+          controlName="currencyId" [dataItems]="currencies" [submitted]="submitted"
+        ></app-generic-input>
+
+        <app-generic-input
+          label="LinkedIn" placeholder="LinkedIn" [formGroup]="userPreferencesForm"
+          controlName="linkedInUrl" [submitted]="submitted"
+        ></app-generic-input>
+
+        <app-generic-input
+          label="npm" placeholder="npm" [formGroup]="userPreferencesForm"
+          controlName="npmUrl" [submitted]="submitted"
+        ></app-generic-input>
+
+        <app-generic-input
+          label="GitHub" placeholder="GitHub" [formGroup]="userPreferencesForm"
+          controlName="gitHubUrl" [submitted]="submitted"
+        ></app-generic-input>
+
+        <app-generic-input
+          label="COMMON.PHONE" placeholder="COMMON.PHONE" [formGroup]="userPreferencesForm"
+          controlName="phone" [submitted]="submitted"
+        ></app-generic-input>
+
+        <app-generic-input [submitted]="submitted" type="checkbox" label="COMMON.APPLICATION_AI_TEXTAREA" [formGroup]="userPreferencesForm" controlName="applicationAiPrompt"></app-generic-input>
+      </div>
+    </div>
+  }
+  <div class="container__box__footer">
+    <div class="container__box__footer-item">
+      <button class="button button__link" (click)="dialogRef.close(false)">{{ 'COMMON.CANCEL' | translation }}</button>
+    </div>
+    <div class="container__box__footer-item">
+      <button class="button button__filled__submit" (click)="onApplicationSubmit()">{{ 'COMMON.UPDATE' | translation }}</button>
+    </div>
+  </div>
+</div>

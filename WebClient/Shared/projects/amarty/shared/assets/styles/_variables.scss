@@ -1,6 +1,6 @@
 @use '_mixins.scss' as m;
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap');
 
 $dark-theme-primary: #1e1e2e;
@@ -58,7 +58,7 @@ $light-theme-shadow-medium: 0px 4px 8px rgba(0, 0, 0, 0.1);
 $light-theme-shadow-heavy: 0px 6px 12px rgba(0, 0, 0, 0.15);
 
 $font-stack: "Fira Code", monospace;
-$font-alt: "Poppins", sans-serif;
+$font-alt: "Roboto", sans-serif;
 
 $background: #f9f9f9;
 

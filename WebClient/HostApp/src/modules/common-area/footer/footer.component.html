@@ -1,6 +1,6 @@
 <footer class="footer">
   <div class="footer__center">
-    <span class="footer__text">We are honking since 2024!</span>
+    <span class="footer__text">{{ 'COMMON.WE_ARE_HONKING' | translation }}</span>
   </div>
 
   <div class="footer__social-links">
@@ -14,22 +14,22 @@
 
   <div class="footer__version-wrapper">
     <span class="footer__text" style="color: #f44336; text-transform: uppercase;">
-      [<strong>DO NOT STORE ANY SENSITIVE DATA HERE!</strong>]
+      [<strong>{{ 'COMMON.DO_NOT_STORE_SENS_DATA' | translation }}</strong>]
     </span>
     @if(buildVersion !== 'production'){
       <span class="footer__text"> | </span>
       <span class="footer__text" (click)="turnOffLoader()">
-        [<strong>Turn off loader</strong>]
-      </span>
-      <span class="footer__text"> | </span>
-      <span class="footer__text">[<strong>{{ buildVersion }}</strong>]</span>
-      <span class="footer__text"> | </span>
-      <span class="footer__text" (click)="toggleTheme()">
-        [<strong>{{ darkTheme ? 'Light theme' : 'Dark theme' }}</strong>]
+        [<strong matTooltip="Turn off loader"
+      ><i class="fa-solid fa-spinner"></i></strong>]
       </span>
       <span class="footer__text"> | </span>
       <span class="footer__text" (click)="resetSite()">
-        [<strong>Hard reset</strong>]
+        [<strong matTooltip="Hard reset site"
+      ><i class="fa-solid fa-power-off"></i></strong>]
+      </span>
+      <span class="footer__text"> | </span>
+      <span class="footer__text" (click)="toggleTheme()">
+        [<strong>{{ (darkTheme ? 'COMMON.LIGHT_THEME' : 'COMMON.DARK_THEME') | translation }}</strong>]
       </span>
     }
   </div>

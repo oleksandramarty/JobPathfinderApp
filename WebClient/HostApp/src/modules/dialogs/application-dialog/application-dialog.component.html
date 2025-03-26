@@ -1,0 +1,140 @@
+<div class="modal">
+  <div class="modal__header">
+    <div class="modal__header">
+      <h2 class="modal__header-title" mat-dialog-title>{{ dialogTitle | translation }}</h2>
+      <span class="modal__close" (click)="dialogRef.close()">
+      <i class="fa-solid fa-robot"></i><i class="fa-solid fa-stopwatch"></i>
+    </span>
+    </div>
+    <span class="modal__close" (click)="dialogRef.close()">
+      <i class="fa-solid fa-xmark"></i>
+    </span>
+  </div>
+    @if(applicationForm) {
+      <div class="modal__body">
+
+
+       <pre class="code"><code>&#123;
+         "title": "Senior Angular Developer",
+         "company": "ABC Company",
+         "location": "Montreal",
+         "jobType": "full-time",
+         "source": null,
+         "salaryFrom": 80000,
+         "salaryTo": 100000,
+         "currency": "CAD",
+         "postedDate": "2025-03-10",
+         "applicationDeadline": "2025-03-20",
+         "contactEmail": "jobs&#64;abc.com",
+         "applicationLink": "https://abc.com/job",
+         "notes": null
+&#125;</code></pre>
+
+        @if (aiPrompt) {
+          <div class="ai__prompt__container">
+            <app-generic-input
+              label="AI Prompt" type="textarea"
+              [formGroup]="applicationForm" controlName="prompt"
+              [rows]="2" [submitted]="submitted"
+            ></app-generic-input>
+            <button class="button button__filled__submit" (click)="parsePrompt()">Parse it</button>
+          </div>
+        }
+
+        <div class="grid-1fr grid-gap">
+          <app-generic-input
+            label="COMMON.APPLICATION_LINK"
+            placeholder="COMMON.APPLICATION_LINK"
+            type="input"
+            [formGroup]="applicationForm"
+            controlName="applicationLink"
+            [submitted]="submitted"
+          ></app-generic-input>
+        </div>
+
+        <div class="grid-3fr grid-gap">
+          <app-generic-input
+            label="COMMON.JOB_TITLE" placeholder="COMMON.JOB_TITLE" [formGroup]="applicationForm"
+            controlName="title" [maxLength]="100" [submitted]="submitted"
+          ></app-generic-input>
+
+          <app-generic-input
+            label="COMMON.COMPANY" placeholder="COMMON.COMPANY" [formGroup]="applicationForm"
+            controlName="company" [submitted]="submitted"
+          ></app-generic-input>
+
+          <app-generic-input
+            label="COMMON.LOCATION" placeholder="COMMON.LOCATION" [formGroup]="applicationForm"
+            controlName="location" [submitted]="submitted"
+          ></app-generic-input>
+
+          <app-generic-input
+            label="COMMON.EXPERIENCE_LEVEL" type="select" placeholder="COMMON.EXPERIENCE_LEVEL" [formGroup]="applicationForm"
+            controlName="experienceLevel" [dataItems]="experienceLevels" [submitted]="submitted"
+          ></app-generic-input>
+
+          <app-generic-input
+            label="COMMON.JOB_TYPE" type="select" placeholder="COMMON.JOB_TYPE" [formGroup]="applicationForm"
+            controlName="jobType" [dataItems]="jobTypes" [submitted]="submitted"
+          ></app-generic-input>
+
+          <app-generic-input
+            label="COMMON.SOURCE" type="select" placeholder="COMMON.SOURCE" [formGroup]="applicationForm"
+            controlName="source" [dataItems]="jobSources" [submitted]="submitted"
+          ></app-generic-input>
+
+          <app-generic-input
+            label="COMMON.SALARY_RANGE" placeholder="COMMON.FROM" type="input" [formGroup]="applicationForm"
+            controlName="salaryFrom" [submitted]="submitted"
+          ></app-generic-input>
+
+          <app-generic-input
+            label=" " placeholder="COMMON.TO" type="input" [formGroup]="applicationForm"
+            controlName="salaryTo" [submitted]="submitted"
+          ></app-generic-input>
+
+          <app-generic-input
+            label="COMMON.CURRENCY" placeholder="Enter salary" type="select" [formGroup]="applicationForm"
+            controlName="currency" [dataItems]="currencies" [submitted]="submitted"
+          ></app-generic-input>
+
+          <app-generic-input
+            label="COMMON.POSTED_DATE" type="datepicker" [formGroup]="applicationForm"
+            controlName="postedDate" [submitted]="submitted"
+          ></app-generic-input>
+
+          <app-generic-input
+            label="COMMON.APPLICATION_DEADLINE" type="datepicker" [formGroup]="applicationForm"
+            controlName="applicationDeadline" [submitted]="submitted"
+          ></app-generic-input>
+
+          <app-generic-input
+            label="COMMON.Contact_EMAIL" placeholder="COMMON.Contact_EMAIL" type="input"
+            [formGroup]="applicationForm" controlName="contactEmail" [submitted]="submitted"
+          ></app-generic-input>
+        </div>
+
+        <div class="grid-2fr grid-gap">
+          <app-generic-input
+            label="COMMON.DESCRIPTION" placeholder="COMMON.DESCRIPTION" type="textarea"
+            [formGroup]="applicationForm" controlName="description"
+            [minLength]="10" [submitted]="submitted"
+          ></app-generic-input>
+
+          <app-generic-input
+            label="COMMON.NOTES" placeholder="COMMON.NOTES" type="textarea"
+            [formGroup]="applicationForm" controlName="notes"
+            [minLength]="10" [submitted]="submitted"
+          ></app-generic-input>
+        </div>
+      </div>
+    }
+  <div class="container__box__footer">
+    <div class="container__box__footer-item">
+      <button class="button button__link" (click)="dialogRef.close(false)">{{ 'COMMON.CANCEL' | translation }}</button>
+    </div>
+    <div class="container__box__footer-item">
+      <button class="button button__filled__submit" (click)="onApplicationSubmit()">{{ saveButtonLabel | translation }}</button>
+    </div>
+  </div>
+</div>

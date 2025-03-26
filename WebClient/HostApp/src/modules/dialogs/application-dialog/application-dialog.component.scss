@@ -1,0 +1,56 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: #f4f4f9;
+}
+.container {
+  max-width: 900px;
+  margin: auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.header {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+.description {
+  margin-top: 10px;
+  font-size: 16px;
+  color: #666;
+}
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+.table__header {
+  background-color: #007BFF;
+  color: white;
+}
+.table__header th {
+  padding: 10px;
+  text-align: left;
+}
+.table__row {
+  border-bottom: 1px solid #ddd;
+}
+.table__row td {
+  padding: 10px;
+}
+.code {
+  background: #222;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  font-family: monospace;
+  white-space: pre-wrap;
+  margin-top: 10px;
+}
+.example {
+  margin-top: 20px;
+}

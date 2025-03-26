@@ -1,0 +1,12 @@
+id;title;titleEn;status;
+1;LinkedIn;LinkedIn;1;
+2;Glassdoor;Glassdoor;1;
+3;Indeed;Indeed;1;
+4;Teleram;Teleram;1;
+5;Monster;Monster;1;
+6;Facebook;Facebook;1;
+7;Craigslist;Craigslist;1;
+8;JOB_SOURCE.JOB_BOARD;Job Board;1;
+9;JOB_SOURCE.COMPANY_WEBSITE;Company Website;1;
+10;JOB_SOURCE.RECOMMENDATION;Recommendation;1;
+11;JOB_SOURCE.OTHER;Other;1;

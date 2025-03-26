@@ -1,50 +1,30 @@
 <div class="container">
   <section class="dashboard">
     <div class="dashboard__header">
-      <h2 class="dashboard__title">Welcome back, {{ currentUser?.login }}!</h2>
-      <button class="button button__filled__focus" routerLink="/home">
+      <h2 class="dashboard__title">
+        {{ 'COMMON.WELCOME_BACK' | translation }},
+        {{ currentUser?.login }}
+        @if(countryCode) {
+          <img class="profile__country big" [src]="'https://flagcdn.com/w320/' + countryCode + '.png'" [alt]="countryCode" />!
+        }
+      </h2>
+      <button class="button button__filled__focus" (click)="openApplicationDialog()">
         <i class="fa-solid fa-plus"></i>
-        <span>New Application</span>
+        <span>{{ 'COMMON.NEW_APPLICATION' | translation }}</span>
       </button>
     </div>
-
     <div class="stats grid-4fr">
-      <div class="stat-card card-active-applications">
-        <div class="stat-card__info">
-          <p class="stat-card__value">24</p>
-          <p class="stat-card__label">Active Applications</p>
+      @for(menuItem of menuItems; track $index) {
+        <div [class]="'stat-card ' + menuItem.className">
+          <div class="stat-card__info">
+            <p class="stat-card__value">{{ menuItem.value }}</p>
+            <p class="stat-card__label">{{ menuItem.title }}</p>
+          </div>
+          <div class="stat-card__icon">
+            <i [class]="menuItem.icon"></i>
+          </div>
         </div>
-        <div class="stat-card__icon">
-          <i class="fa-solid fa-paper-plane"></i>
-        </div>
-      </div>
-      <div class="stat-card card-todos">
-        <div class="stat-card__info">
-          <p class="stat-card__value">7</p>
-          <p class="stat-card__label">TODOs</p>
-        </div>
-        <div class="stat-card__icon">
-          <i class="fa-solid fa-list"></i>
-        </div>
-      </div>
-      <div class="stat-card card-response-rate">
-        <div class="stat-card__info">
-          <p class="stat-card__value">50%</p>
-          <p class="stat-card__label">Response Rate</p>
-        </div>
-        <div class="stat-card__icon">
-          <i class="fa-solid fa-percent"></i>
-        </div>
-      </div>
-      <div class="stat-card card-upcoming-interviews">
-        <div class="stat-card__info">
-          <p class="stat-card__value">3</p>
-          <p class="stat-card__label">Upcoming Interviews</p>
-        </div>
-        <div class="stat-card__icon">
-          <i class="fa-solid fa-calendar-days"></i>
-        </div>
-      </div>
+      }
     </div>
 
     <div class="grid-2fr analytics">
@@ -62,10 +42,6 @@
 
       <div class="chart-container">
         <div echarts [options]="pieChartOptions" class="chart"></div>
-      </div>
-
-      <div class="chart-container">
-        <div echarts [options]="funnelChartOptions" class="chart"></div>
       </div>
     </div>
   </section>

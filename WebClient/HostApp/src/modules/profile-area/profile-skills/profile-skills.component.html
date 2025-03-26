@@ -1,0 +1,28 @@
+<div class="card">
+  <div class="card__header">
+    <h3 class="card__header-title">{{ 'COMMON.SKILLS' | translation }}</h3>
+    <button class="button button__filled__focus" (click)="openSkillsDialog(undefined, true)">
+      <i class="fa-solid fa-pencil"></i> {{ 'COMMON.EDIT_SKILLS' | translation }}
+    </button>
+  </div>
+  <div class="badges">
+    @if (skillsToAdd) {
+      @for(skill of skillsToAdd; track $index) {
+        <div class="badge">
+          {{ getSkillTitle(skill) }}
+          <i class="fa-solid fa-pencil" (click)="openSkillsDialog(skill.id, true)"></i>
+          <i class="fa-solid fa-xmark" (click)="removeSkill(skill.id!, true)"></i>
+        </div>
+      }
+    }
+    @if (!!existingSkills) {
+      @for(skill of existingSkills; track $index) {
+        <div class="badge">
+          {{ getSkillTitle(skill) }}
+          <i class="fa-solid fa-pencil" (click)="openSkillsDialog(skill.id)"></i>
+          <i class="fa-solid fa-xmark" (click)="removeSkill(skill.id!)"></i>
+        </div>
+      }
+    }
+  </div>
+</div>

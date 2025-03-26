@@ -7,7 +7,7 @@
 
 .modal {
   padding: m.pxToRem(16);
-  background: var(--background-dark);
+  background: var(--background);
   box-shadow: var(--shadow-heavy);
   border-radius: m.pxToRem(8);
 
@@ -16,11 +16,11 @@
     justify-content: space-between;
     align-items: center;
     padding-bottom: m.pxToRem(16);
-    font-family: v.$font-alt;
     color: var(--text);
+    gap: #{m.pxToRem(16)};
 
     &-title {
-      color: var(--text) !important;
+      font-family: var(--font-alt), sans-serif !important;
       padding: 0 !important;
 
       &:before {
@@ -34,7 +34,7 @@
     cursor: pointer;
     opacity: 0.6;
     transition: opacity var(--transition-fast);
-    color: var(--text);
+    color: var(--text-black);
 
     &:hover {
       opacity: 1;

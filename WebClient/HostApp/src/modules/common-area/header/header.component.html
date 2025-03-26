@@ -1,19 +1,57 @@
 <header class="header">
-  <div class="header__left">
+  <div class="header__left" routerLink="/">
     <span class="header__logo">Job Pathfinder</span>
     <span class="glitch glitch-red">// Cannot read properties of undefined 🤷‍♂️</span>
+    <span class="header__logo-sub glitch glitch-yellow">Alpha️</span>
   </div>
   <div class="header__center"></div>
   <div class="header__right">
-    <nav class="header__nav">
-      <a routerLink="/home" class="nav__link">Home</a>
-      <a routerLink="/jobs" class="nav__link">Jobs</a>
-      <a routerLink="/companies" class="nav__link">Companies</a>
-      <a routerLink="/karma" class="nav__link">Karma</a>
-    </nav>
+    @if(isAuthorized$ | async) {
+      <nav class="header__nav">
+        @for(menuItem of menuItems; track $index) {
+          <a [routerLink]="menuItem.url" class="nav__link">{{ menuItem.title }}</a>
+        }
+      </nav>
 
-    <a routerLink="/profile" class="header__profile">
-      <img [src]="userAvatar" alt="Profile" class="header__profile-img" />
-    </a>
+      @if(currentLocale) {
+        <div class="header__lang__container" [matMenuTriggerFor]="menuLang">
+          <img class="header__lang__container-current" [src]="'https://flagcdn.com/w320/' + langFlags.get(currentLocale) + '.png'" [alt]="currentLocale" />
+        </div>
+        <mat-menu #menuLang="matMenu" class="header__lang__container-menu">
+          @for(locale of locales; track $index) {
+            <button mat-menu-item (click)="localeChanged(locale.isoCode)">
+              <div class="header__lang__container-menu__item">
+            <span class="lang-icon">
+            <img class="header__lang__container-current" [src]="'https://flagcdn.com/w320/' + langFlags.get(locale.isoCode ?? 'en') + '.png'" [alt]="currentLocale" />
+          </span>
+                {{ locale.title }}
+              </div>
+            </button>
+          }
+        </mat-menu>
+      }
+
+      <a routerLink="/profile" class="header__profile">
+        <img [src]="userAvatar" alt="Profile" class="header__profile-img" />
+      </a>
+    } @else {
+      @if(currentLocale) {
+        <div class="header__lang__container" [matMenuTriggerFor]="menuLang">
+          <img class="header__lang__container-current" [src]="'https://flagcdn.com/w320/' + langFlags.get(currentLocale) + '.png'" [alt]="currentLocale" />
+        </div>
+        <mat-menu #menuLang="matMenu" class="header__lang__container-menu">
+          @for(locale of locales; track $index) {
+            <button mat-menu-item (click)="localeChanged(locale.isoCode)">
+              <div class="header__lang__container-menu__item">
+            <span class="lang-icon">
+            <img class="header__lang__container-current" [src]="'https://flagcdn.com/w320/' + langFlags.get(locale.isoCode ?? 'en') + '.png'" [alt]="currentLocale" />
+          </span>
+                {{ locale.title }}
+              </div>
+            </button>
+          }
+        </mat-menu>
+      }
+    }
   </div>
 </header>

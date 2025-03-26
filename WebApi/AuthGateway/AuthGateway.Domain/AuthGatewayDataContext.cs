@@ -6,7 +6,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace AuthGateway.Domain;
 
-public class AuthGatewayDataContext : DbSaveChangeContext
+public class AuthGatewayDataContext: DbSaveChangeContext
 {
     public DbSet<UserEntity> Users { get; set; }
     public DbSet<RoleEntity> Roles { get; set; }
@@ -30,8 +30,11 @@ public class AuthGatewayDataContext : DbSaveChangeContext
                 .WithOne(us => us.User)
                 .HasForeignKey<UserSettingEntity>(us => us.UserId);
             entity.Property(u => u.Login).IsRequired().HasMaxLength(50);
+            entity.Property(u => u.FirstName).HasMaxLength(100);
+            entity.Property(u => u.LastName).HasMaxLength(100);
             entity.Property(u => u.LoginNormalized).IsRequired().HasMaxLength(50);
             entity.Property(u => u.Email).IsRequired().HasMaxLength(50);
+            entity.Property(u => u.Phone).HasMaxLength(11);
             entity.Property(u => u.EmailNormalized).IsRequired().HasMaxLength(50);
             entity.Property(u => u.PasswordHash).IsRequired().HasMaxLength(120);
             entity.Property(u => u.Salt).IsRequired().HasMaxLength(64);
@@ -57,6 +60,10 @@ public class AuthGatewayDataContext : DbSaveChangeContext
         {
             entity.ToTable("UserSettings", "Users");
             entity.Property(v => v.DefaultLocale).IsRequired().HasMaxLength(2).IsFixedLength().HasDefaultValue("en");
+            entity.Property(u => u.LinkedInUrl).HasMaxLength(100);
+            entity.Property(u => u.NpmUrl).HasMaxLength(100);
+            entity.Property(u => u.GitHubUrl).HasMaxLength(100);
+            entity.Property(u => u.PortfolioUrl).HasMaxLength(100);
             entity.Property(v => v.Version).IsRequired().HasMaxLength(32).IsFixedLength();
         });
 

@@ -1,14 +1,29 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { environment } from '../../../utils/environments/environment';
 import { Store } from '@ngrx/store';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { AuthService, LoaderService, LocalStorageService } from '@amarty/services'
+import { LoaderService } from '@amarty/services'
 import { auth_clearAll } from '@amarty/store';
-import { generateRandomId } from '@amarty/utils'
+import {
+  clearLocalStorageAndRefresh,
+  generateRandomId,
+  getLocalStorageItem,
+  setLocalStorageItem,
+  traceCreation
+} from '@amarty/utils'
+import { MatTooltipModule } from '@angular/material/tooltip';
+import {AuthService} from '../../../utils/services/auth.service';
+import {CommonModule} from '@angular/common';
+import { TranslationPipe } from '@amarty/utils/pipes';
 
 @Component({
     selector: 'app-footer',
+    imports: [
+      CommonModule,
+      TranslationPipe,
+      MatTooltipModule
+    ],
     templateUrl: './footer.component.html',
     styleUrls: ['./footer.component.scss'],
     standalone: true,
@@ -22,12 +37,12 @@ export class FooterComponent implements OnInit {
     private readonly store: Store,
     private readonly snackBar: MatSnackBar,
     private readonly router: Router,
-    private readonly loaderService: LoaderService,
-    private readonly localStorageService: LocalStorageService) {
-    const theme = this.localStorageService.getItem('theme');
+    private readonly loaderService: LoaderService) {
+    traceCreation(this);
+    const theme = getLocalStorageItem<string>('theme');
 
     if (!theme) {
-      this.localStorageService.setItem('theme', 'dark');
+      setLocalStorageItem('theme', 'dark');
     }
 
     if (theme === 'dark') {
@@ -49,7 +64,7 @@ export class FooterComponent implements OnInit {
 
   public resetSite(): void {
     this.store.dispatch(auth_clearAll());
-    this.localStorageService.clearLocalStorageAndRefresh(true);
+    clearLocalStorageAndRefresh(true);
     window.location.reload();
   }
 
@@ -63,7 +78,7 @@ export class FooterComponent implements OnInit {
   }
 
   private _toggleTheme(): void {
-    this.localStorageService.setItem('theme', this.darkTheme ? 'dark' : 'light');
+    setLocalStorageItem('theme', this.darkTheme ? 'dark' : 'light');
     document.body.classList.remove(this.darkTheme ? 'light-theme' : 'dark-theme');
     document.body.classList.add(this.darkTheme ? 'dark-theme' : 'light-theme');
   }

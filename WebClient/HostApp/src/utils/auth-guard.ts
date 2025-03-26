@@ -4,7 +4,8 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { selectToken } from '@amarty/store';
-import { AuthService } from '@amarty/services';
+import {AuthService} from './services/auth.service';
+import {traceCreation} from '@amarty/utils';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,9 @@ export class AuthGuard implements CanActivate {
   constructor(
     private authService: AuthService,
     private store: Store,
-    private router: Router) {}
+    private router: Router) {
+    traceCreation(this);
+  }
 
   canActivate(): Observable<boolean> {
     return this.store.select(selectToken).pipe(

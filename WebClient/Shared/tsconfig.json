@@ -14,7 +14,6 @@
         "./dist/amarty/models"
       ],
       "@amarty/services": [
-        "./dist/amarty/services",
         "./dist/amarty/services"
       ],
       "@amarty/shared": [
@@ -24,7 +23,6 @@
         "./dist/amarty/store"
       ],
       "@amarty/utils": [
-        "./dist/amarty/utils",
         "./dist/amarty/utils"
       ]
     },

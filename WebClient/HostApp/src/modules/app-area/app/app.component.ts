@@ -1,44 +1,78 @@
-import { UserApiClient, UserResponse } from '@amarty/api';
-import { generateRandomId, handleApiError } from '@amarty/utils'
-import {Component} from '@angular/core';
-import { BaseAuthorizeComponent } from '@amarty/shared/components';
-import {Store} from '@ngrx/store';
-import {MatSnackBar} from '@angular/material/snack-bar';
-import {of, switchMap, take, takeUntil, tap} from 'rxjs';
+import {Component, OnInit} from '@angular/core';
+import { CommonModule } from '@angular/common';
+import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
+import { Store } from '@ngrx/store';
+import { of, switchMap, take, tap } from 'rxjs';
+import { RouterOutlet } from '@angular/router';
+import {generateRandomId, handleApiError, traceCreation} from '@amarty/utils';
 import { auth_setUser } from '@amarty/store';
-import {AuthService} from '@amarty/services';
+import {
+  DictionaryApiClient,
+  UserApiClient,
+  UserResponse
+} from '@amarty/api';
+import {
+  DictionaryService,
+  LocalizationService,
+  SiteSettingsService
+} from '@amarty/services';
+import { AuthService } from '../../../utils/services/auth.service';
+import {HeaderComponent} from '../../common-area/header/header.component';
+import {FooterComponent} from '../../common-area/footer/footer.component';
+import {SpinnerComponent} from '../../common-area/spinner/spinner.component';
 
 @Component({
   selector: 'app-root',
+  standalone: true,
+  imports: [
+    RouterOutlet,
+    HeaderComponent,
+    FooterComponent,
+    SpinnerComponent
+  ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  standalone: false,
   host: { 'data-id': generateRandomId(12) }
 })
-export class AppComponent extends BaseAuthorizeComponent{
+export class AppComponent implements OnInit {
   constructor(
-    protected override readonly authService: AuthService,
-    protected override readonly store: Store,
-    protected override readonly snackBar: MatSnackBar,
     private readonly userApiClient: UserApiClient,
+    private readonly dictionaryApiService: DictionaryApiClient,
+    private readonly authService: AuthService,
+    private readonly localizationService: LocalizationService,
+    private readonly siteSettingsService: SiteSettingsService,
+    private readonly dictionaryService: DictionaryService,
+    private readonly snackBar: MatSnackBar,
+    private readonly store: Store,
   ) {
-    super(authService, store, snackBar);
-    this.authService.initialize();
+    traceCreation(this);
+  }
 
-    this.isAuthorized$?.pipe(
-      takeUntil(this.ngUnsubscribe),
-      switchMap(isAuthorized => {
-        if (isAuthorized) {
-          return this.userApiClient.user_Current();
-        }
-        return of(undefined);
-      }),
+  ngOnInit(): void {
+    this.authService.initialize();
+    this.dictionaryService.initialize();
+    this.localizationService.initialize();
+
+    this.authService.isAuthorized$?.pipe(
+      switchMap(isAuthorized => isAuthorized
+        ? this.userApiClient.user_Current()
+        : of(undefined)),
       tap((user: UserResponse | undefined) => {
         if (!!user) {
           this.store.dispatch(auth_setUser({ user }));
+          this.localizationService.userLocaleChanged(user);
         }
       }),
       handleApiError(this.snackBar)
     ).subscribe();
+
+    this.dictionaryApiService.localization_DictionaryVersion()
+      .pipe(
+        take(1),
+        tap(result => {
+          this.siteSettingsService.siteSettings = result;
+        }),
+        handleApiError(this.snackBar)
+      ).subscribe();
   }
 }

@@ -4,8 +4,8 @@ import { Router } from '@angular/router';
 import { catchError, Observable, switchMap, take, throwError } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { environment } from './environments/environment';
-import { LocalStorageService } from '@amarty/services';
 import { auth_clearAll, selectToken } from '@amarty/store';
+import {clearLocalStorageAndRefresh, getLocalStorageItem, traceCreation} from '@amarty/utils';
 
 export const HTTP_METHODS = {
   GET: 'GET',
@@ -25,8 +25,9 @@ export class BaseUrlInterceptor implements HttpInterceptor {
 
   constructor(
       private router: Router,
-      private readonly store: Store,
-      private readonly localStorageService: LocalStorageService) {}
+      private readonly store: Store) {
+    traceCreation(this);
+  }
 
   intercept(
       request: HttpRequest<any>,
@@ -41,7 +42,7 @@ export class BaseUrlInterceptor implements HttpInterceptor {
             take(1),
             switchMap((token) => {
               if (!token) {
-                const localToken = localStorage.getItem('honk-token');
+                const localToken = getLocalStorageItem<string>('honk-token');
                 token = localToken ? JSON.parse(localToken) : undefined;
               }
               if (token?.token) {
@@ -60,7 +61,7 @@ export class BaseUrlInterceptor implements HttpInterceptor {
 
               if (error.status === 401) {
                 this.store.dispatch(auth_clearAll());
-                this.localStorageService.clearLocalStorageAndRefresh(true);
+                clearLocalStorageAndRefresh(true);
               } else if (error.status === 404) {
                 // Handle EntityNotFoundException
                 console.error('Entity not found:', error.message);

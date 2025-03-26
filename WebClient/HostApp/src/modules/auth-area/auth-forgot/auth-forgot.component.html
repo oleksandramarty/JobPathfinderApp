@@ -1,0 +1,31 @@
+@if(authFormGroup) {
+    <div class="container__box container__box__sign-in">
+      <div class="container__box__header">
+        <h2 class="container__box__header-title">Job Pathfinder</h2>
+        <div class="container__box__header-hint">
+          <div class="sign-up-hint glitch glitch-red" [@fadeInOut]>{{langArray[langIndex]}}</div>
+        </div>
+      </div>
+
+      <form [formGroup]="authFormGroup" class="container__box__body">
+        <div class="container__box__body-item">
+          <app-generic-input [submitted]="submitted" type="input" placeholder="COMMON.EMAIL" [formGroup]="authFormGroup" controlName="email"></app-generic-input>
+        </div>
+        <div class="container__box__body-item">
+          <app-generic-input [submitted]="submitted" type="input" placeholder="COMMON.LOGIN" [formGroup]="authFormGroup" controlName="login"></app-generic-input>
+        </div>
+      </form>
+
+      <div class="container__box__footer">
+        <div class="container__box__footer-item">
+          <button class="button button__link" routerLink="/auth/sign-in">{{ 'COMMON.SIGN_IN' | translation }}</button>
+        </div>
+        <div class="container__box__footer-item">
+          <button class="button button__filled__submit" (click)="forgot()">{{ 'COMMON.PROCEED' | translation }}</button>
+        </div>
+      </div>
+      <div class="container__box__footer line">
+        <button class="button button__link" routerLink="/auth/sign-up">{{ 'AUTH.NO_ACCOUNT.SIGN_UP' | translation }}</button>
+      </div>
+    </div>
+}

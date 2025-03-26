@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="../buildMultiTargeting/AuditTrail.ClientApi.props" />
-</Project>

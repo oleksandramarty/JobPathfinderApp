@@ -1,30 +1,30 @@
 import { createSelector, createFeatureSelector } from '@ngrx/store';
-import { AuthState } from '../reducers/auth.reducer';
+import { IAuthState } from '../reducers/auth.reducer';
 import { UserRoleEnum } from '@amarty/api';
 
-export const selectAuthState = createFeatureSelector<AuthState>('auth');
+export const selectAuthState = createFeatureSelector<IAuthState>('auth');
 
 export const selectToken = createSelector(
   selectAuthState,
-  (state: AuthState) => state.token
+  (state: IAuthState) => state.token
 );
 
 export const selectUser = createSelector(
   selectAuthState,
-  (state: AuthState) => state.user
+  (state: IAuthState) => state.user
 );
 
 export const selectIsAdmin = createSelector(
   selectAuthState,
-  (state: AuthState) => (state.user?.roles?.findIndex(role => role.id === UserRoleEnum.Admin) ?? -1) > -1
+  (state: IAuthState) => (state.user?.roles?.findIndex(role => role.id === UserRoleEnum.Admin) ?? -1) > -1
 );
 
 export const selectIsSuperAdmin = createSelector(
   selectAuthState,
-  (state: AuthState) => (state.user?.roles?.findIndex(role => role.id === UserRoleEnum.SuperAdmin) ?? -1) > -1
+  (state: IAuthState) => (state.user?.roles?.findIndex(role => role.id === UserRoleEnum.SuperAdmin) ?? -1) > -1
 );
 
 export const selectIsUser = createSelector(
   selectAuthState,
-  (state: AuthState) => (state.user?.roles?.findIndex(role => role.id === 1) ?? -1) > -1
+  (state: IAuthState) => (state.user?.roles?.findIndex(role => role.id === 1) ?? -1) > -1
 );

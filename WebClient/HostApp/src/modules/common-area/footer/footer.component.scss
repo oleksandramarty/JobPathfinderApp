@@ -45,6 +45,7 @@
     flex-direction: row;
     align-items: center;
     margin-top: m.pxToRem(8);
+    z-index: 100000;
 
     .footer__text {
       font-size: m.pxToRem(12);

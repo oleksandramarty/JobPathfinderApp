@@ -22,8 +22,8 @@
     "./assets/styles/_mixins.scss": {
       "sass": "./assets/styles/_mixins.scss"
     },
-    "./assets/styles/_variable.scss": {
-      "sass": "./assets/styles/_variable.scss"
+    "./assets/styles/_variables.scss": {
+      "sass": "./assets/styles/_variables.scss"
     }
   }
 }

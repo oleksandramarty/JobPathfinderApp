@@ -1,57 +1,57 @@
-import {Component, OnInit} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {FormsModule} from '@angular/forms';
-import {RouterModule} from '@angular/router';
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Store } from '@ngrx/store';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { takeUntil, tap } from 'rxjs';
+import { BaseUnsubscribeComponent } from '@amarty/shared/components';
+import { UserResponse } from '@amarty/api';
+import { CommonDialogService, DictionaryService } from '@amarty/services';
+import { selectUser } from '@amarty/store';
+import { ProfileInfoComponent } from './profile-info/profile-info.component';
+import { ProfileSkillsComponent } from './profile-skills/profile-skills.component';
+import { ProfileLanguagesComponent } from './profile-languages/profile-languages.component';
+import { ProfileItemComponent } from './profile-item/profile-item.component';
+import {traceCreation} from '@amarty/utils';
 
 @Component({
   selector: 'app-profile-area',
   imports: [
     CommonModule,
-    FormsModule,
-    RouterModule
+
+    ProfileInfoComponent,
+    ProfileSkillsComponent,
+    ProfileLanguagesComponent,
+    ProfileItemComponent
   ],
   standalone: true,
   templateUrl: './profile-area.component.html',
   styleUrl: './profile-area.component.scss'
 })
-export class ProfileAreaComponent implements OnInit {
-  user = {
-    name: 'Oleksandr Martynin',
-    email: 'alexander.petrov@example.com',
-    company: 'Accenture',
-    position: 'Full Stack Developer',
-    position_type: 'Hybrid',
-    location: 'Montreal, Canada',
-    phone: '+7 (999) 123-45-67',
-    avatar: 'assets/images/avatar.png',
-    linkedin: 'https://www.linkedin.com/in/alexanderpetrov',
-    github: 'https://github.com/alexanderpetrov',
-    portfolio: '/portfolio',
-    skills: ['JavaScript', 'React', 'Node.js', 'TypeScript', 'Docker', 'AWS'],
-    achievements: [
-      { title: 'Лучший разработчик года', description: 'Награда за выдающийся вклад в 2024 году', icon: 'ri-award-line' },
-      { title: 'Сертификация AWS Solutions Architect', description: 'Профессиональная сертификация AWS', icon: 'ri-medal-line' },
-      { title: 'Спикер на DevOps Conference', description: 'Доклад о микросервисах', icon: 'ri-presentation-line' },
-      { title: 'Руководство командой', description: 'Управление 8 разработчиками', icon: 'ri-team-line' }
-    ]
-  };
+export class ProfileAreaComponent extends BaseUnsubscribeComponent {
+  public currentUser: UserResponse | undefined;
+  public countryCode: string | undefined;
 
-  constructor() {}
+  constructor(
+    private readonly dialogService: CommonDialogService,
+    private readonly dictionaryService: DictionaryService,
+    private readonly store: Store,
+    private readonly snackBar: MatSnackBar
+  ) {
+    super();
+    traceCreation(this);
 
-  ngOnInit(): void {}
-
-  copyToClipboard(text: string) {
-    navigator.clipboard.writeText(text).then(() => {
-      alert('Скопировано в буфер обмена: ' + text);
-    });
+    this.countryCode = this.dictionaryService.countryData?.find(item => item.id === this.currentUser?.userSetting?.countryId)?.code?.toLowerCase();
   }
 
-  downloadCV() {
-    const link = document.createElement('a');
-    link.href = '#';
-    link.download = 'CV_Александр_Петров.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+  override ngOnInit(): void {
+    this.store.select(selectUser)
+      .pipe(
+        takeUntil(this.ngUnsubscribe),
+        tap((user) => {
+          this.currentUser = user;
+          this.countryCode = this.dictionaryService.countryData?.find(item => item.id === this.currentUser?.userSetting?.countryId)?.code?.toLowerCase();
+        })
+      ).subscribe();
+    super.ngOnInit();
   }
 }

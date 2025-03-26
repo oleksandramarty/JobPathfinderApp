@@ -38,6 +38,7 @@ public class CreateUserSettingCommandHandler: IRequestHandler<CreateUserSettingC
         }
         
         UserSettingEntity toAdd = _mapper.Map<UserSettingEntity>(command);
+        toAdd.ApplicationAiPrompt = false;
         
         await _genericUserSettingRepository.AddAsync(
             toAdd,

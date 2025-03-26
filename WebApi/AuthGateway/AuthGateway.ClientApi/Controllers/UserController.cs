@@ -1,3 +1,4 @@
+using AuthGateway.Mediatr.Mediatr.Auth.Commands;
 using AuthGateway.Mediatr.Mediatr.Auth.Requests;
 using CommonModule.Core;
 using CommonModule.Shared.Responses.AuthGateway.Users;
@@ -23,5 +24,14 @@ public class UserController: BaseController
     public async Task<IActionResult> Current(CancellationToken cancellationToken)
     {
         return Ok(await _mediator.Send(new CurrentUserRequest(), cancellationToken));
+    }
+
+    [HttpPut("preferences")]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(bool))]
+    public async Task<IActionResult> UpdateSettings([FromBody] UpdateUserPreferencesCommand command,
+        CancellationToken cancellationToken)
+    {
+        await _mediator.Send(command, cancellationToken);
+        return Ok(true);
     }
 }

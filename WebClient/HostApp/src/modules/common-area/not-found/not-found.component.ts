@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
-import {Store} from "@ngrx/store";
-import {MatSnackBar} from "@angular/material/snack-bar";
-import {AuthService} from '@amarty/services';
-import {BaseAuthorizeComponent} from '@amarty/shared/components';
-import {ReactiveFormsModule} from '@angular/forms';
-import {CommonModule} from '@angular/common';
-import {RouterLink} from '@angular/router';
-import { generateRandomId } from '@amarty/utils'
+import { ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
+import {generateRandomId, traceCreation} from '@amarty/utils'
+import { BaseUnsubscribeComponent } from '@amarty/shared/components';
+import {Observable, of} from 'rxjs';
+import {AuthService} from '../../../utils/services/auth.service';
 
 @Component({
     selector: 'app-not-found',
@@ -20,12 +19,15 @@ import { generateRandomId } from '@amarty/utils'
     standalone: true,
   host: { 'data-id': generateRandomId(12) }
 })
-export class NotFoundComponent extends BaseAuthorizeComponent {
+export class NotFoundComponent extends BaseUnsubscribeComponent {
   constructor(
-      protected override readonly authService: AuthService,
-      protected override readonly store: Store,
-      protected override readonly snackBar: MatSnackBar,
+    private readonly authService: AuthService
   ) {
-    super(authService, store, snackBar);
+    super();
+    traceCreation(this);
+  }
+
+  get isAuthorized$(): Observable<boolean> {
+    return this.authService.isAuthorized$ ?? of(false);
   }
 }

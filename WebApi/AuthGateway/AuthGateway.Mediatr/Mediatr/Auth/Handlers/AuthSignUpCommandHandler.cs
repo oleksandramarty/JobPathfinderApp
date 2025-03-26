@@ -3,7 +3,6 @@ using AuthGateway.Domain.Models.Users;
 using AuthGateway.Mediatr.Mediatr.Auth.Commands;
 using AuthGateway.Mediatr.Validators.Auth;
 using AutoMapper;
-using CommonModule.Core.Exceptions;
 using CommonModule.Interfaces;
 using CommonModule.Shared.Constants;
 using CommonModule.Shared.Enums;
@@ -19,19 +18,22 @@ public class AuthSignUpCommandHandler: IRequestHandler<AuthSignUpCommand, BaseEn
     private readonly IJwtTokenFactory _jwtTokenFactory;
     private readonly IGenericRepository<Guid, UserEntity, AuthGatewayDataContext> _genericUserRepository;
     private readonly IGenericRepository<Guid, UserRoleEntity, AuthGatewayDataContext> _genericUserRoleRepository;
+    private readonly IGenericRepository<Guid, UserSettingEntity, AuthGatewayDataContext> _genericUserSettingRepository;
 
     public AuthSignUpCommandHandler(
-        IMapper mapper, 
+        IMapper mapper,
         IEntityValidator<AuthGatewayDataContext> entityValidator,
         IJwtTokenFactory jwtTokenFactory,
         IGenericRepository<Guid, UserEntity, AuthGatewayDataContext> genericUserRepository,
-        IGenericRepository<Guid, UserRoleEntity, AuthGatewayDataContext> genericUserRoleRepository)
+        IGenericRepository<Guid, UserRoleEntity, AuthGatewayDataContext> genericUserRoleRepository,
+        IGenericRepository<Guid, UserSettingEntity, AuthGatewayDataContext> genericUserSettingRepository)
     {
         _mapper = mapper;
         _entityValidator = entityValidator;
         _jwtTokenFactory = jwtTokenFactory;
         _genericUserRepository = genericUserRepository;
         _genericUserRoleRepository = genericUserRoleRepository;
+        _genericUserSettingRepository = genericUserSettingRepository;
     }
 
     public async Task<BaseEntityIdResponse<Guid>> Handle(AuthSignUpCommand command, CancellationToken cancellationToken)
@@ -45,6 +47,7 @@ public class AuthSignUpCommandHandler: IRequestHandler<AuthSignUpCommand, BaseEn
 
         UserEntity userEntity = _mapper.Map<AuthSignUpCommand, UserEntity>(command);
         
+        userEntity.Id = Guid.NewGuid();
         userEntity.Salt = _jwtTokenFactory.GenerateSalt();
         userEntity.PasswordHash = _jwtTokenFactory.HashPassword(command.Password, userEntity.Salt);
         
@@ -54,6 +57,13 @@ public class AuthSignUpCommandHandler: IRequestHandler<AuthSignUpCommand, BaseEn
         {
             RoleId = (int)UserRoleEnum.User,
             UserId = userEntity.Id
+        }, cancellationToken);
+
+        await _genericUserSettingRepository.AddAsync(new UserSettingEntity
+        {
+            DefaultLocale = "en",
+            UserId = userEntity.Id,
+            ApplicationAiPrompt = false
         }, cancellationToken);
 
         return new BaseEntityIdResponse<Guid> { Id = userEntity.Id };

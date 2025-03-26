@@ -6,6 +6,18 @@
 
 @use '@angular/material' as mat;
 
+:root {
+  @include mat.tooltip-overrides((
+    container-color: #1e1e2e,
+    supporting-text-color: #ffffff,
+    supporting-text-size: #{m.pxToRem(14)},
+    supporting-text-font: 'Roboto'
+  ));
+  @include mat.progress-spinner-overrides((
+    active-indicator-color: #3c82f6,
+  ));
+}
+
 html {
   color-scheme: unset;
   @include mat.theme((
@@ -119,7 +131,7 @@ button:focus {
 .container {
   display: flex;
   justify-content: center;
-  min-height: var(--container-min-height);
+  min-height: calc(var(--container-min-height) - 32px);
   font-family: var(--font-stack), serif;
   padding: m.pxToRem(16);
 
@@ -182,18 +194,31 @@ button:focus {
   }
 }
 
-.grid-2fr, .grid-3fr, .grid-4fr {
+.grid-1fr, .grid-2fr, .grid-3fr, .grid-4fr {
   display: grid;
+}
+
+.grid-1fr {
+  grid-template-columns: repeat(1, 1fr);
 }
 
 @media (min-width: 600px) {
   .grid-2fr, .grid-3fr, .grid-4fr { grid-template-columns: repeat(2, 1fr); }
+  .grid-gap {
+    gap: #{m.pxToRem(8)};
+  }
 }
 @media (min-width: 768px) {
   .grid-3fr, .grid-4fr { grid-template-columns: repeat(3, 1fr); }
+  .grid-gap {
+    gap: #{m.pxToRem(12)};
+  }
 }
 @media (min-width: 900px) {
   .grid-4fr { grid-template-columns: repeat(4, 1fr); }
+  .grid-gap {
+    gap: #{m.pxToRem(16)};
+  }
 }
 
 .color {
@@ -229,7 +254,7 @@ button:focus {
 }
 
 .card {
-  padding: m.pxToRem(24);
+  padding: m.pxToRem(8) m.pxToRem(16) m.pxToRem(16) m.pxToRem(16);
   border-radius: var(--radius-large);
   box-shadow: var(--shadow-light);
   text-align: center;
@@ -257,12 +282,46 @@ button:focus {
 }
 
 .badge {
+  display: flex;
+  align-items: center;
+  gap: m.pxToRem(8);
   color: var(--color-lavender);
   background: var(--bg-color-lavender);
-  padding: m.pxToRem(4) m.pxToRem(8);
+  padding: m.pxToRem(8) m.pxToRem(12);
   width: max-content;
   border-radius: m.pxToRem(32);
-  font-size: m.pxToRem(12);
+  font-size: m.pxToRem(14);
   cursor: default;
+
+  &__language {
+    display: flex;
+    align-items: flex-start;
+    gap: m.pxToRem(8);
+  }
+
+  .language__native {
+    font-size: m.pxToRem(9);
+    text-align: left;
+  }
+
+  & > i {
+    cursor: pointer !important;
+  }
 }
 
+.ai__prompt__container {
+  margin-bottom: #{m.pxToRem(16)};
+}
+
+input:disabled, select:disabled, textarea:disabled {
+  background: var(--hover);
+  cursor: no-drop;
+}
+.profile__country {
+  &.small {
+    width: #{m.pxToRem(24)};
+  }
+  &.big {
+    width: #{m.pxToRem(32)};
+  }
+}

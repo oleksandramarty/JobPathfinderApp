@@ -1,0 +1,6 @@
+@if(isBusy) {
+  <div class="spinner__container">
+    <mat-spinner [diameter]="diameter"></mat-spinner>
+    <div class="spinner__hint glitch glitch-blue" [@fadeInOut]>{{speakerLoadingArray[speakerLoadingIndex]}}</div>
+  </div>
+}

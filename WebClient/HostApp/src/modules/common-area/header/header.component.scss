@@ -14,16 +14,48 @@
   box-shadow: 0 m.pxToRem(4) m.pxToRem(10) rgba(0, 0, 0, 0.2);
   min-height: m.pxToRem(60);
 
+  &__lang {
+    &__container {
+      display: flex;
+      align-items: center;
+      width: #{m.pxToRem(26)};
+      height: #{m.pxToRem(26)};
+      text-align: center;
+      cursor: pointer;
+
+      &-current {
+        width: #{m.pxToRem(26)};
+      }
+
+      &-menu {
+        font-family: var(--font-alt), serif;
+        &__item {
+          display: flex;
+          gap: #{m.pxToRem(8)};
+        }
+      }
+    }
+  }
+
   &__left {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: m.pxToRem(4);
+    cursor: pointer;
   }
 
   &__logo {
     font-size: m.pxToRem(24);
     font-weight: bold;
+
+    &-sub {
+      position: absolute;
+      top: m.pxToRem(-2);
+      right: m.pxToRem(-8);
+      transform: rotate(20deg);
+    }
   }
 
   &__right {

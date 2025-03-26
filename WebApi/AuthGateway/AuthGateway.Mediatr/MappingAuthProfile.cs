@@ -1,7 +1,6 @@
 using AuthGateway.Domain.Models.Users;
 using AuthGateway.Mediatr.Mediatr.Auth.Commands;
 using AutoMapper;
-using CommonModule.Core.Extensions;
 using CommonModule.Shared.Enums;
 using CommonModule.Shared.Responses.AuthGateway.Users;
 
@@ -39,6 +38,9 @@ public class MappingAuthProfile: Profile
             });
 
         CreateMap<CreateUserSettingCommand, UserSettingEntity>();
-        CreateMap<UpdateUserSettingCommand, UserSettingEntity>();
+        CreateMap<UpdateUserPreferencesCommand, UserSettingEntity>()
+            .ForMember(dest => dest.Id, opt => opt.Ignore())
+            .ForMember(dest => dest.UserId, opt => opt.Ignore());
+
     }
 }

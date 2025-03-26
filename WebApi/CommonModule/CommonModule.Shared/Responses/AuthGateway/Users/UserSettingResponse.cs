@@ -10,7 +10,14 @@ public class UserSettingResponse: BaseIdEntity<Guid>, IBaseVersionEntity
     public string? DefaultLocale { get; set; }
     public int TimeZone { get; set; }
     public int? CountryId { get; set; }
+    public int? CurrencyId { get; set; }
+    public bool ApplicationAiPrompt { get; set; }
     public Guid UserId { get; set; }
+    
+    public string? LinkedInUrl { get; set; }
+    public string? NpmUrl { get; set; }
+    public string? GitHubUrl { get; set; }
+    public string? PortfolioUrl { get; set; }
     
     [Required]
     [StringLength(32, MinimumLength = 32)]

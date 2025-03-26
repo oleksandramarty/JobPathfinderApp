@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using AuthGateway.Domain.Models.Profile;
 using CommonModule.Shared.Common;
 using CommonModule.Shared.Common.BaseInterfaces;
 using CommonModule.Shared.Core;
@@ -9,8 +10,11 @@ namespace AuthGateway.Domain.Models.Users;
 public class UserEntity: BaseDateTimeEntity<Guid>, IStatusEntity, IBaseVersionEntity
 {
     [Required] [MaxLength(50)] public required string Login { get; set; }
+    [MaxLength(100)] public string? FirstName { get; set; }
+    [MaxLength(100)] public string? LastName { get; set; }
     [Required] [MaxLength(50)] public required string LoginNormalized { get; set; }
     [Required] [MaxLength(50)] public required string Email { get; set; }
+    [MaxLength(11)] public string? Phone { get; set; }
     [Required] [MaxLength(50)] public required string EmailNormalized { get; set; }
     [Required] [MaxLength(120)] public required string PasswordHash { get; set; }
     [Required] [MaxLength(64)] public required string Salt { get; set; }
@@ -22,6 +26,9 @@ public class UserEntity: BaseDateTimeEntity<Guid>, IStatusEntity, IBaseVersionEn
     public DateTime? LastForgotPasswordRequest { get; set; }
     
     public ICollection<UserRoleEntity> Roles { get; set; }
+    public ICollection<UserLanguageEntity> Languages { get; set; }
+    public ICollection<UserSkillEntity> Skills { get; set; }
+    public ICollection<UserProfileItemEntity> ProfileItems { get; set; }
     
     public Guid? UserSettingId { get; set; }
     public UserSettingEntity? UserSetting { get; set; }
