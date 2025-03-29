@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import {generateRandomId, traceCreation} from '@amarty/utils'
+import {generateRandomId} from '@amarty/utils'
 import { BaseUnsubscribeComponent } from '@amarty/shared/components';
 import {Observable, of} from 'rxjs';
 import {AuthService} from '../../../utils/services/auth.service';
@@ -24,7 +24,6 @@ export class InDevelopmentComponent extends BaseUnsubscribeComponent {
     private readonly authService: AuthService
   ) {
     super();
-    traceCreation(this);
   }
 
   get isAuthorized$(): Observable<boolean> {

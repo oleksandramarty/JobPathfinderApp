@@ -1,0 +1,31 @@
+{
+  "name": "@amarty/assets",
+  "version": "0.0.1",
+  "main": "public-api.ts",
+  "peerDependencies": {
+    "@angular/common": "^19.2.0",
+    "@angular/core": "^19.2.0",
+    "@angular/material": "^19.2.1"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false,
+  "exports": {
+    "./lib/assets/styles/_button.scss": {
+      "sass": "./lib/assets/styles/_button.scss"
+    },
+    "./lib/assets/styles/_dialog.scss": {
+      "sass": "./lib/assets/styles/_dialog.scss"
+    },
+    "./lib/assets/styles/_input.scss": {
+      "sass": "./lib/assets/styles/_input.scss"
+    },
+    "./lib/assets/styles/_mixins.scss": {
+      "sass": "./lib/assets/styles/_mixins.scss"
+    },
+    "./lib/assets/styles/_variables.scss": {
+      "sass": "./lib/assets/styles/_variables.scss"
+    }
+  }
+}

@@ -8,7 +8,7 @@ import { UserApiClient, UserSkillResponse } from '@amarty/api';
 import { DictionaryService, LoaderService, LocalizationService } from '@amarty/services';
 import { DataItem, InputError } from '@amarty/models';
 import { CommonModule } from '@angular/common';
-import {generateGuid, traceCreation} from '@amarty/utils';
+import {generateGuid} from '@amarty/utils';
 import { takeUntil, tap } from 'rxjs';
 import { TranslationPipe } from '@amarty/utils/pipes';
 
@@ -45,7 +45,7 @@ export class ProfileSkillsDialogComponent extends BaseUnsubscribeComponent{
     private readonly store: Store
   ) {
     super();
-    traceCreation(this);
+
     this.skill = data?.skill;
     this.existingIds = data?.existingIds;
     this.createFormGroup();

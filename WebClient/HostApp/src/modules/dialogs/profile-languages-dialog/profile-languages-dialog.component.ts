@@ -9,7 +9,7 @@ import { BaseUnsubscribeComponent, GenericInputComponent } from '@amarty/shared/
 import { UserApiClient, UserLanguageResponse } from '@amarty/api';
 import { DataItem, InputError } from '@amarty/models';
 import { DictionaryService, LoaderService, LocalizationService } from '@amarty/services';
-import {generateGuid, traceCreation} from '@amarty/utils';
+import {generateGuid} from '@amarty/utils';
 import { TranslationPipe } from '@amarty/utils/pipes';
 
 @Component({
@@ -45,7 +45,7 @@ export class ProfileLanguagesDialogComponent extends BaseUnsubscribeComponent{
     private readonly store: Store
   ) {
     super();
-    traceCreation(this);
+
     this.language = data?.language;
     this.existingIds = data?.existingIds;
     this.createFormGroup();

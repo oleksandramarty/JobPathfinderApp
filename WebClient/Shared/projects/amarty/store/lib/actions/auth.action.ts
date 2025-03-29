@@ -1,4 +1,4 @@
-import { JwtTokenResponse, UserResponse } from '@amarty/api';
+import { JwtTokenResponse, UserResponse } from '@amarty/models';
 import { createAction, props } from '@ngrx/store';
 
 export const auth_setToken = createAction('[Auth] Set Token', props<{ token: JwtTokenResponse }>());

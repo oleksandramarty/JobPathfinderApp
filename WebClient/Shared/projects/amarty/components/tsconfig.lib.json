@@ -1,0 +1,20 @@
+{
+  "extends": "../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "../../dist/out-tsc/amarty/components",
+    "declaration": true,
+    "declarationMap": true,
+    "inlineSources": true,
+    "types": [],
+    "paths": {
+      "@amarty/common": ["../../../dist/amarty/common"],
+      "@amarty/models": ["../../../dist/amarty/models"],
+      "@amarty/utils": ["../../../dist/amarty/utils"],
+      "@amarty/services": ["../../../dist/amarty/services"],
+      "@amarty/pipes": ["../../../dist/amarty/pipes"],
+      "@amarty/directives": ["../../../dist/amarty/directives"]
+    }
+  },
+  "exclude": ["**/*.spec.ts"],
+  "include": ["public-api.ts"]
+}

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {generateRandomId, handleApiError, traceCreation} from '@amarty/utils';
+import {generateRandomId, handleApiError} from '@amarty/utils';
 import { CommonDialogService, LocalizationService } from '@amarty/services';
 import { Store } from '@ngrx/store';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -63,7 +63,6 @@ export class LandingComponent extends BaseUnsubscribeComponent{
     private readonly localizationService: LocalizationService,
   ) {
     super();
-    traceCreation(this);
   }
 
   override ngOnInit() {

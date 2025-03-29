@@ -7,7 +7,7 @@
     "outDir": "./dist/out-tsc",
     "baseUrl": ".",
     "paths": {
-      "@amarty/*": ["node_modules/@amarty/*"],
+      "@amarty/*": ["node_modules/@amarty/*"]
     },
     "strict": true,
     "allowSyntheticDefaultImports": true,

@@ -1,0 +1,57 @@
+@use '../../../../assets/lib/styles/variables' as v;
+@use '../../../../assets/lib/styles/mixins' as m;
+
+.input {
+  &__container {
+    position: relative;
+  }
+
+  &__label {
+    margin-bottom: #{m.pxToRem(4)};
+    font-size: #{m.pxToRem(14)};
+  }
+}
+
+label {
+  color: var(--text-black);
+  font-family: var(--font-alt), sans-serif;
+  margin-bottom: #{m.pxToRem(4)};
+}
+
+.icon {
+  position: absolute;
+  top: m.pxToRem(12);
+  right: m.pxToRem(10);
+}
+
+.input__error__container {
+  position: relative;
+  margin-bottom: m.pxToRem(16);
+
+  &__body {
+    position: absolute;
+    top: m.pxToRem(4);
+    right: m.pxToRem(4);
+
+    &-item {
+      font-size: m.pxToRem(8);
+      color: var(--error);
+    }
+  }
+}
+
+.autocomplete__item {
+  width: 0.2rem;
+  height: 1.5rem;
+  position: absolute;
+  left: 0.5rem;
+
+  &__hint {  display: block;
+    font-size: 0.6rem;
+    opacity: 0.5;
+    line-height: 0.6rem;
+  }
+  &__container i {
+    margin-right: 0.5rem;
+  }
+}

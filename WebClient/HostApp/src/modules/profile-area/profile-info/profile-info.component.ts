@@ -5,7 +5,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserPreferencesDialogComponent } from '../../dialogs/user-preferences-dialog/user-preferences-dialog.component';
 import { CommonDialogService } from '@amarty/services';
 import { CommonModule } from '@angular/common';
-import {traceCreation} from '@amarty/utils';
 import { TranslationPipe } from '@amarty/utils/pipes';
 
 @Component({
@@ -27,7 +26,6 @@ export class ProfileInfoComponent extends BaseUnsubscribeComponent {
     private readonly snackBar: MatSnackBar
   ) {
     super();
-    traceCreation(this);
   }
 
   public openEditProfileDialog(): void {

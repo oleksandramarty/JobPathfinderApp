@@ -10,7 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { Observable, of } from 'rxjs';
 import { BaseUnsubscribeComponent } from '@amarty/shared/components'
-import {generateRandomId, traceCreation} from '@amarty/utils'
+import {generateRandomId} from '@amarty/utils'
 import { LocalizationService } from '@amarty/services';
 import { LocaleResponse, LocaleData } from '@amarty/api';
 import { MenuItem } from '@amarty//models';
@@ -58,7 +58,6 @@ export class HeaderComponent extends BaseUnsubscribeComponent {
     private readonly router: Router
   ) {
     super();
-    traceCreation(this);
   }
 
   get isAuthorized$(): Observable<boolean> {

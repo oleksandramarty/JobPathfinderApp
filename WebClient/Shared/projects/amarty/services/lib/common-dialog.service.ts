@@ -1,7 +1,6 @@
 import { Injectable, Type } from '@angular/core';
 import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
 import { take, tap } from 'rxjs';
-import {traceCreation} from '@amarty/utils';
 
 
 @Injectable({
@@ -11,7 +10,6 @@ export class CommonDialogService {
   constructor(
     private readonly dialog: MatDialog
   ) {
-    traceCreation(this);
   }
 
   public showDialog<TDialog, TDialogResult>(

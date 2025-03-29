@@ -1,10 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import { CommonModule } from '@angular/common';
-import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatSnackBar} from '@angular/material/snack-bar';
 import { Store } from '@ngrx/store';
 import { of, switchMap, take, tap } from 'rxjs';
 import { RouterOutlet } from '@angular/router';
-import {generateRandomId, handleApiError, traceCreation} from '@amarty/utils';
+import {generateRandomId, handleApiError} from '@amarty/utils';
 import { auth_setUser } from '@amarty/store';
 import {
   DictionaryApiClient,
@@ -45,7 +44,6 @@ export class AppComponent implements OnInit {
     private readonly snackBar: MatSnackBar,
     private readonly store: Store,
   ) {
-    traceCreation(this);
   }
 
   ngOnInit(): void {

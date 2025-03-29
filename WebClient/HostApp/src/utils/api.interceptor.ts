@@ -5,7 +5,7 @@ import { catchError, Observable, switchMap, take, throwError } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { environment } from './environments/environment';
 import { auth_clearAll, selectToken } from '@amarty/store';
-import {clearLocalStorageAndRefresh, getLocalStorageItem, traceCreation} from '@amarty/utils';
+import {clearLocalStorageAndRefresh, getLocalStorageItem} from '@amarty/utils';
 
 export const HTTP_METHODS = {
   GET: 'GET',
@@ -26,7 +26,6 @@ export class BaseUrlInterceptor implements HttpInterceptor {
   constructor(
       private router: Router,
       private readonly store: Store) {
-    traceCreation(this);
   }
 
   intercept(

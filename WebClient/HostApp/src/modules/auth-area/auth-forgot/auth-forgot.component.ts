@@ -5,7 +5,7 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { interval, takeUntil, tap } from 'rxjs';
 import {BaseUnsubscribeComponent, GenericInputComponent} from '@amarty/shared/components';
 import { fadeInOut } from '@amarty/shared/animations';
-import {generateRandomId, traceCreation} from '@amarty/utils';
+import {generateRandomId} from '@amarty/utils';
 import { TranslationPipe } from '@amarty/utils/pipes';
 
 @Component({
@@ -51,7 +51,7 @@ export class AuthForgotComponent extends BaseUnsubscribeComponent {
     private readonly snackBar: MatSnackBar
   ) {
     super();
-    traceCreation(this);
+
     this._startTimer();
   }
 

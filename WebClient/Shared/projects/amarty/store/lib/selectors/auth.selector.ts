@@ -1,6 +1,6 @@
 import { createSelector, createFeatureSelector } from '@ngrx/store';
 import { IAuthState } from '../reducers/auth.reducer';
-import { UserRoleEnum } from '@amarty/api';
+import { UserRoleEnum } from '@amarty/models';
 
 export const selectAuthState = createFeatureSelector<IAuthState>('auth');
 

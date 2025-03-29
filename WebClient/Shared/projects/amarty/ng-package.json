@@ -1,0 +1,23 @@
+{
+  "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../dist/amarty",
+  "lib": {
+    "entryFile": "public-api.ts"
+  },
+  "assets": ["package.json"],
+  "allowedNonPeerDependencies": [
+    "@amarty/models",
+    "@amarty/utils",
+    "@amarty/store",
+    "@amarty/api",
+    "@amarty/animations",
+    "@amarty/dictionaries",
+    "@amarty/localizations",
+    "@amarty/common",
+    "@amarty/services",
+    "@amarty/directives",
+    "@amarty/pipes",
+    "@amarty/assets",
+    "@amarty/components"
+  ]
+}

@@ -4,7 +4,7 @@ import {filter, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {Store} from '@ngrx/store';
 import {auth_clearAll, auth_setToken, selectIsAdmin, selectIsSuperAdmin, selectIsUser, selectToken } from '@amarty/store';
-import {getLocalStorageItem, removeLocalStorageItem, setLocalStorageItem, traceCreation} from '@amarty/utils';
+import {getLocalStorageItem, removeLocalStorageItem, setLocalStorageItem} from '@amarty/utils';
 
 @Injectable({
   providedIn: 'root'
@@ -48,7 +48,6 @@ export class AuthService {
   constructor(
     private readonly store: Store
   ) {
-    traceCreation(this);
     this._token$ = this.store.select(selectToken);
     this._isUser$ = this.store.select(selectIsUser);
     this._isAdmin$ = this.store.select(selectIsAdmin);

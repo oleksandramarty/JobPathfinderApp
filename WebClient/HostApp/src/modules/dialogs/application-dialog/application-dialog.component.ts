@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import {generateRandomId, traceCreation} from '@amarty/utils';
+import {generateRandomId} from '@amarty/utils';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
@@ -47,7 +47,6 @@ export class ApplicationDialogComponent extends BaseUnsubscribeComponent{
     private readonly store: Store
   ) {
     super();
-    traceCreation(this);
 
     this._applicationId = data?.applicationId;
 

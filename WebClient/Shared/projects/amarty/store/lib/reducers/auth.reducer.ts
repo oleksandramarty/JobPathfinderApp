@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { auth_clearAll, auth_clearToken, auth_clearUser, auth_setToken, auth_setUser } from '../actions/auth.action';
-import { JwtTokenResponse, UserResponse } from '@amarty/api';
+import { JwtTokenResponse, UserResponse } from '@amarty/models';
 
 export interface IAuthState {
   token: JwtTokenResponse | undefined;

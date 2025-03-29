@@ -1,0 +1,40 @@
+{
+  "name": "@amarty/core",
+  "version": "0.0.1",
+  "main": "public-api.ts",
+  "sideEffects": false,
+  "peerDependencies": {
+    "@angular/common": "^19.2.0",
+    "@angular/core": "^19.2.0",
+    "@angular/material": "^19.2.1",
+    "@amarty/models": "*",
+    "@amarty/utils": "*",
+    "@amarty/store": "*",
+    "@amarty/api": "*",
+    "@amarty/animations": "*",
+    "@amarty/dictionaries": "*",
+    "@amarty/localizations": "*",
+    "@amarty/common": "*",
+    "@amarty/services": "*",
+    "@amarty/directives": "*",
+    "@amarty/pipes": "*",
+    "@amarty/assets": "*",
+    "@amarty/components": "*"
+  },
+  "exports": {
+    "./models": { "import": "./models/public-api.ts" },
+    "./utils": { "import": "./utils/public-api.ts" },
+    "./store": { "import": "./store/public-api.ts" },
+    "./api": { "import": "./api/public-api.ts" },
+    "./animations": { "import": "./animations/public-api.ts" },
+    "./dictionaries": { "import": "./dictionaries/public-api.ts" },
+    "./localizations": { "import": "./localizations/public-api.ts" },
+    "./common": { "import": "./common/public-api.ts" },
+    "./services": { "import": "./services/public-api.ts" },
+    "./directives": { "import": "./directives/public-api.ts" },
+    "./pipes": { "import": "./pipes/public-api.ts" },
+    "./assets": { "import": "./assets/public-api.ts" },
+    "./components/generic-grid": { "import": "./components/generic-grid/public-api.ts" },
+    "./components/generic-input": { "import": "./components/generic-input/public-api.ts" }
+  }
+}

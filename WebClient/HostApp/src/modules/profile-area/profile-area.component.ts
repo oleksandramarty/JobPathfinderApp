@@ -11,7 +11,6 @@ import { ProfileInfoComponent } from './profile-info/profile-info.component';
 import { ProfileSkillsComponent } from './profile-skills/profile-skills.component';
 import { ProfileLanguagesComponent } from './profile-languages/profile-languages.component';
 import { ProfileItemComponent } from './profile-item/profile-item.component';
-import {traceCreation} from '@amarty/utils';
 
 @Component({
   selector: 'app-profile-area',
@@ -38,7 +37,6 @@ export class ProfileAreaComponent extends BaseUnsubscribeComponent {
     private readonly snackBar: MatSnackBar
   ) {
     super();
-    traceCreation(this);
 
     this.countryCode = this.dictionaryService.countryData?.find(item => item.id === this.currentUser?.userSetting?.countryId)?.code?.toLowerCase();
   }

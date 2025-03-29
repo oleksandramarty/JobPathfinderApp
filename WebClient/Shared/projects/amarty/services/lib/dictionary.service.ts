@@ -1,17 +1,5 @@
 import { Injectable } from '@angular/core';
 import {
-  CountryData,
-  CurrencyData,
-  ExperienceLevelData,
-  JobSourceData,
-  JobTypeData,
-  LanguageLevelData,
-  LanguageData,
-  LocaleData,
-  RoleData,
-  SkillLevelData,
-  SkillData,
-  WorkArrangementData,
   CountryResponse,
   CurrencyResponse,
   ExperienceLevelResponse,
@@ -25,12 +13,25 @@ import {
   SkillResponse,
   WorkArrangementResponse,
   UserSkillResponse,
-  UserLanguageResponse
- } from '@amarty/api';
-import { DataItem } from '@amarty/models';
+  UserLanguageResponse,
+  DataItem
+ } from '@amarty/models';
+import {
+  CountryData,
+  CurrencyData,
+  ExperienceLevelData,
+  JobSourceData,
+  JobTypeData,
+  LanguageLevelData,
+  LanguageData,
+  LocaleData,
+  RoleData,
+  SkillLevelData,
+  SkillData,
+  WorkArrangementData,
+} from '@amarty/dictionaries';
 import { LocalizationService } from './localization.service';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import {traceCreation} from '@amarty/utils';
 
 @Injectable({
   providedIn: 'root'
@@ -148,7 +149,6 @@ export class DictionaryService {
     private readonly localizationService: LocalizationService,
     private readonly sanitizer: DomSanitizer
   ) {
-    traceCreation(this);
   }
 
   public initialize(): void {

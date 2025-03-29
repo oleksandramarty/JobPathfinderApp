@@ -9,8 +9,7 @@ import {
   clearLocalStorageAndRefresh,
   generateRandomId,
   getLocalStorageItem,
-  setLocalStorageItem,
-  traceCreation
+  setLocalStorageItem
 } from '@amarty/utils'
 import { MatTooltipModule } from '@angular/material/tooltip';
 import {AuthService} from '../../../utils/services/auth.service';
@@ -38,7 +37,6 @@ export class FooterComponent implements OnInit {
     private readonly snackBar: MatSnackBar,
     private readonly router: Router,
     private readonly loaderService: LoaderService) {
-    traceCreation(this);
     const theme = getLocalStorageItem<string>('theme');
 
     if (!theme) {

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {generateRandomId, handleApiError, traceCreation} from '@amarty/utils';
+import {generateRandomId, handleApiError} from '@amarty/utils';
 import { takeUntil, tap } from 'rxjs';
 import { Router, RouterModule } from '@angular/router';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
@@ -26,7 +26,6 @@ export class AuthAreaComponent extends BaseUnsubscribeComponent {
     private readonly snackBar: MatSnackBar
   ) {
     super();
-    traceCreation(this);
 
     this.authService.isAuthorized$?.pipe(
       takeUntil(this.ngUnsubscribe),

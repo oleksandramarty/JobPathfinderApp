@@ -1,15 +1,19 @@
-/* To learn more about Typescript configuration file: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html. */
-/* To learn more about Angular compiler options: https://angular.dev/reference/configs/angular-compiler-options. */
 {
-  "extends": "../../../tsconfig.json",
+  "extends": "../tsconfig.base.json",
   "compilerOptions": {
-    "outDir": "../../../out-tsc/lib",
+    "outDir": "../dist/out-tsc",
+    "target": "ES2022",
     "declaration": true,
     "declarationMap": true,
     "inlineSources": true,
-    "types": []
+    "types": [],
+    "paths": {
+      "@amarty/utils": ["../../../dist/amarty/utils"],
+      "@amarty/models": ["../../../dist/amarty/models"],
+      "@amarty/dictionaries": ["../../../dist/amarty/dictionaries"],
+      "@amarty/localizations": ["../../../dist/amarty/localizations"]
+    }
   },
-  "exclude": [
-    "**/*.spec.ts"
-  ]
+  "exclude": ["**/*.spec.ts"],
+  "include": ["lib/**/*.ts"]
 }

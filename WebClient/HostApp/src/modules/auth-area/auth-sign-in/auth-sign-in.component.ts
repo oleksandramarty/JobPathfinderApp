@@ -7,7 +7,7 @@ import { Store } from '@ngrx/store';
 import { interval, takeUntil, tap, finalize } from 'rxjs';
 import {BaseUnsubscribeComponent, GenericInputComponent} from '@amarty/shared/components';
 import { fadeInOut } from '@amarty/shared/animations';
-import {generateRandomId, handleApiError, setLocalStorageItem, traceCreation} from '@amarty/utils';
+import {generateRandomId, handleApiError, setLocalStorageItem} from '@amarty/utils';
 import { auth_setToken } from '@amarty/store';
 import { UserApiClient, AuthSignInRequest, JwtTokenResponse } from '@amarty/api';
 import { LoaderService } from '@amarty/services';
@@ -51,7 +51,7 @@ export class AuthSignInComponent extends BaseUnsubscribeComponent {
     private readonly router: Router,
   ) {
     super();
-    traceCreation(this);
+
     this._startTimer();
   }
 

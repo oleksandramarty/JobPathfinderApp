@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
 import {SanitizeHtmlPipe, TranslationPipe} from '@amarty/utils/pipes'
-import {generateRandomId, traceCreation} from '@amarty/utils'
+import {generateRandomId} from '@amarty/utils'
 
 @Component({
     selector: 'app-confirmation-message-dialog',
@@ -36,7 +36,6 @@ export class ConfirmationMessageDialogComponent {
       htmlBlock?: string | undefined;
     } | undefined,
   ) {
-    traceCreation(this);
     this.yesBtn = data?.yesBtn;
     this.noBtn = data?.noBtn;
     this.title = data?.title;

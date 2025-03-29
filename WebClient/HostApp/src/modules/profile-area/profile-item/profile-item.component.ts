@@ -5,7 +5,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { CommonDialogService, DictionaryService } from '@amarty/services';
 import { SafeHtml } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
-import {traceCreation} from '@amarty/utils';
 import { TranslationPipe } from '@amarty/utils/pipes';
 
 @Component({
@@ -33,7 +32,6 @@ export class ProfileItemComponent extends BaseUnsubscribeComponent {
     private readonly dictionaryService: DictionaryService
   ) {
     super();
-    traceCreation(this);
   }
 
   override ngOnInit() {

@@ -5,7 +5,6 @@ import { UserSkillResponse } from '@amarty/api';
 import { CommonDialogService, DictionaryService } from '@amarty/services';
 import { BaseUnsubscribeComponent } from '@amarty/shared/components';
 import { CommonModule } from '@angular/common';
-import {traceCreation} from '@amarty/utils';
 import { TranslationPipe } from '@amarty/utils/pipes';
 
 @Component({
@@ -30,7 +29,6 @@ export class ProfileSkillsComponent extends BaseUnsubscribeComponent {
     private readonly dictionaryService: DictionaryService
   ) {
     super();
-    traceCreation(this);
   }
 
   public getSkillTitle(skill: UserSkillResponse | undefined): string {

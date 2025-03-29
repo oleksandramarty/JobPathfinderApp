@@ -1,10 +1,14 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject, takeUntil, tap } from 'rxjs';
-import { LocalizationItemResponse, LocalizationResponse,
-  LocalizationsResponse, LocalizationsData,
-  UserResponse } from '@amarty/api';
-import { DataItem, MenuItem } from '@amarty/models';
-import {getLocalStorageItem, setLocalStorageItem, traceCreation} from '@amarty/utils';
+import {
+  LocalizationItemResponse,
+  LocalizationResponse,
+  LocalizationsResponse,
+  UserResponse,
+  DataItem,
+  MenuItem } from '@amarty/models';
+import { LocalizationsData } from '@amarty/localizations';
+import {getLocalStorageItem, setLocalStorageItem} from '@amarty/utils';
 
 @Injectable({
     providedIn: 'root'
@@ -127,9 +131,7 @@ export class LocalizationService {
         });
     }
 
-    constructor() {
-      traceCreation(this);
-    }
+    constructor() {}
 
     public initialize(): void {
       this.staticLocalizations = LocalizationsData;

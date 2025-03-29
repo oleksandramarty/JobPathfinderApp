@@ -1,6 +1,6 @@
-import { Injectable} from '@angular/core';
-import { CacheVersionResponse, SiteSettingsResponse} from '@amarty/api';
-import {getLocalStorageItem, setLocalStorageItem, traceCreation} from '@amarty/utils';
+import { Injectable } from '@angular/core';
+import { CacheVersionResponse, SiteSettingsResponse } from '@amarty/models';
+import {getLocalStorageItem, setLocalStorageItem } from '@amarty/utils';
 
 @Injectable({
     providedIn: "root"
@@ -24,7 +24,5 @@ export class SiteSettingsService {
         setLocalStorageItem('settings', this._siteSettings);
     }
 
-    constructor() {
-      traceCreation(this);
-    }
+    constructor() {}
 }

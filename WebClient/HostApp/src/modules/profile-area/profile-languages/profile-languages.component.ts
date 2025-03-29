@@ -6,7 +6,6 @@ import { UserLanguageResponse } from '@amarty/api';
 import { CommonDialogService, DictionaryService } from '@amarty/services';
 import { SafeHtml } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
-import {traceCreation} from '@amarty/utils';
 import { TranslationPipe } from '@amarty/utils/pipes';
 
 @Component({
@@ -31,7 +30,6 @@ export class ProfileLanguagesComponent extends BaseUnsubscribeComponent {
     private readonly dictionaryService: DictionaryService
   ) {
     super();
-    traceCreation(this);
   }
 
   public getLanguageTitle(language: UserLanguageResponse | undefined): SafeHtml | undefined {

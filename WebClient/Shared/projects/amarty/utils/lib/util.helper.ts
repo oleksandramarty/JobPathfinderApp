@@ -39,7 +39,10 @@ export function generateGuid(): string {
   });
 }
 
-export function traceCreation(instance: any) {
+export function traceCreation(instance: any, trace: boolean = true) {
+  if (!trace) {
+    return;
+  }
   const className = instance.constructor.name;
   console.trace(`🧩 Creating ${className}`);
 }

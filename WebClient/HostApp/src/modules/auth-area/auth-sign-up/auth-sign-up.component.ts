@@ -6,7 +6,7 @@ import { debounceTime, filter, interval, takeUntil, tap } from 'rxjs';
 
 import {BaseUnsubscribeComponent, GenericInputComponent} from '@amarty/shared/components';
 import { fadeInOut } from '@amarty/shared/animations';
-import {generateRandomId, traceCreation} from '@amarty/utils';
+import {generateRandomId} from '@amarty/utils';
 import { InputError } from '@amarty/models';
 import { TranslationPipe } from '@amarty/utils/pipes';
 
@@ -60,7 +60,7 @@ export class AuthSignUpComponent extends BaseUnsubscribeComponent {
 
   constructor(private readonly snackBar: MatSnackBar) {
     super();
-    traceCreation(this);
+
     this._startTimer();
   }
 

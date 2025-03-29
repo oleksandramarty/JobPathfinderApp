@@ -1,6 +1,6 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {generateRandomId, traceCreation} from '@amarty/utils'
+import {generateRandomId} from '@amarty/utils'
 
 @Component({
     selector: 'app-night-sky',
@@ -12,7 +12,6 @@ import {generateRandomId, traceCreation} from '@amarty/utils'
 })
 export class NightSkyComponent implements OnInit {
     constructor(private renderer: Renderer2) {
-      traceCreation(this);
     }
 
     ngOnInit(): void {

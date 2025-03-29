@@ -5,7 +5,6 @@ import { CommonModule } from '@angular/common';
 import { LoaderService } from '@amarty/services';
 import { BaseUnsubscribeComponent } from '@amarty/shared/components';
 import { fadeInOut } from '@amarty/shared/animations';
-import {traceCreation} from '@amarty/utils';
 
 @Component({
   selector: 'app-spinner',
@@ -47,7 +46,6 @@ export class SpinnerComponent extends BaseUnsubscribeComponent implements OnInit
     private readonly loaderService: LoaderService
   ) {
     super();
-    traceCreation(this);
   }
 
   override ngOnInit(): void {

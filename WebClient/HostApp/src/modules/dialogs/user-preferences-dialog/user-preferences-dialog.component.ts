@@ -9,7 +9,7 @@ import { UpdateUserPreferencesCommand, UserApiClient, UserResponse } from '@amar
 import { auth_setUser, selectUser } from '@amarty/store';
 import { DictionaryService, LoaderService, LocalizationService } from '@amarty/services';
 import { DataItem } from '@amarty/models';
-import {handleApiError, traceCreation} from '@amarty/utils';
+import {handleApiError} from '@amarty/utils';
 import {CommonModule} from '@angular/common';
 import { TranslationPipe } from '@amarty/utils/pipes';
 
@@ -41,7 +41,6 @@ export class UserPreferencesDialogComponent extends BaseUnsubscribeComponent{
     private readonly store: Store
   ) {
     super();
-    traceCreation(this);
 
     this.store.select(selectUser)
       .pipe(
