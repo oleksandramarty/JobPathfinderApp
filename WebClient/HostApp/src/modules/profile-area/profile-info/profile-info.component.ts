@@ -1,11 +1,11 @@
-import { UserResponse } from '@amarty/api';
-import { BaseUnsubscribeComponent } from '@amarty/shared/components';
+import { UserResponse } from '@amarty/models';
+import { BaseUnsubscribeComponent } from '@amarty/common';
 import { Component, Input } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserPreferencesDialogComponent } from '../../dialogs/user-preferences-dialog/user-preferences-dialog.component';
 import { CommonDialogService } from '@amarty/services';
 import { CommonModule } from '@angular/common';
-import { TranslationPipe } from '@amarty/utils/pipes';
+import { TranslationPipe } from '@amarty/pipes';
 
 @Component({
   selector: 'app-profile-info',

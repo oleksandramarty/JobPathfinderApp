@@ -7,8 +7,7 @@ import {generateRandomId, handleApiError} from '@amarty/utils';
 import { auth_setUser } from '@amarty/store';
 import {
   DictionaryApiClient,
-  UserApiClient,
-  UserResponse
+  UserApiClient
 } from '@amarty/api';
 import {
   DictionaryService,
@@ -19,6 +18,7 @@ import { AuthService } from '../../../utils/services/auth.service';
 import {HeaderComponent} from '../../common-area/header/header.component';
 import {FooterComponent} from '../../common-area/footer/footer.component';
 import {SpinnerComponent} from '../../common-area/spinner/spinner.component';
+import {SiteSettingsResponse, UserResponse} from '@amarty/models';
 
 @Component({
   selector: 'app-root',
@@ -49,7 +49,6 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.authService.initialize();
     this.dictionaryService.initialize();
-    this.localizationService.initialize();
 
     this.authService.isAuthorized$?.pipe(
       switchMap(isAuthorized => isAuthorized
@@ -67,7 +66,7 @@ export class AppComponent implements OnInit {
     this.dictionaryApiService.localization_DictionaryVersion()
       .pipe(
         take(1),
-        tap(result => {
+        tap((result: SiteSettingsResponse) => {
           this.siteSettingsService.siteSettings = result;
         }),
         handleApiError(this.snackBar)

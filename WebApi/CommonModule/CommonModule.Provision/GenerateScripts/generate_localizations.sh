@@ -1,54 +1,43 @@
 #!/bin/bash
 
-echo "Extracting localizations data from CSVs..."
+echo "🔄 Extracting localizations data from CSVs..."
 
 locales=("en" "es" "fr" "ua" "ru" "de" "it")
 index=0
 
-# Path to output TypeScript file
 ANGULAR_BASE_DIR=$(cd "$(dirname "$0")" && pwd | sed 's|/WebApi/CommonModule/CommonModule.Provision/GenerateScripts||')
-output_file="$ANGULAR_BASE_DIR/WebClient/Shared/projects/amarty/api/lib/dictionaries/localizations.ts"
+output_dir="$ANGULAR_BASE_DIR/WebClient/Shared/projects/amarty/localizations/lib"
 
-# Start writing TypeScript file
-echo "// Auto-generated TypeScript file for static localizations" > "$output_file"
-for i in "${!locales[@]}"; do
-  echo "// Auto-generated TypeScript file with a$((i+1))-localizations_${locales[$i]}.csv data" >> "$output_file"
-done
-echo "" >> "$output_file"
-echo "import {LocalizationItemResponse, LocalizationResponse, LocalizationsResponse} from '../api.model';" >> "$output_file"
-echo "" >> "$output_file"
-echo "export const LocalizationsData: LocalizationsResponse = {" >> "$output_file"
-echo "  data: [" >> "$output_file"
+mkdir -p "$output_dir"
+rm -f "$output_dir/localization_"*.ts
 
 for i in "${!locales[@]}"; do
-  # Path to the CSV file
-  csv_file="$(cd "$(dirname "$0")" && pwd | sed 's|/GenerateScripts||')/InitData/Localizations/a$((i+1))-localizations_${locales[$i]}.csv"
-  
-  echo "    {" >> "$output_file"
-  echo "      locale: '${locales[$i]}'," >> "$output_file"
-  echo "      items: [" >> "$output_file"
+  locale="${locales[$i]}"
+  csv_file="$(cd "$(dirname "$0")" && pwd | sed 's|/GenerateScripts||')/InitData/Localizations/a$((i+1))-localizations_${locale}.csv"
+  output_file="$output_dir/localization_${locale}.ts"
 
-  # Read CSV file and process each line
+  if [[ ! -f "$csv_file" ]]; then
+    echo "⚠️  Skipping missing file: $csv_file"
+    continue
+  fi
+
+  echo "// Auto-generated file from a$((i+1))-localizations_${locale}.csv" > "$output_file"
+  echo "" >> "$output_file"
+  echo "export const localization_${locale}: Map<string, string> = new Map<string, string>([" >> "$output_file"
+
   {
-    read  # Skip the first line (header)
+    read  # Skip header
     while IFS=';' read -r id locale key valueEn value isPublic; do
-      # Increment index correctly
       ((index++))
-
-      # Replace '' with '
       value_cleaned=$(echo "$value" | sed "s/''/'/g")
-
-      echo "          { key: \`$key\`, value: \`$value_cleaned\`} as LocalizationItemResponse," >> "$output_file"
+      echo "  [\`$key\`, \`$value_cleaned\`]," >> "$output_file"
     done
   } < "$csv_file"
-  
-  echo "      ]" >> "$output_file"
-  echo "    } as LocalizationResponse," >> "$output_file"
+
+  echo "]);" >> "$output_file"
+
+  echo "✅ Generated: localization_${locale}.ts"
 done
 
-echo "  ]," >> "$output_file"
-echo "  version: 'static'" >> "$output_file"
-echo "} as LocalizationsResponse;" >> "$output_file"
-
-echo "$index record(s) have been processed"
-echo "✅ localizations.ts file generated successfully at $output_file"
+echo ""
+echo "📦 $index record(s) processed in total."

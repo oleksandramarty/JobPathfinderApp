@@ -1,17 +1,17 @@
 import { Component } from '@angular/core';
 import {generateRandomId, handleApiError} from '@amarty/utils';
-import { CommonDialogService, LocalizationService } from '@amarty/services';
+import {CommonDialogService, DictionaryService, LocalizationService} from '@amarty/services';
 import { Store } from '@ngrx/store';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { selectUser } from '@amarty/store';
 import { takeUntil, tap } from 'rxjs';
-import { CountryData, UserResponse } from '@amarty/api';
+import { UserResponse } from '@amarty/models';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { ApplicationDialogComponent } from '../dialogs/application-dialog/application-dialog.component';
 import { MenuItem } from '@amarty/models';
-import { BaseUnsubscribeComponent } from '@amarty/shared/components';
+import { BaseUnsubscribeComponent } from '@amarty/common';
 import {CommonModule} from '@angular/common';
-import { TranslationPipe } from '@amarty/utils/pipes';
+import { TranslationPipe } from '@amarty/pipes';
 
 @Component({
   selector: 'app-landing',
@@ -61,6 +61,7 @@ export class LandingComponent extends BaseUnsubscribeComponent{
     private readonly snackBar: MatSnackBar,
     private readonly dialogService: CommonDialogService,
     private readonly localizationService: LocalizationService,
+    private readonly dictionaryService: DictionaryService
   ) {
     super();
   }
@@ -72,7 +73,7 @@ export class LandingComponent extends BaseUnsubscribeComponent{
         tap((user) => {
           this.currentUser = user;
 
-          this.countryCode = CountryData.find(item => item.id === this.currentUser?.userSetting?.countryId)?.code?.toLowerCase();
+          this.countryCode = this.dictionaryService.countryData?.find(item => item.id === this.currentUser?.userSetting?.countryId)?.code?.toLowerCase();
         }),
         handleApiError(this.snackBar)
       ).subscribe();

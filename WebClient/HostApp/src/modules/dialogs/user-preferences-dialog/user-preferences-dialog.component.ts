@@ -4,14 +4,16 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Store } from '@ngrx/store';
 import { finalize, switchMap, takeUntil, tap } from 'rxjs';
-import { BaseUnsubscribeComponent, GenericInputComponent } from '@amarty/shared/components';
-import { UpdateUserPreferencesCommand, UserApiClient, UserResponse } from '@amarty/api';
+import { GenericInputComponent } from '@amarty/components';
+import { BaseUnsubscribeComponent } from '@amarty/common';
+import { UpdateUserPreferencesCommand, UserResponse } from '@amarty/models';
+import { UserApiClient } from '@amarty/api';
 import { auth_setUser, selectUser } from '@amarty/store';
 import { DictionaryService, LoaderService, LocalizationService } from '@amarty/services';
 import { DataItem } from '@amarty/models';
 import {handleApiError} from '@amarty/utils';
 import {CommonModule} from '@angular/common';
-import { TranslationPipe } from '@amarty/utils/pipes';
+import { TranslationPipe } from '@amarty/pipes';
 
 @Component({
   selector: 'app-user-preferences-dialog',

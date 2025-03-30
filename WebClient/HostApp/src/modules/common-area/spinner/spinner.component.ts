@@ -3,8 +3,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { interval, Subject, takeUntil, tap } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { LoaderService } from '@amarty/services';
-import { BaseUnsubscribeComponent } from '@amarty/shared/components';
-import { fadeInOut } from '@amarty/shared/animations';
+import { BaseUnsubscribeComponent } from '@amarty/common';
+import { fadeInOut } from '@amarty/animations';
 
 @Component({
   selector: 'app-spinner',

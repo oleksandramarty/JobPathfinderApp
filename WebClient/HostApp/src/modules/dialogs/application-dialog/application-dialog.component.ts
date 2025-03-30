@@ -3,7 +3,8 @@ import {generateRandomId} from '@amarty/utils';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
-import { BaseUnsubscribeComponent, GenericInputComponent } from '@amarty/shared/components';
+import { GenericInputComponent } from '@amarty/components';
+import { BaseUnsubscribeComponent } from '@amarty/common';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DataItem, InputError } from '@amarty/models';
@@ -11,7 +12,7 @@ import { DictionaryService } from '@amarty/services';
 import { Store } from '@ngrx/store';
 import { selectUser } from '@amarty/store';
 import { takeUntil, tap } from 'rxjs';
-import { TranslationPipe } from '@amarty/utils/pipes';
+import { TranslationPipe } from '@amarty/pipes';
 
 @Component({
   selector: 'app-application-dialog',

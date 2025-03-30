@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import {generateRandomId} from '@amarty/utils'
-import { BaseUnsubscribeComponent } from '@amarty/shared/components';
+import { BaseUnsubscribeComponent } from '@amarty/common';
 import {Observable, of} from 'rxjs';
 import {AuthService} from '../../../utils/services/auth.service';
 

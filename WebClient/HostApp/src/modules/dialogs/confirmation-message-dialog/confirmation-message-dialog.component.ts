@@ -2,7 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
-import {SanitizeHtmlPipe, TranslationPipe} from '@amarty/utils/pipes'
+import {SanitizeHtmlPipe, TranslationPipe} from '@amarty/pipes'
 import {generateRandomId} from '@amarty/utils'
 
 @Component({

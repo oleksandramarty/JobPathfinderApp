@@ -10,7 +10,6 @@
       "@amarty/dictionaries": ["./dist/amarty/dictionaries"],
       "@amarty/localizations": ["./dist/amarty/localizations"],
       "@amarty/services": ["./dist/amarty/services"],
-      "@amarty/shared": ["./dist/amarty/shared"],
       "@amarty/store": ["./dist/amarty/store"],
       "@amarty/utils": ["./dist/amarty/utils"],
       "@amarty/pipes": ["./dist/amarty/pipes"],

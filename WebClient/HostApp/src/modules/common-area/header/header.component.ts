@@ -9,10 +9,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { Observable, of } from 'rxjs';
-import { BaseUnsubscribeComponent } from '@amarty/shared/components'
+import { BaseUnsubscribeComponent } from '@amarty/common'
 import {generateRandomId} from '@amarty/utils'
-import { LocalizationService } from '@amarty/services';
-import { LocaleResponse, LocaleData } from '@amarty/api';
+import {DictionaryService, LocalizationService} from '@amarty/services';
+import { LocaleResponse } from '@amarty/models';
 import { MenuItem } from '@amarty//models';
 import { AuthService } from '../../../utils/services/auth.service';
 
@@ -47,7 +47,7 @@ export class HeaderComponent extends BaseUnsubscribeComponent {
     { key: 'MENU.KARMA', url: '/karma' }
   ]
 
-  public locales: LocaleResponse[] = LocaleData;
+  public locales: LocaleResponse[] | undefined;
 
   public userAvatar = 'assets/images/avatar.png';
 
@@ -55,6 +55,7 @@ export class HeaderComponent extends BaseUnsubscribeComponent {
     private readonly snackBar: MatSnackBar,
     private readonly authService: AuthService,
     private readonly localizationService: LocalizationService,
+    private readonly dictionaryService: DictionaryService,
     private readonly router: Router
   ) {
     super();
@@ -65,18 +66,7 @@ export class HeaderComponent extends BaseUnsubscribeComponent {
   }
 
   override ngOnInit() {
-    // this.localizationService.localeChangedSub
-    //   .pipe(
-    //     takeUntil(this.ngUnsubscribe),
-    //     tap((state) => {
-    //       if (!!state && this.currentLocale) {
-    //         this.menuItems.forEach((item) => {
-    //           item.title = this.localizationService.getTranslation(item.key);
-    //         })
-    //       }
-    //     })
-    //   )
-    //   .subscribe();
+    this.locales = this.dictionaryService.localeData;
 
     if (this.currentLocale) {
       this.localizationService.handleLocalizationMenuItems(this.menuItems, this.ngUnsubscribe);

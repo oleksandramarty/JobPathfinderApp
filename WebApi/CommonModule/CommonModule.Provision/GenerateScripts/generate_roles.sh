@@ -7,12 +7,12 @@ csv_file="$(cd "$(dirname "$0")" && pwd | sed 's|/GenerateScripts||')/InitData/r
 
 # Define the output TypeScript file path
 ANGULAR_BASE_DIR=$(cd "$(dirname "$0")" && pwd | sed 's|/WebApi/CommonModule/CommonModule.Provision/GenerateScripts||')
-output_file="$ANGULAR_BASE_DIR/WebClient/Shared/projects/amarty/api/lib/dictionaries/roles.ts"
+output_file="$ANGULAR_BASE_DIR/WebClient/Shared/projects/amarty/dictionaries/lib/roles.ts"
 
 # Start writing the TypeScript file
 echo "// Auto-generated TypeScript file with role data" > "$output_file"
 echo "" >> "$output_file"
-echo "import { RoleResponse, StatusEnum } from '../api.model';" >> "$output_file"
+echo "import { RoleResponse, StatusEnum } from '@amarty/models';" >> "$output_file"
 echo "" >> "$output_file"
 
 # Start array declaration

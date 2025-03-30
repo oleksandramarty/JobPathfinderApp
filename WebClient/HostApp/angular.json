@@ -32,12 +32,11 @@
               },
               {
                 "glob": "**/*",
-                "input": "node_modules/@amarty/shared/assets/styles"
+                "input": "node_modules/@amarty/assets/lib/styles"
               },
               {
                 "glob": "**/*",
-                "input": "node_modules/@amarty/shared/assets/images",
-                "output": "./assets/images"
+                "input": "node_modules/@amarty/assets/lib/images"
               }
             ],
             "styles": [
@@ -116,12 +115,13 @@
               },
               {
                 "glob": "**/*",
-                "input": "node_modules/@amarty/shared/assets/styles",
-                "output": "./assets/styles"
+                "input": "node_modules/@amarty/assets/lib/styles",
+                "output": "./lib/styles"
               },
               {
                 "glob": "**/*",
-                "input": "node_modules/@amarty/shared/assets/images"
+                "input": "node_modules/@amarty/assets/lib/images",
+                "output": "./lib/images"
               }
             ],
             "styles": [

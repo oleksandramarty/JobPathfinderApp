@@ -2,7 +2,11 @@
   "$schema": "../../../node_modules/ng-packagr/ng-package.schema.json",
   "dest": "../../../dist/amarty/assets",
   "lib": {
-    "entryFile": "public-api.ts"
+    "entryFile": "public-api.ts",
+    "styleIncludePaths": ["./styles"]
   },
-  "assets": ["./assets", "./assets/images"]
+  "assets": [
+    "lib/styles",
+    "lib/images"
+  ]
 }

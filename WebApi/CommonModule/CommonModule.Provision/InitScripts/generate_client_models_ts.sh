@@ -169,7 +169,7 @@ EOL
       sed -E -i '' '/^function throwException/,/^}/d' "$CLIENT_FILE"
     
       # ✅ Add import for shared exception (at the very top)
-      sed -i '' '1s|^|import { ApiException, throwException } from "./api-extension.model";\n|' "$CLIENT_FILE"
+      sed -i '' '1s|^|import { ApiException, throwException } from "@amarty/models";\n|' "$CLIENT_FILE"
     
       # ✅ Insert api.model import as the second line (after the first import)
       sed -i '' '1a\
@@ -181,7 +181,7 @@ EOL
       LocalizationsResponse,\
       SiteSettingsResponse,\
       UserResponse\
-    } from "./api.model";
+    } from "@amarty/models";
     ' "$CLIENT_FILE"
   
   fi

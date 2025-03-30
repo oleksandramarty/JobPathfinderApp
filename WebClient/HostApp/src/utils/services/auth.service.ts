@@ -1,4 +1,4 @@
-import { JwtTokenResponse } from '@amarty/api';
+import { JwtTokenResponse } from '@amarty/models';
 import {Injectable} from '@angular/core';
 import {filter, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';

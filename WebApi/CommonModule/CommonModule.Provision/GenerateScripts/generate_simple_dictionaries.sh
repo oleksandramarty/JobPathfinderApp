@@ -11,12 +11,12 @@ for i in "${!file_names[@]}"; do
   
   # Path to output TypeScript file
   ANGULAR_BASE_DIR=$(cd "$(dirname "$0")" && pwd | sed 's|/WebApi/CommonModule/CommonModule.Provision/GenerateScripts||')
-  output_file="$ANGULAR_BASE_DIR/WebClient/Shared/projects/amarty/api/lib/dictionaries/${file_names[$i]}.ts"
+  output_file="$ANGULAR_BASE_DIR/WebClient/Shared/projects/amarty/dictionaries/lib/${file_names[$i]}.ts"
   
   # Start writing TypeScript file
   echo "// Auto-generated TypeScript file with ${file_names[$i]} data" > "$output_file"
   echo "" >> "$output_file"
-  echo "import { ${class_names[$i]}Response, StatusEnum } from '../api.model';" >> "$output_file"
+  echo "import { ${class_names[$i]}Response, StatusEnum } from '@amarty/models';" >> "$output_file"
   echo "" >> "$output_file"
   
   # Start array declaration

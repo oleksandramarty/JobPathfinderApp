@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { interval, takeUntil, tap } from 'rxjs';
-import {BaseUnsubscribeComponent, GenericInputComponent} from '@amarty/shared/components';
-import { fadeInOut } from '@amarty/shared/animations';
+import {GenericInputComponent} from '@amarty/components';
+import {BaseUnsubscribeComponent} from '@amarty/common';
+import { fadeInOut } from '@amarty/animations';
 import {generateRandomId} from '@amarty/utils';
-import { TranslationPipe } from '@amarty/utils/pipes';
+import { TranslationPipe } from '@amarty/pipes';
 
 @Component({
   selector: 'app-auth-forgot',

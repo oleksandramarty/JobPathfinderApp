@@ -5,12 +5,14 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Store } from '@ngrx/store';
 import { takeUntil, tap } from 'rxjs';
 import { CommonModule } from '@angular/common';
-import { BaseUnsubscribeComponent, GenericInputComponent } from '@amarty/shared/components';
-import { UserApiClient, UserLanguageResponse } from '@amarty/api';
+import { GenericInputComponent } from '@amarty/components';
+import { BaseUnsubscribeComponent } from '@amarty/common';
+import { UserApiClient } from '@amarty/api';
+import { UserLanguageResponse } from '@amarty/models';
 import { DataItem, InputError } from '@amarty/models';
 import { DictionaryService, LoaderService, LocalizationService } from '@amarty/services';
 import {generateGuid} from '@amarty/utils';
-import { TranslationPipe } from '@amarty/utils/pipes';
+import { TranslationPipe } from '@amarty/pipes';
 
 @Component({
   selector: 'app-profile-languages-dialog',

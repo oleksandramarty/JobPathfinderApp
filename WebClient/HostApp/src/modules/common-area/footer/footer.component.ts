@@ -14,7 +14,7 @@ import {
 import { MatTooltipModule } from '@angular/material/tooltip';
 import {AuthService} from '../../../utils/services/auth.service';
 import {CommonModule} from '@angular/common';
-import { TranslationPipe } from '@amarty/utils/pipes';
+import { TranslationPipe } from '@amarty/pipes';
 
 @Component({
     selector: 'app-footer',

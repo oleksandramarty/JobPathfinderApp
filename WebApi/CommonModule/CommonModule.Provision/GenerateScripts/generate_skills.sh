@@ -7,12 +7,12 @@ csv_file="$(cd "$(dirname "$0")" && pwd | sed 's|/GenerateScripts||')/InitData/s
 
 # Define the output TypeScript file path
 ANGULAR_BASE_DIR=$(cd "$(dirname "$0")" && pwd | sed 's|/WebApi/CommonModule/CommonModule.Provision/GenerateScripts||')
-output_file="$ANGULAR_BASE_DIR/WebClient/Shared/projects/amarty/api/lib/dictionaries/skills.ts"
+output_file="$ANGULAR_BASE_DIR/WebClient/Shared/projects/amarty/dictionaries/lib/skills.ts"
 
 # Start writing the TypeScript file
 echo "// Auto-generated TypeScript file with skill data" > "$output_file"
 echo "" >> "$output_file"
-echo "import { SkillResponse, StatusEnum } from '../api.model';" >> "$output_file"
+echo "import { SkillResponse, StatusEnum } from '@amarty/models';" >> "$output_file"
 echo "" >> "$output_file"
 
 # Start array declaration

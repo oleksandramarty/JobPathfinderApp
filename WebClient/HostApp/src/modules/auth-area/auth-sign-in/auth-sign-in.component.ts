@@ -5,13 +5,15 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { interval, takeUntil, tap, finalize } from 'rxjs';
-import {BaseUnsubscribeComponent, GenericInputComponent} from '@amarty/shared/components';
-import { fadeInOut } from '@amarty/shared/animations';
+import {GenericInputComponent} from '@amarty/components';
+import { fadeInOut } from '@amarty/animations';
 import {generateRandomId, handleApiError, setLocalStorageItem} from '@amarty/utils';
 import { auth_setToken } from '@amarty/store';
-import { UserApiClient, AuthSignInRequest, JwtTokenResponse } from '@amarty/api';
+import {UserApiClient} from '@amarty/api';
 import { LoaderService } from '@amarty/services';
-import { TranslationPipe } from '@amarty/utils/pipes';
+import { TranslationPipe } from '@amarty/pipes';
+import {BaseUnsubscribeComponent} from '@amarty/common';
+import {AuthSignInRequest, JwtTokenResponse} from '@amarty/models';
 
 @Component({
   selector: 'app-auth-sign-in',

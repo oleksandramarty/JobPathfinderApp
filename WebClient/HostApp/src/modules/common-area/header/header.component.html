@@ -13,7 +13,7 @@
         }
       </nav>
 
-      @if(currentLocale) {
+      @if(currentLocale && locales) {
         <div class="header__lang__container" [matMenuTriggerFor]="menuLang">
           <img class="header__lang__container-current" [src]="'https://flagcdn.com/w320/' + langFlags.get(currentLocale) + '.png'" [alt]="currentLocale" />
         </div>

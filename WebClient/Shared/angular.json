@@ -153,36 +153,6 @@
         }
       }
     },
-    "@amarty/shared": {
-      "projectType": "library",
-      "root": "projects/amarty/shared",
-      "sourceRoot": "projects/amarty/shared/lib",
-      "prefix": "lib",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
-          "options": {
-            "project": "projects/amarty/shared/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "projects/amarty/shared/tsconfig.lib.prod.json"
-            },
-            "development": {
-              "tsConfig": "projects/amarty/shared/tsconfig.lib.json"
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "tsConfig": "projects/amarty/shared/tsconfig.spec.json",
-            "polyfills": ["zone.js", "zone.js/testing"]
-          }
-        }
-      }
-    },
     "@amarty/animations": {
       "projectType": "library",
       "root": "projects/amarty/animations",

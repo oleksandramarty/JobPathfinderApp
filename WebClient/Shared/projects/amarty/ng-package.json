@@ -18,6 +18,8 @@
     "@amarty/directives",
     "@amarty/pipes",
     "@amarty/assets",
-    "@amarty/components"
+    "@amarty/components",
+    "@amarty/components-generic-grid",
+    "@amarty/components-generic/input"
   ]
 }

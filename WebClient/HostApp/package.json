@@ -16,6 +16,7 @@
     "@amarty/api": "file:../Shared/dist/amarty/api/amarty-api-0.0.1.tgz",
     "@amarty/animations": "file:../Shared/dist/amarty/animations/amarty-animations-0.0.1.tgz",
     "@amarty/dictionaries": "file:../Shared/dist/amarty/dictionaries/amarty-dictionaries-0.0.1.tgz",
+    "@amarty/localizations": "file:../Shared/dist/amarty/localizations/amarty-localizations-0.0.1.tgz",
     "@amarty/common": "file:../Shared/dist/amarty/common/amarty-common-0.0.1.tgz",
     "@amarty/services": "file:../Shared/dist/amarty/services/amarty-services-0.0.1.tgz",
     "@amarty/directives": "file:../Shared/dist/amarty/directives/amarty-directives-0.0.1.tgz",

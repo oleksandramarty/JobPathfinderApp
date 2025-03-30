@@ -1,11 +1,17 @@
 import { Component, Input } from '@angular/core';
-import { UserLanguageResponse, UserProfileItemEnum, UserProfileItemResponse, UserResponse, UserSkillResponse } from '@amarty/api';
-import { BaseUnsubscribeComponent } from '@amarty/shared/components';
+import {
+  UserLanguageResponse,
+  UserProfileItemEnum,
+  UserProfileItemResponse,
+  UserResponse,
+  UserSkillResponse
+} from '@amarty/models';
+import { BaseUnsubscribeComponent } from '@amarty/common';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CommonDialogService, DictionaryService } from '@amarty/services';
 import { SafeHtml } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
-import { TranslationPipe } from '@amarty/utils/pipes';
+import { TranslationPipe } from '@amarty/pipes';
 
 @Component({
   selector: 'app-profile-item',

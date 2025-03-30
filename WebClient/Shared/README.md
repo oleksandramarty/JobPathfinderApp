@@ -6,6 +6,8 @@ cd dist/amarty
 npm run pack:libs
 ```
 
+---
+
 ```bash
 npm run build:libs
 ```

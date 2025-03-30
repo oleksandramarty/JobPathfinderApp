@@ -6,7 +6,7 @@ export const JobSourceData: JobSourceResponse[] = [
   { id: 1, title: `LinkedIn`, titleEn: `LinkedIn`, status: StatusEnum.Active } as JobSourceResponse,
   { id: 2, title: `Glassdoor`, titleEn: `Glassdoor`, status: StatusEnum.Active } as JobSourceResponse,
   { id: 3, title: `Indeed`, titleEn: `Indeed`, status: StatusEnum.Active } as JobSourceResponse,
-  { id: 4, title: `Teleram`, titleEn: `Teleram`, status: StatusEnum.Active } as JobSourceResponse,
+  { id: 4, title: `Telegram`, titleEn: `Telegram`, status: StatusEnum.Active } as JobSourceResponse,
   { id: 5, title: `Monster`, titleEn: `Monster`, status: StatusEnum.Active } as JobSourceResponse,
   { id: 6, title: `Facebook`, titleEn: `Facebook`, status: StatusEnum.Active } as JobSourceResponse,
   { id: 7, title: `Craigslist`, titleEn: `Craigslist`, status: StatusEnum.Active } as JobSourceResponse,

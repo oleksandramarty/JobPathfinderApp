@@ -1,7 +1,8 @@
 {
   "extends": "../tsconfig.base.json",
   "compilerOptions": {
-    "outDir": "../../dist/out-tsc/amarty/components",
+    "outDir": "../dist/out-tsc",
+    "target": "ES2022",
     "declaration": true,
     "declarationMap": true,
     "inlineSources": true,
@@ -16,5 +17,8 @@
     }
   },
   "exclude": ["**/*.spec.ts"],
-  "include": ["public-api.ts"]
+  "include": [
+    "lib/generic-input/**/*",
+    "lib/generic-grid/**/*"
+  ]
 }

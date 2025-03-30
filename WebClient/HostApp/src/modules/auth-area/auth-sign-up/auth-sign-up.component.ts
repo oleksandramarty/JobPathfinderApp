@@ -4,11 +4,12 @@ import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angula
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { debounceTime, filter, interval, takeUntil, tap } from 'rxjs';
 
-import {BaseUnsubscribeComponent, GenericInputComponent} from '@amarty/shared/components';
-import { fadeInOut } from '@amarty/shared/animations';
+import { fadeInOut } from '@amarty/animations';
 import {generateRandomId} from '@amarty/utils';
 import { InputError } from '@amarty/models';
-import { TranslationPipe } from '@amarty/utils/pipes';
+import { TranslationPipe } from '@amarty/pipes';
+import {BaseUnsubscribeComponent} from '@amarty/common';
+import {GenericInputComponent} from '@amarty/components';
 
 @Component({
   selector: 'app-auth-sign-up',

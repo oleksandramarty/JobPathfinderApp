@@ -34,7 +34,8 @@
     "./directives": { "import": "./directives/public-api.ts" },
     "./pipes": { "import": "./pipes/public-api.ts" },
     "./assets": { "import": "./assets/public-api.ts" },
-    "./components/generic-grid": { "import": "./components/generic-grid/public-api.ts" },
-    "./components/generic-input": { "import": "./components/generic-input/public-api.ts" }
+    "./components": { "import": "./components/public-api.ts" },
+    "./components-generic-grid": { "import": "./components/generic/generic-grid/public-api.ts" },
+    "./components-generic-input": { "import": "./components/generic/generic-input/public-api.ts" }
   }
 }

@@ -3,7 +3,7 @@ import {generateRandomId, handleApiError} from '@amarty/utils';
 import { takeUntil, tap } from 'rxjs';
 import { Router, RouterModule } from '@angular/router';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-import { BaseUnsubscribeComponent } from '@amarty/shared/components';
+import { BaseUnsubscribeComponent } from '@amarty/common';
 import { AuthService } from '../../../utils/services/auth.service';
 import { CommonModule } from '@angular/common';
 

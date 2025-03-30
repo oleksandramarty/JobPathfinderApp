@@ -7,12 +7,12 @@ csv_file="$(cd "$(dirname "$0")" && pwd | sed 's|/GenerateScripts||')/InitData/l
 
 # Path to the TypeScript file
 ANGULAR_BASE_DIR=$(cd "$(dirname "$0")" && pwd | sed 's|/WebApi/CommonModule/CommonModule.Provision/GenerateScripts||')
-output_file="$ANGULAR_BASE_DIR/WebClient/Shared/projects/amarty/api/lib/dictionaries/locales.ts"
+output_file="$ANGULAR_BASE_DIR/WebClient/Shared/projects/amarty/dictionaries/lib/locales.ts"
 
 # Start by writing the TypeScript file
 echo "// Auto-generated TypeScript file with locale data" > "$output_file"
 echo "" >> "$output_file"
-echo "import { LocaleResponse, StatusEnum } from '../api.model';" >> "$output_file"
+echo "import { LocaleResponse, StatusEnum } from '@amarty/models';" >> "$output_file"
 echo "" >> "$output_file"
 
 # Array declaration

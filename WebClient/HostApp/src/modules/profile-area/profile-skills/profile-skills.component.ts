@@ -1,11 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ProfileSkillsDialogComponent } from '../../dialogs/profile-skills-dialog/profile-skills-dialog.component';
-import { UserSkillResponse } from '@amarty/api';
+import { UserSkillResponse } from '@amarty/models';
 import { CommonDialogService, DictionaryService } from '@amarty/services';
-import { BaseUnsubscribeComponent } from '@amarty/shared/components';
+import { BaseUnsubscribeComponent } from '@amarty/common';
 import { CommonModule } from '@angular/common';
-import { TranslationPipe } from '@amarty/utils/pipes';
+import { TranslationPipe } from '@amarty/pipes';
 
 @Component({
   selector: 'app-profile-skills',
