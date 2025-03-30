@@ -1,5 +1,5 @@
-@use 'mixins' as m;
-@use 'variables' as v;
+@use '_mixins.scss' as m;
+@use '_variables.scss' as v;
 
 .mat-mdc-dialog-container {
   --mdc-dialog-container-shape: 8px !important;

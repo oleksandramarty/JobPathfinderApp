@@ -1,5 +1,5 @@
-@use '@amarty/assets/lib/styles/mixins' as m;
-@use '@amarty/assets/lib/styles/variables' as v;
+@use '@amarty/assets/lib/styles/_mixins.scss' as m;
+@use '@amarty/assets/lib/styles/_variables.scss' as v;
 
 .container {
   align-items: center;

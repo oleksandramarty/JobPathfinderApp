@@ -10,15 +10,16 @@ import {getLocalStorageItem, removeLocalStorageItem, setLocalStorageItem} from '
   providedIn: 'root'
 })
 export class AuthService {
-  private readonly _tokenKey = 'honk-token';
+  private readonly _tokenKey = 'honk_token';
   private _token$: Observable<JwtTokenResponse | undefined> | undefined;
+  private _localToken: JwtTokenResponse | undefined;
 
   private _isUser$: Observable<boolean | undefined> | undefined;
   private _isAdmin$: Observable<boolean | undefined> | undefined;
   private _isSuperAdmin$: Observable<boolean | undefined> | undefined;
 
   get isAuthorized(): boolean {
-    return !!this.getToken() || !!this.getTokenFromStore();
+    return !!this.localToken || !!this.getTokenFromStore();
   }
 
   get isAuthorized$(): Observable<boolean> | undefined {
@@ -45,6 +46,15 @@ export class AuthService {
       map(isSuperAdmin => !!isSuperAdmin));
   }
 
+  get localToken(): JwtTokenResponse | undefined {
+    if (!!this._localToken) {
+      return this._localToken;
+    }
+
+    this._localToken = getLocalStorageItem<JwtTokenResponse>('honk_token');
+    return this._localToken;
+  }
+
   constructor(
     private readonly store: Store
   ) {
@@ -55,9 +65,8 @@ export class AuthService {
   }
 
   public initialize(): void {
-    const storedToken = this.getToken();
-    if (storedToken) {
-      this.store.dispatch(auth_setToken({token: storedToken}));
+    if (this.localToken) {
+      this.store.dispatch(auth_setToken({token: this.localToken}));
     }
 
     if (!this.isAuthorized) {
@@ -73,18 +82,14 @@ export class AuthService {
     return token ?? undefined;
   }
 
-  private auth_setToken(token: JwtTokenResponse): void {
+  public updateToken(token: JwtTokenResponse): void {
     setLocalStorageItem(this._tokenKey, token);
     this.store.dispatch(auth_setToken({token}));
   }
 
-  private getToken(): JwtTokenResponse | undefined {
-    const token = getLocalStorageItem<string>(this._tokenKey);
-    return token ? JSON.parse(token) : undefined;
-  }
-
   private clearAuthData(): void {
     removeLocalStorageItem(this._tokenKey);
+    this._localToken = undefined;
     this.store.dispatch(auth_clearAll());
   }
 }

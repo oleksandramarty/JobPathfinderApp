@@ -34,16 +34,14 @@ export const appConfig: ApplicationConfig = {
       NgxEchartsModule.forRoot({ echarts: () => import('echarts') })
     ),
 
-    UserApiClient,
-
-    { provide: API_BASE_URL_AuthGateway, useValue: environment.authGatewayApiUrl },
-    { provide: API_BASE_URL_Localizations, useValue: environment.localizationApiUrl },
-    { provide: API_BASE_URL_Dictionaries, useValue: environment.dictionaryApiUrl },
-
     {
       provide: HTTP_INTERCEPTORS,
       useClass: BaseUrlInterceptor,
       multi: true,
-    }
+    },
+
+    { provide: API_BASE_URL_AuthGateway, useValue: environment.authGatewayApiUrl },
+    { provide: API_BASE_URL_Localizations, useValue: environment.localizationApiUrl },
+    { provide: API_BASE_URL_Dictionaries, useValue: environment.dictionaryApiUrl }
   ]
 };

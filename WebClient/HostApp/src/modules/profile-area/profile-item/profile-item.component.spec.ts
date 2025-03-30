@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ProfileItemComponent } from './profile-item.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CommonDialogService, DictionaryService } from '@amarty/services';
-import { UserProfileItemEnum, UserSkillResponse, UserLanguageResponse } from '@amarty/api';
+import { UserProfileItemEnum, UserSkillResponse, UserLanguageResponse } from '@amarty/models';
 import { SafeHtml } from '@angular/platform-browser';
 
 describe('ProfileItemComponent', () => {

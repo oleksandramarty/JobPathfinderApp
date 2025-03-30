@@ -32,11 +32,11 @@
               },
               {
                 "glob": "**/*",
-                "input": "node_modules/@amarty/assets/lib/styles"
+                "input": "@amarty/assets/lib/styles"
               },
               {
                 "glob": "**/*",
-                "input": "node_modules/@amarty/assets/lib/images"
+                "input": "@amarty/assets/lib/images"
               }
             ],
             "styles": [
@@ -72,7 +72,7 @@
             "development": {
               "optimization": false,
               "extractLicenses": false,
-              "sourceMap": false
+              "sourceMap": true
             }
           },
           "defaultConfiguration": "production"
@@ -115,13 +115,13 @@
               },
               {
                 "glob": "**/*",
-                "input": "node_modules/@amarty/assets/lib/styles",
-                "output": "./lib/styles"
+                "input": "@amarty/assets/lib/styles",
+                "output": "node_modules/@amarty/assets/lib/styles"
               },
               {
                 "glob": "**/*",
-                "input": "node_modules/@amarty/assets/lib/images",
-                "output": "./lib/images"
+                "input": "@amarty/assets/lib/images",
+                "output": "node_modules/@amarty/assets/lib/images"
               }
             ],
             "styles": [

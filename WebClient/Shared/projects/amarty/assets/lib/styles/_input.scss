@@ -1,5 +1,5 @@
-@use 'variables' as v;
-@use 'mixins' as m;
+@use '_variables.scss' as v;
+@use '_mixins.scss' as m;
 
 .input.input-icon {
   padding: #{m.pxToRem(8)} #{m.pxToRem(36)} #{m.pxToRem(8)} #{m.pxToRem(12)};

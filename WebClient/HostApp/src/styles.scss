@@ -1,8 +1,8 @@
-@use '@amarty/assets/lib/styles/mixins' as m;
-@use '@amarty/assets/lib/styles/variables' as v;
-@use '@amarty/assets/lib/styles/dialog' as d;
-@use '@amarty/assets/lib/styles/button' as b;
-@use '@amarty/assets/lib/styles/input' as i;
+@use '@amarty/assets/lib/styles/_mixins.scss' as m;
+@use '@amarty/assets/lib/styles/_variables.scss' as v;
+@use '@amarty/assets/lib/styles/_dialog.scss' as d;
+@use '@amarty/assets/lib/styles/_button.scss' as b;
+@use '@amarty/assets/lib/styles/_input.scss' as i;
 
 @use '@angular/material' as mat;
 

@@ -3,17 +3,16 @@ import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { Store } from '@ngrx/store';
 import { interval, takeUntil, tap, finalize } from 'rxjs';
 import {GenericInputComponent} from '@amarty/components';
 import { fadeInOut } from '@amarty/animations';
-import {generateRandomId, handleApiError, setLocalStorageItem} from '@amarty/utils';
-import { auth_setToken } from '@amarty/store';
+import {generateRandomId, handleApiError} from '@amarty/utils';
 import {UserApiClient} from '@amarty/api';
 import { LoaderService } from '@amarty/services';
 import { TranslationPipe } from '@amarty/pipes';
 import {BaseUnsubscribeComponent} from '@amarty/common';
 import {AuthSignInRequest, JwtTokenResponse} from '@amarty/models';
+import {AuthService} from '../../../utils/services/auth.service';
 
 @Component({
   selector: 'app-auth-sign-in',
@@ -43,13 +42,11 @@ export class AuthSignInComponent extends BaseUnsubscribeComponent {
   public showLang: boolean = true;
   public submitted: boolean = false;
 
-  private _tokenKey: string = 'honk-token';
-
   constructor(
+    private readonly authService: AuthService,
     private readonly snackBar: MatSnackBar,
     private readonly userApiClient: UserApiClient,
     private readonly loaderService: LoaderService,
-    private readonly store: Store,
     private readonly router: Router,
   ) {
     super();
@@ -88,7 +85,7 @@ export class AuthSignInComponent extends BaseUnsubscribeComponent {
       takeUntil(this.ngUnsubscribe),
       tap((token: JwtTokenResponse | undefined) => {
         if (!!token) {
-          this.auth_setToken(token);
+          this.authService.updateToken(token);
           this.router.navigate(['/home']);
         }
       }),
@@ -112,10 +109,5 @@ export class AuthSignInComponent extends BaseUnsubscribeComponent {
         })
       )
       .subscribe();
-  }
-
-  private auth_setToken(token: JwtTokenResponse): void {
-    setLocalStorageItem(this._tokenKey, token);
-    this.store.dispatch(auth_setToken({ token }));
   }
 }

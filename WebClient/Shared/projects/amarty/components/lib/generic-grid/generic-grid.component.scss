@@ -1,5 +1,5 @@
-@use '../../../assets/lib/styles/variables' as v;
-@use '../../../assets/lib/styles/mixins' as m;
+@use '../../../assets/lib/styles/variables.scss' as v;
+@use '../../../assets/lib/styles/mixins.scss' as m;
 
 .table {
   border-radius: m.pxToRem(8);

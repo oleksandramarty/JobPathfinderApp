@@ -12,20 +12,20 @@
   },
   "sideEffects": false,
   "exports": {
-    "./lib/styles/button.scss": {
-      "default": "./lib/styles/button.scss"
+    "./lib/styles/_button.scss": {
+      "default": "./lib/styles/_button.scss"
     },
-    "./lib/styles/dialog.scss": {
-      "default": "./lib/styles/dialog.scss"
+    "./lib/styles/_dialog.scss": {
+      "default": "./lib/styles/_dialog.scss"
     },
-    "./lib/styles/input.scss": {
-      "default": "./lib/styles/input.scss"
+    "./lib/styles/_input.scss": {
+      "default": "./lib/styles/_input.scss"
     },
-    "./lib/styles/mixins.scss": {
-      "default": "./lib/styles/mixins.scss"
+    "./lib/styles/_mixins.scss": {
+      "default": "./lib/styles/_mixins.scss"
     },
-    "./lib/styles/variables.scss": {
-      "default": "./lib/styles/variables.scss"
+    "./lib/styles/_variables.scss": {
+      "default": "./lib/styles/_variables.scss"
     }
   }
 }

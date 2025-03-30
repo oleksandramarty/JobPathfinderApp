@@ -6,6 +6,8 @@ import { Store } from '@ngrx/store';
 import { environment } from './environments/environment';
 import { auth_clearAll, selectToken } from '@amarty/store';
 import {clearLocalStorageAndRefresh, getLocalStorageItem} from '@amarty/utils';
+import {AuthService} from './services/auth.service';
+import {JwtTokenResponse} from '@amarty/models';
 
 export const HTTP_METHODS = {
   GET: 'GET',
@@ -24,8 +26,9 @@ export class BaseUrlInterceptor implements HttpInterceptor {
   private sso_req = null;
 
   constructor(
-      private router: Router,
-      private readonly store: Store) {
+    private readonly authService: AuthService,
+    private router: Router,
+    private readonly store: Store) {
   }
 
   intercept(
@@ -36,40 +39,33 @@ export class BaseUrlInterceptor implements HttpInterceptor {
       return next.handle(request);
     }
 
-    return this.store.select(selectToken)
-        .pipe(
-            take(1),
-            switchMap((token) => {
-              if (!token) {
-                const localToken = getLocalStorageItem<string>('honk-token');
-                token = localToken ? JSON.parse(localToken) : undefined;
-              }
-              if (token?.token) {
-                request = request.clone({
-                  setHeaders: {
-                    Authorization: `${environment.authSchema} ${token?.token}`
-                  }
-                });
-              }
-              return next.handle(request);
-            }),
-            catchError((error: HttpErrorResponse) => {
-              if (typeof error === 'string') {
-                error = JSON.parse(error);
-              }
+    let token = this.authService.localToken;
+    if (!token) {
+      token = getLocalStorageItem<JwtTokenResponse>('honk_token');
+    }
 
-              if (error.status === 401) {
-                this.store.dispatch(auth_clearAll());
-                clearLocalStorageAndRefresh(true);
-              } else if (error.status === 404) {
-                // Handle EntityNotFoundException
-                console.error('Entity not found:', error.message);
-              } else {
-                // Handle other errors
-                console.error('An error occurred:', error.message);
-              }
-              return throwError(error);
-            })
-        );
+    return next.handle(request.clone({
+      setHeaders: {
+        Authorization: `${environment.authSchema} ${token?.token}`
+      }
+    })).pipe(
+      catchError((error: HttpErrorResponse) => {
+        if (typeof error === 'string') {
+          error = JSON.parse(error);
+        }
+
+        if (error.status === 401) {
+          this.store.dispatch(auth_clearAll());
+          clearLocalStorageAndRefresh(true);
+        } else if (error.status === 404) {
+          // Handle EntityNotFoundException
+          console.error('Entity not found:', error.message);
+        } else {
+          // Handle other errors
+          console.error('An error occurred:', error.message);
+        }
+        return throwError(error);
+      })
+    );
   }
 }
