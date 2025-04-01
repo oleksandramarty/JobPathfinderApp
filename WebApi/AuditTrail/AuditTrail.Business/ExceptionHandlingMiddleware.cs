@@ -14,17 +14,17 @@ namespace AuditTrail.Business;
 public class ExceptionHandlingMiddleware
 {
     private readonly RequestDelegate _next;
-    private readonly IAuditTrailRepository _auditTrailRepository;
+    // private readonly IAuditTrailRepository _auditTrailRepository;
     private readonly IHttpContextAccessor _httpContextAccessor;
     
     public ExceptionHandlingMiddleware(
         RequestDelegate next,
-        IAuditTrailRepository auditTrailRepository,
+        // IAuditTrailRepository auditTrailRepository,
         IHttpContextAccessor httpContextAccessor
     )
     {
         _next = next;
-        _auditTrailRepository = auditTrailRepository;
+        // _auditTrailRepository = auditTrailRepository;
         _httpContextAccessor = httpContextAccessor;
     }
 
@@ -86,7 +86,7 @@ public class ExceptionHandlingMiddleware
                 messageSb.AppendLine(ex.InnerException.StackTrace);
             }
             
-            await CreateAuditTrailAsync(context, ExceptionEnum.Exception, messageSb.ToString());
+            // await CreateAuditTrailAsync(context, ExceptionEnum.Exception, messageSb.ToString());
             await HandleExceptionAsync(context, ex, HttpStatusCode.InternalServerError);
         }
     }
@@ -101,19 +101,19 @@ public class ExceptionHandlingMiddleware
         HttpContext context, ExceptionEnum exception, string message
     )
     {
-        var userIdStr = _httpContextAccessor.HttpContext?.User.FindFirst(AuthClaims.UserId)?.Value;
-        if (userIdStr == null || !Guid.TryParse(userIdStr, out var userId))
-        {
-            userId = Guid.Empty;
-        }
-        
-        await _auditTrailRepository.AddExceptionLogAsync(
-            userId,
-            exception,
-            message,
-            await new StreamReader(context.Request.Body).ReadToEndAsync(),
-            CancellationToken.None
-        );
+        // var userIdStr = _httpContextAccessor.HttpContext?.User.FindFirst(AuthClaims.UserId)?.Value;
+        // if (userIdStr == null || !Guid.TryParse(userIdStr, out var userId))
+        // {
+        //     userId = Guid.Empty;
+        // }
+        //
+        // await _auditTrailRepository.AddExceptionLogAsync(
+        //     userId,
+        //     exception,
+        //     message,
+        //     await new StreamReader(context.Request.Body).ReadToEndAsync(),
+        //     CancellationToken.None
+        // );
     }
 
     /// <summary>

@@ -12,9 +12,9 @@ import { Observable, of } from 'rxjs';
 import { BaseUnsubscribeComponent } from '@amarty/common'
 import {generateRandomId} from '@amarty/utils'
 import {DictionaryService, LocalizationService} from '@amarty/services';
-import { LocaleResponse } from '@amarty/models';
-import { MenuItem } from '@amarty//models';
+import { LocaleResponse, MenuItem } from '@amarty/models';
 import { AuthService } from '../../../utils/services/auth.service';
+import {TranslationPipe} from '@amarty/pipes';
 
 @Component({
   selector: 'app-header',
@@ -27,7 +27,8 @@ import { AuthService } from '../../../utils/services/auth.service';
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
-    MatMenuModule
+    MatMenuModule,
+    TranslationPipe
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',

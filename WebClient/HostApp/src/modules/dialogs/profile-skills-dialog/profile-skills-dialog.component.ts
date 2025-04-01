@@ -76,13 +76,10 @@ export class ProfileSkillsDialogComponent extends BaseUnsubscribeComponent{
         .pipe(
           takeUntil(this.ngUnsubscribe),
           tap(skill => {
-            console.log(skill);
             this.skillInputError =
               (this.existingIds?.findIndex(item => item === String(skill)) ?? -1) > -1 ?
                 [{error: 'COMMON.ALREADY_EXISTS'}] :
                 undefined;
-            console.log(this.existingIds)
-            console.log(this.skillInputError)
           })
         ).subscribe();
     }

@@ -33,10 +33,6 @@
               {
                 "glob": "**/*",
                 "input": "@amarty/assets/lib/styles"
-              },
-              {
-                "glob": "**/*",
-                "input": "@amarty/assets/lib/images"
               }
             ],
             "styles": [
@@ -117,11 +113,6 @@
                 "glob": "**/*",
                 "input": "@amarty/assets/lib/styles",
                 "output": "node_modules/@amarty/assets/lib/styles"
-              },
-              {
-                "glob": "**/*",
-                "input": "@amarty/assets/lib/images",
-                "output": "node_modules/@amarty/assets/lib/images"
               }
             ],
             "styles": [

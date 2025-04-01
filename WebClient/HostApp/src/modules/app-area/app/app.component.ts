@@ -49,6 +49,7 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.authService.initialize();
     this.dictionaryService.initialize();
+    this.localizationService.localeChangedSub.next(true);
 
     this.authService.isAuthorized$?.pipe(
       switchMap(isAuthorized => isAuthorized

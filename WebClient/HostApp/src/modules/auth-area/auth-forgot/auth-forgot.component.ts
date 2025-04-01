@@ -74,7 +74,6 @@ export class AuthForgotComponent extends BaseUnsubscribeComponent {
       });
       return;
     }
-    console.log(this.authFormGroup?.value);
   }
 
   private _startTimer(): void {

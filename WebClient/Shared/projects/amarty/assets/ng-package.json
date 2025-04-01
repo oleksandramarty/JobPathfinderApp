@@ -6,7 +6,6 @@
     "styleIncludePaths": ["./styles"]
   },
   "assets": [
-    "lib/styles",
-    "lib/images"
+    "lib/styles"
   ]
 }

@@ -76,13 +76,10 @@ export class ProfileLanguagesDialogComponent extends BaseUnsubscribeComponent{
         .pipe(
           takeUntil(this.ngUnsubscribe),
           tap(language => {
-            console.log(language);
             this.languageInputError =
               (this.existingIds?.findIndex(item => item === String(language)) ?? -1) > -1 ?
                 [{error: 'COMMON.ALREADY_EXISTS'}] :
                 undefined;
-            console.log(this.existingIds)
-            console.log(this.languageInputError)
           })
         ).subscribe();
     }

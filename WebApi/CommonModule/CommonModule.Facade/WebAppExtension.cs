@@ -254,8 +254,6 @@ public static class WebAppExtension
 
     public static void AddMiddlewares(this IApplicationBuilder app)
     {
-        return;
-        // TODO Uncomment when ExceptionHandlingMiddleware is implemented
         app.UseMiddleware<ExceptionHandlingMiddleware>();
     }
 

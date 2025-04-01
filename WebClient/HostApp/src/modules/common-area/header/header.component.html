@@ -9,7 +9,7 @@
     @if(isAuthorized$ | async) {
       <nav class="header__nav">
         @for(menuItem of menuItems; track $index) {
-          <a [routerLink]="menuItem.url" class="nav__link">{{ menuItem.title }}</a>
+          <a [routerLink]="menuItem.url" class="nav__link">{{ menuItem.key | translation }}</a>
         }
       </nav>
 

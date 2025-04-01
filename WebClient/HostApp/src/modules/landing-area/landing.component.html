@@ -18,7 +18,7 @@
         <div [class]="'stat-card ' + menuItem.className">
           <div class="stat-card__info">
             <p class="stat-card__value">{{ menuItem.value }}</p>
-            <p class="stat-card__label">{{ menuItem.title }}</p>
+            <p class="stat-card__label">{{ menuItem.key | translation }}</p>
           </div>
           <div class="stat-card__icon">
             <i [class]="menuItem.icon"></i>
