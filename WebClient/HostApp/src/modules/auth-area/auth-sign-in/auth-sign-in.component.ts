@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import { interval, takeUntil, tap, finalize } from 'rxjs';
 import {GenericInputComponent} from '@amarty/components';
 import { fadeInOut } from '@amarty/animations';
-import {generateRandomId, handleApiError} from '@amarty/utils';
+import {generateRandomId} from '@amarty/utils';
 import {UserApiClient} from '@amarty/api';
 import { LoaderService } from '@amarty/services';
 import { TranslationPipe } from '@amarty/pipes';
@@ -89,7 +89,6 @@ export class AuthSignInComponent extends BaseUnsubscribeComponent {
           this.router.navigate(['/home']);
         }
       }),
-      handleApiError(this.snackBar),
       finalize(() => {
         this.loaderService.isBusy = false;
       })

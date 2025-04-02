@@ -1,19 +1,19 @@
 import {Injectable} from '@angular/core';
 import {HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
 import {AuthService} from './services/auth.service';
-import {Router} from '@angular/router';
 import {Store} from '@ngrx/store';
 import {catchError, Observable, throwError} from 'rxjs';
-import {clearLocalStorageAndRefresh, getLocalStorageItem} from '@amarty/utils';
+import {clearLocalStorageAndRefresh, getErrorMessage, getLocalStorageItem} from '@amarty/utils';
 import {JwtTokenResponse} from '@amarty/models';
 import {environment} from './environments/environment';
 import {auth_clearAll} from '@amarty/store';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Injectable()
 export class BaseUrlInterceptor implements HttpInterceptor {
   constructor(
     private readonly authService: AuthService,
-    private router: Router,
+    private snackBar: MatSnackBar,
     private readonly store: Store
   ) {}
 
@@ -40,6 +40,8 @@ export class BaseUrlInterceptor implements HttpInterceptor {
         } else {
           console.error('An error occurred:', error.message);
         }
+
+        this.snackBar.open(getErrorMessage(error), 'Close', {duration: 3000});
 
         return throwError(() => error);
       })

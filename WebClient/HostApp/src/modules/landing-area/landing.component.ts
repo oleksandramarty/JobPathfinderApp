@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {generateRandomId, handleApiError} from '@amarty/utils';
+import {generateRandomId} from '@amarty/utils';
 import {CommonDialogService, DictionaryService, LocalizationService} from '@amarty/services';
 import { Store } from '@ngrx/store';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -74,8 +74,7 @@ export class LandingComponent extends BaseUnsubscribeComponent{
           this.currentUser = user;
 
           this.countryCode = this.dictionaryService.countryData?.find(item => item.id === this.currentUser?.userSetting?.countryId)?.code?.toLowerCase();
-        }),
-        handleApiError(this.snackBar)
+        })
       ).subscribe();
 
     this.localizationService.localeChangedSub

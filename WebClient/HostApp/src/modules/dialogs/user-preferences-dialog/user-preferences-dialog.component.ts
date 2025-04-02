@@ -11,7 +11,6 @@ import { UserApiClient } from '@amarty/api';
 import { auth_setUser, selectUser } from '@amarty/store';
 import { DictionaryService, LoaderService, LocalizationService } from '@amarty/services';
 import { DataItem } from '@amarty/models';
-import {handleApiError} from '@amarty/utils';
 import {CommonModule} from '@angular/common';
 import { TranslationPipe } from '@amarty/pipes';
 
@@ -158,7 +157,6 @@ export class UserPreferencesDialogComponent extends BaseUnsubscribeComponent{
         this.loaderService.isBusy = false;
         this.dialogRef.close(true);
       }),
-      handleApiError(this.snackBar),
       finalize(() => {
         this.loaderService.isBusy = false;
       })

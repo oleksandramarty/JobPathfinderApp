@@ -3,7 +3,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 import { Store } from '@ngrx/store';
 import { of, switchMap, take, tap } from 'rxjs';
 import { RouterOutlet } from '@angular/router';
-import {generateRandomId, handleApiError} from '@amarty/utils';
+import {generateRandomId} from '@amarty/utils';
 import { auth_setUser } from '@amarty/store';
 import {
   DictionaryApiClient,
@@ -60,8 +60,7 @@ export class AppComponent implements OnInit {
           this.store.dispatch(auth_setUser({ user }));
           this.localizationService.userLocaleChanged(user);
         }
-      }),
-      handleApiError(this.snackBar)
+      })
     ).subscribe();
 
     this.dictionaryApiService.localization_DictionaryVersion()
@@ -69,8 +68,7 @@ export class AppComponent implements OnInit {
         take(1),
         tap((result: SiteSettingsResponse) => {
           this.siteSettingsService.siteSettings = result;
-        }),
-        handleApiError(this.snackBar)
+        })
       ).subscribe();
   }
 }
