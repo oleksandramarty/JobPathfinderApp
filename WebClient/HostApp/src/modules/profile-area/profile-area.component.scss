@@ -13,6 +13,11 @@
 
 .card {
   margin-bottom: 0;
+
+  &__header__buttons {
+    display: flex;
+    gap: m.pxToRem(10);
+  }
 }
 
 .profile {
@@ -143,3 +148,5 @@
     }
   }
 }
+
+

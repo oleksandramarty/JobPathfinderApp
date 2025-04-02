@@ -62,7 +62,13 @@ export class LocalizationService {
       return this._currentLocale!;
     }
 
-    updateLocalizations() {
+    public initialize(): void {
+      this.localeChangedSub.next(true);
+      this.updateLocalizations();
+
+    }
+
+    public updateLocalizations() {
       this._shortMonths = [
         'DATES.JANUARY_SHORT',
         'DATES.FEBRUARY_SHORT',

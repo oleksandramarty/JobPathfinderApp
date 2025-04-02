@@ -1,17 +1,24 @@
 <div class="card">
   <div class="card__header">
     <h3 class="card__header-title">{{ 'COMMON.SKILLS' | translation }}</h3>
-    <button class="button button__filled__focus" (click)="openSkillsDialog(undefined, true)">
-      <i class="fa-solid fa-pencil"></i> {{ 'COMMON.EDIT_SKILLS' | translation }}
-    </button>
+    <div class="card__header__buttons">
+      <div class="button__icon" (click)="isEditMode = !isEditMode" [class.muted]="!isEditMode">
+        <i class="fa-solid fa-pencil"></i>
+      </div>
+      <div class="button__icon" (click)="openSkillsDialog(undefined, true)">
+        <i class="fa-solid fa-plus"></i>
+      </div>
+    </div>
   </div>
   <div class="badges">
     @if (skillsToAdd) {
       @for(skill of skillsToAdd; track $index) {
         <div class="badge">
           {{ getSkillTitle(skill) }}
-          <i class="fa-solid fa-pencil" (click)="openSkillsDialog(skill.id, true)"></i>
-          <i class="fa-solid fa-xmark" (click)="removeSkill(skill.id!, true)"></i>
+          @if(isEditMode) {
+            <i class="fa-solid fa-pencil" (click)="openSkillsDialog(skill.id, true)"></i>
+            <i class="fa-solid fa-xmark" (click)="removeSkill(skill.id!, true)"></i>
+          }
         </div>
       }
     }
@@ -23,6 +30,14 @@
           <i class="fa-solid fa-xmark" (click)="removeSkill(skill.id!)"></i>
         </div>
       }
+    }
+
+    @if (
+      (!skillsToAdd || !!skillsToAdd && skillsToAdd.length === 0) &&
+      (!existingSkills || !!existingSkills && existingSkills.length === 0)) {
+      <div class="section__empty">
+        <p>{{ 'PROFILE.EMPTY_SECTION' | translation }}</p>
+      </div>
     }
   </div>
 </div>

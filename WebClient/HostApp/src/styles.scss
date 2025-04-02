@@ -333,3 +333,34 @@ input:disabled, select:disabled, textarea:disabled {
     width: #{m.pxToRem(32)};
   }
 }
+
+.section__empty {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  & > p {
+    margin: 0;
+    font-size: #{m.pxToRem(12)};
+    opacity: 0.75;
+  }
+}
+
+.muted {
+  opacity: 0.75;
+  color: var(--muted-text);
+}
+
+.button__icon {
+  font-size: #{m.pxToRem(18)};
+  padding: #{m.pxToRem(6)};
+  border-radius: 50%;
+  width: #{m.pxToRem(24)};
+  height: #{m.pxToRem(24)};
+  cursor: pointer;
+
+  &:hover {
+    background: #f9f9f9;
+  }
+}

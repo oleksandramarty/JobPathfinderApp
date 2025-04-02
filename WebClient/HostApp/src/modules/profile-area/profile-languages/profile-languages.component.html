@@ -1,9 +1,14 @@
 <div class="card">
   <div class="card__header">
     <h3 class="card__header-title">{{ 'COMMON.LANGUAGES' | translation }}</h3>
-    <button class="button button__filled__focus" (click)="openLanguagesDialog(undefined, true)">
-      <i class="fa-solid fa-pencil"></i> {{ 'COMMON.EDIT_LANGUAGES' | translation }}
-    </button>
+    <div class="card__header__buttons">
+      <div class="button__icon" (click)="isEditMode = !isEditMode" [class.muted]="!isEditMode">
+        <i class="fa-solid fa-pencil"></i>
+      </div>
+      <div class="button__icon" (click)="openLanguagesDialog(undefined, true)">
+        <i class="fa-solid fa-plus"></i>
+      </div>
+    </div>
   </div>
   <div class="badges">
     @if (languagesToAdd) {
@@ -19,10 +24,19 @@
       @for(language of existingLanguages; track $index) {
         <div class="badge">
           {{ getLanguageTitle(language) }}
-          <i class="fa-solid fa-pencil" (click)="openLanguagesDialog(language.id)"></i>
-          <i class="fa-solid fa-xmark" (click)="removeLanguage(language.id!)"></i>
+          @if(isEditMode) {
+            <i class="fa-solid fa-pencil" (click)="openLanguagesDialog(language.id)"></i>
+            <i class="fa-solid fa-xmark" (click)="removeLanguage(language.id!)"></i>
+          }
         </div>
       }
+    }
+      @if (
+        (!languagesToAdd || !!languagesToAdd && languagesToAdd.length === 0) &&
+        (!existingLanguages || !!existingLanguages && existingLanguages.length === 0)) {
+      <div class="section__empty">
+        <p>{{ 'PROFILE.EMPTY_SECTION' | translation }}</p>
+      </div>
     }
   </div>
 </div>

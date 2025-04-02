@@ -24,6 +24,8 @@ export class ProfileLanguagesComponent extends BaseUnsubscribeComponent {
   public languagesToAdd: UserLanguageResponse[] | undefined;
   public languageIdsToRemove: string[] | undefined;
 
+  public isEditMode: boolean = false;
+
   constructor(
     private readonly dialogService: CommonDialogService,
     private readonly snackBar: MatSnackBar,

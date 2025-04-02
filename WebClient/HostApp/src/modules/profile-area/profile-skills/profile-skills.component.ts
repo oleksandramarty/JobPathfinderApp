@@ -23,6 +23,8 @@ export class ProfileSkillsComponent extends BaseUnsubscribeComponent {
   public skillsToAdd: UserSkillResponse[] | undefined;
   public skillIdsToRemove: string[] | undefined;
 
+  public isEditMode: boolean = false;
+
   constructor(
     private readonly dialogService: CommonDialogService,
     private readonly snackBar: MatSnackBar,

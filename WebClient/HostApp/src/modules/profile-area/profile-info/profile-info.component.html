@@ -43,9 +43,12 @@
         </div>
       </div>
       <div class="profile__header__right">
-        <button class="button button__filled__focus" (click)="openEditProfileDialog()">
-          <i class="fa-solid fa-pencil"></i> {{ 'COMMON.EDIT_PROFILE' | translation }}
-        </button>
+        <div class="card__header__buttons">
+          <div class="button__icon" (click)="openEditProfileDialog()">
+            <i class="fa-solid fa-pencil"></i>
+          </div>
+        </div>
+
       </div>
     </div>
   }

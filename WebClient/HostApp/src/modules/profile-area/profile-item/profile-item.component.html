@@ -2,9 +2,14 @@
   <div class="card">
     <div class="card__header">
       <h3 class="card__header-title">{{ title | translation }}</h3>
-      <button class="button button__filled__focus">
-        <i class="fa-solid fa-plus"></i> {{ addButtonTitle | translation }}
-      </button>
+      <div class="card__header__buttons">
+        <div class="button__icon" (click)="isEditMode = !isEditMode" [class.muted]="!isEditMode">
+          <i class="fa-solid fa-pencil"></i>
+        </div>
+        <div class="button__icon">
+          <i class="fa-solid fa-plus"></i>
+        </div>
+      </div>
     </div>
     <div class="profile__resume">
       @for(item of currentUser.profileItems; track $index) {
@@ -37,6 +42,12 @@
             </div>
           </div>
         }
+      }
+
+      @if(isEmptySection) {
+        <div class="section__empty">
+          <p>{{ 'PROFILE.EMPTY_SECTION' | translation }}</p>
+        </div>
       }
     </div>
   </div>

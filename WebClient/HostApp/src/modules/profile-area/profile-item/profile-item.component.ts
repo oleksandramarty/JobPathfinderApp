@@ -32,6 +32,8 @@ export class ProfileItemComponent extends BaseUnsubscribeComponent {
   public title: string | undefined;
   public addButtonTitle: string | undefined;
 
+  public isEditMode: boolean = false;
+
   constructor(
     private readonly dialogService: CommonDialogService,
     private readonly snackBar: MatSnackBar,
@@ -40,11 +42,34 @@ export class ProfileItemComponent extends BaseUnsubscribeComponent {
     super();
   }
 
+  get itemTypeTitle(): string {
+    switch (this.itemType) {
+      case UserProfileItemEnum.Experience:
+        return 'EXPERIENCE';
+      case UserProfileItemEnum.Education:
+        return 'EDUCATION';
+      case UserProfileItemEnum.Project:
+        return 'PROJECTS';
+      case UserProfileItemEnum.Achievement:
+        return 'ACHIEVEMENTS';
+      case UserProfileItemEnum.Certification:
+        return 'CERTIFICATIONS';
+      default:
+        return '';
+    }
+  }
+
+  get isEmptySection(): boolean {
+    return !this.currentUser?.profileItems?.some(item => item.profileItemType === this.itemType);
+  }
+
   override ngOnInit() {
-    this.title = `COMMON.${String(this.itemType).toUpperCase()}`;
-    this.addButtonTitle = `COMMON.ADD_${String(this.itemType).toUpperCase()}`;
+    this.title = `COMMON.${this.itemTypeTitle}`;
+    this.addButtonTitle = `COMMON.ADD_${this.itemTypeTitle}`;
     super.ngOnInit();
   }
+
+
 
   public getSkillTitle(skill: UserSkillResponse | undefined): string {
     return this.dictionaryService.getSkillTitle(skill);
