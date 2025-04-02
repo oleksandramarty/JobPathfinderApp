@@ -7,9 +7,14 @@ npm run pack:libs
 ```
 
 ---
-
 ```bash
 npm run build:libs
+```
+```bash
+cd dist/amarty
+```
+```bash
+npm run pack:libs
 ```
 
 ---

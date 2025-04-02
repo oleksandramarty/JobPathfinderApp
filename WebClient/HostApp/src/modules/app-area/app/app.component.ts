@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { Store } from '@ngrx/store';
-import { of, switchMap, take, tap } from 'rxjs';
+import {catchError, of, switchMap, take, tap, throwError} from 'rxjs';
 import { RouterOutlet } from '@angular/router';
 import {generateRandomId} from '@amarty/utils';
 import { auth_setUser } from '@amarty/store';
@@ -60,6 +60,10 @@ export class AppComponent implements OnInit {
           this.store.dispatch(auth_setUser({ user }));
           this.localizationService.userLocaleChanged(user);
         }
+      }),
+      catchError((error: any) => {
+        this.localizationService.handleApiError(error)
+        return throwError(() => error);
       })
     ).subscribe();
 
@@ -68,6 +72,10 @@ export class AppComponent implements OnInit {
         take(1),
         tap((result: SiteSettingsResponse) => {
           this.siteSettingsService.siteSettings = result;
+        }),
+        catchError((error: any) => {
+          this.localizationService.handleApiError(error)
+          return throwError(() => error);
         })
       ).subscribe();
   }

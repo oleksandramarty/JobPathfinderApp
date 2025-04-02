@@ -3,13 +3,13 @@ import { MAT_DIALOG_DATA, MatDialogRef, MatDialogTitle } from '@angular/material
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Store } from '@ngrx/store';
-import { finalize, switchMap, takeUntil, tap } from 'rxjs';
+import {catchError, finalize, switchMap, takeUntil, tap, throwError} from 'rxjs';
 import { GenericInputComponent } from '@amarty/components';
 import { BaseUnsubscribeComponent } from '@amarty/common';
 import { UpdateUserPreferencesCommand, UserResponse } from '@amarty/models';
 import { UserApiClient } from '@amarty/api';
 import { auth_setUser, selectUser } from '@amarty/store';
-import { DictionaryService, LoaderService, LocalizationService } from '@amarty/services';
+import {DictionaryService, LoaderService, LocalizationService} from '@amarty/services';
 import { DataItem } from '@amarty/models';
 import {CommonModule} from '@angular/common';
 import { TranslationPipe } from '@amarty/pipes';
@@ -156,6 +156,10 @@ export class UserPreferencesDialogComponent extends BaseUnsubscribeComponent{
 
         this.loaderService.isBusy = false;
         this.dialogRef.close(true);
+      }),
+      catchError((error: any) => {
+        this.localizationService.handleApiError(error)
+        return throwError(() => error);
       }),
       finalize(() => {
         this.loaderService.isBusy = false;

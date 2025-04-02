@@ -3,12 +3,12 @@ import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { interval, takeUntil, tap, finalize } from 'rxjs';
+import {interval, takeUntil, tap, finalize, catchError, throwError} from 'rxjs';
 import {GenericInputComponent} from '@amarty/components';
 import { fadeInOut } from '@amarty/animations';
 import {generateRandomId} from '@amarty/utils';
 import {UserApiClient} from '@amarty/api';
-import { LoaderService } from '@amarty/services';
+import {LoaderService, LocalizationService} from '@amarty/services';
 import { TranslationPipe } from '@amarty/pipes';
 import {BaseUnsubscribeComponent} from '@amarty/common';
 import {AuthSignInRequest, JwtTokenResponse} from '@amarty/models';
@@ -47,6 +47,7 @@ export class AuthSignInComponent extends BaseUnsubscribeComponent {
     private readonly snackBar: MatSnackBar,
     private readonly userApiClient: UserApiClient,
     private readonly loaderService: LoaderService,
+    private readonly localizationService: LocalizationService,
     private readonly router: Router,
   ) {
     super();
@@ -88,6 +89,10 @@ export class AuthSignInComponent extends BaseUnsubscribeComponent {
           this.authService.updateToken(token);
           this.router.navigate(['/home']);
         }
+      }),
+      catchError((error: any) => {
+        this.localizationService.handleApiError(error)
+        return throwError(() => error);
       }),
       finalize(() => {
         this.loaderService.isBusy = false;

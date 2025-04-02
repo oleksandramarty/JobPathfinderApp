@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Subject, takeUntil, tap } from 'rxjs';
+import {BehaviorSubject, catchError, config, Subject, takeUntil, tap, throwError} from 'rxjs';
 import {
   UserResponse,
   MenuItem } from '@amarty/models';
@@ -13,6 +13,7 @@ import {
   localization_de
 } from '@amarty/localizations';
 import {getLocalStorageItem, setLocalStorageItem} from '@amarty/utils';
+import {MatSnackBar, MatSnackBarConfig} from '@angular/material/snack-bar';
 
 @Injectable({
     providedIn: 'root'
@@ -87,7 +88,9 @@ export class LocalizationService {
       ].map(item => this._currentLocalization?.get(item) ?? '').filter(x => !!x);
     }
 
-    constructor() {}
+    constructor(
+      private readonly snackBar: MatSnackBar
+    ) {}
 
     public getTranslation(key: string | undefined): string | undefined {
         return this.getTranslationByLocale(this._currentLocale, key);
@@ -132,5 +135,41 @@ export class LocalizationService {
           })
         )
         .subscribe();
+    }
+
+    public handleApiError(error: any): void {
+      let errorMessage = 'ERROR.COMMON_ERROR';
+      if (error.error) {
+        errorMessage = error.error.message;
+      } else if (error.message) {
+        errorMessage = error.message;
+      } else if (error.statusText) {
+        errorMessage = error.statusText;
+      }
+
+      this.showError(errorMessage);
+    }
+
+    public showInfo(translationKey: string, action: string = 'Close'): void {
+      this._showMessage(translationKey, { duration: 5000, panelClass: 'info' }, action);
+    }
+    public showSuccess(translationKey: string, action?: string): void {
+      this._showMessage(translationKey, { duration: 5000, panelClass: 'success' }, action);
+    }
+    public showWarning(translationKey: string, action?: string): void {
+      this._showMessage(translationKey, { duration: 5000, panelClass: 'warning' }, action);
+    }
+    public showError(translationKey: string, action?: string): void {
+      this._showMessage(translationKey, { duration: 5000, panelClass: 'error' }, action);
+    }
+
+    private _showMessage(translationKey: string, config?: MatSnackBarConfig, action?: string): void {
+      const translatedMessage = this.getTranslation(translationKey);
+
+      if (!translatedMessage) {
+        return;
+      }
+
+      this.snackBar.open(translatedMessage, action ?? 'OK', config ?? { duration: 5000 });
     }
 }

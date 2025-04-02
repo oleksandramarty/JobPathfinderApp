@@ -33,7 +33,6 @@ describe('AppComponent', () => {
     };
 
     localizationServiceMock = {
-      initialize: jasmine.createSpy('initialize'),
       userLocaleChanged: jasmine.createSpy('userLocaleChanged'),
     };
 

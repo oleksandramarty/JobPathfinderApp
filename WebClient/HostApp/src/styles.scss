@@ -51,6 +51,11 @@ button:focus {
   background: var(--background);
 }
 
+.info.mat-mdc-snack-bar-container {
+  .mdc-snackbar__surface {
+    background: var(--focus);
+  }
+}
 .success.mat-mdc-snack-bar-container {
   .mdc-snackbar__surface {
     background: var(--success);

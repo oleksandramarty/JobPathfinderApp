@@ -3,7 +3,7 @@ import {HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest}
 import {AuthService} from './services/auth.service';
 import {Store} from '@ngrx/store';
 import {catchError, Observable, throwError} from 'rxjs';
-import {clearLocalStorageAndRefresh, getErrorMessage, getLocalStorageItem} from '@amarty/utils';
+import {clearLocalStorageAndRefresh, getLocalStorageItem} from '@amarty/utils';
 import {JwtTokenResponse} from '@amarty/models';
 import {environment} from './environments/environment';
 import {auth_clearAll} from '@amarty/store';
@@ -13,7 +13,6 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 export class BaseUrlInterceptor implements HttpInterceptor {
   constructor(
     private readonly authService: AuthService,
-    private snackBar: MatSnackBar,
     private readonly store: Store
   ) {}
 
@@ -40,8 +39,6 @@ export class BaseUrlInterceptor implements HttpInterceptor {
         } else {
           console.error('An error occurred:', error.message);
         }
-
-        this.snackBar.open(getErrorMessage(error), 'Close', {duration: 3000});
 
         return throwError(() => error);
       })
