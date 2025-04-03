@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ProfileLanguagesComponent } from './profile-languages.component';
 import { CommonDialogService, DictionaryService } from '@amarty/services';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { UserLanguageResponse } from '@amarty/api';
+import {UserLanguageResponse} from '@amarty/models';
 
 describe('ProfileLanguagesComponent', () => {
   let component: ProfileLanguagesComponent;

@@ -5,13 +5,11 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserPreferencesDialogComponent } from '../../dialogs/user-preferences-dialog/user-preferences-dialog.component';
 import { CommonDialogService } from '@amarty/services';
 import { CommonModule } from '@angular/common';
-import { TranslationPipe } from '@amarty/pipes';
 
 @Component({
   selector: 'app-profile-info',
   imports: [
-    CommonModule,
-    TranslationPipe
+    CommonModule
   ],
   standalone: true,
   templateUrl: './profile-info.component.html',

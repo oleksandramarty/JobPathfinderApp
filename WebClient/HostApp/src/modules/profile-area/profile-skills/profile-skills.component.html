@@ -2,39 +2,39 @@
   <div class="card__header">
     <h3 class="card__header-title">{{ 'COMMON.SKILLS' | translation }}</h3>
     <div class="card__header__buttons">
-      <div class="button__icon" (click)="isEditMode = !isEditMode" [class.muted]="!isEditMode">
-        <i class="fa-solid fa-pencil"></i>
-      </div>
-      <div class="button__icon" (click)="openSkillsDialog(undefined, true)">
+      @if(!isEmptySection) {
+        <div class="button__icon" (click)="isEditMode = !isEditMode" [class.muted]="!isEditMode">
+          <i class="fa-solid fa-pencil"></i>
+        </div>
+      }
+      <div class="button__icon" (click)="openItemDialog(true, undefined)">
         <i class="fa-solid fa-plus"></i>
       </div>
     </div>
   </div>
   <div class="badges">
-    @if (skillsToAdd) {
-      @for(skill of skillsToAdd; track $index) {
+    @if (itemsToAdd) {
+      @for(skill of itemsToAdd; track $index) {
         <div class="badge">
-          {{ getSkillTitle(skill) }}
+          {{ getItemTitle(skill) }}
           @if(isEditMode) {
-            <i class="fa-solid fa-pencil" (click)="openSkillsDialog(skill.id, true)"></i>
-            <i class="fa-solid fa-xmark" (click)="removeSkill(skill.id!, true)"></i>
+            <i class="fa-solid fa-pencil" (click)="openItemDialog(true, skill.id)"></i>
+            <i class="fa-solid fa-xmark" (click)="removeItem(true, skill.id!)"></i>
           }
         </div>
       }
     }
-    @if (!!existingSkills) {
-      @for(skill of existingSkills; track $index) {
+    @if (!!existingItems) {
+      @for(skill of existingItems; track $index) {
         <div class="badge">
-          {{ getSkillTitle(skill) }}
-          <i class="fa-solid fa-pencil" (click)="openSkillsDialog(skill.id)"></i>
-          <i class="fa-solid fa-xmark" (click)="removeSkill(skill.id!)"></i>
+          {{ getItemTitle(skill) }}
+          <i class="fa-solid fa-pencil" (click)="openItemDialog(false, skill.id)"></i>
+          <i class="fa-solid fa-xmark" (click)="removeItem(false, skill.id!)"></i>
         </div>
       }
     }
 
-    @if (
-      (!skillsToAdd || !!skillsToAdd && skillsToAdd.length === 0) &&
-      (!existingSkills || !!existingSkills && existingSkills.length === 0)) {
+    @if (isEmptySection) {
       <div class="section__empty">
         <p>{{ 'PROFILE.EMPTY_SECTION' | translation }}</p>
       </div>

@@ -1,10 +1,10 @@
 <div class="container">
   <app-profile-info [currentUser]="currentUser" [countryCode]="countryCode"></app-profile-info>
-  <app-profile-skills [existingSkills]="currentUser?.skills"></app-profile-skills>
-  <app-profile-languages [existingLanguages]="currentUser?.languages"></app-profile-languages>
-  <app-profile-item [currentUser]="currentUser" [itemType]="profileItemEnum.Experience"></app-profile-item>
-  <app-profile-item [currentUser]="currentUser" [itemType]="profileItemEnum.Education"></app-profile-item>
-  <app-profile-item [currentUser]="currentUser" [itemType]="profileItemEnum.Certification"></app-profile-item>
-  <app-profile-item [currentUser]="currentUser" [itemType]="profileItemEnum.Project"></app-profile-item>
-  <app-profile-item [currentUser]="currentUser" [itemType]="profileItemEnum.Achievement"></app-profile-item>
+  <app-profile-skills [existingItems]="currentUser?.skills"></app-profile-skills>
+  <app-profile-languages [existingItems]="currentUser?.languages"></app-profile-languages>
+  <app-profile-item [existingItems]="currentUser?.profileItems" [itemType]="profileItemEnum.Experience"></app-profile-item>
+  <app-profile-item [existingItems]="currentUser?.profileItems" [itemType]="profileItemEnum.Education"></app-profile-item>
+  <app-profile-item [existingItems]="currentUser?.profileItems" [itemType]="profileItemEnum.Certification"></app-profile-item>
+  <app-profile-item [existingItems]="currentUser?.profileItems" [itemType]="profileItemEnum.Project"></app-profile-item>
+  <app-profile-item [existingItems]="currentUser?.profileItems" [itemType]="profileItemEnum.Achievement"></app-profile-item>
 </div>

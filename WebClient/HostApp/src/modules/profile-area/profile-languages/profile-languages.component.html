@@ -2,38 +2,38 @@
   <div class="card__header">
     <h3 class="card__header-title">{{ 'COMMON.LANGUAGES' | translation }}</h3>
     <div class="card__header__buttons">
-      <div class="button__icon" (click)="isEditMode = !isEditMode" [class.muted]="!isEditMode">
-        <i class="fa-solid fa-pencil"></i>
-      </div>
-      <div class="button__icon" (click)="openLanguagesDialog(undefined, true)">
+      @if(!isEmptySection) {
+        <div class="button__icon" (click)="isEditMode = !isEditMode" [class.muted]="!isEditMode">
+          <i class="fa-solid fa-pencil"></i>
+        </div>
+      }
+      <div class="button__icon" (click)="openItemDialog(true, undefined)">
         <i class="fa-solid fa-plus"></i>
       </div>
     </div>
   </div>
   <div class="badges">
-    @if (languagesToAdd) {
-      @for(language of languagesToAdd; track $index) {
+    @if (itemsToAdd) {
+      @for(language of itemsToAdd; track $index) {
         <div class="badge">
-          <div class="badge__language" [innerHTML]="getLanguageTitle(language)"></div>
-          <i class="fa-solid fa-pencil" (click)="openLanguagesDialog(language.id, true)"></i>
-          <i class="fa-solid fa-xmark" (click)="removeLanguage(language.id!, true)"></i>
+          <div class="badge__language" [innerHTML]="getItemTitle(language)"></div>
+          <i class="fa-solid fa-pencil" (click)="openItemDialog(true, language.id)"></i>
+          <i class="fa-solid fa-xmark" (click)="removeItem(true, language.id!)"></i>
         </div>
       }
     }
-    @if (!!existingLanguages) {
-      @for(language of existingLanguages; track $index) {
+    @if (!!existingItems) {
+      @for(language of existingItems; track $index) {
         <div class="badge">
-          {{ getLanguageTitle(language) }}
+          {{ getItemTitle(language) }}
           @if(isEditMode) {
-            <i class="fa-solid fa-pencil" (click)="openLanguagesDialog(language.id)"></i>
-            <i class="fa-solid fa-xmark" (click)="removeLanguage(language.id!)"></i>
+            <i class="fa-solid fa-pencil" (click)="openItemDialog(false, language.id)"></i>
+            <i class="fa-solid fa-xmark" (click)="removeItem(false, language.id!)"></i>
           }
         </div>
       }
     }
-      @if (
-        (!languagesToAdd || !!languagesToAdd && languagesToAdd.length === 0) &&
-        (!existingLanguages || !!existingLanguages && existingLanguages.length === 0)) {
+      @if (isEmptySection) {
       <div class="section__empty">
         <p>{{ 'PROFILE.EMPTY_SECTION' | translation }}</p>
       </div>

@@ -1,11 +1,10 @@
-import { Component, Input } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { Component } from '@angular/core';
 import { ProfileSkillsDialogComponent } from '../../dialogs/profile-skills-dialog/profile-skills-dialog.component';
 import { UserSkillResponse } from '@amarty/models';
 import { CommonDialogService, DictionaryService } from '@amarty/services';
-import { BaseUnsubscribeComponent } from '@amarty/common';
 import { CommonModule } from '@angular/common';
 import { TranslationPipe } from '@amarty/pipes';
+import {BaseProfileSectionComponent} from '../base-profile-section.component';
 
 @Component({
   selector: 'app-profile-skills',
@@ -17,83 +16,36 @@ import { TranslationPipe } from '@amarty/pipes';
   templateUrl: './profile-skills.component.html',
   styleUrl: '../profile-area.component.scss'
 })
-export class ProfileSkillsComponent extends BaseUnsubscribeComponent {
-  @Input() existingSkills: UserSkillResponse[] | undefined;
-
-  public skillsToAdd: UserSkillResponse[] | undefined;
-  public skillIdsToRemove: string[] | undefined;
-
-  public isEditMode: boolean = false;
-
+export class ProfileSkillsComponent extends BaseProfileSectionComponent<UserSkillResponse, string> {
   constructor(
     private readonly dialogService: CommonDialogService,
-    private readonly snackBar: MatSnackBar,
     private readonly dictionaryService: DictionaryService
   ) {
     super();
   }
 
-  public getSkillTitle(skill: UserSkillResponse | undefined): string {
+  protected override getItemTitle(skill: UserSkillResponse | undefined): string {
     return this.dictionaryService.getSkillTitle(skill);
   }
 
-  public openSkillsDialog(skillId?: string, isNew: boolean = false): void {
-    const executableAction = (model: UserSkillResponse): void => {
-      const targetList = isNew
-        ? (this.skillsToAdd ??= [])
-        : (this.existingSkills ??= []);
+  protected override getExistingIds(): string[] {
+    return Array.from(new Set([
+      ...(this.existingItems?.map(item => item.skillId) ?? []),
+      ...(this.itemsToAdd?.map(item => item.skillId) ?? [])
+    ].filter(id => !!id))).map(item => String(item));;
+  }
 
-      const index = targetList.findIndex(skill => skill.id === model.id);
-
-      if (index > -1) {
-        targetList[index] = model;
-      } else {
-        targetList.push(model);
-      }
-    };
-
-    const findSkill = (): UserSkillResponse | undefined => {
-      if (!skillId) return undefined;
-
-      const skillList = isNew ? this.skillsToAdd : this.existingSkills;
-      const index = skillList?.findIndex(item => item.id === skillId) ?? -1;
-
-      return index > -1 ? skillList?.[index] : undefined;
-    };
-
-    const skillToEdit = findSkill();
-
-    const existingIds = Array.from(new Set([
-      ...(this.existingSkills?.map(item => item.skillId) ?? []),
-      ...(this.skillsToAdd?.map(item => item.skillId) ?? [])
-    ].filter(id => !!id))).map(item => String(item));
+  protected override openItemDialog(isNew: boolean, skillId?: string): void {
+    const executableAction = this.openDialogExecutableAction(isNew);
 
     this.dialogService.showDialog<ProfileSkillsDialogComponent, UserSkillResponse>(
       ProfileSkillsDialogComponent,
       {
-        data: { skill: skillToEdit, existingIds },
+        data: { skill: this.findItem(isNew, skillId), existingIds: this.getExistingIds() },
         width: '400px',
         maxWidth: '90vw',
       },
       executableAction
     );
-  }
-
-  public removeSkill(skillId: string, isNew: boolean = false): void {
-    this.skillIdsToRemove ??=[];
-
-    const removeFromList = (list?: UserSkillResponse[]): void => {
-      const index = list?.findIndex(skill => skill.id === skillId);
-      if (index !== undefined && index > -1) {
-        list!.splice(index, 1);
-      }
-    };
-
-    if (isNew) {
-      removeFromList(this.skillsToAdd);
-    } else {
-      removeFromList(this.existingSkills);
-      this.skillIdsToRemove.push(skillId);
-    }
   }
 }
