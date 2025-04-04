@@ -1,15 +1,16 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-import { debounceTime, filter, interval, takeUntil, tap } from 'rxjs';
+import { interval, takeUntil, tap } from 'rxjs';
 
 import { fadeInOut } from '@amarty/animations';
-import {generateRandomId} from '@amarty/utils';
-import { InputError } from '@amarty/models';
+import { generateRandomId } from '@amarty/utils';
 import { TranslationPipe } from '@amarty/pipes';
-import {BaseUnsubscribeComponent} from '@amarty/common';
-import {GenericInputComponent} from '@amarty/components';
+import { BaseUnsubscribeComponent } from '@amarty/common';
+import { GenericFormRendererComponent } from '@amarty/components';
+import { InputForm } from '@amarty/models';
+import { Router, RouterLink } from '@angular/router';
+import {AuthFormFactory} from '../../../utils/auth-form.factory';
 
 @Component({
   selector: 'app-auth-sign-up',
@@ -21,14 +22,14 @@ import {GenericInputComponent} from '@amarty/components';
   imports: [
     CommonModule,
     TranslationPipe,
-    ReactiveFormsModule,
     MatSnackBarModule,
-
-    GenericInputComponent
+    RouterLink,
+    GenericFormRendererComponent
   ]
 })
 export class AuthSignUpComponent extends BaseUnsubscribeComponent {
-  public authFormGroup: FormGroup | undefined;
+  public renderForm!: InputForm;
+  public submitted = false;
 
   public langArray: string[] = [
     `console.log('Hello World!');`, // JavaScript
@@ -52,66 +53,35 @@ export class AuthSignUpComponent extends BaseUnsubscribeComponent {
     `print("Hello World!")`, // Lua
     `IO.puts "Hello World!"` // Elixir
   ];
+  public langIndex = 0;
 
-  public langIndex: number = 0;
-
-  public emailInputError: InputError[] | undefined;
-  public passwordInputError: InputError[] | undefined;
-  public submitted: boolean = false;
-
-  constructor(private readonly snackBar: MatSnackBar) {
+  constructor(
+    private readonly snackBar: MatSnackBar,
+    private readonly router: Router
+  ) {
     super();
-
     this._startTimer();
   }
 
   override ngOnInit() {
-    this.authFormGroup = new FormGroup({
-      firstName: new FormControl('', [Validators.required]),
-      lastName: new FormControl(''),
-      email: new FormControl('', [Validators.required, Validators.email]),
-      confirmEmail: new FormControl('', [Validators.required, Validators.email]),
-      newPassword: new FormControl('', [Validators.required]),
-      confirmNewPassword: new FormControl('', [Validators.required]),
-      noComplaints: new FormControl(false, [Validators.required, Validators.requiredTrue])
-    });
-
-    this.authFormGroup.valueChanges
-      .pipe(
-        takeUntil(this.ngUnsubscribe),
-        debounceTime(100),
-        filter(changes =>
-          ['email', 'confirmEmail', 'newPassword', 'confirmNewPassword'].some(key => changes[key] !== undefined)
-        )
-      )
-      .subscribe(value => {
-        this.passwordInputError = value.newPassword !== value.confirmNewPassword
-          ? [{ error: 'ERROR.PASSWORDS_DO_NOT_MATCH' }]
-          : undefined;
-
-        this.emailInputError = value.email !== value.confirmEmail
-          ? [{ error: 'ERROR.EMAILS_DO_NOT_MATCH' }]
-          : undefined;
-      });
-
+    this.renderForm = AuthFormFactory.createSignUpForm(
+      () => this.register()
+    );
     super.ngOnInit();
   }
 
   public register(): void {
     this.submitted = true;
-    if (this.authFormGroup?.invalid) {
+    if (this.renderForm.inputFormGroup?.invalid) {
       this.snackBar.open(
         'Fix the errors before submitting',
         'OK',
-        {
-          duration: 5000,
-          panelClass: ['error']
-        }
+        { duration: 5000, panelClass: ['error'] }
       );
       return;
     }
 
-    console.log(this.authFormGroup?.value);
+    console.log('Sign-up form submitted:', this.renderForm.inputFormGroup?.value);
   }
 
   private _startTimer(): void {

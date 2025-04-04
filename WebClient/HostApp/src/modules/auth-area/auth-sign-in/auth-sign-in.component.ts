@@ -1,18 +1,19 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
 import {interval, takeUntil, tap, finalize, catchError, throwError} from 'rxjs';
-import {GenericInputComponent} from '@amarty/components';
+import {GenericFormRendererComponent} from '@amarty/components';
 import { fadeInOut } from '@amarty/animations';
 import {generateRandomId} from '@amarty/utils';
 import {UserApiClient} from '@amarty/api';
 import {LoaderService, LocalizationService} from '@amarty/services';
 import { TranslationPipe } from '@amarty/pipes';
 import {BaseUnsubscribeComponent} from '@amarty/common';
-import {AuthSignInRequest, JwtTokenResponse} from '@amarty/models';
+import {AuthSignInRequest, InputForm, InputFormBuilder, InputFormItemBuilder, JwtTokenResponse} from '@amarty/models';
 import {AuthService} from '../../../utils/services/auth.service';
+import {AuthFormFactory} from '../../../utils/auth-form.factory';
 
 @Component({
   selector: 'app-auth-sign-in',
@@ -26,12 +27,13 @@ import {AuthService} from '../../../utils/services/auth.service';
     TranslationPipe,
     ReactiveFormsModule,
     MatSnackBarModule,
+    RouterLink,
 
-    GenericInputComponent
+    GenericFormRendererComponent
   ]
 })
 export class AuthSignInComponent extends BaseUnsubscribeComponent {
-  public authFormGroup: FormGroup | undefined;
+  public renderForm!: InputForm;
 
   public langArray: string[] = [
     "JavaScript", "Python", "Java", "C#", "C", "C++",
@@ -40,7 +42,6 @@ export class AuthSignInComponent extends BaseUnsubscribeComponent {
   ];
   public langIndex: number = 0;
   public showLang: boolean = true;
-  public submitted: boolean = false;
 
   constructor(
     private readonly authService: AuthService,
@@ -56,18 +57,17 @@ export class AuthSignInComponent extends BaseUnsubscribeComponent {
   }
 
   override ngOnInit() {
-    this.authFormGroup = new FormGroup({
-      loginEmail: new FormControl('', [Validators.required]),
-      password: new FormControl('', [Validators.required]),
-      rememberMe: new FormControl(false)
-    });
+    this.renderForm = AuthFormFactory.createSignInForm(
+      () => this.router.navigate(['/auth/forgot']),
+      () => this.login()
+    );
 
     super.ngOnInit();
   }
 
   public login(): void {
-    this.submitted = true;
-    if (this.authFormGroup?.invalid) {
+    this.renderForm.submitted = true;
+    if (this.renderForm.inputFormGroup?.invalid) {
       this.snackBar.open(
         'Fix the errors before submitting',
         'OK',
@@ -79,9 +79,9 @@ export class AuthSignInComponent extends BaseUnsubscribeComponent {
     this.loaderService.isBusy = true;
 
     this.userApiClient.auth_SignIn(new AuthSignInRequest({
-      login: this.authFormGroup?.value.loginEmail,
-      password: this.authFormGroup?.value.password,
-      rememberMe: this.authFormGroup?.value.rememberMe
+      login: this.renderForm.inputFormGroup?.value.loginEmail,
+      password: this.renderForm.inputFormGroup?.value.password,
+      rememberMe: this.renderForm.inputFormGroup?.value.rememberMe
     })).pipe(
       takeUntil(this.ngUnsubscribe),
       tap((token: JwtTokenResponse | undefined) => {

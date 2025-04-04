@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input, signal } from '@angular/core';
 import { BaseUnsubscribeComponent } from '@amarty/common';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { DataItem, InputError } from '@amarty/models';
+import { DataItem, InputError, InputType } from '@amarty/models';
 import { AsyncPipe, CommonModule } from '@angular/common';
 import {generateRandomId} from '@amarty/utils';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -14,18 +14,6 @@ import { MatChipsModule } from '@angular/material/chips';
 import { LocalizationService } from '@amarty/services';
 import { TranslationPipe } from '@amarty/pipes';
 import { TranslationDirective } from '@amarty/directives';
-
-export type InputType =
-  'input' |
-  'select' |
-  'textarea' |
-  'password' |
-  'datepicker' |
-  'radio' |
-  'checkbox' |
-  'autocomplete' |
-  'multiautocomplete' |
-  null;
 
 @Component({
   selector: 'app-generic-input',

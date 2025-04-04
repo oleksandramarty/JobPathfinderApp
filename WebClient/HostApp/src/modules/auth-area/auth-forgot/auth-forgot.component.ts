@@ -1,31 +1,35 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { interval, takeUntil, tap } from 'rxjs';
-import {GenericInputComponent} from '@amarty/components';
-import {BaseUnsubscribeComponent} from '@amarty/common';
+import { Router, RouterLink } from '@angular/router';
+
 import { fadeInOut } from '@amarty/animations';
-import {generateRandomId} from '@amarty/utils';
+import { generateRandomId } from '@amarty/utils';
 import { TranslationPipe } from '@amarty/pipes';
+import { BaseUnsubscribeComponent } from '@amarty/common';
+import { GenericFormRendererComponent } from '@amarty/components';
+import { InputForm } from '@amarty/models';
+import {AuthFormFactory} from '../../../utils/auth-form.factory';
 
 @Component({
   selector: 'app-auth-forgot',
   templateUrl: './auth-forgot.component.html',
-  styleUrls: ['./auth-forgot.component.scss'],
+  styleUrls: ['../auth-area/auth-area.component.scss'],
   standalone: true,
   host: { 'data-id': generateRandomId(12) },
   animations: [fadeInOut],
   imports: [
     CommonModule,
     TranslationPipe,
-    ReactiveFormsModule,
     MatSnackBarModule,
-    GenericInputComponent
+    RouterLink,
+    GenericFormRendererComponent,
   ]
 })
 export class AuthForgotComponent extends BaseUnsubscribeComponent {
-  public authFormGroup: FormGroup | undefined;
+  public renderForm!: InputForm;
+  public submitted = false;
 
   public langArray: string[] = [
     "Try 'password123' (Just kidding, don't do that!)",
@@ -43,37 +47,37 @@ export class AuthForgotComponent extends BaseUnsubscribeComponent {
     "Try using 'incorrect' – then you’ll always be right!",
     "Maybe your subconscious remembers? Meditate on it."
   ];
-
   public langIndex: number = 0;
   public showLang: boolean = true;
-  public submitted: boolean = false;
 
   constructor(
-    private readonly snackBar: MatSnackBar
+    private readonly snackBar: MatSnackBar,
+    private readonly router: Router
   ) {
     super();
-
     this._startTimer();
   }
 
   override ngOnInit() {
-    this.authFormGroup = new FormGroup({
-      email: new FormControl('', [Validators.required, Validators.email]),
-      login: new FormControl('', [Validators.required])
-    });
-
+    this.renderForm = AuthFormFactory.createForgotForm(
+      () => this.router.navigate(['/auth/sign-in']),
+      () => this.forgot()
+    );
     super.ngOnInit();
   }
 
   public forgot(): void {
     this.submitted = true;
-    if (this.authFormGroup?.invalid) {
-      this.snackBar.open('Fix the errors before submitting', 'OK', {
-        duration: 5000,
-        panelClass: ['error']
-      });
+    if (this.renderForm.inputFormGroup?.invalid) {
+      this.snackBar.open(
+        'Fix the errors before submitting',
+        'OK',
+        { duration: 5000, panelClass: ['error'] }
+      );
       return;
     }
+
+    console.log('Forgot form submitted:', this.renderForm.inputFormGroup?.value);
   }
 
   private _startTimer(): void {
