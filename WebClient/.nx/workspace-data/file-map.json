@@ -6,140 +6,140 @@
   "fileMap": {
     "nonProjectFiles": [
       {
-        "file": ".nx/cache/terminalOutputs/25782034290858796",
-        "hash": "7769697943317731214"
-      },
-      {
-        "file": "Shared/angular.json",
-        "hash": "949227628337837717"
-      },
-      {
-        "file": ".nx/cache/terminalOutputs/11182324703460654191",
-        "hash": "10094709540031053577"
-      },
-      {
-        "file": ".nx/cache/terminalOutputs/2020812145707980210",
-        "hash": "10362553536887234202"
-      },
-      {
-        "file": "Shared/README.md",
-        "hash": "4159429425911807561"
-      },
-      {
-        "file": ".idea/workspace.xml",
-        "hash": "11775153911293241559"
-      },
-      {
-        "file": ".nx/cache/terminalOutputs/2933438193319791918",
-        "hash": "14037460980391861394"
-      },
-      {
-        "file": ".nx/cache/terminalOutputs/2868812789132604267",
-        "hash": "14542410681210455623"
-      },
-      {
         "file": ".nx/cache/run.json",
         "hash": "8401921423333321629"
-      },
-      {
-        "file": "Shared/tsconfig.json",
-        "hash": "2406359244666307534"
-      },
-      {
-        "file": "package.json",
-        "hash": "13279942580974480838"
       },
       {
         "file": ".nx/cache/terminalOutputs/15754119758163205589",
         "hash": "17074629884121530220"
       },
       {
-        "file": ".nx/cache/terminalOutputs/11292692628058508031",
-        "hash": "7504079074475880304"
-      },
-      {
-        "file": "Shared/projects/amarty/public-api.ts",
-        "hash": "7305590905401101548"
-      },
-      {
-        "file": "Shared/.editorconfig",
-        "hash": "4165385352547808172"
-      },
-      {
-        "file": ".nx/cache/terminalOutputs/14793041548357747169",
-        "hash": "14318016558237951125"
-      },
-      {
-        "file": "Shared/.gitignore",
-        "hash": "18168400278403753650"
-      },
-      {
-        "file": "README_LINT.MD",
-        "hash": "5751770895630967966"
-      },
-      {
-        "file": ".nx/workspace-data/file-map.json",
-        "hash": "7003640237245532186"
-      },
-      {
-        "file": ".nx/workspace-data/project-graph.json",
-        "hash": "10274931943966059398"
-      },
-      {
-        "file": ".nx/cache/terminalOutputs/15487971486256483735",
-        "hash": "1745046577272819846"
-      },
-      {
-        "file": "nx.json",
-        "hash": "7171517363738923877"
-      },
-      {
-        "file": ".nx/workspace-data/34C48607-ADED-5E5E-8E59-93BAE49A6D5E.db",
-        "hash": "9114102666468956667"
-      },
-      {
-        "file": "Shared/package.json",
-        "hash": "13609959732754714642"
-      },
-      {
-        "file": "Shared/projects/amarty/tsconfig.base.json",
-        "hash": "15847795515057234004"
-      },
-      {
-        "file": ".nx/cache/terminalOutputs/17227935511082776074",
-        "hash": "10146229474482145486"
-      },
-      {
-        "file": ".nx/cache/terminalOutputs/12076963113356731250",
-        "hash": "3237373697385143657"
+        "file": ".nx/cache/terminalOutputs/2020812145707980210",
+        "hash": "10362553536887234202"
       },
       {
         "file": ".nx/workspace-data/source-maps.json",
         "hash": "2677921979619918194"
       },
       {
-        "file": ".nx/cache/terminalOutputs/5231932691972633861",
-        "hash": "13242084093406669649"
-      },
-      {
-        "file": ".nx/cache/terminalOutputs/2925743720285685887",
-        "hash": "16609023786346688584"
-      },
-      {
-        "file": ".nx/cache/terminalOutputs/660706131960941895",
-        "hash": "8522731375663042583"
+        "file": ".nx/cache/terminalOutputs/14793041548357747169",
+        "hash": "14318016558237951125"
       },
       {
         "file": ".eslint.base.json",
         "hash": "2857330547377215026"
       },
       {
-        "file": "Shared/projects/amarty/package.json",
-        "hash": "5045902189961571608"
+        "file": "Shared/.editorconfig",
+        "hash": "4165385352547808172"
+      },
+      {
+        "file": "Shared/projects/amarty/tsconfig.base.json",
+        "hash": "15847795515057234004"
+      },
+      {
+        "file": "Shared/.gitignore",
+        "hash": "18168400278403753650"
+      },
+      {
+        "file": ".nx/workspace-data/project-graph.json",
+        "hash": "13699026788013357816"
+      },
+      {
+        "file": ".nx/cache/terminalOutputs/2868812789132604267",
+        "hash": "14542410681210455623"
+      },
+      {
+        "file": ".nx/cache/terminalOutputs/5231932691972633861",
+        "hash": "13242084093406669649"
+      },
+      {
+        "file": "Shared/angular.json",
+        "hash": "949227628337837717"
+      },
+      {
+        "file": ".nx/cache/terminalOutputs/660706131960941895",
+        "hash": "8522731375663042583"
+      },
+      {
+        "file": "Shared/tsconfig.json",
+        "hash": "2406359244666307534"
+      },
+      {
+        "file": ".nx/cache/terminalOutputs/2925743720285685887",
+        "hash": "16609023786346688584"
+      },
+      {
+        "file": ".nx/workspace-data/34C48607-ADED-5E5E-8E59-93BAE49A6D5E.db",
+        "hash": "9114102666468956667"
+      },
+      {
+        "file": "Shared/projects/amarty/public-api.ts",
+        "hash": "7305590905401101548"
+      },
+      {
+        "file": "README_LINT.MD",
+        "hash": "5751770895630967966"
+      },
+      {
+        "file": "Shared/README.md",
+        "hash": "4159429425911807561"
+      },
+      {
+        "file": ".nx/cache/terminalOutputs/12076963113356731250",
+        "hash": "3237373697385143657"
+      },
+      {
+        "file": ".nx/cache/terminalOutputs/15487971486256483735",
+        "hash": "1745046577272819846"
+      },
+      {
+        "file": ".nx/workspace-data/file-map.json",
+        "hash": "9081404125077021059"
+      },
+      {
+        "file": "package.json",
+        "hash": "13279942580974480838"
+      },
+      {
+        "file": ".nx/cache/terminalOutputs/25782034290858796",
+        "hash": "7769697943317731214"
+      },
+      {
+        "file": ".idea/workspace.xml",
+        "hash": "11775153911293241559"
       },
       {
         "file": "Shared/projects/amarty/ng-package.json",
         "hash": "6747323303803743339"
+      },
+      {
+        "file": "nx.json",
+        "hash": "7171517363738923877"
+      },
+      {
+        "file": "Shared/projects/amarty/package.json",
+        "hash": "5045902189961571608"
+      },
+      {
+        "file": ".nx/cache/terminalOutputs/2933438193319791918",
+        "hash": "14037460980391861394"
+      },
+      {
+        "file": "Shared/package.json",
+        "hash": "13609959732754714642"
+      },
+      {
+        "file": ".nx/cache/terminalOutputs/11292692628058508031",
+        "hash": "7504079074475880304"
+      },
+      {
+        "file": ".nx/cache/terminalOutputs/11182324703460654191",
+        "hash": "10094709540031053577"
+      },
+      {
+        "file": ".nx/cache/terminalOutputs/17227935511082776074",
+        "hash": "10146229474482145486"
       }
     ],
     "projectFileMap": {
