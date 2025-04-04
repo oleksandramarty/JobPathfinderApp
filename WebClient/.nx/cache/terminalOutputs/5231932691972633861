@@ -1,0 +1,19 @@
+Workspace extension with invalid name (npmScope) found.
+
+Linting "amarty-common"...
+[0m[0m
+[0m[4m/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebClient/Shared/projects/amarty/common/lib/base-unsubscribe.compoinent.ts[24m[0m
+[0m   [2m6:1[22m  [31merror[39m  Expected indentation of 2 spaces but found 4  [2mindent[22m[0m
+[0m   [2m8:1[22m  [31merror[39m  Expected indentation of 2 spaces but found 4  [2mindent[22m[0m
+[0m   [2m8:5[22m  [31merror[39m  Lifecycle methods should not be empty         [2m@angular-eslint/no-empty-lifecycle-method[22m[0m
+[0m   [2m9:1[22m  [31merror[39m  Expected indentation of 2 spaces but found 4  [2mindent[22m[0m
+[0m  [2m11:1[22m  [31merror[39m  Expected indentation of 2 spaces but found 4  [2mindent[22m[0m
+[0m  [2m12:1[22m  [31merror[39m  Expected indentation of 4 spaces but found 8  [2mindent[22m[0m
+[0m  [2m13:1[22m  [31merror[39m  Expected indentation of 4 spaces but found 8  [2mindent[22m[0m
+[0m  [2m14:1[22m  [31merror[39m  Expected indentation of 2 spaces but found 4  [2mindent[22m[0m
+[0m[0m
+[0m[31m[1m✖ 8 problems (8 errors, 0 warnings)[22m[39m[0m
+[0m[31m[1m[22m[39m[31m[1m  7 errors and 0 warnings potentially fixable with the `--fix` option.[22m[39m[0m
+[0m[31m[1m[22m[39m[0m
+Lint errors found in the listed files.
+

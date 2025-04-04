@@ -1,0 +1,19 @@
+Workspace extension with invalid name (npmScope) found.
+
+Linting "amarty-directives"...
+[0m[0m
+[0m[4m/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebClient/Shared/projects/amarty/directives/lib/translation.directive.ts[24m[0m
+[0m   [2m3:8[22m   [31merror[39m    A space is required after '{'                                                                                                  [2mobject-curly-spacing[22m[0m
+[0m   [2m3:28[22m  [31merror[39m    A space is required before '}'                                                                                                 [2mobject-curly-spacing[22m[0m
+[0m   [2m6:1[22m   [31merror[39m    Expected indentation of 2 spaces but found 4                                                                                   [2mindent[22m[0m
+[0m   [2m7:1[22m   [31merror[39m    Expected indentation of 2 spaces but found 4                                                                                   [2mindent[22m[0m
+[0m  [2m21:3[22m   [33mwarning[39m  Lifecycle interface 'OnInit' should be implemented for method 'ngOnInit'. (https://angular.dev/style-guide#style-09-01)        [2m@angular-eslint/use-lifecycle-interface[22m[0m
+[0m  [2m40:3[22m   [33mwarning[39m  Lifecycle interface 'OnDestroy' should be implemented for method 'ngOnDestroy'. (https://angular.dev/style-guide#style-09-01)  [2m@angular-eslint/use-lifecycle-interface[22m[0m
+[0m[0m
+[0m[31m[1m✖ 6 problems (4 errors, 2 warnings)[22m[39m[0m
+[0m[31m[1m[22m[39m[31m[1m  4 errors and 2 warnings potentially fixable with the `--fix` option.[22m[39m[0m
+[0m[31m[1m[22m[39m[0m
+Lint warnings found in the listed files.
+
+Lint errors found in the listed files.
+

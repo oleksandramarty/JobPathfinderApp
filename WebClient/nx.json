@@ -1,0 +1,22 @@
+{
+  "npmScope": "amarty",
+  "affected": {
+    "defaultBase": "main"
+  },
+  "projects": {
+    "host-app": "HostApp",
+    "amarty-animations": "Shared/projects/amarty/animations",
+    "amarty-api": "Shared/projects/amarty/api",
+    "amarty-assets": "Shared/projects/amarty/assets",
+    "amarty-common": "Shared/projects/amarty/common",
+    "amarty-components": "Shared/projects/amarty/components",
+    "amarty-dictionaries": "Shared/projects/amarty/dictionaries",
+    "amarty-directives": "Shared/projects/amarty/directives",
+    "amarty-localizations": "Shared/projects/amarty/localizations",
+    "amarty-models": "Shared/projects/amarty/models",
+    "amarty-pipes": "Shared/projects/amarty/pipes",
+    "amarty-services": "Shared/projects/amarty/services",
+    "amarty-store": "Shared/projects/amarty/store",
+    "amarty-utils": "Shared/projects/amarty/utils"
+  }
+}

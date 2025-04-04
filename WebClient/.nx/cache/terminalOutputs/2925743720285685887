@@ -1,0 +1,59 @@
+Workspace extension with invalid name (npmScope) found.
+
+Linting "amarty-components"...
+[0m[0m
+[0m[4m/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebClient/Shared/projects/amarty/components/lib/generic-form-renderer/generic-form-renderer.component.spec.ts[24m[0m
+[0m  [2m0:0[22m  [31merror[39m  Parsing error: ESLint was configured to run on `<tsconfigRootDir>/Shared/projects/amarty/components/lib/generic-form-renderer/generic-form-renderer.component.spec.ts` using `parserOptions.project`: <tsconfigRootDir>/Shared/projects/amarty/components/tsconfig.lib.json[0m
+[0mHowever, that TSConfig does not include this file. Either:[0m
+[0m- Change ESLint's list of included files to not include this file[0m
+[0m- Change that TSConfig to include this file[0m
+[0m- Create a new TSConfig that includes this file and include it in your parserOptions.project[0m
+[0mSee the typescript-eslint docs for more info: https://typescript-eslint.io/troubleshooting/typed-linting#i-get-errors-telling-me-eslint-was-configured-to-run--however-that-tsconfig-does-not--none-of-those-tsconfigs-include-this-file[0m
+[0m[0m
+[0m[4m/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebClient/Shared/projects/amarty/components/lib/generic-form-renderer/generic-form-renderer.component.ts[24m[0m
+[0m  [2m0:0[22m  [31merror[39m  Parsing error: ESLint was configured to run on `<tsconfigRootDir>/Shared/projects/amarty/components/lib/generic-form-renderer/generic-form-renderer.component.ts` using `parserOptions.project`: <tsconfigRootDir>/Shared/projects/amarty/components/tsconfig.lib.json[0m
+[0mHowever, that TSConfig does not include this file. Either:[0m
+[0m- Change ESLint's list of included files to not include this file[0m
+[0m- Change that TSConfig to include this file[0m
+[0m- Create a new TSConfig that includes this file and include it in your parserOptions.project[0m
+[0mSee the typescript-eslint docs for more info: https://typescript-eslint.io/troubleshooting/typed-linting#i-get-errors-telling-me-eslint-was-configured-to-run--however-that-tsconfig-does-not--none-of-those-tsconfigs-include-this-file[0m
+[0m[0m
+[0m[4m/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebClient/Shared/projects/amarty/components/lib/generic-grid/generic-grid.component.spec.ts[24m[0m
+[0m  [2m0:0[22m  [31merror[39m  Parsing error: ESLint was configured to run on `<tsconfigRootDir>/Shared/projects/amarty/components/lib/generic-grid/generic-grid.component.spec.ts` using `parserOptions.project`: <tsconfigRootDir>/Shared/projects/amarty/components/tsconfig.lib.json[0m
+[0mHowever, that TSConfig does not include this file. Either:[0m
+[0m- Change ESLint's list of included files to not include this file[0m
+[0m- Change that TSConfig to include this file[0m
+[0m- Create a new TSConfig that includes this file and include it in your parserOptions.project[0m
+[0mSee the typescript-eslint docs for more info: https://typescript-eslint.io/troubleshooting/typed-linting#i-get-errors-telling-me-eslint-was-configured-to-run--however-that-tsconfig-does-not--none-of-those-tsconfigs-include-this-file[0m
+[0m[0m
+[0m[4m/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebClient/Shared/projects/amarty/components/lib/generic-input/generic-input.component.spec.ts[24m[0m
+[0m  [2m0:0[22m  [31merror[39m  Parsing error: ESLint was configured to run on `<tsconfigRootDir>/Shared/projects/amarty/components/lib/generic-input/generic-input.component.spec.ts` using `parserOptions.project`: <tsconfigRootDir>/Shared/projects/amarty/components/tsconfig.lib.json[0m
+[0mHowever, that TSConfig does not include this file. Either:[0m
+[0m- Change ESLint's list of included files to not include this file[0m
+[0m- Change that TSConfig to include this file[0m
+[0m- Create a new TSConfig that includes this file and include it in your parserOptions.project[0m
+[0mSee the typescript-eslint docs for more info: https://typescript-eslint.io/troubleshooting/typed-linting#i-get-errors-telling-me-eslint-was-configured-to-run--however-that-tsconfig-does-not--none-of-those-tsconfigs-include-this-file[0m
+[0m[0m
+[0m[4m/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebClient/Shared/projects/amarty/components/lib/generic-input/generic-input.component.ts[24m[0m
+[0m    [2m6:8[22m   [31merror[39m    A space is required after '{'                                                                                            [2mobject-curly-spacing[22m[0m
+[0m    [2m6:25[22m  [31merror[39m    A space is required before '}'                                                                                           [2mobject-curly-spacing[22m[0m
+[0m   [2m95:12[22m  [33mwarning[39m  Lifecycle interface 'OnInit' should be implemented for method 'ngOnInit'. (https://angular.dev/style-guide#style-09-01)  [2m@angular-eslint/use-lifecycle-interface[22m[0m
+[0m  [2m111:16[22m  [33mwarning[39m  'value' is defined but never used                                                                                        [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m  [2m111:16[22m  [33mwarning[39m  'value' is defined but never used. Allowed unused args must match /^_/u                                                  [2munused-imports/no-unused-vars[22m[0m
+[0m  [2m225:32[22m  [31merror[39m    Missing semicolon                                                                                                        [2msemi[22m[0m
+[0m[0m
+[0m[4m/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebClient/Shared/projects/amarty/components/lib/index.ts[24m[0m
+[0m  [2m0:0[22m  [31merror[39m  Parsing error: ESLint was configured to run on `<tsconfigRootDir>/Shared/projects/amarty/components/lib/index.ts` using `parserOptions.project`: <tsconfigRootDir>/Shared/projects/amarty/components/tsconfig.lib.json[0m
+[0mHowever, that TSConfig does not include this file. Either:[0m
+[0m- Change ESLint's list of included files to not include this file[0m
+[0m- Change that TSConfig to include this file[0m
+[0m- Create a new TSConfig that includes this file and include it in your parserOptions.project[0m
+[0mSee the typescript-eslint docs for more info: https://typescript-eslint.io/troubleshooting/typed-linting#i-get-errors-telling-me-eslint-was-configured-to-run--however-that-tsconfig-does-not--none-of-those-tsconfigs-include-this-file[0m
+[0m[0m
+[0m[31m[1m✖ 11 problems (8 errors, 3 warnings)[22m[39m[0m
+[0m[31m[1m[22m[39m[31m[1m  3 errors and 1 warning potentially fixable with the `--fix` option.[22m[39m[0m
+[0m[31m[1m[22m[39m[0m
+Lint warnings found in the listed files.
+
+Lint errors found in the listed files.
+

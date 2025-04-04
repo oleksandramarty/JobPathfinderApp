@@ -1,0 +1,1294 @@
+{
+  "HostApp": {
+    "root": [
+      "HostApp/project.json",
+      "nx/core/project-json"
+    ],
+    "name": [
+      "HostApp/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "HostApp/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:private": [
+      "HostApp/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups": [
+      "HostApp/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups.NPM Scripts": [
+      "HostApp/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups.NPM Scripts.0": [
+      "HostApp/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups.NPM Scripts.1": [
+      "HostApp/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups.NPM Scripts.2": [
+      "HostApp/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups.NPM Scripts.3": [
+      "HostApp/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups.NPM Scripts.4": [
+      "HostApp/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js": [
+      "HostApp/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageName": [
+      "HostApp/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.isInPackageManagerWorkspaces": [
+      "HostApp/package.json",
+      "nx/core/package-json"
+    ],
+    "targets": [
+      "HostApp/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.ng": [
+      "HostApp/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.ng.executor": [
+      "HostApp/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.ng.options": [
+      "HostApp/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.ng.metadata": [
+      "HostApp/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.ng.options.script": [
+      "HostApp/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.ng.metadata.scriptContent": [
+      "HostApp/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.ng.metadata.runCommand": [
+      "HostApp/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.start": [
+      "HostApp/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.start.executor": [
+      "HostApp/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.start.options": [
+      "HostApp/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.start.metadata": [
+      "HostApp/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.start.options.script": [
+      "HostApp/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.start.metadata.scriptContent": [
+      "HostApp/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.start.metadata.runCommand": [
+      "HostApp/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.build": [
+      "HostApp/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.build.executor": [
+      "HostApp/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.build.options": [
+      "HostApp/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.build.metadata": [
+      "HostApp/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.build.options.script": [
+      "HostApp/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.build.metadata.scriptContent": [
+      "HostApp/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.build.metadata.runCommand": [
+      "HostApp/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.watch": [
+      "HostApp/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.watch.executor": [
+      "HostApp/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.watch.options": [
+      "HostApp/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.watch.metadata": [
+      "HostApp/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.watch.options.script": [
+      "HostApp/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.watch.metadata.scriptContent": [
+      "HostApp/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.watch.metadata.runCommand": [
+      "HostApp/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.test": [
+      "HostApp/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.test.executor": [
+      "HostApp/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.test.options": [
+      "HostApp/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.test.metadata": [
+      "HostApp/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.test.options.script": [
+      "HostApp/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.test.metadata.scriptContent": [
+      "HostApp/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.test.metadata.runCommand": [
+      "HostApp/package.json",
+      "nx/core/package-json"
+    ],
+    "sourceRoot": [
+      "HostApp/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "HostApp/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint": [
+      "HostApp/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.executor": [
+      "HostApp/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.options": [
+      "HostApp/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.options.lintFilePatterns": [
+      "HostApp/project.json",
+      "nx/core/project-json"
+    ]
+  },
+  "Shared/projects/amarty/animations": {
+    "root": [
+      "Shared/projects/amarty/animations/project.json",
+      "nx/core/project-json"
+    ],
+    "name": [
+      "Shared/projects/amarty/animations/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "Shared/projects/amarty/animations/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:public": [
+      "Shared/projects/amarty/animations/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups": [
+      "Shared/projects/amarty/animations/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js": [
+      "Shared/projects/amarty/animations/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageName": [
+      "Shared/projects/amarty/animations/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageMain": [
+      "Shared/projects/amarty/animations/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.isInPackageManagerWorkspaces": [
+      "Shared/projects/amarty/animations/package.json",
+      "nx/core/package-json"
+    ],
+    "targets": [
+      "Shared/projects/amarty/animations/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish": [
+      "Shared/projects/amarty/animations/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.executor": [
+      "Shared/projects/amarty/animations/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.dependsOn": [
+      "Shared/projects/amarty/animations/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.options": [
+      "Shared/projects/amarty/animations/package.json",
+      "nx/core/package-json"
+    ],
+    "sourceRoot": [
+      "Shared/projects/amarty/animations/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "Shared/projects/amarty/animations/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint": [
+      "Shared/projects/amarty/animations/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.executor": [
+      "Shared/projects/amarty/animations/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.options": [
+      "Shared/projects/amarty/animations/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.options.lintFilePatterns": [
+      "Shared/projects/amarty/animations/project.json",
+      "nx/core/project-json"
+    ]
+  },
+  "Shared/projects/amarty/api": {
+    "root": [
+      "Shared/projects/amarty/api/project.json",
+      "nx/core/project-json"
+    ],
+    "name": [
+      "Shared/projects/amarty/api/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "Shared/projects/amarty/api/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:public": [
+      "Shared/projects/amarty/api/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups": [
+      "Shared/projects/amarty/api/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js": [
+      "Shared/projects/amarty/api/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageName": [
+      "Shared/projects/amarty/api/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageMain": [
+      "Shared/projects/amarty/api/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.isInPackageManagerWorkspaces": [
+      "Shared/projects/amarty/api/package.json",
+      "nx/core/package-json"
+    ],
+    "targets": [
+      "Shared/projects/amarty/api/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish": [
+      "Shared/projects/amarty/api/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.executor": [
+      "Shared/projects/amarty/api/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.dependsOn": [
+      "Shared/projects/amarty/api/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.options": [
+      "Shared/projects/amarty/api/package.json",
+      "nx/core/package-json"
+    ],
+    "sourceRoot": [
+      "Shared/projects/amarty/api/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "Shared/projects/amarty/api/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint": [
+      "Shared/projects/amarty/api/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.executor": [
+      "Shared/projects/amarty/api/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.options": [
+      "Shared/projects/amarty/api/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.options.lintFilePatterns": [
+      "Shared/projects/amarty/api/project.json",
+      "nx/core/project-json"
+    ]
+  },
+  "Shared/projects/amarty/assets": {
+    "root": [
+      "Shared/projects/amarty/assets/project.json",
+      "nx/core/project-json"
+    ],
+    "name": [
+      "Shared/projects/amarty/assets/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "Shared/projects/amarty/assets/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:public": [
+      "Shared/projects/amarty/assets/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups": [
+      "Shared/projects/amarty/assets/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js": [
+      "Shared/projects/amarty/assets/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageName": [
+      "Shared/projects/amarty/assets/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageExports": [
+      "Shared/projects/amarty/assets/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageMain": [
+      "Shared/projects/amarty/assets/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.isInPackageManagerWorkspaces": [
+      "Shared/projects/amarty/assets/package.json",
+      "nx/core/package-json"
+    ],
+    "targets": [
+      "Shared/projects/amarty/assets/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish": [
+      "Shared/projects/amarty/assets/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.executor": [
+      "Shared/projects/amarty/assets/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.dependsOn": [
+      "Shared/projects/amarty/assets/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.options": [
+      "Shared/projects/amarty/assets/package.json",
+      "nx/core/package-json"
+    ],
+    "sourceRoot": [
+      "Shared/projects/amarty/assets/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "Shared/projects/amarty/assets/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint": [
+      "Shared/projects/amarty/assets/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.executor": [
+      "Shared/projects/amarty/assets/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.options": [
+      "Shared/projects/amarty/assets/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.options.lintFilePatterns": [
+      "Shared/projects/amarty/assets/project.json",
+      "nx/core/project-json"
+    ]
+  },
+  "Shared/projects/amarty/common": {
+    "root": [
+      "Shared/projects/amarty/common/project.json",
+      "nx/core/project-json"
+    ],
+    "name": [
+      "Shared/projects/amarty/common/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "Shared/projects/amarty/common/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:public": [
+      "Shared/projects/amarty/common/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups": [
+      "Shared/projects/amarty/common/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js": [
+      "Shared/projects/amarty/common/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageName": [
+      "Shared/projects/amarty/common/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageMain": [
+      "Shared/projects/amarty/common/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.isInPackageManagerWorkspaces": [
+      "Shared/projects/amarty/common/package.json",
+      "nx/core/package-json"
+    ],
+    "targets": [
+      "Shared/projects/amarty/common/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish": [
+      "Shared/projects/amarty/common/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.executor": [
+      "Shared/projects/amarty/common/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.dependsOn": [
+      "Shared/projects/amarty/common/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.options": [
+      "Shared/projects/amarty/common/package.json",
+      "nx/core/package-json"
+    ],
+    "sourceRoot": [
+      "Shared/projects/amarty/common/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "Shared/projects/amarty/common/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint": [
+      "Shared/projects/amarty/common/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.executor": [
+      "Shared/projects/amarty/common/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.options": [
+      "Shared/projects/amarty/common/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.options.lintFilePatterns": [
+      "Shared/projects/amarty/common/project.json",
+      "nx/core/project-json"
+    ]
+  },
+  "Shared/projects/amarty/components": {
+    "root": [
+      "Shared/projects/amarty/components/project.json",
+      "nx/core/project-json"
+    ],
+    "name": [
+      "Shared/projects/amarty/components/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "Shared/projects/amarty/components/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:public": [
+      "Shared/projects/amarty/components/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups": [
+      "Shared/projects/amarty/components/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js": [
+      "Shared/projects/amarty/components/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageName": [
+      "Shared/projects/amarty/components/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.isInPackageManagerWorkspaces": [
+      "Shared/projects/amarty/components/package.json",
+      "nx/core/package-json"
+    ],
+    "targets": [
+      "Shared/projects/amarty/components/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish": [
+      "Shared/projects/amarty/components/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.executor": [
+      "Shared/projects/amarty/components/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.dependsOn": [
+      "Shared/projects/amarty/components/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.options": [
+      "Shared/projects/amarty/components/package.json",
+      "nx/core/package-json"
+    ],
+    "sourceRoot": [
+      "Shared/projects/amarty/components/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "Shared/projects/amarty/components/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint": [
+      "Shared/projects/amarty/components/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.executor": [
+      "Shared/projects/amarty/components/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.options": [
+      "Shared/projects/amarty/components/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.options.lintFilePatterns": [
+      "Shared/projects/amarty/components/project.json",
+      "nx/core/project-json"
+    ]
+  },
+  "Shared/projects/amarty/dictionaries": {
+    "root": [
+      "Shared/projects/amarty/dictionaries/project.json",
+      "nx/core/project-json"
+    ],
+    "name": [
+      "Shared/projects/amarty/dictionaries/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "Shared/projects/amarty/dictionaries/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:public": [
+      "Shared/projects/amarty/dictionaries/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups": [
+      "Shared/projects/amarty/dictionaries/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js": [
+      "Shared/projects/amarty/dictionaries/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageName": [
+      "Shared/projects/amarty/dictionaries/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageMain": [
+      "Shared/projects/amarty/dictionaries/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.isInPackageManagerWorkspaces": [
+      "Shared/projects/amarty/dictionaries/package.json",
+      "nx/core/package-json"
+    ],
+    "targets": [
+      "Shared/projects/amarty/dictionaries/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish": [
+      "Shared/projects/amarty/dictionaries/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.executor": [
+      "Shared/projects/amarty/dictionaries/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.dependsOn": [
+      "Shared/projects/amarty/dictionaries/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.options": [
+      "Shared/projects/amarty/dictionaries/package.json",
+      "nx/core/package-json"
+    ],
+    "sourceRoot": [
+      "Shared/projects/amarty/dictionaries/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "Shared/projects/amarty/dictionaries/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint": [
+      "Shared/projects/amarty/dictionaries/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.executor": [
+      "Shared/projects/amarty/dictionaries/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.options": [
+      "Shared/projects/amarty/dictionaries/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.options.lintFilePatterns": [
+      "Shared/projects/amarty/dictionaries/project.json",
+      "nx/core/project-json"
+    ]
+  },
+  "Shared/projects/amarty/directives": {
+    "root": [
+      "Shared/projects/amarty/directives/project.json",
+      "nx/core/project-json"
+    ],
+    "name": [
+      "Shared/projects/amarty/directives/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "Shared/projects/amarty/directives/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:public": [
+      "Shared/projects/amarty/directives/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups": [
+      "Shared/projects/amarty/directives/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js": [
+      "Shared/projects/amarty/directives/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageName": [
+      "Shared/projects/amarty/directives/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageMain": [
+      "Shared/projects/amarty/directives/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.isInPackageManagerWorkspaces": [
+      "Shared/projects/amarty/directives/package.json",
+      "nx/core/package-json"
+    ],
+    "targets": [
+      "Shared/projects/amarty/directives/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish": [
+      "Shared/projects/amarty/directives/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.executor": [
+      "Shared/projects/amarty/directives/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.dependsOn": [
+      "Shared/projects/amarty/directives/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.options": [
+      "Shared/projects/amarty/directives/package.json",
+      "nx/core/package-json"
+    ],
+    "sourceRoot": [
+      "Shared/projects/amarty/directives/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "Shared/projects/amarty/directives/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint": [
+      "Shared/projects/amarty/directives/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.executor": [
+      "Shared/projects/amarty/directives/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.options": [
+      "Shared/projects/amarty/directives/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.options.lintFilePatterns": [
+      "Shared/projects/amarty/directives/project.json",
+      "nx/core/project-json"
+    ]
+  },
+  "Shared/projects/amarty/localizations": {
+    "root": [
+      "Shared/projects/amarty/localizations/project.json",
+      "nx/core/project-json"
+    ],
+    "name": [
+      "Shared/projects/amarty/localizations/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "Shared/projects/amarty/localizations/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:public": [
+      "Shared/projects/amarty/localizations/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups": [
+      "Shared/projects/amarty/localizations/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js": [
+      "Shared/projects/amarty/localizations/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageName": [
+      "Shared/projects/amarty/localizations/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageMain": [
+      "Shared/projects/amarty/localizations/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.isInPackageManagerWorkspaces": [
+      "Shared/projects/amarty/localizations/package.json",
+      "nx/core/package-json"
+    ],
+    "targets": [
+      "Shared/projects/amarty/localizations/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish": [
+      "Shared/projects/amarty/localizations/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.executor": [
+      "Shared/projects/amarty/localizations/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.dependsOn": [
+      "Shared/projects/amarty/localizations/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.options": [
+      "Shared/projects/amarty/localizations/package.json",
+      "nx/core/package-json"
+    ],
+    "sourceRoot": [
+      "Shared/projects/amarty/localizations/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "Shared/projects/amarty/localizations/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint": [
+      "Shared/projects/amarty/localizations/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.executor": [
+      "Shared/projects/amarty/localizations/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.options": [
+      "Shared/projects/amarty/localizations/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.options.lintFilePatterns": [
+      "Shared/projects/amarty/localizations/project.json",
+      "nx/core/project-json"
+    ]
+  },
+  "Shared/projects/amarty/models": {
+    "root": [
+      "Shared/projects/amarty/models/project.json",
+      "nx/core/project-json"
+    ],
+    "name": [
+      "Shared/projects/amarty/models/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "Shared/projects/amarty/models/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:public": [
+      "Shared/projects/amarty/models/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups": [
+      "Shared/projects/amarty/models/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js": [
+      "Shared/projects/amarty/models/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageName": [
+      "Shared/projects/amarty/models/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageMain": [
+      "Shared/projects/amarty/models/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.isInPackageManagerWorkspaces": [
+      "Shared/projects/amarty/models/package.json",
+      "nx/core/package-json"
+    ],
+    "targets": [
+      "Shared/projects/amarty/models/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish": [
+      "Shared/projects/amarty/models/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.executor": [
+      "Shared/projects/amarty/models/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.dependsOn": [
+      "Shared/projects/amarty/models/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.options": [
+      "Shared/projects/amarty/models/package.json",
+      "nx/core/package-json"
+    ],
+    "sourceRoot": [
+      "Shared/projects/amarty/models/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "Shared/projects/amarty/models/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint": [
+      "Shared/projects/amarty/models/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.executor": [
+      "Shared/projects/amarty/models/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.options": [
+      "Shared/projects/amarty/models/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.options.lintFilePatterns": [
+      "Shared/projects/amarty/models/project.json",
+      "nx/core/project-json"
+    ]
+  },
+  "Shared/projects/amarty/pipes": {
+    "root": [
+      "Shared/projects/amarty/pipes/project.json",
+      "nx/core/project-json"
+    ],
+    "name": [
+      "Shared/projects/amarty/pipes/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "Shared/projects/amarty/pipes/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:public": [
+      "Shared/projects/amarty/pipes/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups": [
+      "Shared/projects/amarty/pipes/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js": [
+      "Shared/projects/amarty/pipes/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageName": [
+      "Shared/projects/amarty/pipes/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageMain": [
+      "Shared/projects/amarty/pipes/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.isInPackageManagerWorkspaces": [
+      "Shared/projects/amarty/pipes/package.json",
+      "nx/core/package-json"
+    ],
+    "targets": [
+      "Shared/projects/amarty/pipes/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish": [
+      "Shared/projects/amarty/pipes/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.executor": [
+      "Shared/projects/amarty/pipes/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.dependsOn": [
+      "Shared/projects/amarty/pipes/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.options": [
+      "Shared/projects/amarty/pipes/package.json",
+      "nx/core/package-json"
+    ],
+    "sourceRoot": [
+      "Shared/projects/amarty/pipes/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "Shared/projects/amarty/pipes/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint": [
+      "Shared/projects/amarty/pipes/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.executor": [
+      "Shared/projects/amarty/pipes/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.options": [
+      "Shared/projects/amarty/pipes/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.options.lintFilePatterns": [
+      "Shared/projects/amarty/pipes/project.json",
+      "nx/core/project-json"
+    ]
+  },
+  "Shared/projects/amarty/services": {
+    "root": [
+      "Shared/projects/amarty/services/project.json",
+      "nx/core/project-json"
+    ],
+    "name": [
+      "Shared/projects/amarty/services/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "Shared/projects/amarty/services/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:public": [
+      "Shared/projects/amarty/services/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups": [
+      "Shared/projects/amarty/services/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js": [
+      "Shared/projects/amarty/services/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageName": [
+      "Shared/projects/amarty/services/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageMain": [
+      "Shared/projects/amarty/services/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.isInPackageManagerWorkspaces": [
+      "Shared/projects/amarty/services/package.json",
+      "nx/core/package-json"
+    ],
+    "targets": [
+      "Shared/projects/amarty/services/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish": [
+      "Shared/projects/amarty/services/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.executor": [
+      "Shared/projects/amarty/services/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.dependsOn": [
+      "Shared/projects/amarty/services/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.options": [
+      "Shared/projects/amarty/services/package.json",
+      "nx/core/package-json"
+    ],
+    "sourceRoot": [
+      "Shared/projects/amarty/services/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "Shared/projects/amarty/services/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint": [
+      "Shared/projects/amarty/services/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.executor": [
+      "Shared/projects/amarty/services/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.options": [
+      "Shared/projects/amarty/services/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.options.lintFilePatterns": [
+      "Shared/projects/amarty/services/project.json",
+      "nx/core/project-json"
+    ]
+  },
+  "Shared/projects/amarty/store": {
+    "root": [
+      "Shared/projects/amarty/store/project.json",
+      "nx/core/project-json"
+    ],
+    "name": [
+      "Shared/projects/amarty/store/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "Shared/projects/amarty/store/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:public": [
+      "Shared/projects/amarty/store/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups": [
+      "Shared/projects/amarty/store/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js": [
+      "Shared/projects/amarty/store/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageName": [
+      "Shared/projects/amarty/store/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageMain": [
+      "Shared/projects/amarty/store/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.isInPackageManagerWorkspaces": [
+      "Shared/projects/amarty/store/package.json",
+      "nx/core/package-json"
+    ],
+    "targets": [
+      "Shared/projects/amarty/store/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish": [
+      "Shared/projects/amarty/store/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.executor": [
+      "Shared/projects/amarty/store/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.dependsOn": [
+      "Shared/projects/amarty/store/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.options": [
+      "Shared/projects/amarty/store/package.json",
+      "nx/core/package-json"
+    ],
+    "sourceRoot": [
+      "Shared/projects/amarty/store/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "Shared/projects/amarty/store/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint": [
+      "Shared/projects/amarty/store/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.executor": [
+      "Shared/projects/amarty/store/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.options": [
+      "Shared/projects/amarty/store/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.options.lintFilePatterns": [
+      "Shared/projects/amarty/store/project.json",
+      "nx/core/project-json"
+    ]
+  },
+  "Shared/projects/amarty/utils": {
+    "root": [
+      "Shared/projects/amarty/utils/project.json",
+      "nx/core/project-json"
+    ],
+    "name": [
+      "Shared/projects/amarty/utils/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "Shared/projects/amarty/utils/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:public": [
+      "Shared/projects/amarty/utils/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups": [
+      "Shared/projects/amarty/utils/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js": [
+      "Shared/projects/amarty/utils/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageName": [
+      "Shared/projects/amarty/utils/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageMain": [
+      "Shared/projects/amarty/utils/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.isInPackageManagerWorkspaces": [
+      "Shared/projects/amarty/utils/package.json",
+      "nx/core/package-json"
+    ],
+    "targets": [
+      "Shared/projects/amarty/utils/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish": [
+      "Shared/projects/amarty/utils/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.executor": [
+      "Shared/projects/amarty/utils/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.dependsOn": [
+      "Shared/projects/amarty/utils/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.options": [
+      "Shared/projects/amarty/utils/package.json",
+      "nx/core/package-json"
+    ],
+    "sourceRoot": [
+      "Shared/projects/amarty/utils/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "Shared/projects/amarty/utils/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint": [
+      "Shared/projects/amarty/utils/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.executor": [
+      "Shared/projects/amarty/utils/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.options": [
+      "Shared/projects/amarty/utils/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.options.lintFilePatterns": [
+      "Shared/projects/amarty/utils/project.json",
+      "nx/core/project-json"
+    ]
+  }
+}

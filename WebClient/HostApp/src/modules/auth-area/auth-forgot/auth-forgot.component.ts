@@ -32,20 +32,20 @@ export class AuthForgotComponent extends BaseUnsubscribeComponent {
   public submitted = false;
 
   public langArray: string[] = [
-    "Try 'password123' (Just kidding, don't do that!)",
-    "Have you tried turning it off and on again?",
-    "Maybe it's written on a sticky note somewhere?",
-    "Try 'admin' – wait, no, that’s a security risk!",
-    "Try reversing your email: 'moc.liamg@resu'",
-    "Your password is hidden in plain sight… somewhere.",
-    "Did you check your browser’s saved passwords?",
-    "The NSA probably knows it. Just saying.",
-    "Did you whisper it to your coffee cup this morning?",
-    "Try 'letmein' – oh wait, that’s too common!",
-    "Think like a hacker. What would **you** guess?",
-    "If it's ‘123456’, we need to talk.",
-    "Try using 'incorrect' – then you’ll always be right!",
-    "Maybe your subconscious remembers? Meditate on it."
+    `Try 'password123' (Just kidding, don't do that!)`,
+    `Have you tried turning it off and on again?`,
+    `Maybe it's written on a sticky note somewhere?`,
+    `Try 'admin' – wait, no, that’s a security risk!`,
+    `Try reversing your email: 'moc.liamg@resu'`,
+    `Your password is hidden in plain sight… somewhere.`,
+    `Did you check your browser’s saved passwords?`,
+    `The NSA probably knows it. Just saying.`,
+    `Did you whisper it to your coffee cup this morning?`,
+    `Try 'letmein' – oh wait, that’s too common!`,
+    `Think like a hacker. What would **you** guess?`,
+    `If it's ‘123456’, we need to talk.`,
+    `Try using 'incorrect' – then you’ll always be right!`,
+    `Maybe your subconscious remembers? Meditate on it.`
   ];
   public langIndex: number = 0;
   public showLang: boolean = true;

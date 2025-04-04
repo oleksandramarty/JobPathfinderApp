@@ -1,0 +1,34 @@
+Workspace extension with invalid name (npmScope) found.
+
+Linting "amarty-animations"...
+[0m[0m
+[0m[4m/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebClient/Shared/projects/amarty/animations/lib/animations.ts[24m[0m
+[0m  [2m16:1[22m  [31merror[39m  Expected indentation of 2 spaces but found 4  [2mindent[22m[0m
+[0m  [2m17:1[22m  [31merror[39m  Expected indentation of 4 spaces but found 8  [2mindent[22m[0m
+[0m  [2m18:1[22m  [31merror[39m  Expected indentation of 4 spaces but found 8  [2mindent[22m[0m
+[0m  [2m19:1[22m  [31merror[39m  Expected indentation of 2 spaces but found 4  [2mindent[22m[0m
+[0m  [2m20:1[22m  [31merror[39m  Expected indentation of 2 spaces but found 4  [2mindent[22m[0m
+[0m  [2m21:1[22m  [31merror[39m  Expected indentation of 4 spaces but found 8  [2mindent[22m[0m
+[0m  [2m22:1[22m  [31merror[39m  Expected indentation of 4 spaces but found 8  [2mindent[22m[0m
+[0m  [2m23:1[22m  [31merror[39m  Expected indentation of 2 spaces but found 4  [2mindent[22m[0m
+[0m  [2m24:1[22m  [31merror[39m  Expected indentation of 2 spaces but found 4  [2mindent[22m[0m
+[0m  [2m25:1[22m  [31merror[39m  Expected indentation of 4 spaces but found 8  [2mindent[22m[0m
+[0m  [2m26:1[22m  [31merror[39m  Expected indentation of 2 spaces but found 4  [2mindent[22m[0m
+[0m  [2m27:1[22m  [31merror[39m  Expected indentation of 2 spaces but found 4  [2mindent[22m[0m
+[0m  [2m28:1[22m  [31merror[39m  Expected indentation of 4 spaces but found 8  [2mindent[22m[0m
+[0m  [2m29:1[22m  [31merror[39m  Expected indentation of 2 spaces but found 4  [2mindent[22m[0m
+[0m  [2m33:1[22m  [31merror[39m  Expected indentation of 2 spaces but found 4  [2mindent[22m[0m
+[0m  [2m34:1[22m  [31merror[39m  Expected indentation of 4 spaces but found 8  [2mindent[22m[0m
+[0m  [2m35:1[22m  [31merror[39m  Expected indentation of 4 spaces but found 8  [2mindent[22m[0m
+[0m  [2m36:1[22m  [31merror[39m  Expected indentation of 2 spaces but found 4  [2mindent[22m[0m
+[0m  [2m37:1[22m  [31merror[39m  Expected indentation of 2 spaces but found 4  [2mindent[22m[0m
+[0m  [2m38:1[22m  [31merror[39m  Expected indentation of 4 spaces but found 8  [2mindent[22m[0m
+[0m  [2m39:1[22m  [31merror[39m  Expected indentation of 4 spaces but found 8  [2mindent[22m[0m
+[0m  [2m40:1[22m  [31merror[39m  Expected indentation of 2 spaces but found 4  [2mindent[22m[0m
+[0m  [2m41:1[22m  [31merror[39m  Expected indentation of 2 spaces but found 4  [2mindent[22m[0m
+[0m[0m
+[0m[31m[1m✖ 23 problems (23 errors, 0 warnings)[22m[39m[0m
+[0m[31m[1m[22m[39m[31m[1m  23 errors and 0 warnings potentially fixable with the `--fix` option.[22m[39m[0m
+[0m[31m[1m[22m[39m[0m
+Lint errors found in the listed files.
+

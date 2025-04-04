@@ -7,9 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-
     "build:libs": "npm-run-all --sequential build:models build:utils build:store build:api build:animations build:dictionaries build:localizations build:common build:services build:directives build:pipes build:components build:assets",
-
     "build:models": "ng build @amarty/models",
     "build:utils": "ng build @amarty/utils",
     "build:store": "ng build @amarty/store",
@@ -23,9 +21,7 @@
     "build:pipes": "ng build @amarty/pipes",
     "build:services": "ng build @amarty/services",
     "build:assets": "ng build @amarty/assets",
-
     "pack:libs": "npm-run-all --sequential pack:models pack:utils pack:store pack:api pack:animations pack:common pack:components pack:dictionaries pack:localizations pack:directives pack:pipes pack:services pack:assets",
-
     "pack:models": "cd dist/amarty/models && npm pack",
     "pack:utils": "cd dist/amarty/utils && npm pack",
     "pack:store": "cd dist/amarty/store && npm pack",
@@ -39,7 +35,6 @@
     "pack:pipes": "cd dist/amarty/pipes && npm pack",
     "pack:services": "cd dist/amarty/services && npm pack",
     "pack:assets": "cd dist/amarty/assets && npm pack",
-
     "build-and-pack:libs": "npm run build:libs && npm run pack:libs"
   },
   "private": true,
@@ -62,9 +57,18 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^19.2.0",
+    "@angular-eslint/builder": "^19.3.0",
+    "@angular-eslint/eslint-plugin": "^19.3.0",
+    "@angular-eslint/eslint-plugin-template": "^19.3.0",
+    "@angular-eslint/template-parser": "^19.3.0",
     "@angular/cli": "^19.2.0",
     "@angular/compiler-cli": "^19.2.0",
     "@types/jasmine": "~5.1.0",
+    "@typescript-eslint/eslint-plugin": "^8.29.0",
+    "@typescript-eslint/parser": "^8.29.0",
+    "eslint": "^9.23.0",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-unused-imports": "^4.1.4",
     "jasmine-core": "~5.6.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",

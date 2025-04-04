@@ -1,0 +1,16 @@
+Workspace extension with invalid name (npmScope) found.
+
+Linting "amarty-models"...
+[0m[0m
+[0m[4m/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebClient/Shared/projects/amarty/models/lib/api-extension.model.ts[24m[0m
+[0m  [2m37:21[22m  [31merror[39m  Strings must use singlequote  [2mquotes[22m[0m
+[0m[0m
+[0m[4m/Users/oleksandrmartynin/GitHub/JobPathfinderApp/WebClient/Shared/projects/amarty/models/lib/form-renderer.model.ts[24m[0m
+[0m  [2m2:8[22m   [31merror[39m  A space is required after '{'   [2mobject-curly-spacing[22m[0m
+[0m  [2m2:29[22m  [31merror[39m  A space is required before '}'  [2mobject-curly-spacing[22m[0m
+[0m[0m
+[0m[31m[1m✖ 3 problems (3 errors, 0 warnings)[22m[39m[0m
+[0m[31m[1m[22m[39m[31m[1m  3 errors and 0 warnings potentially fixable with the `--fix` option.[22m[39m[0m
+[0m[31m[1m[22m[39m[0m
+Lint errors found in the listed files.
+

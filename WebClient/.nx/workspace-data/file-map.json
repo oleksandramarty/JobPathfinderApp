@@ -1,0 +1,1351 @@
+{
+  "version": "6.0",
+  "nxVersion": "20.7.1",
+  "pathMappings": {},
+  "nxJsonPlugins": [],
+  "fileMap": {
+    "nonProjectFiles": [
+      {
+        "file": ".nx/cache/terminalOutputs/25782034290858796",
+        "hash": "7769697943317731214"
+      },
+      {
+        "file": "Shared/angular.json",
+        "hash": "949227628337837717"
+      },
+      {
+        "file": ".nx/cache/terminalOutputs/11182324703460654191",
+        "hash": "10094709540031053577"
+      },
+      {
+        "file": ".nx/cache/terminalOutputs/2020812145707980210",
+        "hash": "10362553536887234202"
+      },
+      {
+        "file": "Shared/README.md",
+        "hash": "4159429425911807561"
+      },
+      {
+        "file": ".idea/workspace.xml",
+        "hash": "11775153911293241559"
+      },
+      {
+        "file": ".nx/cache/terminalOutputs/2933438193319791918",
+        "hash": "14037460980391861394"
+      },
+      {
+        "file": ".nx/cache/terminalOutputs/2868812789132604267",
+        "hash": "14542410681210455623"
+      },
+      {
+        "file": ".nx/cache/run.json",
+        "hash": "8401921423333321629"
+      },
+      {
+        "file": "Shared/tsconfig.json",
+        "hash": "2406359244666307534"
+      },
+      {
+        "file": "package.json",
+        "hash": "13279942580974480838"
+      },
+      {
+        "file": ".nx/cache/terminalOutputs/15754119758163205589",
+        "hash": "17074629884121530220"
+      },
+      {
+        "file": ".nx/cache/terminalOutputs/11292692628058508031",
+        "hash": "7504079074475880304"
+      },
+      {
+        "file": "Shared/projects/amarty/public-api.ts",
+        "hash": "7305590905401101548"
+      },
+      {
+        "file": "Shared/.editorconfig",
+        "hash": "4165385352547808172"
+      },
+      {
+        "file": ".nx/cache/terminalOutputs/14793041548357747169",
+        "hash": "14318016558237951125"
+      },
+      {
+        "file": "Shared/.gitignore",
+        "hash": "18168400278403753650"
+      },
+      {
+        "file": "README_LINT.MD",
+        "hash": "5751770895630967966"
+      },
+      {
+        "file": ".nx/workspace-data/file-map.json",
+        "hash": "7003640237245532186"
+      },
+      {
+        "file": ".nx/workspace-data/project-graph.json",
+        "hash": "10274931943966059398"
+      },
+      {
+        "file": ".nx/cache/terminalOutputs/15487971486256483735",
+        "hash": "1745046577272819846"
+      },
+      {
+        "file": "nx.json",
+        "hash": "7171517363738923877"
+      },
+      {
+        "file": ".nx/workspace-data/34C48607-ADED-5E5E-8E59-93BAE49A6D5E.db",
+        "hash": "9114102666468956667"
+      },
+      {
+        "file": "Shared/package.json",
+        "hash": "13609959732754714642"
+      },
+      {
+        "file": "Shared/projects/amarty/tsconfig.base.json",
+        "hash": "15847795515057234004"
+      },
+      {
+        "file": ".nx/cache/terminalOutputs/17227935511082776074",
+        "hash": "10146229474482145486"
+      },
+      {
+        "file": ".nx/cache/terminalOutputs/12076963113356731250",
+        "hash": "3237373697385143657"
+      },
+      {
+        "file": ".nx/workspace-data/source-maps.json",
+        "hash": "2677921979619918194"
+      },
+      {
+        "file": ".nx/cache/terminalOutputs/5231932691972633861",
+        "hash": "13242084093406669649"
+      },
+      {
+        "file": ".nx/cache/terminalOutputs/2925743720285685887",
+        "hash": "16609023786346688584"
+      },
+      {
+        "file": ".nx/cache/terminalOutputs/660706131960941895",
+        "hash": "8522731375663042583"
+      },
+      {
+        "file": ".eslint.base.json",
+        "hash": "2857330547377215026"
+      },
+      {
+        "file": "Shared/projects/amarty/package.json",
+        "hash": "5045902189961571608"
+      },
+      {
+        "file": "Shared/projects/amarty/ng-package.json",
+        "hash": "6747323303803743339"
+      }
+    ],
+    "projectFileMap": {
+      "amarty-models": [
+        {
+          "file": "Shared/projects/amarty/models/.eslintrc.json",
+          "hash": "5652616146055721928"
+        },
+        {
+          "file": "Shared/projects/amarty/models/lib/api-extension.model.ts",
+          "hash": "14916600856843122974"
+        },
+        {
+          "file": "Shared/projects/amarty/models/lib/api.model.ts",
+          "hash": "4421484367863269877"
+        },
+        {
+          "file": "Shared/projects/amarty/models/lib/data-item.model.ts",
+          "hash": "9851053979480891429"
+        },
+        {
+          "file": "Shared/projects/amarty/models/lib/form-renderer.model.ts",
+          "hash": "10734322059826880849"
+        },
+        {
+          "file": "Shared/projects/amarty/models/lib/helper.model.ts",
+          "hash": "11679714292636817982"
+        },
+        {
+          "file": "Shared/projects/amarty/models/lib/index.ts",
+          "hash": "2167569559886667607"
+        },
+        {
+          "file": "Shared/projects/amarty/models/lib/menu-item.model.ts",
+          "hash": "5639900118120567163"
+        },
+        {
+          "file": "Shared/projects/amarty/models/ng-package.json",
+          "hash": "6440703724774961339"
+        },
+        {
+          "file": "Shared/projects/amarty/models/package.json",
+          "hash": "7527649610547607015"
+        },
+        {
+          "file": "Shared/projects/amarty/models/project.json",
+          "hash": "6487744492329857512"
+        },
+        {
+          "file": "Shared/projects/amarty/models/public-api.ts",
+          "hash": "14428353282588746736"
+        },
+        {
+          "file": "Shared/projects/amarty/models/tsconfig.lib.json",
+          "hash": "9526165312991166937"
+        },
+        {
+          "file": "Shared/projects/amarty/models/tsconfig.lib.prod.json",
+          "hash": "14583369525410864870"
+        }
+      ],
+      "host-app": [
+        {
+          "file": "HostApp/.editorconfig",
+          "hash": "4165385352547808172"
+        },
+        {
+          "file": "HostApp/.eslintrc.json",
+          "hash": "16810085493177040649"
+        },
+        {
+          "file": "HostApp/.gitignore",
+          "hash": "18168400278403753650"
+        },
+        {
+          "file": "HostApp/README.md",
+          "hash": "12198911886889093406"
+        },
+        {
+          "file": "HostApp/angular.json",
+          "hash": "11542759933426180183"
+        },
+        {
+          "file": "HostApp/package.json",
+          "hash": "1736844392755846873",
+          "deps": [
+            "amarty-animations",
+            "amarty-api",
+            "amarty-assets",
+            "amarty-common",
+            "amarty-components",
+            "amarty-dictionaries",
+            "amarty-directives",
+            "amarty-localizations",
+            "amarty-models",
+            "amarty-pipes",
+            "amarty-services",
+            "amarty-store",
+            "amarty-utils"
+          ]
+        },
+        {
+          "file": "HostApp/project.json",
+          "hash": "12360484357363010258"
+        },
+        {
+          "file": "HostApp/public/assets/images/avatar.png",
+          "hash": "3837438515080147617"
+        },
+        {
+          "file": "HostApp/public/assets/images/background.jpg",
+          "hash": "17354816093513991196"
+        },
+        {
+          "file": "HostApp/public/favicon.ico",
+          "hash": "7107026535874761463"
+        },
+        {
+          "file": "HostApp/public/federation.manifest.json",
+          "hash": "9237690392590914123"
+        },
+        {
+          "file": "HostApp/public/federation.manifest2.json",
+          "hash": "7405515834050471542"
+        },
+        {
+          "file": "HostApp/src/index.html",
+          "hash": "7510658703260617000"
+        },
+        {
+          "file": "HostApp/src/main.ts",
+          "hash": "13136647650660607171"
+        },
+        {
+          "file": "HostApp/src/modules/app-area/app.config.ts",
+          "hash": "1093726122164918826"
+        },
+        {
+          "file": "HostApp/src/modules/app-area/app.routes.ts",
+          "hash": "485937032421714790"
+        },
+        {
+          "file": "HostApp/src/modules/app-area/app/app.component.html",
+          "hash": "2168742197121657905"
+        },
+        {
+          "file": "HostApp/src/modules/app-area/app/app.component.scss",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "HostApp/src/modules/app-area/app/app.component.spec.ts",
+          "hash": "17473236755693569154"
+        },
+        {
+          "file": "HostApp/src/modules/app-area/app/app.component.ts",
+          "hash": "6845368982593678575"
+        },
+        {
+          "file": "HostApp/src/modules/auth-area/auth-area.routes.ts",
+          "hash": "286098829835312105"
+        },
+        {
+          "file": "HostApp/src/modules/auth-area/auth-area/auth-area.component.html",
+          "hash": "5216397246953600269"
+        },
+        {
+          "file": "HostApp/src/modules/auth-area/auth-area/auth-area.component.scss",
+          "hash": "16799267100744850122"
+        },
+        {
+          "file": "HostApp/src/modules/auth-area/auth-area/auth-area.component.spec.ts",
+          "hash": "13214438330638627655"
+        },
+        {
+          "file": "HostApp/src/modules/auth-area/auth-area/auth-area.component.ts",
+          "hash": "1014201254297527783"
+        },
+        {
+          "file": "HostApp/src/modules/auth-area/auth-forgot/auth-forgot.component.html",
+          "hash": "4095877190614141528"
+        },
+        {
+          "file": "HostApp/src/modules/auth-area/auth-forgot/auth-forgot.component.scss",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "HostApp/src/modules/auth-area/auth-forgot/auth-forgot.component.spec.ts",
+          "hash": "14167517213565656919"
+        },
+        {
+          "file": "HostApp/src/modules/auth-area/auth-forgot/auth-forgot.component.ts",
+          "hash": "11398021527671133607"
+        },
+        {
+          "file": "HostApp/src/modules/auth-area/auth-sign-in/auth-sign-in.component.html",
+          "hash": "18186399091391893392"
+        },
+        {
+          "file": "HostApp/src/modules/auth-area/auth-sign-in/auth-sign-in.component.scss",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "HostApp/src/modules/auth-area/auth-sign-in/auth-sign-in.component.spec.ts",
+          "hash": "15265641974336034179"
+        },
+        {
+          "file": "HostApp/src/modules/auth-area/auth-sign-in/auth-sign-in.component.ts",
+          "hash": "9687882934552068163"
+        },
+        {
+          "file": "HostApp/src/modules/auth-area/auth-sign-up/auth-sign-up.component.html",
+          "hash": "4169671718958297982"
+        },
+        {
+          "file": "HostApp/src/modules/auth-area/auth-sign-up/auth-sign-up.component.scss",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "HostApp/src/modules/auth-area/auth-sign-up/auth-sign-up.component.spec.ts",
+          "hash": "6434320067627863094"
+        },
+        {
+          "file": "HostApp/src/modules/auth-area/auth-sign-up/auth-sign-up.component.ts",
+          "hash": "13160716166693347549"
+        },
+        {
+          "file": "HostApp/src/modules/common-area/background/night-sky/night-sky.component.html",
+          "hash": "15744419287532785614"
+        },
+        {
+          "file": "HostApp/src/modules/common-area/background/night-sky/night-sky.component.scss",
+          "hash": "10861538008478763951"
+        },
+        {
+          "file": "HostApp/src/modules/common-area/background/night-sky/night-sky.component.spec.ts",
+          "hash": "16012199947652763244"
+        },
+        {
+          "file": "HostApp/src/modules/common-area/background/night-sky/night-sky.component.ts",
+          "hash": "142729656544884967"
+        },
+        {
+          "file": "HostApp/src/modules/common-area/footer/footer.component.html",
+          "hash": "18327340825532397011"
+        },
+        {
+          "file": "HostApp/src/modules/common-area/footer/footer.component.scss",
+          "hash": "2243864829838383339"
+        },
+        {
+          "file": "HostApp/src/modules/common-area/footer/footer.component.spec.ts",
+          "hash": "6523126951382397383"
+        },
+        {
+          "file": "HostApp/src/modules/common-area/footer/footer.component.ts",
+          "hash": "6296512889122839518"
+        },
+        {
+          "file": "HostApp/src/modules/common-area/header/header.component.html",
+          "hash": "9250480427375574308"
+        },
+        {
+          "file": "HostApp/src/modules/common-area/header/header.component.scss",
+          "hash": "6656046373259169437"
+        },
+        {
+          "file": "HostApp/src/modules/common-area/header/header.component.spec.ts",
+          "hash": "14720898316259393382"
+        },
+        {
+          "file": "HostApp/src/modules/common-area/header/header.component.ts",
+          "hash": "1606598911571325342"
+        },
+        {
+          "file": "HostApp/src/modules/common-area/in-development/in-development.component.html",
+          "hash": "8702741186521689060"
+        },
+        {
+          "file": "HostApp/src/modules/common-area/in-development/in-development.component.scss",
+          "hash": "3140909870076665568"
+        },
+        {
+          "file": "HostApp/src/modules/common-area/in-development/in-development.component.spec.ts",
+          "hash": "1356746424210445895"
+        },
+        {
+          "file": "HostApp/src/modules/common-area/in-development/in-development.component.ts",
+          "hash": "5002835542309096968"
+        },
+        {
+          "file": "HostApp/src/modules/common-area/not-found/not-found.component.html",
+          "hash": "2608732642226976028"
+        },
+        {
+          "file": "HostApp/src/modules/common-area/not-found/not-found.component.scss",
+          "hash": "16407561851217623037"
+        },
+        {
+          "file": "HostApp/src/modules/common-area/not-found/not-found.component.spec.ts",
+          "hash": "8529388088921913397"
+        },
+        {
+          "file": "HostApp/src/modules/common-area/not-found/not-found.component.ts",
+          "hash": "3004538837479325152"
+        },
+        {
+          "file": "HostApp/src/modules/common-area/spinner/spinner.component.html",
+          "hash": "18411488662085283329"
+        },
+        {
+          "file": "HostApp/src/modules/common-area/spinner/spinner.component.scss",
+          "hash": "13198950094200158554"
+        },
+        {
+          "file": "HostApp/src/modules/common-area/spinner/spinner.component.spec.ts",
+          "hash": "2434094701235615548"
+        },
+        {
+          "file": "HostApp/src/modules/common-area/spinner/spinner.component.ts",
+          "hash": "14112439948045626190"
+        },
+        {
+          "file": "HostApp/src/modules/dialogs/application-dialog/application-dialog.component.html",
+          "hash": "5873376655574625793"
+        },
+        {
+          "file": "HostApp/src/modules/dialogs/application-dialog/application-dialog.component.scss",
+          "hash": "2981461231195442225"
+        },
+        {
+          "file": "HostApp/src/modules/dialogs/application-dialog/application-dialog.component.spec.ts",
+          "hash": "5449478206831251132"
+        },
+        {
+          "file": "HostApp/src/modules/dialogs/application-dialog/application-dialog.component.ts",
+          "hash": "348369891000153918"
+        },
+        {
+          "file": "HostApp/src/modules/dialogs/confirmation-message-dialog/confirmation-message-dialog.component.html",
+          "hash": "14762491760912465711"
+        },
+        {
+          "file": "HostApp/src/modules/dialogs/confirmation-message-dialog/confirmation-message-dialog.component.scss",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "HostApp/src/modules/dialogs/confirmation-message-dialog/confirmation-message-dialog.component.spec.ts",
+          "hash": "14665084655467552801"
+        },
+        {
+          "file": "HostApp/src/modules/dialogs/confirmation-message-dialog/confirmation-message-dialog.component.ts",
+          "hash": "9770972521364903496"
+        },
+        {
+          "file": "HostApp/src/modules/dialogs/profile-item-dialog/profile-item-dialog.component.html",
+          "hash": "1885852006212051142"
+        },
+        {
+          "file": "HostApp/src/modules/dialogs/profile-item-dialog/profile-item-dialog.component.scss",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "HostApp/src/modules/dialogs/profile-item-dialog/profile-item-dialog.component.spec.ts",
+          "hash": "15559142131449489181"
+        },
+        {
+          "file": "HostApp/src/modules/dialogs/profile-item-dialog/profile-item-dialog.component.ts",
+          "hash": "6450526446343256401"
+        },
+        {
+          "file": "HostApp/src/modules/dialogs/profile-languages-dialog/profile-languages-dialog.component.html",
+          "hash": "1531269776630047098"
+        },
+        {
+          "file": "HostApp/src/modules/dialogs/profile-languages-dialog/profile-languages-dialog.component.scss",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "HostApp/src/modules/dialogs/profile-languages-dialog/profile-languages-dialog.component.spec.ts",
+          "hash": "17079305553809763280"
+        },
+        {
+          "file": "HostApp/src/modules/dialogs/profile-languages-dialog/profile-languages-dialog.component.ts",
+          "hash": "576235057241379876"
+        },
+        {
+          "file": "HostApp/src/modules/dialogs/profile-skills-dialog/profile-skills-dialog.component.html",
+          "hash": "17912968964615831140"
+        },
+        {
+          "file": "HostApp/src/modules/dialogs/profile-skills-dialog/profile-skills-dialog.component.scss",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "HostApp/src/modules/dialogs/profile-skills-dialog/profile-skills-dialog.component.spec.ts",
+          "hash": "4753661908978405412"
+        },
+        {
+          "file": "HostApp/src/modules/dialogs/profile-skills-dialog/profile-skills-dialog.component.ts",
+          "hash": "16661065886135214961"
+        },
+        {
+          "file": "HostApp/src/modules/dialogs/user-preferences-dialog/user-preferences-dialog.component.html",
+          "hash": "8075324867183305851"
+        },
+        {
+          "file": "HostApp/src/modules/dialogs/user-preferences-dialog/user-preferences-dialog.component.scss",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "HostApp/src/modules/dialogs/user-preferences-dialog/user-preferences-dialog.component.spec.ts",
+          "hash": "12846784928053744699"
+        },
+        {
+          "file": "HostApp/src/modules/dialogs/user-preferences-dialog/user-preferences-dialog.component.ts",
+          "hash": "17311109328284358368"
+        },
+        {
+          "file": "HostApp/src/modules/landing-area/landing.component.html",
+          "hash": "5079910669919438809"
+        },
+        {
+          "file": "HostApp/src/modules/landing-area/landing.component.scss",
+          "hash": "3467421901689115807"
+        },
+        {
+          "file": "HostApp/src/modules/landing-area/landing.component.spec.ts",
+          "hash": "18103351914526312092"
+        },
+        {
+          "file": "HostApp/src/modules/landing-area/landing.component.ts",
+          "hash": "16998252409922670387"
+        },
+        {
+          "file": "HostApp/src/modules/profile-area/base-profile-section.component.ts",
+          "hash": "8809728144150610249"
+        },
+        {
+          "file": "HostApp/src/modules/profile-area/profile-area.component.html",
+          "hash": "13134488010624915227"
+        },
+        {
+          "file": "HostApp/src/modules/profile-area/profile-area.component.scss",
+          "hash": "8360224223426507415"
+        },
+        {
+          "file": "HostApp/src/modules/profile-area/profile-area.component.spec.ts",
+          "hash": "8750789178270459872"
+        },
+        {
+          "file": "HostApp/src/modules/profile-area/profile-area.component.ts",
+          "hash": "1286748053791426932"
+        },
+        {
+          "file": "HostApp/src/modules/profile-area/profile-info/profile-info.component.html",
+          "hash": "12020084313010159356"
+        },
+        {
+          "file": "HostApp/src/modules/profile-area/profile-info/profile-info.component.spec.ts",
+          "hash": "16987152525497147804"
+        },
+        {
+          "file": "HostApp/src/modules/profile-area/profile-info/profile-info.component.ts",
+          "hash": "9184569411391508994"
+        },
+        {
+          "file": "HostApp/src/modules/profile-area/profile-item/profile-item.component.html",
+          "hash": "1676386757541865621"
+        },
+        {
+          "file": "HostApp/src/modules/profile-area/profile-item/profile-item.component.spec.ts",
+          "hash": "3824229002742931225"
+        },
+        {
+          "file": "HostApp/src/modules/profile-area/profile-item/profile-item.component.ts",
+          "hash": "8359443593798738466"
+        },
+        {
+          "file": "HostApp/src/modules/profile-area/profile-languages/profile-languages.component.html",
+          "hash": "7927939298425936643"
+        },
+        {
+          "file": "HostApp/src/modules/profile-area/profile-languages/profile-languages.component.ts",
+          "hash": "1867152483955126714"
+        },
+        {
+          "file": "HostApp/src/modules/profile-area/profile-skills/profile-skills.component.html",
+          "hash": "4684405486735243315"
+        },
+        {
+          "file": "HostApp/src/modules/profile-area/profile-skills/profile-skills.component.spec.ts",
+          "hash": "7309387166774418493"
+        },
+        {
+          "file": "HostApp/src/modules/profile-area/profile-skills/profile-skills.component.ts",
+          "hash": "15764856077711458964"
+        },
+        {
+          "file": "HostApp/src/styles.scss",
+          "hash": "11532745467984005123"
+        },
+        {
+          "file": "HostApp/src/test/mock/user.mock.ts",
+          "hash": "8507989383236178524"
+        },
+        {
+          "file": "HostApp/src/utils/api.interceptor.ts",
+          "hash": "5707850295305795564"
+        },
+        {
+          "file": "HostApp/src/utils/auth-form.factory.ts",
+          "hash": "9792669027954158103"
+        },
+        {
+          "file": "HostApp/src/utils/auth-guard.ts",
+          "hash": "12472639591423047757"
+        },
+        {
+          "file": "HostApp/src/utils/environments/environment.development.ts",
+          "hash": "6647204190858613266"
+        },
+        {
+          "file": "HostApp/src/utils/environments/environment.local.ts",
+          "hash": "11426385473560200116"
+        },
+        {
+          "file": "HostApp/src/utils/environments/environment.monolith.ts",
+          "hash": "7142542015911810489"
+        },
+        {
+          "file": "HostApp/src/utils/environments/environment.ts",
+          "hash": "5728116112416818706"
+        },
+        {
+          "file": "HostApp/src/utils/services/auth.service.ts",
+          "hash": "11482458257063204401"
+        },
+        {
+          "file": "HostApp/tsconfig.app.json",
+          "hash": "17212958746959192557"
+        },
+        {
+          "file": "HostApp/tsconfig.federation.json",
+          "hash": "4000590169789172858"
+        },
+        {
+          "file": "HostApp/tsconfig.json",
+          "hash": "1264560219920251334"
+        },
+        {
+          "file": "HostApp/tsconfig.spec.json",
+          "hash": "8918301549046766373"
+        }
+      ],
+      "amarty-store": [
+        {
+          "file": "Shared/projects/amarty/store/.eslintrc.json",
+          "hash": "196929488047820530"
+        },
+        {
+          "file": "Shared/projects/amarty/store/lib/actions/auth.action.ts",
+          "hash": "17823519927915401420"
+        },
+        {
+          "file": "Shared/projects/amarty/store/lib/index.ts",
+          "hash": "13866086079192883301"
+        },
+        {
+          "file": "Shared/projects/amarty/store/lib/reducers/auth.reducer.ts",
+          "hash": "6450952978056608251"
+        },
+        {
+          "file": "Shared/projects/amarty/store/lib/selectors/auth.selector.ts",
+          "hash": "17743987123046487326"
+        },
+        {
+          "file": "Shared/projects/amarty/store/lib/store.module.ts",
+          "hash": "3119463190523473658"
+        },
+        {
+          "file": "Shared/projects/amarty/store/lib/store.ts",
+          "hash": "8695964191104898164"
+        },
+        {
+          "file": "Shared/projects/amarty/store/ng-package.json",
+          "hash": "14303326987985814512"
+        },
+        {
+          "file": "Shared/projects/amarty/store/package.json",
+          "hash": "1116677666751789226"
+        },
+        {
+          "file": "Shared/projects/amarty/store/project.json",
+          "hash": "15685742448413791244"
+        },
+        {
+          "file": "Shared/projects/amarty/store/public-api.ts",
+          "hash": "14428353282588746736"
+        },
+        {
+          "file": "Shared/projects/amarty/store/tsconfig.lib.json",
+          "hash": "7181589916600992187"
+        },
+        {
+          "file": "Shared/projects/amarty/store/tsconfig.lib.prod.json",
+          "hash": "14583369525410864870"
+        }
+      ],
+      "amarty-localizations": [
+        {
+          "file": "Shared/projects/amarty/localizations/.eslintrc.json",
+          "hash": "527620674100671471"
+        },
+        {
+          "file": "Shared/projects/amarty/localizations/lib/index.ts",
+          "hash": "12835177940273735124"
+        },
+        {
+          "file": "Shared/projects/amarty/localizations/lib/localization_de.ts",
+          "hash": "7801189903807558274"
+        },
+        {
+          "file": "Shared/projects/amarty/localizations/lib/localization_en.ts",
+          "hash": "14604339746103144589"
+        },
+        {
+          "file": "Shared/projects/amarty/localizations/lib/localization_es.ts",
+          "hash": "4945462122886895510"
+        },
+        {
+          "file": "Shared/projects/amarty/localizations/lib/localization_fr.ts",
+          "hash": "16306139420569842534"
+        },
+        {
+          "file": "Shared/projects/amarty/localizations/lib/localization_it.ts",
+          "hash": "13228984938416728356"
+        },
+        {
+          "file": "Shared/projects/amarty/localizations/lib/localization_ru.ts",
+          "hash": "8989734807698395609"
+        },
+        {
+          "file": "Shared/projects/amarty/localizations/lib/localization_ua.ts",
+          "hash": "1629944187099867060"
+        },
+        {
+          "file": "Shared/projects/amarty/localizations/ng-package.json",
+          "hash": "5727361396729656559"
+        },
+        {
+          "file": "Shared/projects/amarty/localizations/package.json",
+          "hash": "18178861570724645682"
+        },
+        {
+          "file": "Shared/projects/amarty/localizations/project.json",
+          "hash": "7474442519549673890"
+        },
+        {
+          "file": "Shared/projects/amarty/localizations/public-api.ts",
+          "hash": "14428353282588746736"
+        },
+        {
+          "file": "Shared/projects/amarty/localizations/tsconfig.lib.json",
+          "hash": "7181589916600992187"
+        },
+        {
+          "file": "Shared/projects/amarty/localizations/tsconfig.lib.prod.json",
+          "hash": "14583369525410864870"
+        }
+      ],
+      "amarty-assets": [
+        {
+          "file": "Shared/projects/amarty/assets/.eslintrc.json",
+          "hash": "13504328819807597700"
+        },
+        {
+          "file": "Shared/projects/amarty/assets/lib/index.ts",
+          "hash": "13204662398293132490"
+        },
+        {
+          "file": "Shared/projects/amarty/assets/lib/styles/_button.scss",
+          "hash": "6947838164869355568"
+        },
+        {
+          "file": "Shared/projects/amarty/assets/lib/styles/_dialog.scss",
+          "hash": "1326503124201351562"
+        },
+        {
+          "file": "Shared/projects/amarty/assets/lib/styles/_input.scss",
+          "hash": "10297501113902131524"
+        },
+        {
+          "file": "Shared/projects/amarty/assets/lib/styles/_mixins.scss",
+          "hash": "15047422188150204591"
+        },
+        {
+          "file": "Shared/projects/amarty/assets/lib/styles/_variables.scss",
+          "hash": "16375521340122012543"
+        },
+        {
+          "file": "Shared/projects/amarty/assets/ng-package.json",
+          "hash": "10981656544766538108"
+        },
+        {
+          "file": "Shared/projects/amarty/assets/package.json",
+          "hash": "16189869984714688043"
+        },
+        {
+          "file": "Shared/projects/amarty/assets/project.json",
+          "hash": "17051508427573950344"
+        },
+        {
+          "file": "Shared/projects/amarty/assets/public-api.ts",
+          "hash": "14428353282588746736"
+        },
+        {
+          "file": "Shared/projects/amarty/assets/tsconfig.lib.json",
+          "hash": "9526165312991166937"
+        },
+        {
+          "file": "Shared/projects/amarty/assets/tsconfig.lib.prod.json",
+          "hash": "14583369525410864870"
+        }
+      ],
+      "amarty-common": [
+        {
+          "file": "Shared/projects/amarty/common/.eslintrc.json",
+          "hash": "17771293517013141321"
+        },
+        {
+          "file": "Shared/projects/amarty/common/lib/base-unsubscribe.compoinent.ts",
+          "hash": "7653547424702061122"
+        },
+        {
+          "file": "Shared/projects/amarty/common/lib/index.ts",
+          "hash": "11946961521458273487"
+        },
+        {
+          "file": "Shared/projects/amarty/common/ng-package.json",
+          "hash": "15240873953951870104"
+        },
+        {
+          "file": "Shared/projects/amarty/common/package.json",
+          "hash": "3613115572848909681"
+        },
+        {
+          "file": "Shared/projects/amarty/common/project.json",
+          "hash": "10106111431323315338"
+        },
+        {
+          "file": "Shared/projects/amarty/common/public-api.ts",
+          "hash": "14428353282588746736"
+        },
+        {
+          "file": "Shared/projects/amarty/common/tsconfig.lib.json",
+          "hash": "9526165312991166937"
+        },
+        {
+          "file": "Shared/projects/amarty/common/tsconfig.lib.prod.json",
+          "hash": "14583369525410864870"
+        }
+      ],
+      "amarty-api": [
+        {
+          "file": "Shared/projects/amarty/api/.eslintrc.json",
+          "hash": "13200840912539830434"
+        },
+        {
+          "file": "Shared/projects/amarty/api/lib/audit-trail-api.service.ts",
+          "hash": "14844104887030455416"
+        },
+        {
+          "file": "Shared/projects/amarty/api/lib/dictionary-api.service.ts",
+          "hash": "7104405484264476510"
+        },
+        {
+          "file": "Shared/projects/amarty/api/lib/index.ts",
+          "hash": "10844402267248374557"
+        },
+        {
+          "file": "Shared/projects/amarty/api/lib/localization-api.service.ts",
+          "hash": "14842310329807108205"
+        },
+        {
+          "file": "Shared/projects/amarty/api/lib/user-api.service.ts",
+          "hash": "18327753068621832752"
+        },
+        {
+          "file": "Shared/projects/amarty/api/ng-package.json",
+          "hash": "7401735535344611913"
+        },
+        {
+          "file": "Shared/projects/amarty/api/package.json",
+          "hash": "244170442478756608"
+        },
+        {
+          "file": "Shared/projects/amarty/api/project.json",
+          "hash": "18153524719545093659"
+        },
+        {
+          "file": "Shared/projects/amarty/api/public-api.ts",
+          "hash": "14428353282588746736"
+        },
+        {
+          "file": "Shared/projects/amarty/api/tsconfig.lib.json",
+          "hash": "7181589916600992187"
+        },
+        {
+          "file": "Shared/projects/amarty/api/tsconfig.lib.prod.json",
+          "hash": "14583369525410864870"
+        }
+      ],
+      "amarty-utils": [
+        {
+          "file": "Shared/projects/amarty/utils/.eslintrc.json",
+          "hash": "2106100209383973262"
+        },
+        {
+          "file": "Shared/projects/amarty/utils/lib/date-time.helper.ts",
+          "hash": "3795860636286571779"
+        },
+        {
+          "file": "Shared/projects/amarty/utils/lib/dom.helper.ts",
+          "hash": "17999020247692318881"
+        },
+        {
+          "file": "Shared/projects/amarty/utils/lib/index.ts",
+          "hash": "4216999026631121395"
+        },
+        {
+          "file": "Shared/projects/amarty/utils/lib/local-storage.util.ts",
+          "hash": "9667426692116987549"
+        },
+        {
+          "file": "Shared/projects/amarty/utils/lib/util.helper.ts",
+          "hash": "14944495115499571738"
+        },
+        {
+          "file": "Shared/projects/amarty/utils/lib/validator.helper.ts",
+          "hash": "14337942891436070251"
+        },
+        {
+          "file": "Shared/projects/amarty/utils/ng-package.json",
+          "hash": "4445024194391321779"
+        },
+        {
+          "file": "Shared/projects/amarty/utils/package.json",
+          "hash": "7880526222539840143"
+        },
+        {
+          "file": "Shared/projects/amarty/utils/project.json",
+          "hash": "7736074670515398493"
+        },
+        {
+          "file": "Shared/projects/amarty/utils/public-api.ts",
+          "hash": "14428353282588746736"
+        },
+        {
+          "file": "Shared/projects/amarty/utils/tsconfig.lib.json",
+          "hash": "7181589916600992187"
+        },
+        {
+          "file": "Shared/projects/amarty/utils/tsconfig.lib.prod.json",
+          "hash": "14583369525410864870"
+        }
+      ],
+      "amarty-animations": [
+        {
+          "file": "Shared/projects/amarty/animations/.eslintrc.json",
+          "hash": "6543606132256120842"
+        },
+        {
+          "file": "Shared/projects/amarty/animations/lib/animations.ts",
+          "hash": "2879509225886724617"
+        },
+        {
+          "file": "Shared/projects/amarty/animations/lib/index.ts",
+          "hash": "3242902863485395830"
+        },
+        {
+          "file": "Shared/projects/amarty/animations/ng-package.json",
+          "hash": "7550999416705009343"
+        },
+        {
+          "file": "Shared/projects/amarty/animations/package.json",
+          "hash": "5522235273380051211"
+        },
+        {
+          "file": "Shared/projects/amarty/animations/project.json",
+          "hash": "7426166308147473728"
+        },
+        {
+          "file": "Shared/projects/amarty/animations/public-api.ts",
+          "hash": "14428353282588746736"
+        },
+        {
+          "file": "Shared/projects/amarty/animations/tsconfig.lib.json",
+          "hash": "9526165312991166937"
+        },
+        {
+          "file": "Shared/projects/amarty/animations/tsconfig.lib.prod.json",
+          "hash": "14583369525410864870"
+        }
+      ],
+      "amarty-services": [
+        {
+          "file": "Shared/projects/amarty/services/.eslintrc.json",
+          "hash": "9411729781545655108"
+        },
+        {
+          "file": "Shared/projects/amarty/services/lib/common-dialog.service.ts",
+          "hash": "16713851173308498939"
+        },
+        {
+          "file": "Shared/projects/amarty/services/lib/dictionary.service.ts",
+          "hash": "15452060754131562526"
+        },
+        {
+          "file": "Shared/projects/amarty/services/lib/index.ts",
+          "hash": "411965555616464486"
+        },
+        {
+          "file": "Shared/projects/amarty/services/lib/loader.service.ts",
+          "hash": "12385964292742321209"
+        },
+        {
+          "file": "Shared/projects/amarty/services/lib/localization.service.ts",
+          "hash": "2519697873923842834"
+        },
+        {
+          "file": "Shared/projects/amarty/services/lib/site-settings.service.ts",
+          "hash": "7065616434643173604"
+        },
+        {
+          "file": "Shared/projects/amarty/services/ng-package.json",
+          "hash": "3981120249594410649"
+        },
+        {
+          "file": "Shared/projects/amarty/services/package.json",
+          "hash": "12671993640766943135"
+        },
+        {
+          "file": "Shared/projects/amarty/services/project.json",
+          "hash": "11972709851502142934"
+        },
+        {
+          "file": "Shared/projects/amarty/services/public-api.ts",
+          "hash": "14428353282588746736"
+        },
+        {
+          "file": "Shared/projects/amarty/services/tsconfig.lib.json",
+          "hash": "5331929328170315995"
+        },
+        {
+          "file": "Shared/projects/amarty/services/tsconfig.lib.prod.json",
+          "hash": "14583369525410864870"
+        }
+      ],
+      "amarty-pipes": [
+        {
+          "file": "Shared/projects/amarty/pipes/.eslintrc.json",
+          "hash": "15788484768474068897"
+        },
+        {
+          "file": "Shared/projects/amarty/pipes/lib/index.ts",
+          "hash": "12579948112954432461"
+        },
+        {
+          "file": "Shared/projects/amarty/pipes/lib/local-date.pipe.ts",
+          "hash": "17421036484276079210"
+        },
+        {
+          "file": "Shared/projects/amarty/pipes/lib/sanitize-html.pipe.ts",
+          "hash": "13303499507033259152"
+        },
+        {
+          "file": "Shared/projects/amarty/pipes/lib/translation.pipe.ts",
+          "hash": "17293658450255847617"
+        },
+        {
+          "file": "Shared/projects/amarty/pipes/ng-package.json",
+          "hash": "4758713442389421913"
+        },
+        {
+          "file": "Shared/projects/amarty/pipes/package.json",
+          "hash": "2040274577161933836"
+        },
+        {
+          "file": "Shared/projects/amarty/pipes/project.json",
+          "hash": "6669459812148248767"
+        },
+        {
+          "file": "Shared/projects/amarty/pipes/public-api.ts",
+          "hash": "14428353282588746736"
+        },
+        {
+          "file": "Shared/projects/amarty/pipes/tsconfig.lib.json",
+          "hash": "16889005383208571235"
+        },
+        {
+          "file": "Shared/projects/amarty/pipes/tsconfig.lib.prod.json",
+          "hash": "14583369525410864870"
+        }
+      ],
+      "amarty-components": [
+        {
+          "file": "Shared/projects/amarty/components/.eslintrc.json",
+          "hash": "16021686821855076531"
+        },
+        {
+          "file": "Shared/projects/amarty/components/lib/generic-form-renderer/generic-form-renderer.component.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "Shared/projects/amarty/components/lib/generic-form-renderer/generic-form-renderer.component.html",
+          "hash": "4681020153629131888"
+        },
+        {
+          "file": "Shared/projects/amarty/components/lib/generic-form-renderer/generic-form-renderer.component.spec.ts",
+          "hash": "15548738529278764389"
+        },
+        {
+          "file": "Shared/projects/amarty/components/lib/generic-form-renderer/generic-form-renderer.component.ts",
+          "hash": "11202938497303727162"
+        },
+        {
+          "file": "Shared/projects/amarty/components/lib/generic-grid/generic-grid.component.html",
+          "hash": "12352539840600619290"
+        },
+        {
+          "file": "Shared/projects/amarty/components/lib/generic-grid/generic-grid.component.scss",
+          "hash": "9851399954554164728"
+        },
+        {
+          "file": "Shared/projects/amarty/components/lib/generic-grid/generic-grid.component.spec.ts",
+          "hash": "9260048207446316499"
+        },
+        {
+          "file": "Shared/projects/amarty/components/lib/generic-grid/generic-grid.component.ts",
+          "hash": "3635772058946683805"
+        },
+        {
+          "file": "Shared/projects/amarty/components/lib/generic-input/generic-input.component.html",
+          "hash": "11522232074657860562"
+        },
+        {
+          "file": "Shared/projects/amarty/components/lib/generic-input/generic-input.component.scss",
+          "hash": "14695159313574981028"
+        },
+        {
+          "file": "Shared/projects/amarty/components/lib/generic-input/generic-input.component.spec.ts",
+          "hash": "17512840609446527359"
+        },
+        {
+          "file": "Shared/projects/amarty/components/lib/generic-input/generic-input.component.ts",
+          "hash": "5079562470470879027"
+        },
+        {
+          "file": "Shared/projects/amarty/components/lib/index.ts",
+          "hash": "11365903203713852250"
+        },
+        {
+          "file": "Shared/projects/amarty/components/ng-package.json",
+          "hash": "4911988330733209026"
+        },
+        {
+          "file": "Shared/projects/amarty/components/package.json",
+          "hash": "13964739349572870052"
+        },
+        {
+          "file": "Shared/projects/amarty/components/project.json",
+          "hash": "13512823253069312985"
+        },
+        {
+          "file": "Shared/projects/amarty/components/public-api.ts",
+          "hash": "14428353282588746736"
+        },
+        {
+          "file": "Shared/projects/amarty/components/tsconfig.lib.json",
+          "hash": "11687136419518614974"
+        },
+        {
+          "file": "Shared/projects/amarty/components/tsconfig.lib.prod.json",
+          "hash": "14583369525410864870"
+        }
+      ],
+      "amarty-directives": [
+        {
+          "file": "Shared/projects/amarty/directives/.eslintrc.json",
+          "hash": "10474333591605933504"
+        },
+        {
+          "file": "Shared/projects/amarty/directives/lib/index.ts",
+          "hash": "12299812194638707811"
+        },
+        {
+          "file": "Shared/projects/amarty/directives/lib/translation.directive.ts",
+          "hash": "331129404179208947"
+        },
+        {
+          "file": "Shared/projects/amarty/directives/ng-package.json",
+          "hash": "358588629864453192"
+        },
+        {
+          "file": "Shared/projects/amarty/directives/package.json",
+          "hash": "3934887835247820093"
+        },
+        {
+          "file": "Shared/projects/amarty/directives/project.json",
+          "hash": "14656019510222138420"
+        },
+        {
+          "file": "Shared/projects/amarty/directives/public-api.ts",
+          "hash": "14428353282588746736"
+        },
+        {
+          "file": "Shared/projects/amarty/directives/tsconfig.lib.json",
+          "hash": "16889005383208571235"
+        },
+        {
+          "file": "Shared/projects/amarty/directives/tsconfig.lib.prod.json",
+          "hash": "14583369525410864870"
+        }
+      ],
+      "amarty-dictionaries": [
+        {
+          "file": "Shared/projects/amarty/dictionaries/.eslintrc.json",
+          "hash": "17534338050450248894"
+        },
+        {
+          "file": "Shared/projects/amarty/dictionaries/lib/countries.ts",
+          "hash": "7508035505725937627"
+        },
+        {
+          "file": "Shared/projects/amarty/dictionaries/lib/currencies.ts",
+          "hash": "2851731989370738701"
+        },
+        {
+          "file": "Shared/projects/amarty/dictionaries/lib/experience_levels.ts",
+          "hash": "1482168528319963467"
+        },
+        {
+          "file": "Shared/projects/amarty/dictionaries/lib/index.ts",
+          "hash": "9597731180239417753"
+        },
+        {
+          "file": "Shared/projects/amarty/dictionaries/lib/job_sources.ts",
+          "hash": "3801733680890934727"
+        },
+        {
+          "file": "Shared/projects/amarty/dictionaries/lib/job_types.ts",
+          "hash": "10392009433034460454"
+        },
+        {
+          "file": "Shared/projects/amarty/dictionaries/lib/language_levels.ts",
+          "hash": "15139427208122732975"
+        },
+        {
+          "file": "Shared/projects/amarty/dictionaries/lib/languages.ts",
+          "hash": "2253951848513520279"
+        },
+        {
+          "file": "Shared/projects/amarty/dictionaries/lib/locales.ts",
+          "hash": "3334947059147014853"
+        },
+        {
+          "file": "Shared/projects/amarty/dictionaries/lib/roles.ts",
+          "hash": "16224510453069945847"
+        },
+        {
+          "file": "Shared/projects/amarty/dictionaries/lib/skill_levels.ts",
+          "hash": "7725668803795173738"
+        },
+        {
+          "file": "Shared/projects/amarty/dictionaries/lib/skills.ts",
+          "hash": "17108642213981304770"
+        },
+        {
+          "file": "Shared/projects/amarty/dictionaries/lib/work_arrangements.ts",
+          "hash": "17376984180875135785"
+        },
+        {
+          "file": "Shared/projects/amarty/dictionaries/ng-package.json",
+          "hash": "3256076034732919901"
+        },
+        {
+          "file": "Shared/projects/amarty/dictionaries/package.json",
+          "hash": "15465191350515846563"
+        },
+        {
+          "file": "Shared/projects/amarty/dictionaries/project.json",
+          "hash": "9634226828230791511"
+        },
+        {
+          "file": "Shared/projects/amarty/dictionaries/public-api.ts",
+          "hash": "14428353282588746736"
+        },
+        {
+          "file": "Shared/projects/amarty/dictionaries/tsconfig.lib.json",
+          "hash": "7181589916600992187"
+        },
+        {
+          "file": "Shared/projects/amarty/dictionaries/tsconfig.lib.prod.json",
+          "hash": "14583369525410864870"
+        }
+      ]
+    }
+  }
+}
