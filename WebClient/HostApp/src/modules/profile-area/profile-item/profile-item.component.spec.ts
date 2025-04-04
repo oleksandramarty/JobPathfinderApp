@@ -37,7 +37,6 @@ describe('ProfileItemComponent', () => {
 
   it('should inject all services', () => {
     expect(component['dialogService']).toBeTruthy();
-    expect(component['snackBar']).toBeTruthy();
     expect(component['dictionaryService']).toBeTruthy();
   });
 
@@ -45,7 +44,6 @@ describe('ProfileItemComponent', () => {
     component.itemType = UserProfileItemEnum.Experience;
     component.ngOnInit();
     expect(component.title).toBe('COMMON.EXPERIENCE');
-    expect(component.addButtonTitle).toBe('COMMON.ADD_EXPERIENCE');
   });
 
   it('should return skill title from dictionary service', () => {

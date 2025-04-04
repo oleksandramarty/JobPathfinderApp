@@ -122,7 +122,7 @@ namespace AuthGateway.Domain.Migrations
                         .HasMaxLength(32)
                         .HasColumnType("character varying(32)");
 
-                    b.Property<int?>("WorkArrangementsId")
+                    b.Property<int?>("WorkArrangementId")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");

@@ -3,17 +3,14 @@ import {
   UserLanguageResponse,
   UserProfileItemEnum,
   UserProfileItemResponse,
-  UserResponse,
   UserSkillResponse
 } from '@amarty/models';
-import { BaseUnsubscribeComponent } from '@amarty/common';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { CommonDialogService, DictionaryService } from '@amarty/services';
 import { SafeHtml } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { TranslationPipe } from '@amarty/pipes';
-import {BaseProfileSectionComponent} from '../base-profile-section.component';
-import {ProfileSkillsDialogComponent} from '../../dialogs/profile-skills-dialog/profile-skills-dialog.component';
+import {BaseProfileSectionComponent, itemTypeTitle} from '../base-profile-section.component';
+import {ProfileItemDialogComponent} from '../../dialogs/profile-item-dialog/profile-item-dialog.component';
 
 @Component({
   selector: 'app-profile-item',
@@ -52,29 +49,12 @@ export class ProfileItemComponent extends BaseProfileSectionComponent<UserProfil
     ];
   }
 
-  get itemTypeTitle(): string {
-    switch (this.itemType) {
-      case UserProfileItemEnum.Experience:
-        return 'EXPERIENCE';
-      case UserProfileItemEnum.Education:
-        return 'EDUCATION';
-      case UserProfileItemEnum.Project:
-        return 'PROJECTS';
-      case UserProfileItemEnum.Achievement:
-        return 'ACHIEVEMENTS';
-      case UserProfileItemEnum.Certification:
-        return 'CERTIFICATIONS';
-      default:
-        return '';
-    }
-  }
-
   override get isEmptySection(): boolean {
     return !this.existingItems?.some(item => item.profileItemType === this.itemType);
   }
 
   override ngOnInit() {
-    this.title = `COMMON.${this.itemTypeTitle}`;
+    this.title = `COMMON.${itemTypeTitle(this.itemType)}`;
     super.ngOnInit();
   }
 
@@ -100,14 +80,14 @@ export class ProfileItemComponent extends BaseProfileSectionComponent<UserProfil
   protected override openItemDialog(isNew: boolean, itemId?: string): void {
     const executableAction = this.openDialogExecutableAction(isNew);
 
-    // this.dialogService.showDialog<ProfileSkillsDialogComponent, UserSkillResponse>(
-    //   ProfileSkillsDialogComponent,
-    //   {
-    //     data: { item: this.findItem(isNew, itemId), existingIds: this.getExistingIds() },
-    //     width: '400px',
-    //     maxWidth: '90vw',
-    //   },
-    //   executableAction
-    // );
+    this.dialogService.showDialog<ProfileItemDialogComponent, UserProfileItemResponse>(
+      ProfileItemDialogComponent,
+      {
+        data: { profileItem: this.findItem(isNew, itemId), profileItemType: this.itemType },
+        width: '600px',
+        maxWidth: '90vw',
+      },
+      executableAction
+    );
   }
 }

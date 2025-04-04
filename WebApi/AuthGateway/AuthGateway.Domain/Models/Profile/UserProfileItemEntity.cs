@@ -23,7 +23,7 @@ public class UserProfileItemEntity: BaseDateTimeEntity<Guid>, IStatusEntity, IBa
     
     public int? CountryId { get; set; }
     public int? JobTypeId { get; set; }
-    public int? WorkArrangementsId { get; set; }
+    public int? WorkArrangementId { get; set; }
     
     public ICollection<UserProfileItemLanguageEntity> Languages { get; set; }
     public ICollection<UserProfileItemSkillEntity> Skills { get; set; }

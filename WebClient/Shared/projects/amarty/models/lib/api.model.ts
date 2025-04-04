@@ -1385,7 +1385,7 @@ export class UserProfileItemResponse extends BaseDateTimeEntityOfGuid implements
     location?: string | undefined;
     countryId?: number | undefined;
     jobTypeId?: number | undefined;
-    workArrangementsId?: number | undefined;
+    workArrangementId?: number | undefined;
     languages?: UserProfileItemLanguageResponse[];
     skills?: UserProfileItemSkillResponse[];
     status?: StatusEnum;
@@ -1408,7 +1408,7 @@ export class UserProfileItemResponse extends BaseDateTimeEntityOfGuid implements
             this.location = _data["location"];
             this.countryId = _data["countryId"];
             this.jobTypeId = _data["jobTypeId"];
-            this.workArrangementsId = _data["workArrangementsId"];
+            this.workArrangementId = _data["workArrangementId"];
             if (Array.isArray(_data["languages"])) {
                 this.languages = [] as any;
                 for (let item of _data["languages"])
@@ -1443,7 +1443,7 @@ export class UserProfileItemResponse extends BaseDateTimeEntityOfGuid implements
         data["location"] = this.location;
         data["countryId"] = this.countryId;
         data["jobTypeId"] = this.jobTypeId;
-        data["workArrangementsId"] = this.workArrangementsId;
+        data["workArrangementId"] = this.workArrangementId;
         if (Array.isArray(this.languages)) {
             data["languages"] = [];
             for (let item of this.languages)
@@ -1472,7 +1472,7 @@ export interface IUserProfileItemResponse extends IBaseDateTimeEntityOfGuid {
     location?: string | undefined;
     countryId?: number | undefined;
     jobTypeId?: number | undefined;
-    workArrangementsId?: number | undefined;
+    workArrangementId?: number | undefined;
     languages?: UserProfileItemLanguageResponse[];
     skills?: UserProfileItemSkillResponse[];
     status?: StatusEnum;

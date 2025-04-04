@@ -23,7 +23,7 @@ public class UserProfileItemResponse: BaseDateTimeEntity<Guid>, IStatusEntity, I
     
     public int? CountryId { get; set; }
     public int? JobTypeId { get; set; }
-    public int? WorkArrangementsId { get; set; }
+    public int? WorkArrangementId { get; set; }
     
     public ICollection<UserProfileItemLanguageResponse> Languages { get; set; }
     public ICollection<UserProfileItemSkillResponse> Skills { get; set; }

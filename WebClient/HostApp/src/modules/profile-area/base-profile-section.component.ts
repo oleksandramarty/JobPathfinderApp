@@ -1,6 +1,6 @@
 import {BaseUnsubscribeComponent} from '@amarty/common';
 import {Directive, Input} from '@angular/core';
-import {IHasId} from '@amarty/models';
+import {IHasId, UserProfileItemEnum} from '@amarty/models';
 import {SafeHtml} from '@angular/platform-browser';
 
 @Directive()
@@ -75,4 +75,21 @@ export abstract class BaseProfileSectionComponent<
   protected abstract getExistingIds(): TSectionItemId[];
 
   protected abstract getItemTitle(item: TSectionItemResponse | undefined): SafeHtml | string | undefined;
+}
+
+export function itemTypeTitle(itemType: UserProfileItemEnum | undefined): string {
+  switch (itemType) {
+    case UserProfileItemEnum.Experience:
+      return 'EXPERIENCE';
+    case UserProfileItemEnum.Education:
+      return 'EDUCATION';
+    case UserProfileItemEnum.Project:
+      return 'PROJECTS';
+    case UserProfileItemEnum.Achievement:
+      return 'ACHIEVEMENTS';
+    case UserProfileItemEnum.Certification:
+      return 'CERTIFICATIONS';
+    default:
+      return '';
+  }
 }

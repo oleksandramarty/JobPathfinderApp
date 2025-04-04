@@ -100,7 +100,7 @@ namespace AuthGateway.Domain.Migrations
                     Location = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: true),
                     CountryId = table.Column<int>(type: "integer", nullable: true),
                     JobTypeId = table.Column<int>(type: "integer", nullable: true),
-                    WorkArrangementsId = table.Column<int>(type: "integer", nullable: true),
+                    WorkArrangementId = table.Column<int>(type: "integer", nullable: true),
                     Status = table.Column<int>(type: "integer", nullable: false),
                     Version = table.Column<string>(type: "character varying(32)", maxLength: 32, nullable: false),
                     UserEntityId = table.Column<Guid>(type: "uuid", nullable: true),

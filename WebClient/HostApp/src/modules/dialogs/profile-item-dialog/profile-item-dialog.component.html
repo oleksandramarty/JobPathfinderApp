@@ -1,0 +1,83 @@
+<div class="modal">
+  <div class="modal__header">
+    <div class="modal__header">
+      <h2 class="modal__header-title" mat-dialog-title>{{ title | translation }}</h2>
+      <span class="modal__close" (click)="dialogRef.close()">
+      <i class="fa-solid fa-robot"></i><i class="fa-solid fa-stopwatch"></i>
+    </span>
+    </div>
+    <span class="modal__close" (click)="dialogRef.close()">
+      <i class="fa-solid fa-xmark"></i>
+    </span>
+  </div>
+  @if(profileItemForm) {
+    <div class="modal__body">
+      <div class="grid-1fr grid-gap">
+        <app-generic-input
+          [submitted]="submitted"
+          label="COMMON.POSITION"
+          type="input"
+          placeholder="COMMON.POSITION"
+          [formGroup]="profileItemForm"
+          controlName="position"></app-generic-input>
+
+        <app-generic-input
+          [submitted]="submitted"
+          label="COMMON.COMPANY"
+          type="input"
+          placeholder="COMMON.COMPANY"
+          [formGroup]="profileItemForm"
+          controlName="company"></app-generic-input>
+
+        <div class="grid-2fr grid-gap">
+          <app-generic-input
+            label="COMMON.START_DATE" type="datepicker" [formGroup]="profileItemForm"
+            controlName="startDate" [submitted]="submitted"
+          ></app-generic-input>
+          <app-generic-input
+            label="COMMON.END_DATE" type="datepicker" [formGroup]="profileItemForm"
+            controlName="endDate" [submitted]="submitted"
+          ></app-generic-input>
+
+          <app-generic-input
+            [submitted]="submitted"
+            label="COMMON.LOCATION"
+            type="input"
+            placeholder="COMMON.LOCATION"
+            [formGroup]="profileItemForm"
+            controlName="location"></app-generic-input>
+          <app-generic-input
+            label="COMMON.COUNTRY" type="autocomplete" placeholder="COMMON.COUNTRY" [formGroup]="profileItemForm"
+            controlName="countryId" [dataItems]="countries" [submitted]="submitted"
+          ></app-generic-input>
+
+          <app-generic-input
+            label="COMMON.JOB_TYPE" type="autocomplete" placeholder="COMMON.JOB_TYPE" [formGroup]="profileItemForm"
+            controlName="jobTypeId" [dataItems]="jobTypes" [submitted]="submitted"
+          ></app-generic-input>
+          <app-generic-input
+            label="COMMON.WORK_ARRANGEMENT" type="autocomplete" placeholder="COMMON.WORK_ARRANGEMENT" [formGroup]="profileItemForm"
+            controlName="workArrangementId" [dataItems]="workArrangements" [submitted]="submitted"
+          ></app-generic-input>
+        </div>
+
+        <app-generic-input
+          label="COMMON.DESCRIPTION" type="textarea"
+          [formGroup]="profileItemForm" controlName="description"
+          [rows]="2" [submitted]="submitted"
+          [maxLength]="500"
+        ></app-generic-input>
+      </div>
+    </div>
+    <div class="container__box__footer">
+      <div class="container__box__footer-item">
+        <button class="button button__link" (click)="dialogRef.close(false)">{{ 'COMMON.CANCEL' | translation }}</button>
+      </div>
+      <div class="container__box__footer-item">
+        <button
+          class="button button__filled__submit"
+          (click)="proceedItem()">{{ 'COMMON.PROCEED' | translation }}</button>
+      </div>
+    </div>
+  }
+</div>
