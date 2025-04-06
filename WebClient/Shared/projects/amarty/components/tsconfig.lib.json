@@ -19,6 +19,7 @@
   "exclude": ["**/*.spec.ts"],
   "include": [
     "lib/generic-input/**/*",
-    "lib/generic-grid/**/*"
+    "lib/generic-grid/**/*",
+    "lib/generic-form-renderer/**/*",
   ]
 }

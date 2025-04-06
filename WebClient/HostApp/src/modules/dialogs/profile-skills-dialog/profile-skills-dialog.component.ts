@@ -10,7 +10,7 @@ import { UserSkillResponse } from '@amarty/models';
 import { DictionaryService, LoaderService, LocalizationService } from '@amarty/services';
 import { DataItem, InputError } from '@amarty/models';
 import { CommonModule } from '@angular/common';
-import {generateGuid} from '@amarty/utils';
+import { generateGuid } from '@amarty/utils';
 import { takeUntil, tap } from 'rxjs';
 import { TranslationPipe } from '@amarty/pipes';
 
@@ -62,7 +62,7 @@ export class ProfileSkillsDialogComponent extends BaseUnsubscribeComponent{
 
   createFormGroup(): void {
     if (!!this.profileItemForm) {
-      return
+      return;
     }
 
     this.profileItemForm = new FormGroup({
@@ -78,7 +78,7 @@ export class ProfileSkillsDialogComponent extends BaseUnsubscribeComponent{
           tap(skill => {
             this.skillInputError =
               (this.existingIds?.findIndex(item => item === String(skill)) ?? -1) > -1 ?
-                [{error: 'COMMON.ALREADY_EXISTS'}] :
+                [{ error: 'COMMON.ALREADY_EXISTS' }] :
                 undefined;
           })
         ).subscribe();

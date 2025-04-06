@@ -10,7 +10,7 @@ describe('NightSkyComponent', () => {
     await TestBed.configureTestingModule({
       imports: [NightSkyComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(NightSkyComponent);
     component = fixture.componentInstance;

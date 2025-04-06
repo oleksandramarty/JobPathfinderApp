@@ -28,7 +28,9 @@
         "quotes": ["error", "single"],
         "semi": ["error", "always"],
         "object-curly-spacing": ["error", "always"],
-        "comma-spacing": ["error", { "before": false, "after": true }]
+        "comma-spacing": ["error", { "before": false, "after": true }],
+        "@angular-eslint/no-empty-lifecycle-method": "off",
+        "@angular-eslint/use-lifecycle-interface": "off"
       }
     },
     {

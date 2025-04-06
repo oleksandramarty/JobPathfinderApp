@@ -3,30 +3,30 @@ import { environment } from '../../../utils/environments/environment';
 import { Store } from '@ngrx/store';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { LoaderService } from '@amarty/services'
+import { LoaderService } from '@amarty/services';
 import { auth_clearAll } from '@amarty/store';
 import {
   clearLocalStorageAndRefresh,
   generateRandomId,
   getLocalStorageItem,
   setLocalStorageItem
-} from '@amarty/utils'
+} from '@amarty/utils';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import {AuthService} from '../../../utils/services/auth.service';
-import {CommonModule} from '@angular/common';
+import { AuthService } from '../../../utils/services/auth.service';
+import { CommonModule } from '@angular/common';
 import { TranslationPipe } from '@amarty/pipes';
 
 @Component({
-    selector: 'app-footer',
-    imports: [
-      CommonModule,
-      TranslationPipe,
-      MatTooltipModule
-    ],
-    templateUrl: './footer.component.html',
-    styleUrls: ['./footer.component.scss'],
-    standalone: true,
-    host: { 'data-id': generateRandomId(12) }
+  selector: 'app-footer',
+  imports: [
+    CommonModule,
+    TranslationPipe,
+    MatTooltipModule
+  ],
+  templateUrl: './footer.component.html',
+  styleUrls: ['./footer.component.scss'],
+  standalone: true,
+  host: { 'data-id': generateRandomId(12) }
 })
 export class FooterComponent implements OnInit {
   public darkTheme: boolean = true;

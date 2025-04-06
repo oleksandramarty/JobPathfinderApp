@@ -9,7 +9,7 @@ describe('SpinnerComponent', () => {
     await TestBed.configureTestingModule({
       imports: [SpinnerComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(SpinnerComponent);
     component = fixture.componentInstance;

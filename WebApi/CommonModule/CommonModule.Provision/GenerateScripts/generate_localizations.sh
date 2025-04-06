@@ -29,8 +29,8 @@ for i in "${!locales[@]}"; do
     read  # Skip header
     while IFS=';' read -r id locale key valueEn value isPublic; do
       ((index++))
-      value_cleaned=$(echo "$value" | sed "s/''/'/g")
-      echo "  [\`$key\`, \`$value_cleaned\`]," >> "$output_file"
+      value_cleaned=$(echo "$value" | sed "s/''/'/g" | sed "s/'/\\\'/g")
+      echo "  ['$key', '$value_cleaned']," >> "$output_file"
     done
   } < "$csv_file"
 

@@ -10,7 +10,7 @@ describe('GenericInputComponent', () => {
     await TestBed.configureTestingModule({
       imports: [GenericInputComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(GenericInputComponent);
     component = fixture.componentInstance;

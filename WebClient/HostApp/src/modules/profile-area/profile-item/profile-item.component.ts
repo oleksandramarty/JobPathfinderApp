@@ -9,8 +9,8 @@ import { CommonDialogService, DictionaryService } from '@amarty/services';
 import { SafeHtml } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { TranslationPipe } from '@amarty/pipes';
-import {BaseProfileSectionComponent, itemTypeTitle} from '../base-profile-section.component';
-import {ProfileItemDialogComponent} from '../../dialogs/profile-item-dialog/profile-item-dialog.component';
+import { BaseProfileSectionComponent, itemTypeTitle } from '../base-profile-section.component';
+import { ProfileItemDialogComponent } from '../../dialogs/profile-item-dialog/profile-item-dialog.component';
 
 @Component({
   selector: 'app-profile-item',

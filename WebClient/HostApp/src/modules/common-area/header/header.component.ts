@@ -9,12 +9,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { Observable, of } from 'rxjs';
-import { BaseUnsubscribeComponent } from '@amarty/common'
-import {generateRandomId} from '@amarty/utils'
-import {DictionaryService, LocalizationService} from '@amarty/services';
+import { BaseUnsubscribeComponent } from '@amarty/common';
+import { generateRandomId } from '@amarty/utils';
+import { DictionaryService, LocalizationService } from '@amarty/services';
 import { LocaleResponse, MenuItem } from '@amarty/models';
 import { AuthService } from '../../../utils/services/auth.service';
-import {TranslationPipe} from '@amarty/pipes';
+import { TranslationPipe } from '@amarty/pipes';
 
 @Component({
   selector: 'app-header',
@@ -46,7 +46,7 @@ export class HeaderComponent extends BaseUnsubscribeComponent {
     { key: 'MENU.JOBS', url: '/jobs' },
     { key: 'MENU.COMPANIES', url: '/companies' },
     { key: 'MENU.KARMA', url: '/karma' }
-  ]
+  ];
 
   public locales: LocaleResponse[] | undefined;
 

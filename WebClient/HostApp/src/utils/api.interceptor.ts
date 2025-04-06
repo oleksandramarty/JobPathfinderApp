@@ -1,13 +1,12 @@
-import {Injectable} from '@angular/core';
-import {HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
-import {AuthService} from './services/auth.service';
-import {Store} from '@ngrx/store';
-import {catchError, Observable, throwError} from 'rxjs';
-import {clearLocalStorageAndRefresh, getLocalStorageItem} from '@amarty/utils';
-import {JwtTokenResponse} from '@amarty/models';
-import {environment} from './environments/environment';
-import {auth_clearAll} from '@amarty/store';
-import {MatSnackBar} from '@angular/material/snack-bar';
+import { Injectable } from '@angular/core';
+import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import { AuthService } from './services/auth.service';
+import { Store } from '@ngrx/store';
+import { catchError, Observable, throwError } from 'rxjs';
+import { clearLocalStorageAndRefresh, getLocalStorageItem } from '@amarty/utils';
+import { JwtTokenResponse } from '@amarty/models';
+import { environment } from './environments/environment';
+import { auth_clearAll } from '@amarty/store';
 
 @Injectable()
 export class BaseUrlInterceptor implements HttpInterceptor {

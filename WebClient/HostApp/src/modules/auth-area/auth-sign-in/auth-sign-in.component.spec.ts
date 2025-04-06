@@ -10,7 +10,7 @@ describe('AuthLoginComponent', () => {
     await TestBed.configureTestingModule({
       imports: [AuthSignInComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(AuthSignInComponent);
     component = fixture.componentInstance;

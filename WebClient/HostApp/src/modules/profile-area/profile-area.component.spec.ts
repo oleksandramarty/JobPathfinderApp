@@ -3,7 +3,6 @@ import { ProfileAreaComponent } from './profile-area.component';
 import { CommonDialogService, DictionaryService } from '@amarty/services';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { provideMockStore, MockStore } from '@ngrx/store/testing';
-import { Store } from '@ngrx/store';
 import { selectUser } from '@amarty/store';
 import { UserResponse } from '@amarty/api';
 import { mockUserResponse } from '../../test/mock/user.mock';

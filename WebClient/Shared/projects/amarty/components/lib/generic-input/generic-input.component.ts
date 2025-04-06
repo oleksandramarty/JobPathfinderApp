@@ -3,7 +3,7 @@ import { BaseUnsubscribeComponent } from '@amarty/common';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { DataItem, InputError, InputType } from '@amarty/models';
 import { AsyncPipe, CommonModule } from '@angular/common';
-import {generateRandomId} from '@amarty/utils';
+import { generateRandomId } from '@amarty/utils';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatAutocomplete, MatAutocompleteModule, MatAutocompleteTrigger } from '@angular/material/autocomplete';
@@ -108,7 +108,7 @@ export class GenericInputComponent extends BaseUnsubscribeComponent {
         .pipe(
           takeUntil(this.ngUnsubscribe),
           filter(value => !value),
-          tap((value) => this.internalFormGroup?.get('autocomplete')?.setValue(undefined)),
+          tap(() => this.internalFormGroup?.get('autocomplete')?.setValue(undefined)),
         )
         .subscribe();
 
@@ -222,6 +222,6 @@ export class GenericInputComponent extends BaseUnsubscribeComponent {
     console.log(this.formGroup);
     console.log(this.currentControl);
     console.log(this.currentValue);
-    console.log(this.dataItems)
+    console.log(this.dataItems);
   }
 }

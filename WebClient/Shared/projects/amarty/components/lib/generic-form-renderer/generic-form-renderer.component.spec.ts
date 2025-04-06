@@ -10,7 +10,7 @@ describe('GenericFormRendererComponent', () => {
     await TestBed.configureTestingModule({
       imports: [GenericFormRendererComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(GenericFormRendererComponent);
     component = fixture.componentInstance;

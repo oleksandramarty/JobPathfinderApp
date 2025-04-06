@@ -10,7 +10,7 @@ describe('GenericGridComponent', () => {
     await TestBed.configureTestingModule({
       imports: [GenericGridComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(GenericGridComponent);
     component = fixture.componentInstance;

@@ -13,30 +13,30 @@ export const fadeInOut = trigger('fadeInOut', [
 ]);
 
 export const slideInFromLeft = trigger('slideInFromLeft', [
-    state('open', style({
-        left: '0',
-        zIndex: 1000
-    })),
-    state('closed', style({
-        left: '-100%',
-        zIndex: -1
-    })),
-    transition('closed => open', [
-        animate('300ms ease-in')
-    ]),
-    transition('open => closed', [
-        animate('300ms ease-out')
-    ])
+  state('open', style({
+    left: '0',
+    zIndex: 1000
+  })),
+  state('closed', style({
+    left: '-100%',
+    zIndex: -1
+  })),
+  transition('closed => open', [
+    animate('300ms ease-in')
+  ]),
+  transition('open => closed', [
+    animate('300ms ease-out')
+  ])
 ]);
 
 export const slideInOut = trigger('slideInOut', [
-    state('in', style({
-        height: '*',
-        overflow: 'hidden'
-    })),
-    state('out', style({
-        height: '0',
-        overflow: 'hidden'
-    })),
-    transition('in <=> out', animate('300ms ease-in-out'))
+  state('in', style({
+    height: '*',
+    overflow: 'hidden'
+  })),
+  state('out', style({
+    height: '0',
+    overflow: 'hidden'
+  })),
+  transition('in <=> out', animate('300ms ease-in-out'))
 ]);

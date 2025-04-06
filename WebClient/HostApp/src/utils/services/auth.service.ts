@@ -1,10 +1,10 @@
 import { JwtTokenResponse } from '@amarty/models';
-import {Injectable} from '@angular/core';
-import {filter, Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
-import {Store} from '@ngrx/store';
-import {auth_clearAll, auth_setToken, selectIsAdmin, selectIsSuperAdmin, selectIsUser, selectToken } from '@amarty/store';
-import {getLocalStorageItem, removeLocalStorageItem, setLocalStorageItem} from '@amarty/utils';
+import { Injectable } from '@angular/core';
+import { filter, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { Store } from '@ngrx/store';
+import { auth_clearAll, auth_setToken, selectIsAdmin, selectIsSuperAdmin, selectIsUser, selectToken } from '@amarty/store';
+import { getLocalStorageItem, removeLocalStorageItem, setLocalStorageItem } from '@amarty/utils';
 
 @Injectable({
   providedIn: 'root'
@@ -66,7 +66,7 @@ export class AuthService {
 
   public initialize(): void {
     if (this.localToken) {
-      this.store.dispatch(auth_setToken({token: this.localToken}));
+      this.store.dispatch(auth_setToken({ token: this.localToken }));
     }
 
     if (!this.isAuthorized) {
@@ -84,7 +84,7 @@ export class AuthService {
 
   public updateToken(token: JwtTokenResponse): void {
     setLocalStorageItem(this._tokenKey, token);
-    this.store.dispatch(auth_setToken({token}));
+    this.store.dispatch(auth_setToken({ token }));
   }
 
   private clearAuthData(): void {

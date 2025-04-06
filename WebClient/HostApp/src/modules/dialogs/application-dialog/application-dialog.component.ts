@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import {generateRandomId} from '@amarty/utils';
+import { generateRandomId } from '@amarty/utils';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
@@ -57,7 +57,7 @@ export class ApplicationDialogComponent extends BaseUnsubscribeComponent{
         tap(user => {
           this.aiPrompt = !!user?.userSetting?.applicationAiPrompt;
         })
-      )
+      );
 
     this.createFormGroup();
   }
@@ -118,7 +118,7 @@ export class ApplicationDialogComponent extends BaseUnsubscribeComponent{
       return;
     }
 
-    this.dialogRef.close(true)
+    this.dialogRef.close(true);
   }
 
   public parsePrompt(): void {

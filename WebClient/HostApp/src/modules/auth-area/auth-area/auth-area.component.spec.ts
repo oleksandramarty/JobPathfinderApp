@@ -10,7 +10,7 @@ describe('AuthAreaComponent', () => {
     await TestBed.configureTestingModule({
       imports: [AuthAreaComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(AuthAreaComponent);
     component = fixture.componentInstance;

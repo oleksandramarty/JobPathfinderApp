@@ -3,15 +3,15 @@ import { MAT_DIALOG_DATA, MatDialogRef, MatDialogTitle } from '@angular/material
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Store } from '@ngrx/store';
-import {catchError, finalize, switchMap, takeUntil, tap, throwError} from 'rxjs';
+import { catchError, finalize, switchMap, takeUntil, tap, throwError } from 'rxjs';
 import { GenericInputComponent } from '@amarty/components';
 import { BaseUnsubscribeComponent } from '@amarty/common';
 import { UpdateUserPreferencesCommand, UserResponse } from '@amarty/models';
 import { UserApiClient } from '@amarty/api';
 import { auth_setUser, selectUser } from '@amarty/store';
-import {DictionaryService, LoaderService, LocalizationService} from '@amarty/services';
+import { DictionaryService, LoaderService, LocalizationService } from '@amarty/services';
 import { DataItem } from '@amarty/models';
-import {CommonModule} from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { TranslationPipe } from '@amarty/pipes';
 
 @Component({
@@ -77,14 +77,14 @@ export class UserPreferencesDialogComponent extends BaseUnsubscribeComponent{
 
   createFormGroup(): void {
     if (!this.user || !!this.userPreferencesForm) {
-      return
+      return;
     }
 
-    const index = this.dictionaryService.localeData?.findIndex(item => item.isoCode === (this.user!.userSetting?.defaultLocale ?? "en")) ?? -1;
+    const index = this.dictionaryService.localeData?.findIndex(item => item.isoCode === (this.user!.userSetting?.defaultLocale ?? 'en')) ?? -1;
     const defaultLocale = index > -1 ? this.dictionaryService.localeData![index] : undefined;
 
     this.userPreferencesForm = new FormGroup({
-      email: new FormControl({value: this.user.email, disabled: true}, [Validators.required]),
+      email: new FormControl({ value: this.user.email, disabled: true }, [Validators.required]),
       login: new FormControl(this.user.login, [Validators.required]),
       firstName: new FormControl(this.user.firstName),
       lastName: new FormControl(this.user.lastName),
@@ -115,7 +115,7 @@ export class UserPreferencesDialogComponent extends BaseUnsubscribeComponent{
 
     this.loaderService.isBusy = true;
 
-    const index = this.dictionaryService.localeData?.findIndex(item => item.id === Number(this.userPreferencesForm?.value.defaultLocale ?? 0)) ?? -1
+    const index = this.dictionaryService.localeData?.findIndex(item => item.id === Number(this.userPreferencesForm?.value.defaultLocale ?? 0)) ?? -1;
     const defaultLocale = index > -1 ? this.dictionaryService.localeData![index] : undefined;
 
     const temp = new UpdateUserPreferencesCommand();
@@ -138,7 +138,7 @@ export class UserPreferencesDialogComponent extends BaseUnsubscribeComponent{
     this.userApiClient.user_UpdateSettings(temp).pipe(
       takeUntil(this.ngUnsubscribe),
       switchMap(() => {
-        return this.userApiClient.user_Current()
+        return this.userApiClient.user_Current();
       }),
       tap((user: UserResponse | undefined) => {
         if (!!user) {
@@ -158,7 +158,7 @@ export class UserPreferencesDialogComponent extends BaseUnsubscribeComponent{
         this.dialogRef.close(true);
       }),
       catchError((error: any) => {
-        this.localizationService.handleApiError(error)
+        this.localizationService.handleApiError(error);
         return throwError(() => error);
       }),
       finalize(() => {

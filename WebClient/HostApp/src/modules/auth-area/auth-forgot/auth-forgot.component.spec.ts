@@ -10,7 +10,7 @@ describe('AuthForgotComponent', () => {
     await TestBed.configureTestingModule({
       imports: [AuthForgotComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(AuthForgotComponent);
     component = fixture.componentInstance;

@@ -15,7 +15,7 @@ import {
   UserSkillResponse,
   UserLanguageResponse,
   DataItem
- } from '@amarty/models';
+} from '@amarty/models';
 import {
   CountryData,
   CurrencyData,

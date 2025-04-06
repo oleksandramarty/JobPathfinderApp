@@ -10,7 +10,7 @@ describe('UserPreferencesDialogComponent', () => {
     await TestBed.configureTestingModule({
       imports: [UserPreferencesDialogComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(UserPreferencesDialogComponent);
     component = fixture.componentInstance;

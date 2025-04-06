@@ -4,7 +4,7 @@ import { UserSkillResponse } from '@amarty/models';
 import { CommonDialogService, DictionaryService } from '@amarty/services';
 import { CommonModule } from '@angular/common';
 import { TranslationPipe } from '@amarty/pipes';
-import {BaseProfileSectionComponent} from '../base-profile-section.component';
+import { BaseProfileSectionComponent } from '../base-profile-section.component';
 
 @Component({
   selector: 'app-profile-skills',

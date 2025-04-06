@@ -1,1 +1,1 @@
-export const AMARTY = '@amarty/anime_cat'
+export const AMARTY = '@amarty/anime_cat';

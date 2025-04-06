@@ -1,10 +1,10 @@
 import { Directive, ElementRef, Input } from '@angular/core';
 import { Subject, takeUntil, tap } from 'rxjs';
-import {LocalizationService} from '@amarty/services';
+import { LocalizationService } from '@amarty/services';
 
 @Directive({
-    selector: '[translation]',
-    standalone: true
+  selector: '[translation]',
+  standalone: true
 })
 export class TranslationDirective {
   protected ngUnsubscribe: Subject<void> = new Subject<void>();

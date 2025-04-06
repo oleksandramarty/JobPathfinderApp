@@ -21,20 +21,20 @@ export class SpinnerComponent extends BaseUnsubscribeComponent implements OnInit
   @Input() diameter: number | null = 80;
 
   public speakerLoadingArray: string[] = [
-    "Connecting the microphone... Hopefully, no echo from the past.",
-    "Setting up the stage... Don’t forget the applause!",
-    "Checking the sound... One, two, one, two, can you hear me?",
-    "Warming up the vocal cords... Almost like karaoke!",
-    "Generating charisma... This might take a second!",
-    "Warming up the microphones... They need attention too.",
-    "Finding the right words... It's like magic, but with code!",
-    "Clearing the speaker’s throat... *Ahem!*",
-    "Syncing voice with thoughts... Please wait!",
-    "Calibrating confidence level... Should be at 100%!",
-    "Loading intelligence... Artificial, but still!",
-    "Letting the speaker warm up... Like a fine wine.",
-    "Choosing the right tone... Baritone, tenor, or robot?",
-    "Putting the voice in queue... Two podcasts and a stand-up before you."
+    'Connecting the microphone... Hopefully, no echo from the past.',
+    'Setting up the stage... Don’t forget the applause!',
+    'Checking the sound... One, two, one, two, can you hear me?',
+    'Warming up the vocal cords... Almost like karaoke!',
+    'Generating charisma... This might take a second!',
+    'Warming up the microphones... They need attention too.',
+    'Finding the right words... It\'s like magic, but with code!',
+    'Clearing the speaker’s throat... *Ahem!*',
+    'Syncing voice with thoughts... Please wait!',
+    'Calibrating confidence level... Should be at 100%!',
+    'Loading intelligence... Artificial, but still!',
+    'Letting the speaker warm up... Like a fine wine.',
+    'Choosing the right tone... Baritone, tenor, or robot?',
+    'Putting the voice in queue... Two podcasts and a stand-up before you.'
   ];
 
   public speakerLoadingIndex: number = 0;

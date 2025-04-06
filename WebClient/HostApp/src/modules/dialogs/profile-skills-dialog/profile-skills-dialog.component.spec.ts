@@ -10,7 +10,7 @@ describe('ProfileSkillsDialogComponent', () => {
     await TestBed.configureTestingModule({
       imports: [ProfileSkillsDialogComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(ProfileSkillsDialogComponent);
     component = fixture.componentInstance;

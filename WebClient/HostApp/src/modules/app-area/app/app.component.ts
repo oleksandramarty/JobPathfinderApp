@@ -1,9 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {MatSnackBar} from '@angular/material/snack-bar';
+import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Store } from '@ngrx/store';
-import {catchError, of, switchMap, take, tap, throwError} from 'rxjs';
+import { catchError, of, switchMap, take, tap, throwError } from 'rxjs';
 import { RouterOutlet } from '@angular/router';
-import {generateRandomId} from '@amarty/utils';
+import { generateRandomId } from '@amarty/utils';
 import { auth_setUser } from '@amarty/store';
 import {
   DictionaryApiClient,
@@ -15,10 +15,10 @@ import {
   SiteSettingsService
 } from '@amarty/services';
 import { AuthService } from '../../../utils/services/auth.service';
-import {HeaderComponent} from '../../common-area/header/header.component';
-import {FooterComponent} from '../../common-area/footer/footer.component';
-import {SpinnerComponent} from '../../common-area/spinner/spinner.component';
-import {SiteSettingsResponse, UserResponse} from '@amarty/models';
+import { HeaderComponent } from '../../common-area/header/header.component';
+import { FooterComponent } from '../../common-area/footer/footer.component';
+import { SpinnerComponent } from '../../common-area/spinner/spinner.component';
+import { SiteSettingsResponse, UserResponse } from '@amarty/models';
 
 @Component({
   selector: 'app-root',
@@ -62,7 +62,7 @@ export class AppComponent implements OnInit {
         }
       }),
       catchError((error: any) => {
-        this.localizationService.handleApiError(error)
+        this.localizationService.handleApiError(error);
         return throwError(() => error);
       })
     ).subscribe();
@@ -74,7 +74,7 @@ export class AppComponent implements OnInit {
           this.siteSettingsService.siteSettings = result;
         }),
         catchError((error: any) => {
-          this.localizationService.handleApiError(error)
+          this.localizationService.handleApiError(error);
           return throwError(() => error);
         })
       ).subscribe();

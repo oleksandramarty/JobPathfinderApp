@@ -1,10 +1,10 @@
-import {Component, Inject} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {TranslationPipe} from '@amarty/pipes';
-import {GenericInputComponent} from '@amarty/components';
-import {MAT_DIALOG_DATA, MatDialogRef, MatDialogTitle} from '@angular/material/dialog';
-import {BaseUnsubscribeComponent} from '@amarty/common';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import { Component, Inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { TranslationPipe } from '@amarty/pipes';
+import { GenericInputComponent } from '@amarty/components';
+import { MAT_DIALOG_DATA, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
+import { BaseUnsubscribeComponent } from '@amarty/common';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {
   DataItem,
   InputError,
@@ -12,13 +12,13 @@ import {
   UserProfileItemResponse,
   UserResponse
 } from '@amarty/models';
-import {MatSnackBar} from '@angular/material/snack-bar';
-import {DictionaryService, LoaderService, LocalizationService} from '@amarty/services';
-import {UserApiClient} from '@amarty/api';
-import {Store} from '@ngrx/store';
-import {takeUntil, tap} from 'rxjs';
-import {itemTypeTitle} from '../../profile-area/base-profile-section.component';
-import {selectUser} from '@amarty/store';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { DictionaryService, LoaderService, LocalizationService } from '@amarty/services';
+import { UserApiClient } from '@amarty/api';
+import { Store } from '@ngrx/store';
+import { takeUntil, tap } from 'rxjs';
+import { itemTypeTitle } from '../../profile-area/base-profile-section.component';
+import { selectUser } from '@amarty/store';
 
 @Component({
   selector: 'app-profile-item-dialog',
@@ -105,7 +105,7 @@ export class ProfileItemDialogComponent extends BaseUnsubscribeComponent{
 
   createFormGroup(): void {
     if (!!this.profileItemForm) {
-      return
+      return;
     }
 
     this.profileItemForm = new FormGroup({

@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef, MatDialogTitle} from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Store } from '@ngrx/store';
@@ -11,7 +11,7 @@ import { UserApiClient } from '@amarty/api';
 import { UserLanguageResponse } from '@amarty/models';
 import { DataItem, InputError } from '@amarty/models';
 import { DictionaryService, LoaderService, LocalizationService } from '@amarty/services';
-import {generateGuid} from '@amarty/utils';
+import { generateGuid } from '@amarty/utils';
 import { TranslationPipe } from '@amarty/pipes';
 
 @Component({
@@ -62,7 +62,7 @@ export class ProfileLanguagesDialogComponent extends BaseUnsubscribeComponent{
 
   createFormGroup(): void {
     if (!!this.profileItemForm) {
-      return
+      return;
     }
 
     this.profileItemForm = new FormGroup({
@@ -78,7 +78,7 @@ export class ProfileLanguagesDialogComponent extends BaseUnsubscribeComponent{
           tap(language => {
             this.languageInputError =
               (this.existingIds?.findIndex(item => item === String(language)) ?? -1) > -1 ?
-                [{error: 'COMMON.ALREADY_EXISTS'}] :
+                [{ error: 'COMMON.ALREADY_EXISTS' }] :
                 undefined;
           })
         ).subscribe();

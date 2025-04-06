@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {generateRandomId} from '@amarty/utils';
+import { generateRandomId } from '@amarty/utils';
 import { takeUntil, tap } from 'rxjs';
 import { Router, RouterModule } from '@angular/router';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';

@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { takeUntil, tap } from 'rxjs';
 import { BaseUnsubscribeComponent } from '@amarty/common';
-import {UserProfileItemEnum, UserResponse} from '@amarty/models';
+import { UserProfileItemEnum, UserResponse } from '@amarty/models';
 import { CommonDialogService, DictionaryService } from '@amarty/services';
 import { selectUser } from '@amarty/store';
 import { ProfileInfoComponent } from './profile-info/profile-info.component';

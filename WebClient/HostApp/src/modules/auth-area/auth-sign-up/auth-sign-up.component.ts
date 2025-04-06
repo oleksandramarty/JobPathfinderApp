@@ -10,7 +10,7 @@ import { BaseUnsubscribeComponent } from '@amarty/common';
 import { GenericFormRendererComponent } from '@amarty/components';
 import { InputForm } from '@amarty/models';
 import { Router, RouterLink } from '@angular/router';
-import {AuthFormFactory} from '../../../utils/auth-form.factory';
+import { AuthFormFactory } from '../../../utils/auth-form.factory';
 
 @Component({
   selector: 'app-auth-sign-up',
@@ -32,26 +32,26 @@ export class AuthSignUpComponent extends BaseUnsubscribeComponent {
   public submitted = false;
 
   public langArray: string[] = [
-    `console.log('Hello World!');`, // JavaScript
-    `print('Hello World!')`, // Python
-    `System.out.println("Hello World!");`, // Java
-    `Console.WriteLine("Hello World!");`, // C#
-    `printf("Hello World!\\n");`, // C
-    `std::cout << "Hello World!" << std::endl;`, // C++
-    `console.log('Hello World!');`, // TypeScript
-    `fmt.Println("Hello World!")`, // Go
-    `fn main() { println!("Hello World!"); }`, // Rust
-    `fun main() { println("Hello World!") }`, // Kotlin
-    `print("Hello World!")`, // Swift
-    `echo "Hello World!";`, // PHP
-    `puts "Hello World!"`, // Ruby
-    `void main() { print("Hello World!"); }`, // Dart
-    `cat("Hello World!\\n")`, // R
-    `object Hello extends App { println("Hello World!") }`, // Scala
-    `print "Hello World!\\n";`, // Perl
-    `main = putStrLn "Hello World!"`, // Haskell
-    `print("Hello World!")`, // Lua
-    `IO.puts "Hello World!"` // Elixir
+    'console.log(\'Hello World!\');', // JavaScript
+    'print(\'Hello World!\')', // Python
+    'System.out.println("Hello World!");', // Java
+    'Console.WriteLine("Hello World!");', // C#
+    'printf("Hello World!\\n");', // C
+    'std::cout << "Hello World!" << std::endl;', // C++
+    'console.log(\'Hello World!\');', // TypeScript
+    'fmt.Println("Hello World!")', // Go
+    'fn main() { println!("Hello World!"); }', // Rust
+    'fun main() { println("Hello World!") }', // Kotlin
+    'print("Hello World!")', // Swift
+    'echo "Hello World!";', // PHP
+    'puts "Hello World!"', // Ruby
+    'void main() { print("Hello World!"); }', // Dart
+    'cat("Hello World!\\n")', // R
+    'object Hello extends App { println("Hello World!") }', // Scala
+    'print "Hello World!\\n";', // Perl
+    'main = putStrLn "Hello World!"', // Haskell
+    'print("Hello World!")', // Lua
+    'IO.puts "Hello World!"' // Elixir
   ];
   public langIndex = 0;
 

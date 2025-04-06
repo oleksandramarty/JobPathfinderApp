@@ -5,9 +5,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { CommonDialogService, LocalizationService } from '@amarty/services';
 import { of } from 'rxjs';
 import { selectUser } from '@amarty/store';
-import { UserResponse } from '@amarty/api';
+import { UserResponse } from '@amarty/models';
 import { mockUserResponse } from '../../test/mock/user.mock';
-import {Store} from '@ngrx/store'; // путь подгони под свой проект
+import { Store } from '@ngrx/store'; // путь подгони под свой проект
 
 describe('LandingComponent', () => {
   let component: LandingComponent;

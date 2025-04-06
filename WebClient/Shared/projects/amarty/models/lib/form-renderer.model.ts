@@ -1,5 +1,5 @@
 import { FormControl, FormGroup, ValidatorFn } from '@angular/forms';
-import {DataItem, InputError} from './data-item.model';
+import { DataItem, InputError } from './data-item.model';
 
 export type InputType =
   | 'input'

@@ -34,7 +34,7 @@ export function throwException(message: string, status: number, response: string
 export function blobToText(blob: any): Observable<string> {
   return new Observable<string>((observer: any) => {
     if (!blob) {
-      observer.next("");
+      observer.next('');
       observer.complete();
     } else {
       let reader = new FileReader();

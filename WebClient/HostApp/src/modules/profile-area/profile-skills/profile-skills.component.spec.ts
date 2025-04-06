@@ -2,10 +2,10 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ProfileSkillsComponent } from './profile-skills.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CommonDialogService, DictionaryService } from '@amarty/services';
-import {NO_ERRORS_SCHEMA, Type} from '@angular/core';
-import {MatDialogConfig} from '@angular/material/dialog';
-import {UserSkillResponse} from '@amarty/models';
-import {TranslationPipe} from '@amarty/pipes';
+import { NO_ERRORS_SCHEMA, Type } from '@angular/core';
+import { MatDialogConfig } from '@angular/material/dialog';
+import { UserSkillResponse } from '@amarty/models';
+import { TranslationPipe } from '@amarty/pipes';
 
 describe('ProfileSkillsComponent', () => {
   let component: ProfileSkillsComponent;

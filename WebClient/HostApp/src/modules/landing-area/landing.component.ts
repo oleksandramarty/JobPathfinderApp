@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import {generateRandomId} from '@amarty/utils';
-import {CommonDialogService, DictionaryService, LocalizationService} from '@amarty/services';
+import { generateRandomId } from '@amarty/utils';
+import { CommonDialogService, DictionaryService, LocalizationService } from '@amarty/services';
 import { Store } from '@ngrx/store';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { selectUser } from '@amarty/store';
@@ -10,23 +10,23 @@ import { NgxEchartsModule } from 'ngx-echarts';
 import { ApplicationDialogComponent } from '../dialogs/application-dialog/application-dialog.component';
 import { MenuItem } from '@amarty/models';
 import { BaseUnsubscribeComponent } from '@amarty/common';
-import {CommonModule} from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { TranslationPipe } from '@amarty/pipes';
 
 @Component({
   selector: 'app-landing',
-    imports: [
-      CommonModule,
-      TranslationPipe,
-      NgxEchartsModule
-    ],
+  imports: [
+    CommonModule,
+    TranslationPipe,
+    NgxEchartsModule
+  ],
   standalone: true,
   templateUrl: './landing.component.html',
   styleUrl: './landing.component.scss',
   host: { 'data-id': generateRandomId(12) }
 })
 export class LandingComponent extends BaseUnsubscribeComponent{
-  public profileImage: string = `images/background.jpg`;
+  public profileImage: string = 'images/background.jpg';
   public profileBgImage: string = `background-image: url('${this.profileImage}');`;
   public countryCode: string | undefined;
 
@@ -37,7 +37,7 @@ export class LandingComponent extends BaseUnsubscribeComponent{
     { key: 'MENU.TODOS', value: '7', className: 'card-todos', icon: 'fa-solid fa-list' },
     { key: 'MENU.RESPONSE_RATE', value: '50%', className: 'card-response-rate', icon: 'fa-solid fa-percent' },
     { key: 'MENU.UPCOMING_INTERVIEWS', value: '3', className: 'card-upcoming-interviews', icon: 'fa-solid fa-calendar-days' },
-  ]
+  ];
 
   public heatmapOptions: any;
   public lineChartOptions: any;
@@ -170,10 +170,10 @@ export class LandingComponent extends BaseUnsubscribeComponent{
 
   openApplicationDialog(): void {
     this.dialogService.showDialog<ApplicationDialogComponent, any>(
-        ApplicationDialogComponent,
-        {
-          width: '1200px',
-          maxWidth: '90vw',
-        });
+      ApplicationDialogComponent,
+      {
+        width: '1200px',
+        maxWidth: '90vw',
+      });
   }
 }

@@ -1,6 +1,6 @@
 import { ApplicationConfig, importProvidersFrom } from '@angular/core';
 import { provideRouter } from '@angular/router';
-import {provideHttpClient, withFetch, withInterceptorsFromDi} from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { provideStore } from '@ngrx/store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -11,13 +11,13 @@ import { reducers } from '@amarty/store';
 import {
   API_BASE_URL_AuthGateway,
   API_BASE_URL_Localizations,
-  API_BASE_URL_Dictionaries, UserApiClient
+  API_BASE_URL_Dictionaries
 } from '@amarty/api';
-import {routes} from './app.routes';
-import {environment} from '../../utils/environments/environment';
-import {BaseUrlInterceptor} from '../../utils/api.interceptor';
-import {BrowserModule} from '@angular/platform-browser';
-import {BrowserAnimationsModule, provideAnimations} from '@angular/platform-browser/animations';
+import { routes } from './app.routes';
+import { environment } from '../../utils/environments/environment';
+import { BaseUrlInterceptor } from '../../utils/api.interceptor';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule, provideAnimations } from '@angular/platform-browser/animations';
 
 export const appConfig: ApplicationConfig = {
   providers: [
