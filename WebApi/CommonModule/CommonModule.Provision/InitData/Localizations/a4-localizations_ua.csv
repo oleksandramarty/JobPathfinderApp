@@ -14,8 +14,6 @@ id;locale;key;valueEn;value;isPublic;
 550e8400-e29b-41d4-a716-400000000013;ua;COMMON.EMAIL;Email;Email;1;
 550e8400-e29b-41d4-a716-400000000014;ua;COMMON.CONFIRM_EMAIL;Confirm email;Підтвердити email;1;
 550e8400-e29b-41d4-a716-400000000015;ua;COMMON.PROCEED;Proceed;Продовжити;1;
-550e8400-e29b-41d4-a716-400000000016;ua;COMMON.FIRST_NAME;First Name;Ім''я та прізвище;1;
-550e8400-e29b-41d4-a716-400000000017;ua;COMMON.LAST_NAME;Last Name;Прізвище та ім''я;1;
 550e8400-e29b-41d4-a716-400000000018;ua;COMMON.NO_COMPLAINTS;No complaints;Немає скарг;1;
 550e8400-e29b-41d4-a716-400000000019;ua;COMMON.WE_ARE_HONKING;We are honking since 2024!;Ми хонкаємо з 2024 року!;1;
 550e8400-e29b-41d4-a716-400000000020;ua;COMMON.DO_NOT_STORE_SENS_DATA;DO NOT STORE ANY SENSITIVE DATA HERE!;НЕ ЗБЕРІГАЙТЕ ТУТ ЖОДНИХ КОНФІДЕНЦІЙНИХ ДАНИХ!;1;

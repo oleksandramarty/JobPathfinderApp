@@ -14,8 +14,6 @@ id;locale;key;valueEn;value;isPublic;
 550e8400-e29b-41d4-a716-500000000013;ru;COMMON.EMAIL;Email;Электронная почта;1;
 550e8400-e29b-41d4-a716-500000000014;ru;COMMON.CONFIRM_EMAIL;Confirm email;Подтвердить электронную почту;1;
 550e8400-e29b-41d4-a716-500000000015;ru;COMMON.PROCEED;Proceed;Пройдите по ссылке;1;
-550e8400-e29b-41d4-a716-500000000016;ru;COMMON.FIRST_NAME;First Name;Имя;1;
-550e8400-e29b-41d4-a716-500000000017;ru;COMMON.LAST_NAME;Last Name;Последнее имя;1;
 550e8400-e29b-41d4-a716-500000000018;ru;COMMON.NO_COMPLAINTS;No complaints;Нет жалоб;1;
 550e8400-e29b-41d4-a716-500000000019;ru;COMMON.WE_ARE_HONKING;We are honking since 2024!;Мы хонкаем с 2024 года!;1;
 550e8400-e29b-41d4-a716-500000000020;ru;COMMON.DO_NOT_STORE_SENS_DATA;DO NOT STORE ANY SENSITIVE DATA HERE!;НЕ ХРАНИТЕ ЗДЕСЬ КОНФИДЕНЦИАЛЬНЫЕ ДАННЫЕ!;1;
