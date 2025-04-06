@@ -31,7 +31,7 @@ chmod +x "$SCRIPT_DIR/init_locales.sh"
 "$SCRIPT_DIR/init_locales.sh"
 
 chmod +x "$SCRIPT_DIR/init_languages.sh"
-"$SCRIPT_DIR/init_languages.sh"
+"$SCRIPT_DIR/init_languages.sh" $isBulkUpdate
 
 chmod +x "$SCRIPT_DIR/init_localizations.sh"
 "$SCRIPT_DIR/init_localizations.sh" $isBulkUpdate
