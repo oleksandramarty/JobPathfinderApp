@@ -20,7 +20,9 @@ echo "export const SkillData: SkillResponse[] = [" >> "$output_file"
 
 # Read the CSV file and process each row
 tail -n +2 "$csv_file" | while IFS=';' read -r id title; do
-  echo "  { id: $id, title: \`$title\` } as SkillResponse," >> "$output_file"
+  # Clean and escape title
+  title_cleaned=$(echo "$title" | sed "s/''/'/g" | sed "s/'/\\\'/g")
+  echo "  { id: $id, title: '$title_cleaned' } as SkillResponse," >> "$output_file"
 done
 
 # Close the array

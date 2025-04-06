@@ -35,9 +35,6 @@ for i in "${!locales[@]}"; do
   } < "$csv_file"
 
   echo "]);" >> "$output_file"
-
-  echo "✅ Generated: localization_${locale}.ts"
 done
 
-echo ""
 echo "📦 $index record(s) processed in total."

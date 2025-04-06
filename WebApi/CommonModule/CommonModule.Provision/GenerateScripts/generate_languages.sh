@@ -20,10 +20,12 @@ echo "export const LanguageData: LanguageResponse[] = [" >> "$output_file"
 
 # Read CSV file and process each line
 tail -n +2 "$csv_file" | while IFS=';' read -r id code titleEn title status; do
-  # Replace '' with '
-  titleEn_cleaned=$(echo "$titleEn" | sed "s/''/'/g")
+  # Clean and escape all values
+  code_cleaned=$(echo "$code" | sed "s/''/'/g" | sed "s/'/\\\'/g")
+  titleEn_cleaned=$(echo "$titleEn" | sed "s/''/'/g" | sed "s/'/\\\'/g")
+  title_cleaned=$(echo "$title" | sed "s/''/'/g" | sed "s/'/\\\'/g")
 
-  echo "  { id: $id, isoCode: \`$code\`, titleEn: \`$titleEn_cleaned\`, title: \`$title\`, status: StatusEnum.Active } as LanguageResponse," >> "$output_file"
+  echo "  { id: $id, isoCode: '$code_cleaned', titleEn: '$titleEn_cleaned', title: '$title_cleaned', status: StatusEnum.Active } as LanguageResponse," >> "$output_file"
 done
 
 # Close array

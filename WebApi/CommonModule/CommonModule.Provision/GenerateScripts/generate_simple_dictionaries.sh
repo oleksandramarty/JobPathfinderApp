@@ -21,10 +21,16 @@ for i in "${!file_names[@]}"; do
   
   # Start array declaration
   echo "export const ${class_names[$i]}Data: ${class_names[$i]}Response[] = [" >> "$output_file"
+
   # Read CSV file and process each line
-  tail -n +2 "$csv_file" | while IFS=';' read -r id title titleEn status; do      
-    echo "  { id: $id, title: \`$title\`, titleEn: \`$titleEn\`, status: StatusEnum.Active } as ${class_names[$i]}Response," >> "$output_file"
+  tail -n +2 "$csv_file" | while IFS=';' read -r id title titleEn status; do
+    # Clean and escape values
+    title_cleaned=$(echo "$title" | sed "s/''/'/g" | sed "s/'/\\\'/g")
+    titleEn_cleaned=$(echo "$titleEn" | sed "s/''/'/g" | sed "s/'/\\\'/g")
+
+    echo "  { id: $id, title: '$title_cleaned', titleEn: '$titleEn_cleaned', status: StatusEnum.Active } as ${class_names[$i]}Response," >> "$output_file"
   done
+
   echo "];" >> "$output_file"
   echo "✅ ${file_names[$i]}.ts file generated successfully at $output_file"
 done

@@ -5,7 +5,7 @@
     {
       "files": ["*.ts"],
       "parserOptions": {
-        "project": ["Shared/projects/amarty/components/tsconfig.lib.json"]
+        "project": ["Shared/projects/amarty/components/tsconfig.lint.json"]
       }
     }
   ]

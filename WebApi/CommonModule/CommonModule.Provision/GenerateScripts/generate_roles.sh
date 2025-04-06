@@ -20,7 +20,9 @@ echo "export const RoleData: RoleResponse[] = [" >> "$output_file"
 
 # Read the CSV file and process each row
 tail -n +2 "$csv_file" | while IFS=';' read -r id title userRole; do
-  echo "  { id: $id, title: \`$title\`, userRole: $userRole } as RoleResponse," >> "$output_file"
+  # Clean and escape the title
+  title_cleaned=$(echo "$title" | sed "s/''/'/g" | sed "s/'/\\\'/g")
+  echo "  { id: $id, title: '$title_cleaned', userRole: $userRole } as RoleResponse," >> "$output_file"
 done
 
 # Close the array

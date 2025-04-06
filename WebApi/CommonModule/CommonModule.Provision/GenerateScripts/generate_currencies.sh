@@ -20,7 +20,13 @@ echo "export const CurrencyData: CurrencyResponse[] = [" >> "$output_file"
 
 # Read CSV file and process each line
 tail -n +2 "$csv_file" | while IFS=';' read -r id titleEn title code symbol status; do  
-  echo "  { id: $id, titleEn: \`$titleEn\`, title: \`$title\`, code: \`$code\`, symbol: \`$symbol\`, status: StatusEnum.Active } as CurrencyResponse," >> "$output_file"
+  # Clean and escape values
+  titleEn_cleaned=$(echo "$titleEn" | sed "s/''/'/g" | sed "s/'/\\\'/g")
+  title_cleaned=$(echo "$title" | sed "s/''/'/g" | sed "s/'/\\\'/g")
+  code_cleaned=$(echo "$code" | sed "s/''/'/g" | sed "s/'/\\\'/g")
+  symbol_cleaned=$(echo "$symbol" | sed "s/''/'/g" | sed "s/'/\\\'/g")
+
+  echo "  { id: $id, titleEn: '$titleEn_cleaned', title: '$title_cleaned', code: '$code_cleaned', symbol: '$symbol_cleaned', status: StatusEnum.Active } as CurrencyResponse," >> "$output_file"
 done
 
 # Close array
