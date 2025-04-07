@@ -9,9 +9,7 @@ import {
   UserLanguageResponse,
   DataItem,
   InputError,
-  InputForm,
-  InputFormBuilder,
-  InputFormItemBuilder
+  InputForm
 } from '@amarty/models';
 
 import { GenericFormRendererComponent } from '@amarty/components';
@@ -19,8 +17,7 @@ import { BaseUnsubscribeComponent } from '@amarty/common';
 import { UserApiClient } from '@amarty/api';
 import { DictionaryService, LoaderService, LocalizationService } from '@amarty/services';
 import { TranslationPipe } from '@amarty/pipes';
-import { generateGuid } from '@amarty/utils';
-import {ProfileFormFactory} from '../../../utils/profile-form.factory';
+import { ProfileFormFactory } from '../../../utils/profile-form.factory';
 
 @Component({
   selector: 'app-profile-languages-dialog',
@@ -74,8 +71,8 @@ export class ProfileLanguagesDialogComponent extends BaseUnsubscribeComponent {
       () => this.submitForm(),
       () => this.dialogRef.close(false),
       this.language,
-        this.languages,
-        this.languageLevels
+      this.languages,
+      this.languageLevels
     );
 
     if (!this.language) {

@@ -9,8 +9,6 @@ import {
   UpdateUserPreferencesCommand,
   UserResponse,
   InputForm,
-  InputFormBuilder,
-  InputFormItemBuilder,
   DataItem
 } from '@amarty/models';
 
@@ -20,7 +18,7 @@ import { DictionaryService, LoaderService, LocalizationService } from '@amarty/s
 import { BaseUnsubscribeComponent } from '@amarty/common';
 import { GenericFormRendererComponent } from '@amarty/components';
 import { TranslationPipe } from '@amarty/pipes';
-import {ProfileFormFactory} from '../../../utils/profile-form.factory';
+import { ProfileFormFactory } from '../../../utils/profile-form.factory';
 
 @Component({
   selector: 'app-user-preferences-dialog',
@@ -93,7 +91,7 @@ export class UserPreferencesDialogComponent extends BaseUnsubscribeComponent {
       this.currencies,
       () => this.dialogRef.close(false),
       () => this.onApplicationSubmit()
-    )
+    );
   }
 
   public onApplicationSubmit(): void {

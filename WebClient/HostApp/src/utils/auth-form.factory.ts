@@ -8,20 +8,18 @@ import {
 export class AuthFormFactory {
   static createSignInForm(onCancel: () => void, onSubmit: () => void): InputForm {
     return new InputFormBuilder()
-      .addInputItem(
+      .addGridItem([
         new InputFormItemBuilder('loginEmail', 'input')
           .withPlaceholder('COMMON.LOGIN_OR_EMAIL')
-          .withValidators([Validators.required])
-      )
-      .addInputItem(
+          .withValidators([Validators.required]),
         new InputFormItemBuilder('password', 'password')
           .withPlaceholder('COMMON.PASSWORD')
-          .withValidators([Validators.required])
-      )
-      .addInputItem(
+          .withValidators([Validators.required]),
         new InputFormItemBuilder('rememberMe', 'checkbox')
           .withLabel('COMMON.REMEMBER_ME')
           .withDefaultValue(false)
+      ],
+      1
       )
       .setSubmitted(false)
       .setClassName('container__box__body')
@@ -42,15 +40,15 @@ export class AuthFormFactory {
 
   static createForgotForm(onCancel: () => void, onSubmit: () => void): InputForm {
     return new InputFormBuilder()
-      .addInputItem(
+      .addGridItem([
         new InputFormItemBuilder('email', 'input')
           .withPlaceholder('COMMON.EMAIL')
-          .withValidators([Validators.required, Validators.email])
-      )
-      .addInputItem(
+          .withValidators([Validators.required, Validators.email]),
         new InputFormItemBuilder('login', 'input')
           .withPlaceholder('COMMON.LOGIN')
           .withValidators([Validators.required])
+      ],
+      1
       )
       .setSubmitted(false)
       .setClassName('container__box__body')
@@ -71,35 +69,32 @@ export class AuthFormFactory {
 
   static createSignUpForm(onSubmit: () => void): InputForm {
     return new InputFormBuilder()
-      .addInputItem(new InputFormItemBuilder('firstName', 'input')
-        .withPlaceholder('COMMON.FIRST_NAME')
-        .withValidators([Validators.required]))
-
-      .addInputItem(new InputFormItemBuilder('lastName', 'input')
-        .withPlaceholder('COMMON.LAST_NAME'))
-
-      .addInputItem(new InputFormItemBuilder('email', 'input')
-        .withPlaceholder('COMMON.EMAIL')
-        .withValidators([Validators.required, Validators.email]))
-
-      .addInputItem(new InputFormItemBuilder('confirmEmail', 'input')
-        .withPlaceholder('COMMON.CONFIRM_EMAIL')
-        .withValidators([Validators.required, Validators.email]))
-
-      .addInputItem(new InputFormItemBuilder('newPassword', 'password')
-        .withPlaceholder('COMMON.PASSWORD')
-        .withValidators([Validators.required]))
-
-      .addInputItem(new InputFormItemBuilder('confirmNewPassword', 'password')
-        .withPlaceholder('COMMON.CONFIRM_PASSWORD')
-        .withValidators([Validators.required]))
-
-      .addInputItem(new InputFormItemBuilder('noComplaints', 'checkbox')
-        .withLabel('COMMON.NO_COMPLAINTS')
-        .withValidators([Validators.requiredTrue]))
-
+      .addGridItem([
+        new InputFormItemBuilder('firstName', 'input')
+          .withPlaceholder('COMMON.FIRST_NAME')
+          .withValidators([Validators.required]),
+        new InputFormItemBuilder('lastName', 'input')
+          .withPlaceholder('COMMON.LAST_NAME'),
+        new InputFormItemBuilder('email', 'input')
+          .withPlaceholder('COMMON.EMAIL')
+          .withValidators([Validators.required, Validators.email]),
+        new InputFormItemBuilder('confirmEmail', 'input')
+          .withPlaceholder('COMMON.CONFIRM_EMAIL')
+          .withValidators([Validators.required, Validators.email]),
+        new InputFormItemBuilder('newPassword', 'password')
+          .withPlaceholder('COMMON.PASSWORD')
+          .withValidators([Validators.required]),
+        new InputFormItemBuilder('confirmNewPassword', 'password')
+          .withPlaceholder('COMMON.CONFIRM_PASSWORD')
+          .withValidators([Validators.required]),
+        new InputFormItemBuilder('noComplaints', 'checkbox')
+          .withLabel('COMMON.NO_COMPLAINTS')
+          .withValidators([Validators.requiredTrue])
+      ],
+      2
+      )
       .setSubmitted(false)
-      .setClassName('container__box__body grid-2fr')
+      .setClassName('container__box__body grid-1fr')
       .withSubmitButton({
         buttonText: 'COMMON.SIGN_UP',
         showButton: true,

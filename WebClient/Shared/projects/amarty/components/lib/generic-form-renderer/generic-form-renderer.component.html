@@ -1,79 +1,66 @@
-@if (renderForm?.inputFormGroup && safeInputItems.length > 0) {
+@if (renderForm?.inputFormGroup && gridItems.length > 0) {
   <form [formGroup]="renderForm.inputFormGroup" novalidate [class]="renderForm.className">
     @if (renderForm.resetButton?.showButton) {
       <div class="container__box__footer">
         <div class="container__box__footer-item">
           <button class="button button__link" (click)="renderForm.resetButton?.onClick?.()">
-            {{ renderForm.resetButton?.buttonText || 'COMMON.RESET' | translation }}
+            {{ renderForm.resetButton?.buttonText || ('COMMON.RESET' | translation) }}
           </button>
         </div>
       </div>
     }
 
-    <ng-container *ngTemplateOutlet="renderItems; context: { $implicit: safeInputItems }"></ng-container>
-
-  </form>
-
-  @if (showButtons && renderForm.hasButtons) {
-    <div class="container__box__footer">
-      <div class="container__box__footer-item">
-        @if (renderForm.cancelButton?.showButton) {
-          <button
-            [class]="'button ' + renderForm.cancelButton?.className"
-            (click)="renderForm.cancelButton?.onClick?.()"
-          >
-            {{ renderForm.cancelButton?.buttonText || 'COMMON.CANCEL' | translation }}
-          </button>
+    @for (grid of gridItems; track $index) {
+      <div [ngClass]="'grid-' + (grid.gridCount ?? 1) + 'fr grid-gap'">
+        @for (inputItem of grid.inputItems; track $index) {
+          @if (inputItem.controlName) {
+            <app-generic-input
+              [formGroup]="renderForm.inputFormGroup"
+              [controlName]="inputItem.controlName"
+              [label]="inputItem.label"
+              [placeholder]="inputItem.placeholder"
+              [dataItems]="inputItem.dataItems"
+              [type]="inputItem.inputType"
+              [hint]="inputItem.hint"
+              [icon]="inputItem.icon"
+              [rows]="inputItem.rows"
+              [cols]="inputItem.cols"
+              [maxLength]="inputItem.maxLength"
+              [minLength]="inputItem.minLength"
+              [minDate]="inputItem.minDate"
+              [maxDate]="inputItem.maxDate"
+              [mode]="inputItem.mode"
+              [errorArray]="inputItem.errorArray"
+              [submitted]="renderForm.submitted"
+            ></app-generic-input>
+          }
         }
       </div>
-      <div class="container__box__footer-item">
-        @if (renderForm.submitButton?.showButton) {
-          <button
-            [class]="'button ' + renderForm.submitButton?.className"
-            (click)="renderForm.submitButton?.onClick?.()"
-          >
-            {{ renderForm.submitButton?.buttonText || 'COMMON.PROCEED' | translation }}
-          </button>
-        }
-      </div>
-    </div>
-  }
-}
-
-<ng-template #renderItems let-items>
-  @for (inputItem of items; track $index) {
-    @if (isGroup(inputItem)) {
-      <ng-container *ngTemplateOutlet="renderInputItem; context: { $implicit: inputItem }"></ng-container>
-
-      <div [ngClass]="'grid-' + inputItem.childrenGridCount + 'fr grid-gap'">
-        <ng-container *ngTemplateOutlet="renderItems; context: { $implicit: inputItem.children }"></ng-container>
-      </div>
-    } @else {
-      @if (inputItem.controlName) {
-        <ng-container *ngTemplateOutlet="renderInputItem; context: { $implicit: inputItem }"></ng-container>
-      }
     }
-  }
-</ng-template>
 
-<ng-template #renderInputItem let-inputItem>
-  <app-generic-input
-    [formGroup]="renderForm.inputFormGroup"
-    [controlName]="inputItem.controlName"
-    [label]="inputItem.label"
-    [placeholder]="inputItem.placeholder"
-    [dataItems]="inputItem.dataItems"
-    [type]="inputItem.inputType"
-    [hint]="inputItem.hint"
-    [icon]="inputItem.icon"
-    [rows]="inputItem.rows"
-    [cols]="inputItem.cols"
-    [maxLength]="inputItem.maxLength"
-    [minLength]="inputItem.minLength"
-    [minDate]="inputItem.minDate"
-    [maxDate]="inputItem.maxDate"
-    [mode]="inputItem.mode"
-    [errorArray]="inputItem.errorArray"
-    [submitted]="renderForm.submitted"
-  ></app-generic-input>
-</ng-template>
+    @if (showButtons && renderForm.hasButtons) {
+      <div class="container__box__footer">
+        <div class="container__box__footer-item">
+          @if (renderForm.cancelButton?.showButton) {
+            <button
+              [class]="'button ' + renderForm.cancelButton?.className"
+              (click)="renderForm.cancelButton?.onClick?.()"
+            >
+              {{ (renderForm.cancelButton?.buttonText ?? 'COMMON.CANCEL') | translation }}
+            </button>
+          }
+        </div>
+        <div class="container__box__footer-item">
+          @if (renderForm.submitButton?.showButton) {
+            <button
+              [class]="'button ' + renderForm.submitButton?.className"
+              (click)="renderForm.submitButton?.onClick?.()"
+            >
+              {{ (renderForm.submitButton?.buttonText || 'COMMON.PROCEED') | translation }}
+            </button>
+          }
+        </div>
+      </div>
+    }
+  </form>
+}

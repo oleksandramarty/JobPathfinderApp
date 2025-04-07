@@ -1,13 +1,14 @@
 import { Component, Inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslationPipe } from '@amarty/pipes';
-import { GenericInputComponent } from '@amarty/components';
+import { GenericFormRendererComponent } from '@amarty/components';
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
 import { BaseUnsubscribeComponent } from '@amarty/common';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {
   DataItem,
-  InputError,
+  InputForm,
+  InputFormBuilder,
+  InputFormItemBuilder,
   UserProfileItemEnum,
   UserProfileItemResponse,
   UserResponse
@@ -19,28 +20,26 @@ import { Store } from '@ngrx/store';
 import { takeUntil, tap } from 'rxjs';
 import { itemTypeTitle } from '../../profile-area/base-profile-section.component';
 import { selectUser } from '@amarty/store';
+import { Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-profile-item-dialog',
+  standalone: true,
   imports: [
     CommonModule,
     TranslationPipe,
-    GenericInputComponent,
+    GenericFormRendererComponent,
     MatDialogTitle
   ],
-  standalone: true,
   templateUrl: './profile-item-dialog.component.html',
   styleUrl: './profile-item-dialog.component.scss'
 })
-export class ProfileItemDialogComponent extends BaseUnsubscribeComponent{
-  public profileItemForm: FormGroup | undefined;
+export class ProfileItemDialogComponent extends BaseUnsubscribeComponent {
+  public renderForm: InputForm | undefined;
   public profileItem: UserProfileItemResponse | undefined;
   public profileItemType: UserProfileItemEnum | undefined;
-  public submitted: boolean = false;
-  public dateInputError: InputError[] | undefined;
-
+  public submitted = false;
   public currentUser: UserResponse | undefined;
-
   public title: string | undefined;
 
   constructor(
@@ -60,7 +59,6 @@ export class ProfileItemDialogComponent extends BaseUnsubscribeComponent{
 
     this.profileItem = data?.profileItem;
     this.profileItemType = data?.profileItemType;
-    this.createFormGroup();
   }
 
   override ngOnInit(): void {
@@ -71,82 +69,100 @@ export class ProfileItemDialogComponent extends BaseUnsubscribeComponent{
         takeUntil(this.ngUnsubscribe),
         tap(user => {
           this.currentUser = user;
+          this.buildForm();
         })
       ).subscribe();
 
     super.ngOnInit();
   }
 
-  get countries(): DataItem[] | undefined {
-    return this.dictionaryService.countryDataItems;
+  get countries(): DataItem[] {
+    return this.dictionaryService.countryDataItems ?? [];
   }
 
-  get jobTypes(): DataItem[] | undefined {
-    return this.dictionaryService.jobTypeDataItems;
+  get jobTypes(): DataItem[] {
+    return this.dictionaryService.jobTypeDataItems ?? [];
   }
 
-  get workArrangements(): DataItem[] | undefined {
-    return this.dictionaryService.workArrangementDataItems;
+  get workArrangements(): DataItem[] {
+    return this.dictionaryService.workArrangementDataItems ?? [];
   }
 
-  get languages(): DataItem[] | undefined {
-    return this.dictionaryService.languageDataItems?.filter(
-      item =>
-        this.currentUser?.languages?.findIndex(
-          lang => lang.id === item.id));
-  }
+  private buildForm(): void {
+    const builder = new InputFormBuilder();
 
-  get skills(): DataItem[] | undefined {
-    return this.dictionaryService.skillDataItems?.filter(
-      item =>
-        this.currentUser?.skills?.findIndex(
-          skill => skill.id === item.id));
-  }
+    builder.addGridItem([
+      new InputFormItemBuilder('position', 'input')
+        .withLabel('COMMON.POSITION')
+        .withPlaceholder('COMMON.POSITION')
+        .withValidators([Validators.required])
+        .withDefaultValue(this.profileItem?.position),
+      new InputFormItemBuilder('company', 'input')
+        .withLabel('COMMON.COMPANY')
+        .withPlaceholder('COMMON.COMPANY')
+        .withValidators([Validators.required])
+        .withDefaultValue(this.profileItem?.company)
+    ], 1)
+      .addGridItem([
+        new InputFormItemBuilder('startDate', 'datepicker')
+          .withLabel('COMMON.START_DATE')
+          .withValidators([Validators.required])
+          .withDefaultValue(this.profileItem?.startDate),
+        new InputFormItemBuilder('endDate', 'datepicker')
+          .withLabel('COMMON.END_DATE')
+          .withDefaultValue(this.profileItem?.endDate),
+        new InputFormItemBuilder('location', 'input')
+          .withLabel('COMMON.LOCATION')
+          .withPlaceholder('COMMON.LOCATION')
+          .withDefaultValue(this.profileItem?.location),
+        new InputFormItemBuilder('countryId', 'autocomplete')
+          .withLabel('COMMON.COUNTRY')
+          .withPlaceholder('COMMON.COUNTRY')
+          .withDataItems(this.countries)
+          .withValidators([Validators.required])
+          .withDefaultValue(this.profileItem?.countryId),
+        new InputFormItemBuilder('jobTypeId', 'autocomplete')
+          .withLabel('COMMON.JOB_TYPE')
+          .withPlaceholder('COMMON.JOB_TYPE')
+          .withDataItems(this.jobTypes)
+          .withValidators([Validators.required])
+          .withDefaultValue(this.profileItem?.jobTypeId),
+        new InputFormItemBuilder('workArrangementId', 'autocomplete')
+          .withLabel('COMMON.WORK_ARRANGEMENT')
+          .withPlaceholder('COMMON.WORK_ARRANGEMENT')
+          .withDataItems(this.workArrangements)
+          .withValidators([Validators.required])
+          .withDefaultValue(this.profileItem?.workArrangementId),
+      ], 2)
+      .addGridItem([
+        new InputFormItemBuilder('description', 'textarea')
+          .withLabel('COMMON.DESCRIPTION')
+          .withRows(2)
+          .withMaxLength(500)
+          .withDefaultValue(this.profileItem?.description)
+      ], 1)
+      .setSubmitted(false)
+      .setClassName('modal__body grid-1fr grid-gap')
+      .withCancelButton({
+        buttonText: 'COMMON.CANCEL',
+        showButton: true,
+        className: 'button__link',
+        onClick: () => this.dialogRef.close(false)
+      })
+      .withSubmitButton({
+        buttonText: 'COMMON.PROCEED',
+        showButton: true,
+        className: 'button__filled__submit',
+        onClick: () => this.proceedItem()
+      });
 
-  createFormGroup(): void {
-    if (!!this.profileItemForm) {
-      return;
-    }
-
-    this.profileItemForm = new FormGroup({
-      startDate: new FormControl(this.profileItem?.startDate, [Validators.required]),
-      endDate: new FormControl(this.profileItem?.endDate),
-      position: new FormControl(this.profileItem?.position, [Validators.required]),
-      description: new FormControl(this.profileItem?.description),
-      company: new FormControl(this.profileItem?.company, [Validators.required]),
-      location: new FormControl(this.profileItem?.location),
-      countryId: new FormControl(this.profileItem?.countryId, [Validators.required]),
-      jobTypeId: new FormControl(this.profileItem?.jobTypeId, [Validators.required]),
-      workArrangementId: new FormControl(this.profileItem?.workArrangementId, [Validators.required]),
-      languages: new FormControl(this.profileItem?.languages),
-      skills: new FormControl(this.profileItem?.skills)
-    });
-
-    this.profileItemForm?.valueChanges
-      .pipe(
-        takeUntil(this.ngUnsubscribe),
-        tap(values => {
-          const { startDate, endDate } = values;
-
-          if (startDate && endDate) {
-            const start = new Date(startDate);
-            const end = new Date(endDate);
-
-            this.dateInputError = start > end ? [{ error: 'COMMON.WRONG_DATE' }] : undefined;
-          } else {
-            this.dateInputError = undefined;
-          }
-        })
-      )
-      .subscribe();
+    this.renderForm = builder.build();
   }
 
   public proceedItem(): void {
     this.submitted = true;
-    if (this.profileItemForm?.invalid ||
-      !this.profileItemForm?.value.skillId ||
-      !this.profileItemForm?.value.skillLevelId ||
-      !!this.dateInputError) {
+
+    if (this.renderForm?.inputFormGroup?.invalid) {
       this.snackBar.open(
         'Fix the errors before submitting',
         'OK',
@@ -157,6 +173,6 @@ export class ProfileItemDialogComponent extends BaseUnsubscribeComponent{
       return;
     }
 
-    this.dialogRef.close(this.profileItemForm?.value);
+    this.dialogRef.close(this.renderForm!.inputFormGroup?.value);
   }
 }

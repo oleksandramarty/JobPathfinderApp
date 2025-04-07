@@ -15,7 +15,7 @@ import { DictionaryService, LoaderService, LocalizationService } from '@amarty/s
 import { BaseUnsubscribeComponent } from '@amarty/common';
 import { GenericFormRendererComponent } from '@amarty/components';
 import { TranslationPipe } from '@amarty/pipes';
-import {ProfileFormFactory} from '../../../utils/profile-form.factory';
+import { ProfileFormFactory } from '../../../utils/profile-form.factory';
 
 @Component({
   selector: 'app-profile-skills-dialog',

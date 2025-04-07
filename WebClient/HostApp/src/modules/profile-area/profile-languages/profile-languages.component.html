@@ -17,8 +17,10 @@
       @for(language of itemsToAdd; track $index) {
         <div class="badge">
           <div class="badge__language" [innerHTML]="getItemTitle(language)"></div>
-          <i class="fa-solid fa-pencil" (click)="openItemDialog(true, language.id)"></i>
-          <i class="fa-solid fa-xmark" (click)="removeItem(true, language.id!)"></i>
+          @if(isEditMode) {
+            <i class="fa-solid fa-pencil" (click)="openItemDialog(true, language.id)"></i>
+            <i class="fa-solid fa-xmark" (click)="removeItem(true, language.id!)"></i>
+          }
         </div>
       }
     }

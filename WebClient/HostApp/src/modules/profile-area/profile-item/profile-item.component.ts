@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
 import { TranslationPipe } from '@amarty/pipes';
 import { BaseProfileSectionComponent, itemTypeTitle } from '../base-profile-section.component';
 import { ProfileItemDialogComponent } from '../../dialogs/profile-item-dialog/profile-item-dialog.component';
-import {generateGuid} from '@amarty/utils';
+import { generateGuid } from '@amarty/utils';
 
 @Component({
   selector: 'app-profile-item',

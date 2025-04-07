@@ -5,7 +5,7 @@ import { CommonDialogService, DictionaryService } from '@amarty/services';
 import { CommonModule } from '@angular/common';
 import { TranslationPipe } from '@amarty/pipes';
 import { BaseProfileSectionComponent } from '../base-profile-section.component';
-import {generateGuid} from '@amarty/utils';
+import { generateGuid } from '@amarty/utils';
 
 @Component({
   selector: 'app-profile-skills',

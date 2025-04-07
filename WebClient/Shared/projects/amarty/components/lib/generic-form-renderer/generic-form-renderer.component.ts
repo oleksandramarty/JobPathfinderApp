@@ -2,10 +2,10 @@ import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { GenericInputComponent } from '../generic-input/generic-input.component';
-import { InputForm, InputFormItem } from '@amarty/models';
+import { InputForm, InputFormItemGrid } from '@amarty/models';
 import { TranslationPipe } from '@amarty/pipes';
 import { BaseUnsubscribeComponent } from '@amarty/common';
-import {takeUntil, tap} from 'rxjs';
+import { takeUntil, tap } from 'rxjs';
 
 @Component({
   selector: 'app-generic-form-renderer',
@@ -14,9 +14,6 @@ import {takeUntil, tap} from 'rxjs';
     CommonModule,
     ReactiveFormsModule,
     GenericInputComponent,
-    TranslationPipe,
-    TranslationPipe,
-    TranslationPipe,
     TranslationPipe
   ],
   templateUrl: './generic-form-renderer.component.html',
@@ -37,18 +34,14 @@ export class GenericFormRendererComponent extends BaseUnsubscribeComponent {
           takeUntil(this.ngUnsubscribe),
           tap(() => {
             this.renderForm!.onChange!(this.renderForm!.inputFormGroup!.value);
-          }
-        ))
+          })
+        )
         .subscribe();
     }
     super.ngOnInit();
   }
 
-  get safeInputItems(): InputFormItem[] {
-    return Array.isArray(this.renderForm?.inputItems) ? this.renderForm!.inputItems! : [];
-  }
-
-  isGroup(item: InputFormItem): boolean {
-    return !!item.children && item.children.length > 0;
+  get gridItems(): InputFormItemGrid[] {
+    return Array.isArray(this.renderForm?.gridItems) ? this.renderForm!.gridItems! : [];
   }
 }

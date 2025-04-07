@@ -1,6 +1,5 @@
 import { FormControl, FormGroup, ValidatorFn } from '@angular/forms';
 import { DataItem, InputError } from './data-item.model';
-import {Subject} from 'rxjs';
 
 export type InputType =
   | 'input'
@@ -33,15 +32,18 @@ export interface InputFormItem {
   errorArray?: InputError[];
   defaultValue?: any;
   validators?: ValidatorFn[];
-  children?: InputFormItem[];
-  childrenGridCount?: 1 | 2 | 3 | 4;
+}
+
+export interface InputFormItemGrid {
+  inputItems: InputFormItem[];
+  gridCount?: 1 | 2 | 3 | 4;
 }
 
 export interface InputForm {
   inputFormGroup?: FormGroup;
   submitted?: boolean;
   className?: string;
-  inputItems: InputFormItem[];
+  gridItems?: InputFormItemGrid[];
   resetButton?: InputFormAction;
   submitButton?: InputFormAction;
   cancelButton?: InputFormAction;
@@ -56,10 +58,6 @@ export interface InputFormAction {
   showButton?: boolean;
   className?: string;
 }
-
-// =======================
-// Builders
-// =======================
 
 export class InputFormItemBuilder {
   private _item: InputFormItem;
@@ -151,38 +149,13 @@ export class InputFormItemBuilder {
     return this;
   }
 
-  withChildren(children: InputFormItemBuilder[]): this {
-    this._item.children = children.map(c => c.build());
-    return this;
-  }
-
-  withChildrenGridCount(count: 1 | 2 | 3 | 4): this {
-    this._item.childrenGridCount = count;
-    return this;
-  }
-
   build(): InputFormItem {
     return this._item;
-  }
-
-  extractFlatInputItems(): InputFormItem[] {
-    const flat: InputFormItem[] = [];
-
-    const walk = (inputItem: InputFormItem) => {
-      if (!inputItem.children || inputItem.children.length === 0) {
-        flat.push(inputItem);
-      } else {
-        inputItem.children.forEach(walk);
-      }
-    };
-
-    walk(this._item);
-    return flat;
   }
 }
 
 export class InputFormBuilder {
-  private _inputItems: InputFormItemBuilder[] = [];
+  private _gridItems: InputFormItemGrid[] = [];
   private _submitted = false;
   private _className = '';
   private _submitButton?: InputFormAction;
@@ -190,8 +163,11 @@ export class InputFormBuilder {
   private _cancelButton?: InputFormAction;
   private _onChange?: (form: FormGroup) => void;
 
-  addInputItem(item: InputFormItemBuilder): this {
-    this._inputItems.push(item);
+  addGridItem(inputItems: InputFormItemBuilder[], gridCount?: 1 | 2 | 3 | 4): this {
+    this._gridItems.push({
+      inputItems: inputItems.map(i => i.build()),
+      gridCount: gridCount ?? 1
+    });
     return this;
   }
 
@@ -226,10 +202,10 @@ export class InputFormBuilder {
   }
 
   build(): InputForm {
-    const flatInputItems = this._inputItems.flatMap(i => i.extractFlatInputItems());
+    const flatItems = this._gridItems.flatMap(grid => grid.inputItems);
 
     const group: Record<string, FormControl> = {};
-    for (const item of flatInputItems) {
+    for (const item of flatItems) {
       if (item.controlName) {
         group[item.controlName] = new FormControl(
           item.defaultValue ?? null,
@@ -248,7 +224,7 @@ export class InputFormBuilder {
       inputFormGroup: formGroup,
       submitted: this._submitted,
       className: this._className,
-      inputItems: this._inputItems.map(i => i.build()),
+      gridItems: this._gridItems,
       submitButton: this._submitButton,
       resetButton: this._resetButton,
       cancelButton: this._cancelButton,

@@ -1,6 +1,6 @@
 // Auto-generated TypeScript file with role data
 
-import { RoleResponse, StatusEnum } from '@amarty/models';
+import { RoleResponse } from '@amarty/models';
 
 export const RoleData: RoleResponse[] = [
   { id: 1, title: 'ROLE.USER', userRole: 1 } as RoleResponse,
