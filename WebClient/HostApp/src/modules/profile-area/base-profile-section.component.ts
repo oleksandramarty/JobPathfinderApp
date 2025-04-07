@@ -25,8 +25,11 @@ export abstract class BaseProfileSectionComponent<
       (!this.existingItems || !!this.existingItems && this.existingItems.length === 0);
   }
 
-  protected openDialogExecutableAction(isNew: boolean): any {
+  protected openDialogExecutableAction(isNew: boolean, itemId: TSectionItemId): any {
     const executableAction = (model: TSectionItemResponse): void => {
+      if (isNew) {
+        model.id = !!model.id ? model.id : itemId;
+      }
       const targetList = isNew
         ? (this.itemsToAdd ??= [])
         : (this.existingItems ??= []);

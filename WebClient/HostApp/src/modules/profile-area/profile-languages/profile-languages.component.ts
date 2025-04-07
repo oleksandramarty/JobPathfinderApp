@@ -7,6 +7,7 @@ import { SafeHtml } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { TranslationPipe } from '@amarty/pipes';
 import { BaseProfileSectionComponent } from '../base-profile-section.component';
+import {generateGuid} from '@amarty/utils';
 
 @Component({
   selector: 'app-profile-languages',
@@ -39,7 +40,7 @@ export class ProfileLanguagesComponent extends BaseProfileSectionComponent<UserL
   }
 
   protected override openItemDialog(isNew: boolean, languageId?: string): void {
-    const executableAction = this.openDialogExecutableAction(isNew);
+    const executableAction = this.openDialogExecutableAction(isNew, isNew && !languageId ? generateGuid() : languageId!);
 
     this.dialogService.showDialog<ProfileLanguagesDialogComponent, UserLanguageResponse>(
       ProfileLanguagesDialogComponent,

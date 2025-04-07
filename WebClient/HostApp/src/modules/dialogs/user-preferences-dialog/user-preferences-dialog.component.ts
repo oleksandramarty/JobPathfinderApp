@@ -1,34 +1,42 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Store } from '@ngrx/store';
 import { catchError, finalize, switchMap, takeUntil, tap, throwError } from 'rxjs';
-import { GenericInputComponent } from '@amarty/components';
-import { BaseUnsubscribeComponent } from '@amarty/common';
-import { UpdateUserPreferencesCommand, UserResponse } from '@amarty/models';
+import { CommonModule } from '@angular/common';
+
+import {
+  UpdateUserPreferencesCommand,
+  UserResponse,
+  InputForm,
+  InputFormBuilder,
+  InputFormItemBuilder,
+  DataItem
+} from '@amarty/models';
+
 import { UserApiClient } from '@amarty/api';
 import { auth_setUser, selectUser } from '@amarty/store';
 import { DictionaryService, LoaderService, LocalizationService } from '@amarty/services';
-import { DataItem } from '@amarty/models';
-import { CommonModule } from '@angular/common';
+import { BaseUnsubscribeComponent } from '@amarty/common';
+import { GenericFormRendererComponent } from '@amarty/components';
 import { TranslationPipe } from '@amarty/pipes';
+import {ProfileFormFactory} from '../../../utils/profile-form.factory';
 
 @Component({
   selector: 'app-user-preferences-dialog',
+  standalone: true,
   imports: [
     CommonModule,
     TranslationPipe,
-    GenericInputComponent,
+    GenericFormRendererComponent,
     MatDialogTitle
   ],
-  standalone: true,
   templateUrl: './user-preferences-dialog.component.html',
   styleUrl: './user-preferences-dialog.component.scss'
 })
-export class UserPreferencesDialogComponent extends BaseUnsubscribeComponent{
-  public userPreferencesForm: FormGroup | undefined;
-  public submitted: boolean = false;
+export class UserPreferencesDialogComponent extends BaseUnsubscribeComponent {
+  public renderForm: InputForm | undefined;
+  public submitted = false;
   public user: UserResponse | undefined;
 
   constructor(
@@ -48,18 +56,15 @@ export class UserPreferencesDialogComponent extends BaseUnsubscribeComponent{
         takeUntil(this.ngUnsubscribe),
         tap(user => {
           this.user = user;
-
-          if (!this.user) {
+          if (!user) {
             this.snackBar.open(
               this.localizationService.getTranslation('ERROR.USER_NOT_FOUND')!,
               this.localizationService.getTranslation('COMMON.OK'),
-              {
-                duration: 5000,
-                panelClass: ['error']
-              });
+              { duration: 5000, panelClass: ['error'] }
+            );
             this.dialogRef.close();
           } else {
-            this.createFormGroup();
+            this.buildForm(user);
           }
         })
       ).subscribe();
@@ -75,95 +80,73 @@ export class UserPreferencesDialogComponent extends BaseUnsubscribeComponent{
     return this.dictionaryService.localeDataItems ?? [];
   }
 
-  createFormGroup(): void {
-    if (!this.user || !!this.userPreferencesForm) {
-      return;
-    }
+  private buildForm(user: UserResponse): void {
+    const defaultLocaleId = this.dictionaryService.localeData?.find(
+      item => item.isoCode === (user.userSetting?.defaultLocale ?? 'en')
+    )?.id ?? 1;
 
-    const index = this.dictionaryService.localeData?.findIndex(item => item.isoCode === (this.user!.userSetting?.defaultLocale ?? 'en')) ?? -1;
-    const defaultLocale = index > -1 ? this.dictionaryService.localeData![index] : undefined;
-
-    this.userPreferencesForm = new FormGroup({
-      email: new FormControl({ value: this.user.email, disabled: true }, [Validators.required]),
-      login: new FormControl(this.user.login, [Validators.required]),
-      firstName: new FormControl(this.user.firstName),
-      lastName: new FormControl(this.user.lastName),
-      defaultLocale: new FormControl(defaultLocale?.id ?? 1, [Validators.required]),
-      timeZone: new FormControl(this.user.userSetting?.timeZone),
-      countryId: new FormControl(this.user.userSetting?.countryId),
-      currencyId: new FormControl(this.user.userSetting?.currencyId),
-      linkedInUrl: new FormControl(this.user.userSetting?.linkedInUrl),
-      npmUrl: new FormControl(this.user.userSetting?.npmUrl),
-      gitHubUrl: new FormControl(this.user.userSetting?.gitHubUrl),
-      phone: new FormControl(this.user.phone),
-      applicationAiPrompt: new FormControl(this.user.userSetting?.applicationAiPrompt ?? false)
-    });
+    this.renderForm = ProfileFormFactory.createUserPreferencesForm(
+      defaultLocaleId,
+      user,
+      this.locales,
+      this.countries,
+      this.currencies,
+      () => this.dialogRef.close(false),
+      () => this.onApplicationSubmit()
+    )
   }
 
   public onApplicationSubmit(): void {
     this.submitted = true;
-    if (this.userPreferencesForm?.invalid) {
+
+    if (this.renderForm?.inputFormGroup?.invalid) {
       this.snackBar.open(
         'Fix the errors before submitting',
         'OK',
-        {
-          duration: 5000,
-          panelClass: ['error']
-        });
+        { duration: 5000, panelClass: ['error'] }
+      );
       return;
     }
 
     this.loaderService.isBusy = true;
 
-    const index = this.dictionaryService.localeData?.findIndex(item => item.id === Number(this.userPreferencesForm?.value.defaultLocale ?? 0)) ?? -1;
-    const defaultLocale = index > -1 ? this.dictionaryService.localeData![index] : undefined;
+    const values = this.renderForm?.inputFormGroup?.value;
+    const selectedLocale = this.dictionaryService.localeData?.find(item => item.id === values.defaultLocale);
 
-    const temp = new UpdateUserPreferencesCommand();
-    temp.login = this.userPreferencesForm?.value.login;
-    temp.firstName = this.userPreferencesForm?.value.firstName;
-    temp.lastName = this.userPreferencesForm?.value.lastName;
-    temp.defaultLocale = defaultLocale?.isoCode ?? 'en';
-    temp.timeZone = Number(this.userPreferencesForm?.value.timeZone) > 0 ?
-      Number(this.userPreferencesForm?.value.timeZone) : undefined;
-    temp.countryId = Number(this.userPreferencesForm?.value.countryId) > 0 ?
-      Number(this.userPreferencesForm?.value.countryId) : undefined;
-    temp.currencyId = Number(this.userPreferencesForm?.value.currencyId) > 0 ?
-      Number(this.userPreferencesForm?.value.currencyId) : undefined;
-    temp.applicationAiPrompt = this.userPreferencesForm?.value.applicationAiPrompt;
-    temp.linkedInUrl = this.userPreferencesForm?.value.linkedInUrl;
-    temp.npmUrl = this.userPreferencesForm?.value.npmUrl;
-    temp.gitHubUrl = this.userPreferencesForm?.value.gitHubUrl;
-    temp.phone = this.userPreferencesForm?.value.phone;
+    const cmd = new UpdateUserPreferencesCommand();
+    cmd.login = values.login;
+    cmd.firstName = values.firstName;
+    cmd.lastName = values.lastName;
+    cmd.defaultLocale = selectedLocale?.isoCode ?? 'en';
+    cmd.timeZone = values.timeZone || undefined;
+    cmd.countryId = values.countryId || undefined;
+    cmd.currencyId = values.currencyId || undefined;
+    cmd.linkedInUrl = values.linkedInUrl;
+    cmd.npmUrl = values.npmUrl;
+    cmd.gitHubUrl = values.gitHubUrl;
+    cmd.phone = values.phone;
+    cmd.applicationAiPrompt = values.applicationAiPrompt;
 
-    this.userApiClient.user_UpdateSettings(temp).pipe(
+    this.userApiClient.user_UpdateSettings(cmd).pipe(
       takeUntil(this.ngUnsubscribe),
-      switchMap(() => {
-        return this.userApiClient.user_Current();
-      }),
-      tap((user: UserResponse | undefined) => {
-        if (!!user) {
+      switchMap(() => this.userApiClient.user_Current()),
+      tap(user => {
+        if (user) {
           this.store.dispatch(auth_setUser({ user }));
           this.localizationService.userLocaleChanged(user);
         }
-
         this.snackBar.open(
           this.localizationService.getTranslation('MESSAGES.CHANGES_SUCCESSFULLY_SAVED')!,
           this.localizationService.getTranslation('COMMON.OK'),
-          {
-            duration: 5000,
-            panelClass: ['error']
-          });
-
-        this.loaderService.isBusy = false;
+          { duration: 5000, panelClass: ['error'] }
+        );
         this.dialogRef.close(true);
       }),
-      catchError((error: any) => {
-        this.localizationService.handleApiError(error);
-        return throwError(() => error);
+      catchError(err => {
+        this.localizationService.handleApiError(err);
+        return throwError(() => err);
       }),
-      finalize(() => {
-        this.loaderService.isBusy = false;
-      })
+      finalize(() => this.loaderService.isBusy = false)
     ).subscribe();
   }
 }

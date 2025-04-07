@@ -43,12 +43,13 @@
   }
 
   &__body {
-    padding: m.pxToRem(16) 0;
+    padding: 0 m.pxToRem(16);
     max-height: calc(100vh - 15rem);
     overflow-y: auto;
     background: var(--background);
     border-radius: m.pxToRem(8);
     color: var(--text);
+    margin: m.pxToRem(16) 0;
   }
 
   &__icon {

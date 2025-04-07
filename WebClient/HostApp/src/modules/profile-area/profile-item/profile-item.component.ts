@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
 import { TranslationPipe } from '@amarty/pipes';
 import { BaseProfileSectionComponent, itemTypeTitle } from '../base-profile-section.component';
 import { ProfileItemDialogComponent } from '../../dialogs/profile-item-dialog/profile-item-dialog.component';
+import {generateGuid} from '@amarty/utils';
 
 @Component({
   selector: 'app-profile-item',
@@ -78,7 +79,7 @@ export class ProfileItemComponent extends BaseProfileSectionComponent<UserProfil
   }
 
   protected override openItemDialog(isNew: boolean, itemId?: string): void {
-    const executableAction = this.openDialogExecutableAction(isNew);
+    const executableAction = this.openDialogExecutableAction(isNew, isNew && !itemId ? generateGuid() : itemId!);
 
     this.dialogService.showDialog<ProfileItemDialogComponent, UserProfileItemResponse>(
       ProfileItemDialogComponent,

@@ -3,48 +3,15 @@
     <div class="modal__header">
       <h2 class="modal__header-title" mat-dialog-title>{{ 'COMMON.LANGUAGES' | translation }}</h2>
       <span class="modal__close" (click)="dialogRef.close()">
-      <i class="fa-solid fa-robot"></i><i class="fa-solid fa-stopwatch"></i>
-    </span>
+        <i class="fa-solid fa-robot"></i><i class="fa-solid fa-stopwatch"></i>
+      </span>
     </div>
     <span class="modal__close" (click)="dialogRef.close()">
       <i class="fa-solid fa-xmark"></i>
     </span>
   </div>
-  @if(profileItemForm) {
-    <div class="modal__body">
-      <div class="grid-1fr grid-gap">
-        @if (language) {
-          <app-generic-input
-            label="COMMON.LANGUAGE_LEVEL" type="autocomplete" placeholder="COMMON.LANGUAGE_LEVEL" [formGroup]="profileItemForm"
-            controlName="languageLevelId" [dataItems]="languageLevels" [submitted]="submitted"
-          ></app-generic-input>
 
-          <app-generic-input
-            label="COMMON.LANGUAGE" type="autocomplete" placeholder="COMMON.LANGUAGE" [formGroup]="profileItemForm"
-            controlName="languageId" [dataItems]="languages" [submitted]="submitted" [errorArray]="languageInputError"
-          ></app-generic-input>
-        } @else {
-          <app-generic-input
-            label="COMMON.LANGUAGE_LEVEL" type="autocomplete" placeholder="COMMON.LANGUAGE_LEVEL" [formGroup]="profileItemForm"
-            controlName="languageId" [dataItems]="languages" [submitted]="submitted" [errorArray]="languageInputError"
-          ></app-generic-input>
-
-          <app-generic-input
-            label="COMMON.LANGUAGE_LEVEL" type="autocomplete" placeholder="COMMON.LANGUAGE_LEVEL" [formGroup]="profileItemForm"
-            controlName="languageLevelId" [dataItems]="languageLevels" [submitted]="submitted"
-          ></app-generic-input>
-        }
-      </div>
-    </div>
-    <div class="container__box__footer">
-      <div class="container__box__footer-item">
-        <button class="button button__link" (click)="dialogRef.close(false)">{{ 'COMMON.CANCEL' | translation }}</button>
-      </div>
-      <div class="container__box__footer-item">
-        <button
-          class="button button__filled__submit"
-          (click)="proceedLanguage()">{{ 'COMMON.PROCEED' | translation }}</button>
-      </div>
-    </div>
+  @if(renderForm) {
+    <app-generic-form-renderer [renderForm]="renderForm"></app-generic-form-renderer>
   }
 </div>

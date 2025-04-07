@@ -1,36 +1,44 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Store } from '@ngrx/store';
 import { takeUntil, tap } from 'rxjs';
 import { CommonModule } from '@angular/common';
-import { GenericInputComponent } from '@amarty/components';
+
+import {
+  UserLanguageResponse,
+  DataItem,
+  InputError,
+  InputForm,
+  InputFormBuilder,
+  InputFormItemBuilder
+} from '@amarty/models';
+
+import { GenericFormRendererComponent } from '@amarty/components';
 import { BaseUnsubscribeComponent } from '@amarty/common';
 import { UserApiClient } from '@amarty/api';
-import { UserLanguageResponse } from '@amarty/models';
-import { DataItem, InputError } from '@amarty/models';
 import { DictionaryService, LoaderService, LocalizationService } from '@amarty/services';
-import { generateGuid } from '@amarty/utils';
 import { TranslationPipe } from '@amarty/pipes';
+import { generateGuid } from '@amarty/utils';
+import {ProfileFormFactory} from '../../../utils/profile-form.factory';
 
 @Component({
   selector: 'app-profile-languages-dialog',
+  standalone: true,
   imports: [
     CommonModule,
     TranslationPipe,
-    GenericInputComponent,
+    GenericFormRendererComponent,
     MatDialogTitle
   ],
-  standalone: true,
   templateUrl: './profile-languages-dialog.component.html',
   styleUrl: './profile-languages-dialog.component.scss'
 })
-export class ProfileLanguagesDialogComponent extends BaseUnsubscribeComponent{
-  public profileItemForm: FormGroup | undefined;
+export class ProfileLanguagesDialogComponent extends BaseUnsubscribeComponent {
+  public renderForm: InputForm | undefined;
+  public submitted: boolean = false;
   public language: UserLanguageResponse | undefined;
   public existingIds: string[] | undefined;
-  public submitted: boolean = false;
   public languageInputError: InputError[] | undefined;
 
   constructor(
@@ -38,7 +46,7 @@ export class ProfileLanguagesDialogComponent extends BaseUnsubscribeComponent{
     @Inject(MAT_DIALOG_DATA) public data: {
       language: UserLanguageResponse | undefined,
       existingIds: string[] | undefined
-    } | undefined,
+    },
     private readonly snackBar: MatSnackBar,
     private readonly localizationService: LocalizationService,
     private readonly loaderService: LoaderService,
@@ -50,57 +58,59 @@ export class ProfileLanguagesDialogComponent extends BaseUnsubscribeComponent{
 
     this.language = data?.language;
     this.existingIds = data?.existingIds;
-    this.createFormGroup();
+    this.buildForm();
   }
 
   get languageLevels(): DataItem[] {
     return this.dictionaryService.languageLevelDataItems ?? [];
   }
+
   get languages(): DataItem[] {
     return this.dictionaryService.languageDataItems ?? [];
   }
 
-  createFormGroup(): void {
-    if (!!this.profileItemForm) {
-      return;
-    }
-
-    this.profileItemForm = new FormGroup({
-      id: new FormControl(this.language?.id ?? generateGuid()),
-      languageId: new FormControl(this.language?.languageId, [Validators.required]),
-      languageLevelId: new FormControl(this.language?.languageLevelId, [Validators.required])
-    });
+  private buildForm(): void {
+    this.renderForm = ProfileFormFactory.createLanguageForm(
+      () => this.submitForm(),
+      () => this.dialogRef.close(false),
+      this.language,
+        this.languages,
+        this.languageLevels
+    );
 
     if (!this.language) {
-      this.profileItemForm?.get('languageId')?.valueChanges
+      this.renderForm.inputFormGroup?.get('languageId')?.valueChanges
         .pipe(
           takeUntil(this.ngUnsubscribe),
-          tap(language => {
+          tap(languageId => {
             this.languageInputError =
-              (this.existingIds?.findIndex(item => item === String(language)) ?? -1) > -1 ?
-                [{ error: 'COMMON.ALREADY_EXISTS' }] :
-                undefined;
+              (this.existingIds?.includes(String(languageId)) ?? false)
+                ? [{ error: 'COMMON.ALREADY_EXISTS' }]
+                : undefined;
           })
         ).subscribe();
     }
   }
 
-  public proceedLanguage(): void {
+  public submitForm(): void {
     this.submitted = true;
-    if (this.profileItemForm?.invalid ||
-      !this.profileItemForm?.value.languageId ||
-      !this.profileItemForm?.value.languageLevelId ||
-      !!this.languageInputError) {
+
+    if (!this.renderForm?.inputFormGroup || this.renderForm.inputFormGroup.invalid || this.languageInputError) {
       this.snackBar.open(
         'Fix the errors before submitting',
         'OK',
-        {
-          duration: 5000,
-          panelClass: ['error']
+        { duration: 5000, panelClass: ['error'] }
+      );
+
+      if (!!this.languageInputError) {
+        this.languageInputError.forEach(error => {
+          !!error.error && this.localizationService.showError(error.error);
         });
+      }
+
       return;
     }
 
-    this.dialogRef.close(this.profileItemForm?.value);
+    this.dialogRef.close(this.renderForm.inputFormGroup.value);
   }
 }

@@ -5,6 +5,7 @@ import { CommonDialogService, DictionaryService } from '@amarty/services';
 import { CommonModule } from '@angular/common';
 import { TranslationPipe } from '@amarty/pipes';
 import { BaseProfileSectionComponent } from '../base-profile-section.component';
+import {generateGuid} from '@amarty/utils';
 
 @Component({
   selector: 'app-profile-skills',
@@ -36,7 +37,7 @@ export class ProfileSkillsComponent extends BaseProfileSectionComponent<UserSkil
   }
 
   protected override openItemDialog(isNew: boolean, skillId?: string): void {
-    const executableAction = this.openDialogExecutableAction(isNew);
+    const executableAction = this.openDialogExecutableAction(isNew, isNew && !skillId ? generateGuid() : skillId!);
 
     this.dialogService.showDialog<ProfileSkillsDialogComponent, UserSkillResponse>(
       ProfileSkillsDialogComponent,

@@ -1,7 +1,5 @@
 @if (renderForm?.inputFormGroup && safeInputItems.length > 0) {
   <form [formGroup]="renderForm.inputFormGroup" novalidate [class]="renderForm.className">
-    <ng-container *ngTemplateOutlet="renderItems; context: { $implicit: safeInputItems }"></ng-container>
-
     @if (renderForm.resetButton?.showButton) {
       <div class="container__box__footer">
         <div class="container__box__footer-item">
@@ -12,31 +10,34 @@
       </div>
     }
 
-    @if (showButtons && renderForm.hasButtons) {
-      <div class="container__box__footer">
-        <div class="container__box__footer-item">
-          @if (renderForm.cancelButton?.showButton) {
-            <button
-              [class]="'button ' + renderForm.cancelButton?.className"
-              (click)="renderForm.cancelButton?.onClick?.()"
-            >
-              {{ renderForm.cancelButton?.buttonText || 'COMMON.CANCEL' | translation }}
-            </button>
-          }
-        </div>
-        <div class="container__box__footer-item">
-          @if (renderForm.submitButton?.showButton) {
-            <button
-              [class]="'button ' + renderForm.submitButton?.className"
-              (click)="renderForm.submitButton?.onClick?.()"
-            >
-              {{ renderForm.submitButton?.buttonText || 'COMMON.PROCEED' | translation }}
-            </button>
-          }
-        </div>
-      </div>
-    }
+    <ng-container *ngTemplateOutlet="renderItems; context: { $implicit: safeInputItems }"></ng-container>
+
   </form>
+
+  @if (showButtons && renderForm.hasButtons) {
+    <div class="container__box__footer">
+      <div class="container__box__footer-item">
+        @if (renderForm.cancelButton?.showButton) {
+          <button
+            [class]="'button ' + renderForm.cancelButton?.className"
+            (click)="renderForm.cancelButton?.onClick?.()"
+          >
+            {{ renderForm.cancelButton?.buttonText || 'COMMON.CANCEL' | translation }}
+          </button>
+        }
+      </div>
+      <div class="container__box__footer-item">
+        @if (renderForm.submitButton?.showButton) {
+          <button
+            [class]="'button ' + renderForm.submitButton?.className"
+            (click)="renderForm.submitButton?.onClick?.()"
+          >
+            {{ renderForm.submitButton?.buttonText || 'COMMON.PROCEED' | translation }}
+          </button>
+        }
+      </div>
+    </div>
+  }
 }
 
 <ng-template #renderItems let-items>

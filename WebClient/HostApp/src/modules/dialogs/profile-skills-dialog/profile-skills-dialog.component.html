@@ -3,48 +3,15 @@
     <div class="modal__header">
       <h2 class="modal__header-title" mat-dialog-title>{{ 'COMMON.SKILLS' | translation }}</h2>
       <span class="modal__close" (click)="dialogRef.close()">
-      <i class="fa-solid fa-robot"></i><i class="fa-solid fa-stopwatch"></i>
-    </span>
+        <i class="fa-solid fa-robot"></i><i class="fa-solid fa-stopwatch"></i>
+      </span>
     </div>
     <span class="modal__close" (click)="dialogRef.close()">
       <i class="fa-solid fa-xmark"></i>
     </span>
   </div>
-  @if(profileItemForm) {
-    <div class="modal__body">
-      <div class="grid-1fr grid-gap">
-        @if (skill) {
-          <app-generic-input
-            label="COMMON.EXPERIENCE_LEVEL" type="autocomplete" placeholder="COMMON.EXPERIENCE_LEVEL" [formGroup]="profileItemForm"
-            controlName="skillLevelId" [dataItems]="skillLevels" [submitted]="submitted"
-          ></app-generic-input>
 
-          <app-generic-input
-            label="COMMON.SKILLS" type="autocomplete" placeholder="COMMON.SKILLS" [formGroup]="profileItemForm"
-            controlName="skillId" [dataItems]="skills" [submitted]="submitted" [errorArray]="skillInputError"
-          ></app-generic-input>
-        } @else {
-          <app-generic-input
-            label="COMMON.SKILLS" type="autocomplete" placeholder="COMMON.SKILLS" [formGroup]="profileItemForm"
-            controlName="skillId" [dataItems]="skills" [submitted]="submitted" [errorArray]="skillInputError"
-          ></app-generic-input>
-
-          <app-generic-input
-            label="COMMON.EXPERIENCE_LEVEL" type="autocomplete" placeholder="COMMON.EXPERIENCE_LEVEL" [formGroup]="profileItemForm"
-            controlName="skillLevelId" [dataItems]="skillLevels" [submitted]="submitted"
-          ></app-generic-input>
-        }
-      </div>
-    </div>
-    <div class="container__box__footer">
-      <div class="container__box__footer-item">
-        <button class="button button__link" (click)="dialogRef.close(false)">{{ 'COMMON.CANCEL' | translation }}</button>
-      </div>
-      <div class="container__box__footer-item">
-        <button
-          class="button button__filled__submit"
-          (click)="proceedSkill()">{{ 'COMMON.PROCEED' | translation }}</button>
-      </div>
-    </div>
+  @if(renderForm) {
+    <app-generic-form-renderer [renderForm]="renderForm"></app-generic-form-renderer>
   }
 </div>
