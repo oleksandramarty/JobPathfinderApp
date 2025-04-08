@@ -1,0 +1,341 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "@amarty/models": {
+      "projectType": "library",
+      "root": "projects/amarty/models",
+      "sourceRoot": "projects/amarty/models/lib",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/amarty/models/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/amarty/models/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/amarty/models/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/amarty/models/tsconfig.spec.json",
+            "polyfills": ["zone.js", "zone.js/testing"]
+          }
+        }
+      }
+    },
+    "@amarty/utils": {
+      "projectType": "library",
+      "root": "projects/amarty/utils",
+      "sourceRoot": "projects/amarty/utils/lib",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/amarty/utils/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/amarty/utils/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/amarty/utils/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/amarty/utils/tsconfig.spec.json",
+            "polyfills": ["zone.js", "zone.js/testing"]
+          }
+        }
+      }
+    },
+    "@amarty/store": {
+      "projectType": "library",
+      "root": "projects/amarty/store",
+      "sourceRoot": "projects/amarty/store/lib",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/amarty/store/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/amarty/store/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/amarty/store/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/amarty/store/tsconfig.spec.json",
+            "polyfills": ["zone.js", "zone.js/testing"]
+          }
+        }
+      }
+    },
+    "@amarty/services": {
+      "projectType": "library",
+      "root": "projects/amarty/services",
+      "sourceRoot": "projects/amarty/services/lib",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/amarty/services/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/amarty/services/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/amarty/services/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/amarty/store/tsconfig.spec.json",
+            "polyfills": ["zone.js", "zone.js/testing"]
+          }
+        }
+      }
+    },
+    "@amarty/api": {
+      "projectType": "library",
+      "root": "projects/amarty/api",
+      "sourceRoot": "projects/amarty/api/lib",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/amarty/api/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/amarty/api/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/amarty/api/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/amarty/api/tsconfig.spec.json",
+            "polyfills": ["zone.js", "zone.js/testing"]
+          }
+        }
+      }
+    },
+    "@amarty/animations": {
+      "projectType": "library",
+      "root": "projects/amarty/animations",
+      "sourceRoot": "projects/amarty/animations/lib",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/amarty/animations/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/amarty/animations/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/amarty/animations/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        }
+      }
+    },
+    "@amarty/common": {
+      "projectType": "library",
+      "root": "projects/amarty/common",
+      "sourceRoot": "projects/amarty/common/lib",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/amarty/common/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/amarty/common/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/amarty/common/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        }
+      }
+    },
+    "@amarty/localizations": {
+      "projectType": "library",
+      "root": "projects/amarty/localizations",
+      "sourceRoot": "projects/amarty/localizations/lib",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/amarty/localizations/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/amarty/localizations/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/amarty/localizations/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        }
+      }
+    },
+    "@amarty/dictionaries": {
+      "projectType": "library",
+      "root": "projects/amarty/dictionaries",
+      "sourceRoot": "projects/amarty/dictionaries/lib",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/amarty/dictionaries/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/amarty/dictionaries/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/amarty/dictionaries/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        }
+      }
+    },
+    "@amarty/directives": {
+      "projectType": "library",
+      "root": "projects/amarty/directives",
+      "sourceRoot": "projects/amarty/directives/lib",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/amarty/directives/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/amarty/directives/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/amarty/directives/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        }
+      }
+    },
+    "@amarty/pipes": {
+      "projectType": "library",
+      "root": "projects/amarty/pipes",
+      "sourceRoot": "projects/amarty/pipes/lib",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/amarty/pipes/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/amarty/pipes/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/amarty/pipes/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        }
+      }
+    },
+    "@amarty/assets": {
+      "projectType": "library",
+      "root": "projects/amarty/assets",
+      "sourceRoot": "projects/amarty/assets/lib",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/amarty/assets/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/amarty/assets/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/amarty/assets/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        }
+      }
+    },
+    "@amarty/components": {
+      "projectType": "library",
+      "root": "projects/amarty/components",
+      "sourceRoot": "projects/amarty/components/lib",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/amarty/components/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/amarty/components/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/amarty/components/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        }
+      }
+    }
+  }
+}

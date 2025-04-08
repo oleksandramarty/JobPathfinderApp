@@ -1,0 +1,20 @@
+@if(renderForm) {
+  <div class="container__box container__box__sign-in">
+    <div class="container__box__header">
+      <h2 class="container__box__header-title">Job Pathfinder</h2>
+      <div class="container__box__header-hint">
+        <div class="sign-up-hint glitch glitch-red" [@fadeInOut]>
+          {{ langArray[langIndex] }}
+        </div>
+      </div>
+    </div>
+
+    <app-generic-form-renderer [renderForm]="renderForm" />
+
+    <div class="container__box__footer line">
+      <button class="button button__link" routerLink="/auth/sign-up">
+        {{ 'AUTH.NO_ACCOUNT.SIGN_UP' | translation }}
+      </button>
+    </div>
+  </div>
+}

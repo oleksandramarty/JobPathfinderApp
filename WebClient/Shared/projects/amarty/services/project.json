@@ -1,0 +1,16 @@
+{
+  "name": "amarty-services",
+  "sourceRoot": "Shared/projects/amarty/services/lib",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@angular-eslint/builder:lint",
+      "options": {
+        "lintFilePatterns": [
+          "Shared/projects/amarty/services/lib/**/*.ts"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

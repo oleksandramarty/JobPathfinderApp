@@ -1,0 +1,8 @@
+id;isoCode;title;titleEn;isDefault;status;LocaleEnum;Culture
+1;en;English;English;1;1;1;en-US
+2;es;Español;Spanish;0;1;2;es-ES
+3;fr;Français;French;0;1;3;fr-FR
+4;ua;Українська;Ukrainian;0;1;4;uk-UA
+5;ru;Русский;Russian;0;1;4;ru-RU
+6;de;Deutsch;German;0;1;5;de-DE
+7;it;Italiano;Italian;0;1;6;it-IT

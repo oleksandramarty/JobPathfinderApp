@@ -1,0 +1,115 @@
+@use '@amarty/assets/lib/styles/_mixins.scss' as m;
+@use '@amarty/assets/lib/styles/_variables.scss' as v;
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  min-width: m.pxToRem(208);
+  padding: m.pxToRem(8) m.pxToRem(20);
+  background: var(--fh);
+  color: var(--text);
+  font-family: var(--font-stack), serif;
+  box-shadow: 0 m.pxToRem(4) m.pxToRem(10) rgba(0, 0, 0, 0.2);
+  min-height: m.pxToRem(60);
+
+  &__lang {
+    &__container {
+      display: flex;
+      align-items: center;
+      width: #{m.pxToRem(26)};
+      height: #{m.pxToRem(26)};
+      text-align: center;
+      cursor: pointer;
+
+      &-current {
+        width: #{m.pxToRem(26)};
+      }
+
+      &-menu {
+        font-family: var(--font-alt), serif;
+        &__item {
+          display: flex;
+          gap: #{m.pxToRem(8)};
+        }
+      }
+    }
+  }
+
+  &__left {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: m.pxToRem(4);
+    cursor: pointer;
+  }
+
+  &__logo {
+    font-size: m.pxToRem(24);
+    font-weight: bold;
+
+    &-sub {
+      position: absolute;
+      top: m.pxToRem(-2);
+      right: m.pxToRem(-8);
+      transform: rotate(20deg);
+    }
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+    gap: m.pxToRem(16);
+
+    .header__nav {
+      display: flex;
+      gap: m.pxToRem(16);
+    }
+
+    .nav__link {
+      color: var(--text);
+      text-decoration: none;
+      font-size: m.pxToRem(16);
+      transition: color 0.3s;
+
+      &:hover {
+        color: var(--secondary);
+      }
+    }
+  }
+
+  &__profile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: m.pxToRem(40);
+    height: m.pxToRem(40);
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid var(--border);
+    transition: border-color 0.3s;
+
+    &:hover {
+      border-color: var(--secondary);
+    }
+
+    &-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+  }
+}
+
+@media (max-width: m.pxToRem(600)) {
+  .header {
+    justify-content: center;
+
+    &__center, &__right {
+      display: none;
+    }
+  }
+}

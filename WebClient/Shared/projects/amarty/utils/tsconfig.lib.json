@@ -1,0 +1,16 @@
+{
+  "extends": "../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "../dist/out-tsc",
+    "target": "ES2022",
+    "declaration": true,
+    "declarationMap": true,
+    "inlineSources": true,
+    "types": [],
+    "paths": {
+      "@amarty/models": ["../../../dist/amarty/models"]
+    }
+  },
+  "exclude": ["**/*.spec.ts"],
+  "include": ["lib/**/*.ts"]
+}

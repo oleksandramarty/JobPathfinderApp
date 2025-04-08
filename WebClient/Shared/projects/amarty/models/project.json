@@ -1,0 +1,16 @@
+{
+  "name": "amarty-models",
+  "sourceRoot": "Shared/projects/amarty/models/lib",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@angular-eslint/builder:lint",
+      "options": {
+        "lintFilePatterns": [
+          "Shared/projects/amarty/models/lib/**/*.ts"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

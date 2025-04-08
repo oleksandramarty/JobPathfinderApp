@@ -1,0 +1,48 @@
+<div class="container">
+  <section class="dashboard">
+    <div class="dashboard__header">
+      <h2 class="dashboard__title">
+        {{ 'COMMON.WELCOME_BACK' | translation }},
+        {{ currentUser?.login }}
+        @if(countryCode) {
+          <img class="profile__country big" [src]="'https://flagcdn.com/w320/' + countryCode + '.png'" [alt]="countryCode" />!
+        }
+      </h2>
+      <button class="button button__filled__focus" (click)="openApplicationDialog()">
+        <i class="fa-solid fa-plus"></i>
+        <span>{{ 'COMMON.NEW_APPLICATION' | translation }}</span>
+      </button>
+    </div>
+    <div class="stats grid-4fr">
+      @for(menuItem of menuItems; track $index) {
+        <div [class]="'stat-card ' + menuItem.className">
+          <div class="stat-card__info">
+            <p class="stat-card__value">{{ menuItem.value }}</p>
+            <p class="stat-card__label">{{ menuItem.key | translation }}</p>
+          </div>
+          <div class="stat-card__icon">
+            <i [class]="menuItem.icon"></i>
+          </div>
+        </div>
+      }
+    </div>
+
+    <div class="grid-2fr analytics">
+      <div class="chart-container">
+        <div echarts [options]="lineChartOptions" class="chart"></div>
+      </div>
+
+      <div class="chart-container">
+        <div echarts [options]="barChartOptions" class="chart"></div>
+      </div>
+
+      <div class="chart-container">
+        <div echarts [options]="heatmapOptions" class="chart"></div>
+      </div>
+
+      <div class="chart-container">
+        <div echarts [options]="pieChartOptions" class="chart"></div>
+      </div>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,152 @@
+@use '@amarty/assets/lib/styles/_mixins.scss' as m;
+@use '@amarty/assets/lib/styles/_variables.scss' as v;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  gap: m.pxToRem(12);
+  max-width: m.pxToRem(1200);
+  margin: 0 auto;
+}
+
+.card {
+  margin-bottom: 0;
+
+  &__header__buttons {
+    display: flex;
+    gap: m.pxToRem(10);
+  }
+}
+
+.profile {
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    gap: m.pxToRem(16);
+    margin-top: m.pxToRem(12);
+
+    &__left {
+      display: flex;
+      gap: m.pxToRem(16);
+    }
+  }
+
+  &__avatar img {
+    width: m.pxToRem(80);
+    border-radius: 50%;
+    box-shadow: var(--shadow-light);
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-family: var(--font-stack), serif;
+
+    p {
+      margin: 0;
+      text-align: left;
+    }
+
+    &-name {
+      font-size: m.pxToRem(18);
+      font-weight: 700;
+    }
+    &-location,
+    &-position,
+    &-company {
+      font-size: m.pxToRem(12);
+      font-weight: 400;
+    }
+
+    &-position {
+      display: flex;
+      gap: m.pxToRem(8);
+      align-items: center;
+    }
+
+    &-location {
+      margin-bottom: m.pxToRem(12) !important;
+    }
+
+    &-email, &-phone {
+      display: flex;
+      gap: m.pxToRem(8);
+      font-size: m.pxToRem(12);
+      opacity: 0.75;
+      font-weight: 400;
+      color: var(--color-primary);
+    }
+  }
+
+  &__social {
+    display: flex;
+    justify-content: left;
+    gap: m.pxToRem(12);
+    margin-top: m.pxToRem(24);
+
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: m.pxToRem(32);
+      height: m.pxToRem(32);
+      border-radius: 50%;
+      background: var(--bg-color-grey);
+      color: var(--color-grey);
+    }
+  }
+
+  &__resume {
+    &__item {
+      display: flex;
+      gap: m.pxToRem(8);
+      align-items: flex-start;
+      font-size: m.pxToRem(12);
+
+      &-edit {
+        font-size: m.pxToRem(20);
+        cursor: pointer;
+      }
+
+      &-date {
+        min-width: m.pxToRem(80);
+        opacity: 0.75;
+      }
+
+      &-info {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        text-align: left;
+      }
+
+      &-title {
+        display: flex;
+        gap: m.pxToRem(8);
+        font-weight: 700;
+
+        & > .profile__resume__item-type {
+          font-weight: 300;
+        }
+      }
+      &-location,
+      &-company {
+        font-size: m.pxToRem(12);
+        font-weight: 300;
+        opacity: 0.75;
+      }
+      &-description {
+        margin-top: m.pxToRem(8);
+        font-size: m.pxToRem(12);
+        font-weight: 400;
+        opacity: 0.75;
+      }
+    }
+  }
+}
+
+

@@ -1,0 +1,12 @@
+{
+  "extends": "../../../../.eslint.base.json",
+  "ignorePatterns": ["!**/*"],
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "parserOptions": {
+        "project": ["Shared/projects/amarty/models/tsconfig.lib.json"]
+      }
+    }
+  ]
+}

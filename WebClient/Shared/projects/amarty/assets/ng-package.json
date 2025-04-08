@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../../dist/amarty/assets",
+  "lib": {
+    "entryFile": "public-api.ts",
+    "styleIncludePaths": ["./styles"]
+  },
+  "assets": [
+    "lib/styles"
+  ]
+}

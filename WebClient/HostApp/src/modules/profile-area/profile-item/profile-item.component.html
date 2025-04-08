@@ -1,0 +1,54 @@
+<div class="card">
+  <div class="card__header">
+    <h3 class="card__header-title">{{ title | translation }}</h3>
+    <div class="card__header__buttons">
+      @if(!isEmptySection) {
+        <div class="button__icon" (click)="isEditMode = !isEditMode" [class.muted]="!isEditMode">
+          <i class="fa-solid fa-pencil"></i>
+        </div>
+      }
+      <div class="button__icon" (click)="openItemDialog(true, undefined)">
+        <i class="fa-solid fa-plus"></i>
+      </div>
+    </div>
+  </div>
+  <div class="profile__resume">
+    @for(item of existingItems; track $index) {
+      @if(item.profileItemType === itemType) {
+        <div class="profile__resume__item">
+          <div class="profile__resume__item-date">{{ item.startDate }} - {{ item.endDate }}</div>
+          <div class="profile__resume__item-info">
+            <div class="profile__resume__item-title">
+              {{ item.position }}
+              <span class="profile__resume__item-type glitch glitch-blue">{{ item.jobTypeId }}</span>
+              <span class="profile__resume__item-type glitch glitch-blue">{{ item.workArrangementId }}</span>
+            </div>
+            <div class="profile__resume__item-company">{{ item.company }}</div>
+            <div class="profile__resume__item-location">{{ item.location }}, {{ item.countryId }}</div>
+            <div class="profile__resume__item-description">{{ item.description }}</div>
+            <div class="badges">
+              @for(skill of item.skills; track $index) {
+                <div class="badge">{{ getSkillTitle(skill.userSkill) }}</div>
+              }
+            </div>
+            <div class="badges">
+              @for(language of item.languages; track $index) {
+                <div class="badge">{{ getLanguageTitle(language.userLanguage) }}</div>
+              }
+            </div>
+
+          </div>
+          <div class="profile__resume__item-edit">
+            <i class="fa-solid fa-pencil"></i>
+          </div>
+        </div>
+      }
+    }
+
+    @if(isEmptySection) {
+      <div class="section__empty">
+        <p>{{ 'PROFILE.EMPTY_SECTION' | translation }}</p>
+      </div>
+    }
+  </div>
+</div>

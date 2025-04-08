@@ -1,0 +1,55 @@
+<div class="card">
+  @if(currentUser) {
+    <div class="profile__header">
+      <div class="profile__header__left">
+        <div class="profile__avatar">
+          <img [src]="'assets/images/avatar.png'" alt="Profile avatar" />
+        </div>
+        <div class="profile__info">
+          <div class="profile__info-name">
+            {{ currentUser.login }}
+            @if(countryCode) {
+              <img class="profile__country small" [src]="'https://flagcdn.com/w320/' + countryCode + '.png'" [alt]="countryCode" />!
+            }
+          </div>
+          <div class="profile__info-company">ACCENTURE</div>
+          <div class="profile__info-position">
+            SOFTWARE DEV
+            <span class="profile__position-type glitch glitch-blue">Position</span>
+          </div>
+          <div class="profile__info-location">location</div>
+          <div class="profile__info-email">
+            <a class="link-button" [href]="'mailto:' + currentUser.email"><i class="fa-solid fa-envelope"></i> {{ currentUser.email }}</a>
+          </div>
+          @if (currentUser.phone) {
+            <div class="profile__info-phone">
+              <a class="link-button" [href]="'tel:' + currentUser.phone"><i class="fa-solid fa-phone"></i> {{ currentUser.phone }}</a>
+            </div>
+          }
+
+          <div class="profile__social">
+            @if(currentUser.userSetting) {
+              @if(currentUser.userSetting.gitHubUrl) {
+                <a [href]="'https://github.com/' + currentUser.userSetting.gitHubUrl" target="_blank"><i class="fa-brands fa-github"></i></a>
+              }
+              @if(currentUser.userSetting.linkedInUrl) {
+                <a [href]="'https://www.linkedin.com/in/' + currentUser.userSetting.linkedInUrl" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+              }
+              @if(currentUser.userSetting.npmUrl) {
+                <a [href]="'https://www.npmjs.com/' + currentUser.userSetting.npmUrl" target="_blank"><i class="fa-brands fa-npm"></i></a>
+              }
+            }
+          </div>
+        </div>
+      </div>
+      <div class="profile__header__right">
+        <div class="card__header__buttons">
+          <div class="button__icon" (click)="openEditProfileDialog()">
+            <i class="fa-solid fa-pencil"></i>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  }
+</div>

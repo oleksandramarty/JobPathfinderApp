@@ -1,0 +1,40 @@
+/* tsconfig.base.json */
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@amarty/api": ["./dist/amarty/api"],
+      "@amarty/components/*": ["./dist/amarty/components/*"],
+      "@amarty/models": ["./dist/amarty/models"],
+      "@amarty/dictionaries": ["./dist/amarty/dictionaries"],
+      "@amarty/localizations": ["./dist/amarty/localizations"],
+      "@amarty/services": ["./dist/amarty/services"],
+      "@amarty/store": ["./dist/amarty/store"],
+      "@amarty/utils": ["./dist/amarty/utils"],
+      "@amarty/pipes": ["./dist/amarty/pipes"],
+      "@amarty/directives": ["./dist/amarty/directives"],
+      "@amarty/common": ["./dist/amarty/common"]
+    },
+    "outDir": "./dist/out-tsc",
+    "target": "ES2022",
+    "module": "ES2022",
+    "moduleResolution": "bundler",
+    "strict": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "skipLibCheck": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "importHelpers": true
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true
+  }
+}

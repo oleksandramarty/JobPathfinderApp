@@ -1,0 +1,19 @@
+{
+  "extends": "../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "../dist/out-tsc",
+    "target": "ES2022",
+    "declaration": true,
+    "declarationMap": true,
+    "inlineSources": true,
+    "types": [],
+    "paths": {
+      "@amarty/utils": ["../../../dist/amarty/utils"],
+      "@amarty/models": ["../../../dist/amarty/models"],
+      "@amarty/dictionaries": ["../../../dist/amarty/dictionaries"],
+      "@amarty/localizations": ["../../../dist/amarty/localizations"]
+    }
+  },
+  "exclude": ["**/*.spec.ts"],
+  "include": ["lib/**/*.ts"]
+}

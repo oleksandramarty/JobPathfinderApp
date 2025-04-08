@@ -1,0 +1,16 @@
+{
+  "name": "amarty-localizations",
+  "sourceRoot": "Shared/projects/amarty/localizations/lib",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@angular-eslint/builder:lint",
+      "options": {
+        "lintFilePatterns": [
+          "Shared/projects/amarty/localizations/lib/**/*.ts"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

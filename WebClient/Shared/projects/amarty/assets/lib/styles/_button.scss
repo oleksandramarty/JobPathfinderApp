@@ -1,0 +1,70 @@
+@use '_variables.scss' as v;
+@use '_mixins.scss' as m;
+
+button:disabled {
+  cursor: not-allowed;
+  background: var(--muted-text) !important;
+}
+
+.button {
+  font-family: var(--font-stack), serif;
+  padding: #{m.pxToRem(8)} #{m.pxToRem(10)};
+  font-size: #{m.pxToRem(14)};
+  border-radius: var(--radius-medium);
+  border: none;
+  cursor: pointer;
+  transition: background-color var(--transition-zero), opacity var(--transition-zero);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: #{m.pxToRem(8)};
+
+  &__filled {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    &__focus {
+      background-color: var(--focus);
+      color: var(--primary-white);
+    }
+    &__submit {
+      background-color: var(--btn-primary);
+      color: var(--primary-white);
+    }
+  }
+
+  &__unfilled__submit {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: transparent;
+    color: var(--btn-primary);
+    border: #{m.pxToRem(1.5)} solid var(--btn-primary);
+
+    &:hover {
+      color: var(--primary-white);
+      background-color: var(--btn-primary);
+    }
+  }
+
+  &__cancel {
+    background-color: var(--error);
+    color: var(--primary-white);
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  &__disabled {
+    background-color: var(--muted-text);
+    color: var(--primary-white);
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  &__link {
+    background: transparent;
+    transition: color 0.3s;
+
+    &:hover {
+      color: var(--secondary);
+    }
+  }
+}

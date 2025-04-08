@@ -1,0 +1,189 @@
+@if(formGroup) {
+  <div
+    [ngClass]="className ? 'input__container ' + className : 'input__container'"
+    (click)="showDebugInfo()"
+    [formGroup]="formGroup">
+
+    @if(type === 'input' || type === 'select' || type === 'textarea' || type === 'password' || type === 'datepicker' || type === 'rangedatepicker' || type === 'autocomplete' || type === 'multiautocomplete') {
+      <div class="input__label">
+        @if(label){
+          <label [for]="inputId">{{ label | translation }}<span class="asterisk">{{isRequired ? '*' : ''}}</span></label>
+        }
+      </div>
+    }
+
+    @if(type === 'input') {
+      <input
+        class="input"
+        [class.invalid]="isInvalid"
+        [id]="inputId"
+        (input)="onInput($event)"
+        [translation]="placeholder" [translationAttr]="'placeholder'"
+        [required]="!!isRequired"
+        [formControlName]="controlName">
+    }
+
+    @if(type === 'select') {
+      <select
+        class="select"
+        [class.invalid]="isInvalid"
+        [id]="inputId"
+        [formControlName]="controlName">
+        @for(dataItem of dataItems; track $index) {
+          <option [value]="dataItem.id">{{ dataItem.name | translation }}</option>
+        }
+      </select>
+    }
+
+    @if(type === 'textarea') {
+      <textarea
+        class="textarea"
+        [class.invalid]="isInvalid"
+        [id]="inputId"
+        [translation]="placeholder" [translationAttr]="'placeholder'"
+        [rows]="rows ?? 4"
+        [cols]="cols ?? 50"
+        [formControlName]="controlName"></textarea>
+    }
+
+    @if(type === 'password') {
+      <input
+        class="input input-icon"
+        [class.invalid]="isInvalid"
+        [id]="inputId"
+        [type]="hide() ? 'password' : 'text'"
+        (input)="onInput($event)"
+        [translation]="placeholder" [translationAttr]="'placeholder'"
+        [required]="!!isRequired"
+        [formControlName]="controlName">
+      <i [class.fa-eye]="hide()" [class.fa-eye-slash]="!hide()" class="icon fa-solid" (click)="clickEvent($event)"></i>
+    }
+
+    @if(type === 'datepicker') {
+      <div class="datepicker">
+        <input
+          class="input date-input"
+          [class.invalid]="isInvalid"
+          type="text"
+          [formControlName]="controlName"
+          [matDatepicker]="picker"
+          [min]="minDate"
+          [max]="maxDate"
+          [id]="inputId"
+          [translation]="placeholder"
+          [translationAttr]="'placeholder'">
+        <mat-datepicker-toggle matSuffix [for]="picker" class="hidden-datepicker-toggle"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </div>
+    }
+
+    @if(type === 'rangedatepicker') {
+      <div class="datepicker-range" [formGroup]="formGroup">
+        <mat-date-range-input [formGroup]="formGroup" [rangePicker]="rangePicker">
+          <input
+            class="input date-input"
+            matStartDate
+            formControlName="start"
+            [placeholder]="'Start date'"
+            [translation]="'INPUT.DATE_RANGE.START'"
+            [translationAttr]="'placeholder'"
+            [class.invalid]="isInvalid" />
+          <input
+            class="input date-input"
+            matEndDate
+            formControlName="end"
+            [placeholder]="'End date'"
+            [translation]="'INPUT.DATE_RANGE.END'"
+            [translationAttr]="'placeholder'"
+            [class.invalid]="isInvalid" />
+        </mat-date-range-input>
+
+        <mat-datepicker-toggle matSuffix [for]="rangePicker" class="hidden-datepicker-toggle"></mat-datepicker-toggle>
+        <mat-date-range-picker #rangePicker></mat-date-range-picker>
+      </div>
+    }
+
+    @if(type === 'radio') {
+      @for(dataItem of dataItems; track $index) {
+        <label class="radio">
+          <input
+            [class.invalid]="isInvalid"
+            type="radio"
+            name="radio-group"
+            [value]="dataItem.id"
+            [formControlName]="controlName">{{ dataItem.name | translation }}
+        </label>
+      }
+    }
+
+    @if(type === 'checkbox') {
+      <label class="checkbox">
+        <input type="checkbox" [formControlName]="controlName">
+        <span [translation]="label"></span>
+        <span class="asterisk">{{isRequired ? '*' : ''}}</span>
+      </label>
+    }
+
+    @if(internalFormGroup && (type === 'autocomplete' || type === 'multiautocomplete')) {
+      <div [formGroup]="internalFormGroup!">
+        <input type="text"
+               class="select"
+               [translation]="placeholder" [translationAttr]="'placeholder'"
+               [formControlName]="'autocomplete'"
+               [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn"
+                          (optionSelected)="onAutoCompleteChecked();">
+          @if(!!filteredDataItems && ((filteredDataItems | async)?.length ?? 0) <= 150) {
+            @for(item of filteredDataItems | async; track item.id) {
+              <mat-option [value]="item">
+                <div class="autocomplete__item__container">
+                  <span [translation]="item.name" [ngClass]="{'f-bold': item.isImportant}"></span>
+                  @if(item.color) {
+                    <span class="autocomplete__item" [style]="'background-color: ' + item.color + ';'"></span>
+                  }
+                  <span class="autocomplete__item__hint" [translation]="item.description"></span>
+                </div>
+              </mat-option>
+            }
+          } @else {
+            <mat-option disabled>
+              {{ 'INPUT.TO_MANY_ITEMS.START_TYPING' | translation }}...
+            </mat-option>
+          }
+        </mat-autocomplete>
+
+        @if(!!selectedDataItems && type === 'multiautocomplete') {
+          <mat-chip-set aria-label="My selection">
+            @for(item of selectedDataItems; track $index) {
+              <mat-chip>
+                {{ item.name }}
+                <i class="fa fa-times" (click)="removeOnAutoComplete(item)"></i>
+              </mat-chip>
+            }
+          </mat-chip-set>
+        }
+      </div>
+    }
+  </div>
+
+  <div class="input__error__container">
+    @if(isInvalid) {
+      <div class="input__error__container__body">
+        @if(currentControl?.hasError('required')) {
+          <div class="input__error__container__body-item">{{ 'ERROR.FIELD_REQUIRED' | translation }}</div>
+        }
+        @if(currentControl?.hasError('requiredTrue')) {
+          <div class="input__error__container__body-item">{{ 'ERROR.CHECK_CHECKBOX' | translation }}</div>
+        }
+        @if(currentControl?.hasError('email')) {
+          <div class="input__error__container__body-item">{{ 'ERROR.INVALID_EMAIL' | translation }}</div>
+        }
+        @if(errorArray) {
+          @for(errorItem of errorArray; track $index) {
+            <div class="input__error__container__body-item">{{ errorItem.error | translation }}</div>
+          }
+        }
+      </div>
+    }
+  </div>
+}

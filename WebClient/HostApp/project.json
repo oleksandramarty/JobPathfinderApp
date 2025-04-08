@@ -1,0 +1,17 @@
+{
+  "name": "host-app",
+  "sourceRoot": "HostApp/src",
+  "projectType": "host-app",
+  "targets": {
+    "lint": {
+      "executor": "@angular-eslint/builder:lint",
+      "options": {
+        "lintFilePatterns": [
+          "HostApp/src/**/*.ts",
+          "HostApp/src/**/*.spec.ts"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

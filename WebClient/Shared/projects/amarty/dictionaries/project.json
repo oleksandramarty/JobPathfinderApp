@@ -1,0 +1,16 @@
+{
+  "name": "amarty-dictionaries",
+  "sourceRoot": "Shared/projects/amarty/dictionaries/lib",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@angular-eslint/builder:lint",
+      "options": {
+        "lintFilePatterns": [
+          "Shared/projects/amarty/dictionaries/lib/**/*.ts"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

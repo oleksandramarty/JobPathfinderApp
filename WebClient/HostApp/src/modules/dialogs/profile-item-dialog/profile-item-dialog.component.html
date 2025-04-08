@@ -1,0 +1,17 @@
+<div class="modal">
+  <div class="modal__header">
+    <div class="modal__header">
+      <h2 class="modal__header-title" mat-dialog-title>{{ title | translation }}</h2>
+      <span class="modal__close" (click)="dialogRef.close()">
+        <i class="fa-solid fa-robot"></i><i class="fa-solid fa-stopwatch"></i>
+      </span>
+    </div>
+    <span class="modal__close" (click)="dialogRef.close()">
+      <i class="fa-solid fa-xmark"></i>
+    </span>
+  </div>
+
+  @if(renderForm) {
+    <app-generic-form-renderer [renderForm]="renderForm"></app-generic-form-renderer>
+  }
+</div>

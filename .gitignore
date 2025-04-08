@@ -1,0 +1,132 @@
+# ======================
+# .NET related
+# ======================
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.pdb
+*.cache
+*.log
+*.vspscc
+*.vssscc
+.vs/
+TestResults/
+*.dbmdl
+*.dbproj.schemaview
+*.dbproj.user
+*.ncb
+*.opendb
+*.sdf
+*.sqlite
+*.sql
+*.mdf
+*.ldf
+*.ide
+_ReSharper*/
+*.resharper
+*.DotSettings.user
+*.sln.ide
+*.docstates
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# Auto-generated files
+Generated_Code/
+
+# NuGet
+*.nupkg
+*.snupkg
+*.nuspec
+project.lock.json
+project.fragment.lock.json
+artifacts/
+.nuget/
+packages/
+*.symbols.nupkg
+
+# Publish artifacts
+publish/
+*.Publish.xml
+
+# Local settings
+appsettings.Local.json
+appsettings.Development.json
+
+# Temporary ASP.NET files
+wwwroot/
+
+# ======================
+# Angular / Node
+# ======================
+**/node_modules/
+**/dist/
+**/out-tsc/
+**/.angular/cache/
+**/.angular/tsconfig.*.json
+.angular/
+
+# Angular environment files (if needed)
+**/src/environments/environment*.ts
+
+# Compiled output
+*.js
+*.js.map
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Package managers
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+
+# ======================
+# JetBrains IDEs: Rider + WebStorm
+# ======================
+.idea/
+*.iml
+*.iws
+*.ipr
+.idea_modules/
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/**/usage.statistics.xml
+.idea/**/dictionaries
+.idea/**/shelf/
+.idea/httpRequests/
+
+# Rider-specific caches
+.idea/.idea.*
+.idea/.rider.*
+
+# WebStorm-specific
+.idea/jsLibraryMappings.xml
+
+# ======================
+# VS Code
+# ======================
+.vscode/
+
+# ======================
+# OS Generated
+# ======================
+.DS_Store
+Thumbs.db
+
+# ======================
+# General
+# ======================
+*.log
+*.tmp
+*.bak
+*.swp
+*.swo
+*.env
+.env.*
+/WebClient/.nx
