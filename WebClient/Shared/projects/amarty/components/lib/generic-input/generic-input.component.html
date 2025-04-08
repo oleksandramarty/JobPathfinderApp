@@ -1,10 +1,10 @@
 @if(formGroup) {
   <div
-       [ngClass]="className ? 'input__container ' + className : 'input__container'"
-       (click)="showDebugInfo()"
-       [formGroup]="formGroup">
+    [ngClass]="className ? 'input__container ' + className : 'input__container'"
+    (click)="showDebugInfo()"
+    [formGroup]="formGroup">
 
-    @if(type === 'input' || type === 'select' || type === 'textarea' || type === 'password' || type === 'datepicker' || type === 'autocomplete' || type === 'multiautocomplete') {
+    @if(type === 'input' || type === 'select' || type === 'textarea' || type === 'password' || type === 'datepicker' || type === 'rangedatepicker' || type === 'autocomplete' || type === 'multiautocomplete') {
       <div class="input__label">
         @if(label){
           <label [for]="inputId">{{ label | translation }}<span class="asterisk">{{isRequired ? '*' : ''}}</span></label>
@@ -30,7 +30,7 @@
         [id]="inputId"
         [formControlName]="controlName">
         @for(dataItem of dataItems; track $index) {
-          <option [value]="dataItem.id">{{  dataItem.name | translation }}</option>
+          <option [value]="dataItem.id">{{ dataItem.name | translation }}</option>
         }
       </select>
     }
@@ -62,12 +62,44 @@
     @if(type === 'datepicker') {
       <div class="datepicker">
         <input
-          [class.invalid]="isInvalid"
-          type="date"
           class="input date-input"
-          [id]="inputId"
+          [class.invalid]="isInvalid"
+          type="text"
           [formControlName]="controlName"
-        >
+          [matDatepicker]="picker"
+          [min]="minDate"
+          [max]="maxDate"
+          [id]="inputId"
+          [translation]="placeholder"
+          [translationAttr]="'placeholder'">
+        <mat-datepicker-toggle matSuffix [for]="picker" class="hidden-datepicker-toggle"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </div>
+    }
+
+    @if(type === 'rangedatepicker') {
+      <div class="datepicker-range" [formGroup]="formGroup">
+        <mat-date-range-input [formGroup]="formGroup" [rangePicker]="rangePicker">
+          <input
+            class="input date-input"
+            matStartDate
+            formControlName="start"
+            [placeholder]="'Start date'"
+            [translation]="'INPUT.DATE_RANGE.START'"
+            [translationAttr]="'placeholder'"
+            [class.invalid]="isInvalid" />
+          <input
+            class="input date-input"
+            matEndDate
+            formControlName="end"
+            [placeholder]="'End date'"
+            [translation]="'INPUT.DATE_RANGE.END'"
+            [translationAttr]="'placeholder'"
+            [class.invalid]="isInvalid" />
+        </mat-date-range-input>
+
+        <mat-datepicker-toggle matSuffix [for]="rangePicker" class="hidden-datepicker-toggle"></mat-datepicker-toggle>
+        <mat-date-range-picker #rangePicker></mat-date-range-picker>
       </div>
     }
 
@@ -86,7 +118,9 @@
 
     @if(type === 'checkbox') {
       <label class="checkbox">
-        <input type="checkbox" [formControlName]="controlName"><span [translation]="label"></span><span class="asterisk">{{isRequired ? '*' : ''}}</span>
+        <input type="checkbox" [formControlName]="controlName">
+        <span [translation]="label"></span>
+        <span class="asterisk">{{isRequired ? '*' : ''}}</span>
       </label>
     }
 
@@ -100,13 +134,12 @@
         <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn"
                           (optionSelected)="onAutoCompleteChecked();">
           @if(!!filteredDataItems && ((filteredDataItems | async)?.length ?? 0) <= 150) {
-          @for(item of filteredDataItems | async; track item.id) {
+            @for(item of filteredDataItems | async; track item.id) {
               <mat-option [value]="item">
                 <div class="autocomplete__item__container">
                   <span [translation]="item.name" [ngClass]="{'f-bold': item.isImportant}"></span>
                   @if(item.color) {
-                    <span class="autocomplete__item"
-                          [style]="'background-color: ' + item.color + ';'"></span>
+                    <span class="autocomplete__item" [style]="'background-color: ' + item.color + ';'"></span>
                   }
                   <span class="autocomplete__item__hint" [translation]="item.description"></span>
                 </div>
@@ -118,6 +151,7 @@
             </mat-option>
           }
         </mat-autocomplete>
+
         @if(!!selectedDataItems && type === 'multiautocomplete') {
           <mat-chip-set aria-label="My selection">
             @for(item of selectedDataItems; track $index) {
@@ -130,26 +164,26 @@
         }
       </div>
     }
-
   </div>
+
   <div class="input__error__container">
     @if(isInvalid) {
-        <div class="input__error__container__body">
-          @if(currentControl.hasError('required')) {
-            <div class="input__error__container__body-item">{{ 'ERROR.FIELD_REQUIRED' | translation }}</div>
+      <div class="input__error__container__body">
+        @if(currentControl?.hasError('required')) {
+          <div class="input__error__container__body-item">{{ 'ERROR.FIELD_REQUIRED' | translation }}</div>
+        }
+        @if(currentControl?.hasError('requiredTrue')) {
+          <div class="input__error__container__body-item">{{ 'ERROR.CHECK_CHECKBOX' | translation }}</div>
+        }
+        @if(currentControl?.hasError('email')) {
+          <div class="input__error__container__body-item">{{ 'ERROR.INVALID_EMAIL' | translation }}</div>
+        }
+        @if(errorArray) {
+          @for(errorItem of errorArray; track $index) {
+            <div class="input__error__container__body-item">{{ errorItem.error | translation }}</div>
           }
-          @if(currentControl.hasError('requiredTrue')) {
-            <div class="input__error__container__body-item">{{ 'ERROR.CHECK_CHECKBOX' | translation }}</div>
-          }
-          @if(currentControl.hasError('email')) {
-            <div class="input__error__container__body-item">{{ 'ERROR.INVALID_EMAIL' | translation }}</div>
-          }
-          @if(errorArray) {
-            @for(errorItem of errorArray; track $index) {
-              <div class="input__error__container__body-item">{{ errorItem.error | translation }}</div>
-            }
-          }
-        </div>
+        }
+      </div>
     }
   </div>
 }

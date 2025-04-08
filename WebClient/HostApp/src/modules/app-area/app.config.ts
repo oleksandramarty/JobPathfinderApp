@@ -18,6 +18,7 @@ import { environment } from '../../utils/environments/environment';
 import { BaseUrlInterceptor } from '../../utils/api.interceptor';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule, provideAnimations } from '@angular/platform-browser/animations';
+import {MatNativeDateModule} from '@angular/material/core';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -26,6 +27,8 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withInterceptorsFromDi()),
     provideStore(reducers),
     provideStoreDevtools({ maxAge: 25, logOnly: environment.production }),
+
+    importProvidersFrom(MatNativeDateModule),
 
     importProvidersFrom(
       BrowserModule,

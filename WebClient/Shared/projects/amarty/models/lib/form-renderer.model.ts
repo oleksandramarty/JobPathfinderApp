@@ -7,6 +7,7 @@ export type InputType =
   | 'textarea'
   | 'password'
   | 'datepicker'
+  | 'rangedatepicker'
   | 'radio'
   | 'checkbox'
   | 'autocomplete'

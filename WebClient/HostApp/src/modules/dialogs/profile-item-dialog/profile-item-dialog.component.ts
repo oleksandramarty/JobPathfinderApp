@@ -7,8 +7,6 @@ import { BaseUnsubscribeComponent } from '@amarty/common';
 import {
   DataItem,
   InputForm,
-  InputFormBuilder,
-  InputFormItemBuilder,
   UserProfileItemEnum,
   UserProfileItemResponse,
   UserResponse
@@ -21,6 +19,7 @@ import { takeUntil, tap } from 'rxjs';
 import { itemTypeTitle } from '../../profile-area/base-profile-section.component';
 import { selectUser } from '@amarty/store';
 import { Validators } from '@angular/forms';
+import {ProfileFormFactory} from '../../../utils/profile-form.factory';
 
 @Component({
   selector: 'app-profile-item-dialog',
@@ -89,74 +88,15 @@ export class ProfileItemDialogComponent extends BaseUnsubscribeComponent {
   }
 
   private buildForm(): void {
-    const builder = new InputFormBuilder();
-
-    builder.addGridItem([
-      new InputFormItemBuilder('position', 'input')
-        .withLabel('COMMON.POSITION')
-        .withPlaceholder('COMMON.POSITION')
-        .withValidators([Validators.required])
-        .withDefaultValue(this.profileItem?.position),
-      new InputFormItemBuilder('company', 'input')
-        .withLabel('COMMON.COMPANY')
-        .withPlaceholder('COMMON.COMPANY')
-        .withValidators([Validators.required])
-        .withDefaultValue(this.profileItem?.company)
-    ], 1)
-      .addGridItem([
-        new InputFormItemBuilder('startDate', 'datepicker')
-          .withLabel('COMMON.START_DATE')
-          .withValidators([Validators.required])
-          .withDefaultValue(this.profileItem?.startDate),
-        new InputFormItemBuilder('endDate', 'datepicker')
-          .withLabel('COMMON.END_DATE')
-          .withDefaultValue(this.profileItem?.endDate),
-        new InputFormItemBuilder('location', 'input')
-          .withLabel('COMMON.LOCATION')
-          .withPlaceholder('COMMON.LOCATION')
-          .withDefaultValue(this.profileItem?.location),
-        new InputFormItemBuilder('countryId', 'autocomplete')
-          .withLabel('COMMON.COUNTRY')
-          .withPlaceholder('COMMON.COUNTRY')
-          .withDataItems(this.countries)
-          .withValidators([Validators.required])
-          .withDefaultValue(this.profileItem?.countryId),
-        new InputFormItemBuilder('jobTypeId', 'autocomplete')
-          .withLabel('COMMON.JOB_TYPE')
-          .withPlaceholder('COMMON.JOB_TYPE')
-          .withDataItems(this.jobTypes)
-          .withValidators([Validators.required])
-          .withDefaultValue(this.profileItem?.jobTypeId),
-        new InputFormItemBuilder('workArrangementId', 'autocomplete')
-          .withLabel('COMMON.WORK_ARRANGEMENT')
-          .withPlaceholder('COMMON.WORK_ARRANGEMENT')
-          .withDataItems(this.workArrangements)
-          .withValidators([Validators.required])
-          .withDefaultValue(this.profileItem?.workArrangementId),
-      ], 2)
-      .addGridItem([
-        new InputFormItemBuilder('description', 'textarea')
-          .withLabel('COMMON.DESCRIPTION')
-          .withRows(2)
-          .withMaxLength(500)
-          .withDefaultValue(this.profileItem?.description)
-      ], 1)
-      .setSubmitted(false)
-      .setClassName('modal__body grid-1fr grid-gap')
-      .withCancelButton({
-        buttonText: 'COMMON.CANCEL',
-        showButton: true,
-        className: 'button__link',
-        onClick: () => this.dialogRef.close(false)
-      })
-      .withSubmitButton({
-        buttonText: 'COMMON.PROCEED',
-        showButton: true,
-        className: 'button__filled__submit',
-        onClick: () => this.proceedItem()
-      });
-
-    this.renderForm = builder.build();
+    this.renderForm = ProfileFormFactory.createProfileItemForm(
+      this.profileItemType ?? UserProfileItemEnum.Experience,
+      this.profileItem,
+      this.countries,
+      this.jobTypes,
+      this.workArrangements,
+      () => this.proceedItem(),
+      () => this.dialogRef.close()
+    );
   }
 
   public proceedItem(): void {

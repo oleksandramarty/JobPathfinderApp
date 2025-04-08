@@ -9,6 +9,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap');
 
+:host ::ng-deep .mat-form-field {
+  display: none;
+}
+
+:host ::ng-deep .mat-datepicker-toggle,
+:host ::ng-deep .mat-date-range-input {
+  display: none;
+}
+
+:host ::ng-deep .hidden-datepicker-toggle {
+  display: none !important;
+}
+
 :root {
   @include mat.tooltip-overrides((
     container-color: #1e1e2e,

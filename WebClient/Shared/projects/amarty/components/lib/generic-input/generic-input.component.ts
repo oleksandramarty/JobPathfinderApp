@@ -1,43 +1,45 @@
 import { ChangeDetectionStrategy, Component, Input, signal } from '@angular/core';
-import { BaseUnsubscribeComponent } from '@amarty/common';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { DataItem, InputError, InputType } from '@amarty/models';
-import { AsyncPipe, CommonModule } from '@angular/common';
-import { generateRandomId } from '@amarty/utils';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatSelectModule } from '@angular/material/select';
-import { MatAutocomplete, MatAutocompleteModule, MatAutocompleteTrigger } from '@angular/material/autocomplete';
-import { MatOption } from '@angular/material/core';
+import { CommonModule } from '@angular/common';
 import { debounceTime, filter, Observable, startWith, takeUntil, tap } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatDatepickerModule, MatDatepickerIntl } from '@angular/material/datepicker';
+import { MatNativeDateModule, DateAdapter } from '@angular/material/core';
+import { MatInputModule } from '@angular/material/input';
+import { DataItem, InputError, InputType } from '@amarty/models';
+import { generateRandomId } from '@amarty/utils';
 import { LocalizationService } from '@amarty/services';
 import { TranslationPipe } from '@amarty/pipes';
 import { TranslationDirective } from '@amarty/directives';
+import { BaseUnsubscribeComponent } from '@amarty/common';
 
 @Component({
   selector: 'app-generic-input',
+  standalone: true,
+  templateUrl: './generic-input.component.html',
+  styleUrl: './generic-input.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    'data-id': generateRandomId(12)
+  },
   imports: [
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
     MatFormFieldModule,
     MatSelectModule,
-    AsyncPipe,
-    FormsModule,
-    MatAutocomplete,
-    MatAutocompleteTrigger,
-    MatOption,
     MatAutocompleteModule,
     MatChipsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatInputModule,
     TranslationPipe,
     TranslationDirective
-  ],
-  templateUrl: './generic-input.component.html',
-  styleUrl: './generic-input.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  host: { 'data-id': generateRandomId(12) }
+  ]
 })
 export class GenericInputComponent extends BaseUnsubscribeComponent {
   @Input() className: string | undefined;
@@ -61,42 +63,39 @@ export class GenericInputComponent extends BaseUnsubscribeComponent {
 
   filteredDataItems: Observable<DataItem[] | undefined> | undefined;
   selectedDataItems: DataItem[] = [];
-
   internalFormGroup: FormGroup | undefined;
 
   inputId: string | undefined;
 
   constructor(
-    private readonly localizationService: LocalizationService
+    private readonly localizationService: LocalizationService,
+    private readonly adapter: DateAdapter<unknown>,
+    private readonly intl: MatDatepickerIntl
   ) {
     super();
-
     this.inputId = generateRandomId(12);
-
-    if (this.dataItems) {
-      this.dataItems.sort((a, b) => (b.isImportant ? 1 : 0) - (a.isImportant ? 1 : 0));
-    }
-
     this.displayFn = this.displayFn.bind(this);
   }
 
   protected readonly value = signal('');
   hide = signal(true);
 
-  protected onInput(event: Event) {
-    this.value.set((event.target as HTMLInputElement).value);
-  }
-
-  clickEvent(event: MouseEvent) {
-    this.hide.set(!this.hide());
-    event.stopPropagation();
-  }
-
   override ngOnInit(): void {
     if (!this.formGroup) {
-      this.formGroup = new FormGroup({
-        inputControl: new FormControl(null)
-      });
+      if (this.type === 'rangedatepicker') {
+        this.formGroup = new FormGroup({
+          start: new FormControl(null),
+          end: new FormControl(null)
+        });
+      } else {
+        this.formGroup = new FormGroup({
+          [this.controlName]: new FormControl(null)
+        });
+      }
+    }
+
+    if (this.dataItems) {
+      this.dataItems.sort((a, b) => (b.isImportant ? 1 : 0) - (a.isImportant ? 1 : 0));
     }
 
     if (this.type === 'autocomplete' || this.type === 'multiautocomplete') {
@@ -128,6 +127,33 @@ export class GenericInputComponent extends BaseUnsubscribeComponent {
         }),
       );
     }
+
+    if (this.type === 'datepicker' || this.type === 'rangedatepicker') {
+      this.localizationService.localeChangedSub
+        .pipe(
+          takeUntil(this.ngUnsubscribe),
+          tap(locale => {
+            if (locale) {
+              this.adapter.setLocale(this.localizationService.currentCulture);
+              this.updateCalendarLabels(this.localizationService.currentCulture);
+            }
+          })
+        )
+        .subscribe();
+    }
+
+    super.ngOnInit();
+  }
+
+  private updateCalendarLabels(locale: string): void {
+    const labels: Record<string, string> = {
+      'fr': 'Fermer le calendrier',
+      'ja-JP': 'カレンダーを閉じる',
+      'en': 'Close calendar'
+    };
+
+    this.intl.closeCalendarLabel = labels[locale] ?? labels['en'];
+    this.intl.changes.next();
   }
 
   get currentControl(): any {
@@ -147,7 +173,16 @@ export class GenericInputComponent extends BaseUnsubscribeComponent {
   }
 
   get isDisabled(): boolean {
-    return this.currentControl.disabled ?? false;
+    return this.currentControl?.disabled ?? false;
+  }
+
+  protected onInput(event: Event) {
+    this.value.set((event.target as HTMLInputElement).value);
+  }
+
+  clickEvent(event: MouseEvent) {
+    this.hide.set(!this.hide());
+    event.stopPropagation();
   }
 
   displayFn(dataItem: DataItem): string {
@@ -157,7 +192,7 @@ export class GenericInputComponent extends BaseUnsubscribeComponent {
   private _filterAutoComplete(name: string): DataItem[] | undefined {
     const filterValue = name.toLowerCase();
 
-    if (this.formGroup?.get(this.controlName)!.value ===
+    if (this.formGroup?.get(this.controlName)?.value ===
       this.internalFormGroup?.get('autocomplete')?.value?.id) {
       return this.dataItems;
     }
@@ -170,15 +205,12 @@ export class GenericInputComponent extends BaseUnsubscribeComponent {
 
   public onAutoCompleteChecked(): void {
     if (this.type === 'multiautocomplete') {
-      if (this.internalFormGroup?.get('autocomplete')?.value) {
-        const newItem = this.internalFormGroup?.get('autocomplete')?.value;
-        if (!this.selectedDataItems.some(item => item.id === newItem.id)) {
-          this.selectedDataItems.push(newItem);
-        }
-        this.formGroup?.get(this.controlName)?.setValue(this.selectedDataItems.map(x => x.id).join(','));
+      const newItem = this.internalFormGroup?.get('autocomplete')?.value;
+      if (newItem && !this.selectedDataItems.some(item => item.id === newItem.id)) {
+        this.selectedDataItems.push(newItem);
       }
+      this.formGroup?.get(this.controlName)?.setValue(this.selectedDataItems.map(x => x.id).join(','));
       this.internalFormGroup?.get('autocomplete')?.setValue(null);
-
       this.internalFormGroup?.get('autocomplete')?.setErrors(this.formGroup?.get(this.controlName)?.errors ?? null);
     }
 

@@ -14,6 +14,8 @@ import {
 } from '@amarty/localizations';
 import { getLocalStorageItem, setLocalStorageItem } from '@amarty/utils';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
+import {DictionaryService} from './dictionary.service';
+import { LocaleData } from '@amarty/dictionaries';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +23,8 @@ import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 export class LocalizationService {
   private _fallbackLocale: string = 'en';
   private _currentLocale: string | undefined;
+  private _fallbackCulture: string = 'en-US';
+  private _currentCulture: string | undefined;
 
   private _shortMonths: string[] | undefined;
   private _shortDays: string[] | undefined;
@@ -49,6 +53,13 @@ export class LocalizationService {
     return this._shortDays ?? [];
   }
 
+  get currentCulture(): string {
+    if (!this._currentCulture) {
+      this._currentCulture = LocaleData.find(item => item.isoCode == this.currentLocale)?.culture ?? this._fallbackCulture;
+    }
+    return this._currentCulture!;
+  }
+
   get currentLocale(): string {
     if (!this._currentLocale) {
       const temp = getLocalStorageItem<string>('locale');
@@ -58,8 +69,15 @@ export class LocalizationService {
         this._currentLocale = this._fallbackLocale;
         setLocalStorageItem('locale', this._currentLocale);
       }
+      this._currentCulture = LocaleData.find(item => item.isoCode == this._currentLocale)?.culture ?? this._fallbackCulture;
     }
     return this._currentLocale!;
+  }
+
+  set currentLocale(value: string | undefined) {
+    this._currentLocale = value ?? this._fallbackLocale;
+    setLocalStorageItem('locale', value ?? this._fallbackLocale);
+    this._currentCulture = LocaleData.find(item => item.isoCode == this._currentLocale)?.culture ?? this._fallbackCulture;
   }
 
   public initialize(): void {
@@ -113,8 +131,7 @@ export class LocalizationService {
   }
 
   public localeChanged(code: string | undefined): void {
-    this._currentLocale = code;
-    setLocalStorageItem('locale', code ?? this._fallbackLocale);
+    this.currentLocale = code;
     this.updateLocalizations();
     this.localeChangedSub.next(true);
   }
