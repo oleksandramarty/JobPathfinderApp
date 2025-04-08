@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace AuthGateway.Domain.Migrations
 {
     [DbContext(typeof(AuthGatewayDataContext))]
-    [Migration("20250406012653_InitUser")]
+    [Migration("20250408015715_InitUser")]
     partial class InitUser
     {
         /// <inheritdoc />
@@ -260,6 +260,10 @@ namespace AuthGateway.Domain.Migrations
                         .HasColumnType("character varying(50)");
 
                     b.Property<string>("FirstName")
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
+
+                    b.Property<string>("Headline")
                         .HasMaxLength(100)
                         .HasColumnType("character varying(100)");
 

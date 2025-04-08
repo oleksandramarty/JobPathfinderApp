@@ -32,6 +32,7 @@ public class AuthGatewayDataContext: DbSaveChangeContext
             entity.Property(u => u.Login).IsRequired().HasMaxLength(50);
             entity.Property(u => u.FirstName).HasMaxLength(100);
             entity.Property(u => u.LastName).HasMaxLength(100);
+            entity.Property(u => u.Headline).HasMaxLength(100);
             entity.Property(u => u.LoginNormalized).IsRequired().HasMaxLength(50);
             entity.Property(u => u.Email).IsRequired().HasMaxLength(50);
             entity.Property(u => u.Phone).HasMaxLength(11);
