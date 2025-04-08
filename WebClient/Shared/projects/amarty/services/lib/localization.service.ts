@@ -160,7 +160,7 @@ export class LocalizationService {
   }
 
   public handleApiError(error: any): void {
-    let errorMessage = 'ERROR.COMMON_ERROR';
+    let errorMessage = 'ERROR.SYSTEM.COMMON_ERROR';
     if (error.error) {
       errorMessage = error.error.message;
     } else if (error.message) {

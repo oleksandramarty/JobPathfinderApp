@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace AuthGateway.Domain.Migrations
 {
     [DbContext(typeof(AuthGatewayDataContext))]
-    [Migration("20250408015715_InitUser")]
+    [Migration("20250408193131_InitUser")]
     partial class InitUser
     {
         /// <inheritdoc />

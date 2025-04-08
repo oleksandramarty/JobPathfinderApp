@@ -1,0 +1,124 @@
+.karma {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+
+  &__header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  &__title {
+    font-size: 2.5rem;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+  }
+
+  &__score {
+    &-value {
+      font-size: 3rem;
+      font-weight: bold;
+      color: var(--success);
+    }
+
+    &-label {
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+      margin-left: 0.5rem;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  &__stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  &__stat-card {
+    background: var(--surface);
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+    text-align: center;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+  }
+
+  &__stat-title {
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+  }
+
+  &__stat-value {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--success);
+    margin-bottom: 0.5rem;
+  }
+
+  &__stat-description {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+  }
+
+  &__history {
+    background: var(--surface);
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+
+    &-title {
+      color: var(--text-primary);
+      margin-bottom: 1.5rem;
+      font-size: 1.5rem;
+    }
+
+    &-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    &-header {
+      border-bottom: 2px solid var(--border);
+    }
+
+    &-th {
+      text-align: left;
+      padding: 1rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    &-body {
+      tr {
+        border-bottom: 1px solid var(--border);
+      }
+    }
+
+    &-row {
+      &:hover {
+        background: var(--hover);
+      }
+    }
+
+    &-td {
+      padding: 1rem;
+      color: var(--text-primary);
+
+      &--positive {
+        color: var(--success);
+        font-weight: 500;
+      }
+    }
+  }
+} 

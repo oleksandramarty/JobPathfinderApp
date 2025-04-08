@@ -131,7 +131,7 @@ export class LandingComponent extends BaseUnsubscribeComponent{
               tooltip: { trigger: 'axis' },
               xAxis: { type: 'category', data: this.jobData.map(j => j.date) },
               yAxis: { type: 'value' },
-              series: [{ name: this.localizationService.getTranslation('COMMON.APPLICATIONS'), type: 'line', data: this.jobData.map(j => j.count) }]
+              series: [{ name: this.localizationService.getTranslation('COMMON.JOB.APPLICATIONS'), type: 'line', data: this.jobData.map(j => j.count) }]
             };
 
             this.barChartOptions = {

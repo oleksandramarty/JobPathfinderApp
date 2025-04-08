@@ -56,8 +56,8 @@ export class UserPreferencesDialogComponent extends BaseUnsubscribeComponent {
           this.user = user;
           if (!user) {
             this.snackBar.open(
-              this.localizationService.getTranslation('ERROR.USER_NOT_FOUND')!,
-              this.localizationService.getTranslation('COMMON.OK'),
+              this.localizationService.getTranslation('ERROR.ENTITY.USER_NOT_FOUND')!,
+              this.localizationService.getTranslation('COMMON.UI.OK'),
               { duration: 5000, panelClass: ['error'] }
             );
             this.dialogRef.close();
@@ -135,7 +135,7 @@ export class UserPreferencesDialogComponent extends BaseUnsubscribeComponent {
         }
         this.snackBar.open(
           this.localizationService.getTranslation('MESSAGES.CHANGES_SUCCESSFULLY_SAVED')!,
-          this.localizationService.getTranslation('COMMON.OK'),
+          this.localizationService.getTranslation('COMMON.UI.OK'),
           { duration: 5000, panelClass: ['error'] }
         );
         this.dialogRef.close(true);

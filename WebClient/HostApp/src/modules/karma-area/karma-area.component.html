@@ -1,0 +1,59 @@
+<div class="karma">
+  <div class="karma__header">
+    <h1 class="karma__title">{{ 'KARMA.TITLE' | translation }}</h1>
+    <div class="karma__score">
+      <span class="karma__score-value">1000</span>
+      <span class="karma__score-label">{{ 'KARMA.POINTS' | translation }}</span>
+    </div>
+  </div>
+
+  <div class="karma__content">
+    <div class="karma__stats">
+      <div class="karma__stat-card">
+        <h3 class="karma__stat-title">{{ 'KARMA.STATS.ACTIVITY' | translation }}</h3>
+        <div class="karma__stat-value">85%</div>
+        <div class="karma__stat-description">{{ 'KARMA.STATS.ACTIVITY_DESC' | translation }}</div>
+      </div>
+      <div class="karma__stat-card">
+        <h3 class="karma__stat-title">{{ 'KARMA.STATS.HELP' | translation }}</h3>
+        <div class="karma__stat-value">42</div>
+        <div class="karma__stat-description">{{ 'KARMA.STATS.HELP_DESC' | translation }}</div>
+      </div>
+      <div class="karma__stat-card">
+        <h3 class="karma__stat-title">{{ 'KARMA.STATS.ACHIEVEMENTS' | translation }}</h3>
+        <div class="karma__stat-value">7</div>
+        <div class="karma__stat-description">{{ 'KARMA.STATS.ACHIEVEMENTS_DESC' | translation }}</div>
+      </div>
+    </div>
+
+    <div class="karma__history">
+      <h2 class="karma__history-title">{{ 'KARMA.HISTORY.TITLE' | translation }}</h2>
+      <table class="karma__history-table">
+        <thead class="karma__history-header">
+          <tr>
+            <th class="karma__history-th">{{ 'KARMA.HISTORY.DATE' | translation }}</th>
+            <th class="karma__history-th">{{ 'KARMA.HISTORY.EVENT' | translation }}</th>
+            <th class="karma__history-th">{{ 'KARMA.HISTORY.CHANGE' | translation }}</th>
+          </tr>
+        </thead>
+        <tbody class="karma__history-body">
+          <tr class="karma__history-row">
+            <td class="karma__history-td">01.04.2024</td>
+            <td class="karma__history-td">{{ 'KARMA.HISTORY.EVENTS.TASK_HELP' | translation }}</td>
+            <td class="karma__history-td karma__history-td--positive">+10</td>
+          </tr>
+          <tr class="karma__history-row">
+            <td class="karma__history-td">28.03.2024</td>
+            <td class="karma__history-td">{{ 'KARMA.HISTORY.EVENTS.DISCUSSION' | translation }}</td>
+            <td class="karma__history-td karma__history-td--positive">+5</td>
+          </tr>
+          <tr class="karma__history-row">
+            <td class="karma__history-td">25.03.2024</td>
+            <td class="karma__history-td">{{ 'KARMA.HISTORY.EVENTS.MATERIAL' | translation }}</td>
+            <td class="karma__history-td karma__history-td--positive">+15</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div> 
