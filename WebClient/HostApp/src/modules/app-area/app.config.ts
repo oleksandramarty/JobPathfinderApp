@@ -18,7 +18,7 @@ import { environment } from '../../utils/environments/environment';
 import { BaseUrlInterceptor } from '../../utils/api.interceptor';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule, provideAnimations } from '@angular/platform-browser/animations';
-import {MatNativeDateModule} from '@angular/material/core';
+import { MatNativeDateModule } from '@angular/material/core';
 
 export const appConfig: ApplicationConfig = {
   providers: [
