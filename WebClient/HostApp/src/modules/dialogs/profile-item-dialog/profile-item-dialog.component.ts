@@ -18,8 +18,7 @@ import { Store } from '@ngrx/store';
 import { takeUntil, tap } from 'rxjs';
 import { itemTypeTitle } from '../../profile-area/base-profile-section.component';
 import { selectUser } from '@amarty/store';
-import { Validators } from '@angular/forms';
-import {ProfileFormFactory} from '../../../utils/profile-form.factory';
+import { ProfileFormFactory } from '../../../utils/profile-form.factory';
 
 @Component({
   selector: 'app-profile-item-dialog',

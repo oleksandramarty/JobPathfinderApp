@@ -14,7 +14,6 @@ import {
 } from '@amarty/localizations';
 import { getLocalStorageItem, setLocalStorageItem } from '@amarty/utils';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
-import {DictionaryService} from './dictionary.service';
 import { LocaleData } from '@amarty/dictionaries';
 
 @Injectable({

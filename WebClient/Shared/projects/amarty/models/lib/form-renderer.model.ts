@@ -36,6 +36,8 @@ export interface InputFormItem {
 }
 
 export interface InputFormItemGrid {
+  title?: string | undefined;
+  titleClass?: string | undefined;
   inputItems: InputFormItem[];
   gridCount?: 1 | 2 | 3 | 4;
 }
@@ -155,6 +157,47 @@ export class InputFormItemBuilder {
   }
 }
 
+export class InputFormGridBuilder {
+  private _title?: string;
+  private _titleClass?: string;
+  private _inputItems: InputFormItem[] = [];
+  private _gridCount: 1 | 2 | 3 | 4 = 1;
+
+  withTitle(title: string): this {
+    this._title = title;
+    return this;
+  }
+
+  withTitleClass(titleClass: string): this {
+    this._titleClass = titleClass;
+    return this;
+  }
+
+  withGridCount(count: 1 | 2 | 3 | 4): this {
+    this._gridCount = count;
+    return this;
+  }
+
+  addItem(builder: InputFormItemBuilder): this {
+    this._inputItems.push(builder.build());
+    return this;
+  }
+
+  addItems(builders: InputFormItemBuilder[]): this {
+    this._inputItems.push(...builders.map(b => b.build()));
+    return this;
+  }
+
+  build(): InputFormItemGrid {
+    return {
+      title: this._title,
+      titleClass: this._titleClass,
+      gridCount: this._gridCount,
+      inputItems: this._inputItems,
+    };
+  }
+}
+
 export class InputFormBuilder {
   private _gridItems: InputFormItemGrid[] = [];
   private _submitted = false;
@@ -164,11 +207,8 @@ export class InputFormBuilder {
   private _cancelButton?: InputFormAction;
   private _onChange?: (form: FormGroup) => void;
 
-  addGridItem(inputItems: InputFormItemBuilder[], gridCount?: 1 | 2 | 3 | 4): this {
-    this._gridItems.push({
-      inputItems: inputItems.map(i => i.build()),
-      gridCount: gridCount ?? 1
-    });
+  addGrid(gridBuilder: InputFormGridBuilder): this {
+    this._gridItems.push(gridBuilder.build());
     return this;
   }
 
