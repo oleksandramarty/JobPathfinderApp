@@ -5,3 +5,4 @@ export * from './localization_ua';
 export * from './localization_ru';
 export * from './localization_de';
 export * from './localization_it';
+export * from './localization_keys_object';
