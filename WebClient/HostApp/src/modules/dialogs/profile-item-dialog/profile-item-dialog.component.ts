@@ -19,6 +19,7 @@ import { takeUntil, tap } from 'rxjs';
 import { itemTypeTitle } from '../../profile-area/base-profile-section.component';
 import { selectUser } from '@amarty/store';
 import { ProfileFormFactory } from '../../../utils/profile-form.factory';
+import {LOCALIZATION_KEYS} from "@amarty/localizations";
 
 @Component({
   selector: 'app-profile-item-dialog',
@@ -60,7 +61,7 @@ export class ProfileItemDialogComponent extends BaseUnsubscribeComponent {
   }
 
   override ngOnInit(): void {
-    this.title = `COMMON.ADD_${itemTypeTitle(this.profileItemType)}`;
+    this.title = itemTypeTitle(this.profileItemType);
 
     this.store.select(selectUser)
       .pipe(
@@ -103,8 +104,8 @@ export class ProfileItemDialogComponent extends BaseUnsubscribeComponent {
 
     if (this.renderForm?.inputFormGroup?.invalid) {
       this.snackBar.open(
-        'Fix the errors before submitting',
-        'OK',
+        LOCALIZATION_KEYS.COMMON.FIX_ERROR_BEFORE_CONTINUE,
+        LOCALIZATION_KEYS.COMMON.BUTTON.OK,
         {
           duration: 5000,
           panelClass: ['error']

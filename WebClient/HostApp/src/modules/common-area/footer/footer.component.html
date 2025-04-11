@@ -1,6 +1,6 @@
 <footer class="footer">
   <div class="footer__center">
-    <span class="footer__text">{{ 'COMMON.WE_ARE_HONKING' | translation }}</span>
+    <span class="footer__text">{{ LOCALIZATION_KEYS.COMMON.WE_ARE_HONKING | translation }}</span>
   </div>
 
   <div class="footer__social-links">
@@ -14,7 +14,7 @@
 
   <div class="footer__version-wrapper">
     <span class="footer__text" style="color: #f44336; text-transform: uppercase;">
-      [<strong>{{ 'COMMON.DO_NOT_STORE_SENS_DATA' | translation }}</strong>]
+      [<strong>{{ LOCALIZATION_KEYS.COMMON.DO_NOT_STORE_ANY_SENSITIVE_DATA | translation }}</strong>]
     </span>
     @if(buildVersion !== 'production'){
       <span class="footer__text"> | </span>
@@ -29,7 +29,7 @@
       </span>
       <span class="footer__text"> | </span>
       <span class="footer__text" (click)="toggleTheme()">
-        [<strong>{{ (darkTheme ? 'COMMON.LIGHT_THEME' : 'COMMON.DARK_THEME') | translation }}</strong>]
+        [<strong>{{ (darkTheme ? LOCALIZATION_KEYS.THEME.LIGHT : LOCALIZATION_KEYS.THEME.DARK) | translation }}</strong>]
       </span>
     }
   </div>

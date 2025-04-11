@@ -16,6 +16,7 @@ import { BaseUnsubscribeComponent } from '@amarty/common';
 import { GenericFormRendererComponent } from '@amarty/components';
 import { TranslationPipe } from '@amarty/pipes';
 import { ProfileFormFactory } from '../../../utils/profile-form.factory';
+import {LOCALIZATION_KEYS} from "@amarty/localizations";
 
 @Component({
   selector: 'app-profile-skills-dialog',
@@ -78,7 +79,7 @@ export class ProfileSkillsDialogComponent extends BaseUnsubscribeComponent {
           tap(skillId => {
             this.skillInputError =
               (this.existingIds?.includes(String(skillId)) ?? false)
-                ? [{ error: 'COMMON.ALREADY_EXISTS' }]
+                ? [{ error: LOCALIZATION_KEYS.ERROR.ALREADY_EXISTS }]
                 : undefined;
           })
         ).subscribe();
@@ -90,8 +91,8 @@ export class ProfileSkillsDialogComponent extends BaseUnsubscribeComponent {
 
     if (!this.renderForm?.inputFormGroup || this.renderForm.inputFormGroup.invalid || this.skillInputError) {
       this.snackBar.open(
-        'Fix the errors before submitting',
-        'OK',
+        LOCALIZATION_KEYS.COMMON.FIX_ERROR_BEFORE_CONTINUE,
+        LOCALIZATION_KEYS.COMMON.BUTTON.OK,
         { duration: 5000, panelClass: ['error'] }
       );
 
@@ -106,4 +107,6 @@ export class ProfileSkillsDialogComponent extends BaseUnsubscribeComponent {
 
     this.dialogRef.close(this.renderForm.inputFormGroup.value);
   }
+
+    protected readonly LOCALIZATION_KEYS = LOCALIZATION_KEYS;
 }

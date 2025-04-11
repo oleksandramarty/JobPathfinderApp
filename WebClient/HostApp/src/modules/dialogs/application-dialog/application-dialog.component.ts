@@ -13,6 +13,7 @@ import { Store } from '@ngrx/store';
 import { selectUser } from '@amarty/store';
 import { takeUntil, tap } from 'rxjs';
 import { TranslationPipe } from '@amarty/pipes';
+import {LOCALIZATION_KEYS} from "@amarty/localizations";
 
 @Component({
   selector: 'app-application-dialog',
@@ -63,11 +64,11 @@ export class ApplicationDialogComponent extends BaseUnsubscribeComponent{
   }
 
   get dialogTitle(): string {
-    return this._applicationId ? 'COMMON.EDIT' : 'COMMON.CREATE';
+    return this._applicationId ? LOCALIZATION_KEYS.COMMON.BUTTON.EDIT : LOCALIZATION_KEYS.COMMON.BUTTON.CREATE;
   }
 
   get saveButtonLabel(): string {
-    return this._applicationId ? 'COMMON.EDIT' : 'COMMON.CREATE';
+    return this._applicationId ? LOCALIZATION_KEYS.COMMON.BUTTON.EDIT : LOCALIZATION_KEYS.COMMON.BUTTON.CREATE;
   }
 
   get experienceLevels(): DataItem[] {
@@ -109,8 +110,8 @@ export class ApplicationDialogComponent extends BaseUnsubscribeComponent{
     this.submitted = true;
     if (this.applicationForm?.invalid) {
       this.snackBar.open(
-        'Fix the errors before submitting',
-        'OK',
+        LOCALIZATION_KEYS.COMMON.FIX_ERROR_BEFORE_CONTINUE,
+        LOCALIZATION_KEYS.COMMON.BUTTON.OK,
         {
           duration: 5000,
           panelClass: ['error']

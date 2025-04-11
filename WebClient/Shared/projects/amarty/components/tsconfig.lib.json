@@ -13,7 +13,8 @@
       "@amarty/utils": ["../../../dist/amarty/utils"],
       "@amarty/services": ["../../../dist/amarty/services"],
       "@amarty/pipes": ["../../../dist/amarty/pipes"],
-      "@amarty/directives": ["../../../dist/amarty/directives"]
+      "@amarty/directives": ["../../../dist/amarty/directives"],
+      "@amarty/localizations": ["../../../dist/amarty/localizations"]
     }
   },
   "exclude": ["**/*.spec.ts"],

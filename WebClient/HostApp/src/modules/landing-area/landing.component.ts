@@ -12,6 +12,7 @@ import { MenuItem } from '@amarty/models';
 import { BaseUnsubscribeComponent } from '@amarty/common';
 import { CommonModule } from '@angular/common';
 import { TranslationPipe } from '@amarty/pipes';
+import {LOCALIZATION_KEYS} from "@amarty/localizations";
 
 @Component({
   selector: 'app-landing',
@@ -33,10 +34,10 @@ export class LandingComponent extends BaseUnsubscribeComponent{
   public currentUser: UserResponse | undefined;
 
   public menuItems: MenuItem[] = [
-    { key: 'MENU.ACTIVE_APPLICATIONS', value: '24', className: 'card-active-applications', icon: 'fa-solid fa-paper-plane' },
-    { key: 'MENU.TODOS', value: '7', className: 'card-todos', icon: 'fa-solid fa-list' },
-    { key: 'MENU.RESPONSE_RATE', value: '50%', className: 'card-response-rate', icon: 'fa-solid fa-percent' },
-    { key: 'MENU.UPCOMING_INTERVIEWS', value: '3', className: 'card-upcoming-interviews', icon: 'fa-solid fa-calendar-days' },
+    { key: LOCALIZATION_KEYS.MENU.ACTIVE_APPLICATIONS, value: '24', className: 'card-active-applications', icon: 'fa-solid fa-paper-plane' },
+    { key: LOCALIZATION_KEYS.MENU.TODOS, value: '7', className: 'card-todos', icon: 'fa-solid fa-list' },
+    { key: LOCALIZATION_KEYS.MENU.RESPONSE_RATE, value: '50%', className: 'card-response-rate', icon: 'fa-solid fa-percent' },
+    { key: LOCALIZATION_KEYS.MENU.UPCOMING_INTERVIEWS, value: '3', className: 'card-upcoming-interviews', icon: 'fa-solid fa-calendar-days' },
   ];
 
   public heatmapOptions: any;
@@ -90,7 +91,7 @@ export class LandingComponent extends BaseUnsubscribeComponent{
               title: {
                 top: 30,
                 left: 'center',
-                text: this.localizationService.getTranslation('STATS.NEW_JOB_LISTINGS_PER_DAY')
+                text: this.localizationService.getTranslation(LOCALIZATION_KEYS.STATS.NEW_JOB_LISTINGS_PER_DAY)
               },
               tooltip: {},
               visualMap: {
@@ -127,15 +128,15 @@ export class LandingComponent extends BaseUnsubscribeComponent{
             };
 
             this.lineChartOptions = {
-              title: { text: this.localizationService.getTranslation('STATS.JOB_APPLICATIONS_TREND'), left: 'center' },
+              title: { text: this.localizationService.getTranslation(LOCALIZATION_KEYS.STATS.JOB_APPLICATIONS_TREND), left: 'center' },
               tooltip: { trigger: 'axis' },
               xAxis: { type: 'category', data: this.jobData.map(j => j.date) },
               yAxis: { type: 'value' },
-              series: [{ name: this.localizationService.getTranslation('COMMON.JOB.APPLICATIONS'), type: 'line', data: this.jobData.map(j => j.count) }]
+              series: [{ name: this.localizationService.getTranslation(LOCALIZATION_KEYS.COMMON.JOB.NEW_APPLICATIONS), type: 'line', data: this.jobData.map(j => j.count) }]
             };
 
             this.barChartOptions = {
-              title: { text: this.localizationService.getTranslation('STATS.TOP_COMPANIES'), left: 'center' },
+              title: { text: this.localizationService.getTranslation(LOCALIZATION_KEYS.STATS.TOP_COMPANIES), left: 'center' },
               tooltip: { trigger: 'axis' },
               xAxis: { type: 'category', data: ['Google', 'Microsoft', 'Amazon', 'Meta', 'Netflix'] },
               yAxis: { type: 'value' },
@@ -143,16 +144,16 @@ export class LandingComponent extends BaseUnsubscribeComponent{
             };
 
             this.pieChartOptions = {
-              title: { text: this.localizationService.getTranslation('STATS.APPLICATION_STATUS_DISTRIBUTION'), left: 'center' },
+              title: { text: this.localizationService.getTranslation(LOCALIZATION_KEYS.STATS.APPLICATION_STATUS_DISTRIBUTION), left: 'center' },
               tooltip: { trigger: 'item' },
               series: [{
                 type: 'pie', radius: '50%',
                 data: [
-                  { value: 24, name: this.localizationService.getTranslation('STATUS.APPLIED') },
-                  { value: 12, name: this.localizationService.getTranslation('STATUS.IN_REVIEW') },
-                  { value: 8, name:  this.localizationService.getTranslation('STATUS.INTERVIEW') },
-                  { value: 4, name:  this.localizationService.getTranslation('STATUS.OFFER') },
-                  { value: 5, name: this.localizationService.getTranslation('STATUS.REJECTED') }
+                  { value: 24, name: this.localizationService.getTranslation(LOCALIZATION_KEYS.JOB_STATUS.APPLIED) },
+                  { value: 12, name: this.localizationService.getTranslation(LOCALIZATION_KEYS.JOB_STATUS.IN_REVIEW) },
+                  { value: 8, name: this.localizationService.getTranslation(LOCALIZATION_KEYS.JOB_STATUS.INTERVIEW) },
+                  { value: 4, name: this.localizationService.getTranslation(LOCALIZATION_KEYS.JOB_STATUS.OFFER) },
+                  { value: 5, name: this.localizationService.getTranslation(LOCALIZATION_KEYS.JOB_STATUS.REJECTED) }
                 ]
               }]
             };
@@ -176,4 +177,6 @@ export class LandingComponent extends BaseUnsubscribeComponent{
         maxWidth: '90vw',
       });
   }
+
+  protected readonly LOCALIZATION_KEYS = LOCALIZATION_KEYS;
 }

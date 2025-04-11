@@ -10,6 +10,7 @@ import {
   UserSkillResponse
 } from '@amarty/models';
 import { DataItem } from '@amarty/models';
+import {LOCALIZATION_KEYS} from "@amarty/localizations";
 
 export interface IProfileFormItemCtrlNames {
   position: string;
@@ -36,43 +37,43 @@ export class ProfileFormItemCtrlNames implements IProfileFormItemCtrlNames {
 
   constructor(itemType: UserProfileItemEnum) {
     switch (itemType) {
-    case UserProfileItemEnum.Education:
-      this.position = 'COMMON.FIELD_OF_STUDY';
-      this.company = 'COMMON.INSTITUTION';
-      this.startDate = 'COMMON.START_DATE';
-      this.endDate = 'COMMON.END_DATE';
-      break;
-    case UserProfileItemEnum.Certification:
-      this.position = 'COMMON.CERTIFICATION';
-      this.company = 'COMMON.ISSUER';
-      this.startDate = 'COMMON.ISSUE_DATE';
-      this.endDate = 'COMMON.EXPIRATION_DATE';
-      break;
-    case UserProfileItemEnum.Project:
-      this.position = 'COMMON.PROJECT';
-      this.company = 'COMMON.COMPANY';
-      this.startDate = 'COMMON.START_DATE';
-      this.endDate = 'COMMON.END_DATE';
-      break;
-    case UserProfileItemEnum.Achievement:
-      this.position = 'COMMON.ACHIEVEMENT';
-      this.company = 'COMMON.COMPANY';
-      this.startDate = 'COMMON.START_DATE';
-      this.endDate = 'COMMON.END_DATE';
-      break;
-    default:
-      this.position = 'COMMON.POSITION';
-      this.company = 'COMMON.COMPANY';
-      this.startDate = 'COMMON.START_DATE';
-      this.endDate = 'COMMON.END_DATE';
-      break;
+      case UserProfileItemEnum.Education:
+        this.position = LOCALIZATION_KEYS.PROFILE.EDUCATION.FIELD_OF_STUDY;
+        this.company = LOCALIZATION_KEYS.PROFILE.EDUCATION.INSTITUTION;
+        this.startDate = LOCALIZATION_KEYS.COMMON.START_DATE;
+        this.endDate = LOCALIZATION_KEYS.COMMON.END_DATE;
+        break;
+      case UserProfileItemEnum.Certification:
+        this.position = LOCALIZATION_KEYS.PROFILE.CERTIFICATION.CERTIFICATION;
+        this.company = LOCALIZATION_KEYS.PROFILE.CERTIFICATION.ISSUER;
+        this.startDate = LOCALIZATION_KEYS.COMMON.ISSUE_DATE;
+        this.endDate = LOCALIZATION_KEYS.COMMON.EXPIRATION_DATE;
+        break;
+      case UserProfileItemEnum.Project:
+        this.position = LOCALIZATION_KEYS.PROFILE.PROJECT.PROJECT;
+        this.company = LOCALIZATION_KEYS.PROFILE.COMPANY.COMPANY;
+        this.startDate = LOCALIZATION_KEYS.COMMON.START_DATE;
+        this.endDate = LOCALIZATION_KEYS.COMMON.END_DATE;
+        break;
+      case UserProfileItemEnum.Achievement:
+        this.position = LOCALIZATION_KEYS.PROFILE.ACHIEVEMENT.ACHIEVEMENT;
+        this.company = LOCALIZATION_KEYS.PROFILE.COMPANY.COMPANY;
+        this.startDate = LOCALIZATION_KEYS.COMMON.START_DATE;
+        this.endDate = LOCALIZATION_KEYS.COMMON.END_DATE;
+        break;
+      default:
+        this.position = LOCALIZATION_KEYS.COMMON.POSITION;
+        this.company = LOCALIZATION_KEYS.PROFILE.COMPANY.COMPANY;
+        this.startDate = LOCALIZATION_KEYS.COMMON.START_DATE;
+        this.endDate = LOCALIZATION_KEYS.COMMON.END_DATE;
+        break;
     }
 
-    this.location = 'COMMON.LOCATION';
-    this.country = 'COMMON.COUNTRY';
-    this.jobType = 'COMMON.JOB_TYPE';
-    this.workArrangement = 'COMMON.WORK_ARRANGEMENT';
-    this.description = 'COMMON.DESCRIPTION';
+    this.location = LOCALIZATION_KEYS.COMMON.LOCATION;
+    this.country = LOCALIZATION_KEYS.COMMON.COUNTRY;
+    this.jobType = LOCALIZATION_KEYS.JOB_TYPE.JOB_TYPE;
+    this.workArrangement = LOCALIZATION_KEYS.WORK_ARRANGEMENT.WORK_ARRANGEMENT;
+    this.description = LOCALIZATION_KEYS.COMMON.DESCRIPTION;
   }
 }
 
@@ -87,15 +88,15 @@ export class ProfileFormFactory {
     const isEdit = !!skill;
 
     const skillIdInput = new InputFormItemBuilder('skillId', 'autocomplete')
-      .withLabel('COMMON.SKILLS')
-      .withPlaceholder('COMMON.SKILLS')
+      .withLabel(LOCALIZATION_KEYS.COMMON.SKILLS)
+      .withPlaceholder(LOCALIZATION_KEYS.COMMON.SKILLS)
       .withValidators([Validators.required])
       .withDataItems(skills ?? [])
       .withDefaultValue(skill?.skillId);
 
     const skillLevelIdInput = new InputFormItemBuilder('skillLevelId', 'autocomplete')
-      .withLabel('COMMON.EXPERIENCE_LEVEL')
-      .withPlaceholder('COMMON.EXPERIENCE_LEVEL')
+      .withLabel(LOCALIZATION_KEYS.EXPERIENCE_LEVEL.EXPERIENCE_LEVEL)
+      .withPlaceholder(LOCALIZATION_KEYS.EXPERIENCE_LEVEL.EXPERIENCE_LEVEL)
       .withValidators([Validators.required])
       .withDataItems(skillLevels ?? [])
       .withDefaultValue(skill?.skillLevelId);
@@ -110,13 +111,13 @@ export class ProfileFormFactory {
       .setSubmitted(false)
       .setClassName('modal__body grid-1fr grid-gap')
       .withCancelButton({
-        buttonText: 'COMMON.CANCEL',
+        buttonText: LOCALIZATION_KEYS.COMMON.BUTTON.CANCEL,
         showButton: true,
         className: 'button__unfilled__submit',
         onClick: onCancel
       })
       .withSubmitButton({
-        buttonText: 'COMMON.PROCEED',
+        buttonText: LOCALIZATION_KEYS.COMMON.BUTTON.PROCEED,
         showButton: true,
         className: 'button__filled__submit',
         onClick: onSubmit
@@ -134,15 +135,15 @@ export class ProfileFormFactory {
     const isEdit = !!language;
 
     const languageIdInput = new InputFormItemBuilder('languageId', 'autocomplete')
-      .withLabel('COMMON.LANGUAGE')
-      .withPlaceholder('COMMON.LANGUAGE')
+      .withLabel(LOCALIZATION_KEYS.COMMON.LANGUAGE)
+      .withPlaceholder(LOCALIZATION_KEYS.COMMON.LANGUAGE)
       .withValidators([Validators.required])
       .withDataItems(languages ?? [])
       .withDefaultValue(language?.languageId);
 
     const languageLevelIdInput = new InputFormItemBuilder('languageLevelId', 'autocomplete')
-      .withLabel('COMMON.LANGUAGE_LEVEL')
-      .withPlaceholder('COMMON.LANGUAGE_LEVEL')
+      .withLabel(LOCALIZATION_KEYS.LANGUAGE_LEVEL.LANGUAGE_LEVEL)
+      .withPlaceholder(LOCALIZATION_KEYS.LANGUAGE_LEVEL.LANGUAGE_LEVEL)
       .withValidators([Validators.required])
       .withDataItems(languageLevels ?? [])
       .withDefaultValue(language?.languageLevelId);
@@ -157,13 +158,13 @@ export class ProfileFormFactory {
       .setSubmitted(false)
       .setClassName('modal__body grid-1fr grid-gap')
       .withCancelButton({
-        buttonText: 'COMMON.CANCEL',
+        buttonText: LOCALIZATION_KEYS.COMMON.BUTTON.CANCEL,
         showButton: true,
         className: 'button__unfilled__submit',
         onClick: onCancel
       })
       .withSubmitButton({
-        buttonText: 'COMMON.PROCEED',
+        buttonText: LOCALIZATION_KEYS.COMMON.BUTTON.PROCEED,
         showButton: true,
         className: 'button__filled__submit',
         onClick: onSubmit
@@ -183,69 +184,69 @@ export class ProfileFormFactory {
     return new InputFormBuilder()
       .addGrid(new InputFormGridBuilder()
         .withGridCount(2)
-        .withTitle('COMMON.PROFILE_AUTH_SECTION')
+        .withTitle(LOCALIZATION_KEYS.PROFILE.SECTION.AUTH_SECTION)
         .withTitleClass('section__title')
         .addItems([
           new InputFormItemBuilder('email', 'input')
-            .withLabel('COMMON.EMAIL')
-            .withPlaceholder('COMMON.EMAIL')
+            .withLabel(LOCALIZATION_KEYS.COMMON.EMAIL)
+            .withPlaceholder(LOCALIZATION_KEYS.COMMON.EMAIL)
             .withDefaultValue(user.email),
           new InputFormItemBuilder('login', 'input')
-            .withLabel('COMMON.LOGIN')
-            .withPlaceholder('COMMON.LOGIN')
+            .withLabel(LOCALIZATION_KEYS.COMMON.LOGIN)
+            .withPlaceholder(LOCALIZATION_KEYS.COMMON.LOGIN)
             .withDefaultValue(user.login),
         ]))
       .addGrid(new InputFormGridBuilder()
         .withGridCount(2)
-        .withTitle('COMMON.PROFILE_PRIMARY_INFO')
+        .withTitle(LOCALIZATION_KEYS.PROFILE.SECTION.PRIMARY_INFO)
         .withTitleClass('section__title')
         .addItems([
           new InputFormItemBuilder('firstName', 'input')
-            .withLabel('COMMON.FIRST_NAME')
-            .withPlaceholder('COMMON.FIRST_NAME')
+            .withLabel(LOCALIZATION_KEYS.COMMON.FIRST_NAME)
+            .withPlaceholder(LOCALIZATION_KEYS.COMMON.FIRST_NAME)
             .withDefaultValue(user.firstName),
           new InputFormItemBuilder('lastName', 'input')
-            .withLabel('COMMON.LAST_NAME')
-            .withPlaceholder('COMMON.LAST_NAME')
+            .withLabel(LOCALIZATION_KEYS.COMMON.LAST_NAME)
+            .withPlaceholder(LOCALIZATION_KEYS.COMMON.LAST_NAME)
             .withDefaultValue(user.lastName),
         ]))
       .addGrid(new InputFormGridBuilder()
         .withGridCount(1)
         .addItems([
           new InputFormItemBuilder('headline', 'input')
-            .withLabel('COMMON.HEADLINE')
-            .withPlaceholder('COMMON.HEADLINE')
+            .withLabel(LOCALIZATION_KEYS.PROFILE.HEADLINE)
+            .withPlaceholder(LOCALIZATION_KEYS.PROFILE.HEADLINE)
             .withDefaultValue(user.headline)
         ]))
       .addGrid(new InputFormGridBuilder()
         .withGridCount(2)
-        .withTitle('COMMON.PROFILE_SECONDARY_INFO')
+        .withTitle(LOCALIZATION_KEYS.PROFILE.SECTION.SECONDARY_INFO)
         .withTitleClass('section__title')
         .addItems([
           new InputFormItemBuilder('defaultLocale', 'autocomplete')
-            .withLabel('COMMON.LANGUAGE')
-            .withPlaceholder('COMMON.LANGUAGE')
+            .withLabel(LOCALIZATION_KEYS.COMMON.LANGUAGE)
+            .withPlaceholder(LOCALIZATION_KEYS.COMMON.LANGUAGE)
             .withDataItems(locales)
             .withDefaultValue(defaultLocaleId),
           new InputFormItemBuilder('currencyId', 'autocomplete')
-            .withLabel('COMMON.CURRENCY')
-            .withPlaceholder('COMMON.CURRENCY')
+            .withLabel(LOCALIZATION_KEYS.COMMON.CURRENCY)
+            .withPlaceholder(LOCALIZATION_KEYS.COMMON.CURRENCY)
             .withDataItems(currencies)
             .withDefaultValue(user.userSetting?.currencyId),
           new InputFormItemBuilder('timeZone', 'autocomplete')
-            .withLabel('COMMON.TIME_ZONE')
-            .withPlaceholder('COMMON.TIME_ZONE')
+            .withLabel(LOCALIZATION_KEYS.COMMON.TIME_ZONE)
+            .withPlaceholder(LOCALIZATION_KEYS.COMMON.TIME_ZONE)
             .withDataItems([])
             .withDefaultValue(user.userSetting?.timeZone),
           new InputFormItemBuilder('countryId', 'autocomplete')
-            .withLabel('COMMON.COUNTRY')
-            .withPlaceholder('COMMON.COUNTRY')
+            .withLabel(LOCALIZATION_KEYS.COMMON.COUNTRY)
+            .withPlaceholder(LOCALIZATION_KEYS.COMMON.COUNTRY)
             .withDataItems(countries)
             .withDefaultValue(user.userSetting?.countryId),
         ]))
       .addGrid(new InputFormGridBuilder()
         .withGridCount(3)
-        .withTitle('COMMON.PROFILE_LINKS')
+        .withTitle(LOCALIZATION_KEYS.PROFILE.LINKS)
         .withTitleClass('section__title')
         .addItems([
           new InputFormItemBuilder('linkedInUrl', 'input')
@@ -263,33 +264,33 @@ export class ProfileFormFactory {
         ]))
       .addGrid(new InputFormGridBuilder()
         .withGridCount(2)
-        .withTitle('COMMON.PROFILE_LINKS')
+        .withTitle(LOCALIZATION_KEYS.PROFILE.LINKS)
         .withTitleClass('section__title')
         .addItems([
           new InputFormItemBuilder('phone', 'input')
-            .withLabel('COMMON.PHONE')
-            .withPlaceholder('COMMON.PHONE')
+            .withLabel(LOCALIZATION_KEYS.COMMON.PHONE)
+            .withPlaceholder(LOCALIZATION_KEYS.COMMON.PHONE)
             .withDefaultValue(user.phone)
         ]))
       .addGrid(new InputFormGridBuilder()
         .withGridCount(1)
-        .withTitle('COMMON.PROFILE_AI')
+        .withTitle(LOCALIZATION_KEYS.PROFILE.SECTION.AI)
         .withTitleClass('section__title')
         .addItems([
           new InputFormItemBuilder('applicationAiPrompt', 'checkbox')
-            .withLabel('COMMON.APPLICATION_AI_TEXTAREA')
+            .withLabel(LOCALIZATION_KEYS.PROFILE.APPLICATION.AI_TEXTAREA)
             .withDefaultValue(user.userSetting?.applicationAiPrompt ?? false)
         ]))
       .setSubmitted(false)
       .setClassName('modal__body grid-1fr grid-gap')
       .withCancelButton({
-        buttonText: 'COMMON.CANCEL',
+        buttonText: LOCALIZATION_KEYS.COMMON.BUTTON.CANCEL,
         showButton: true,
         className: 'button__unfilled__submit',
         onClick: onCancel
       })
       .withSubmitButton({
-        buttonText: 'COMMON.UPDATE',
+        buttonText: LOCALIZATION_KEYS.COMMON.BUTTON.UPDATE,
         showButton: true,
         className: 'button__filled__submit',
         onClick: onSubmit
@@ -370,13 +371,13 @@ export class ProfileFormFactory {
       .setSubmitted(false)
       .setClassName('modal__body grid-1fr grid-gap')
       .withCancelButton({
-        buttonText: 'COMMON.CANCEL',
+        buttonText: LOCALIZATION_KEYS.COMMON.BUTTON.CANCEL,
         showButton: true,
         className: 'button__unfilled__submit',
         onClick: onCancel
       })
       .withSubmitButton({
-        buttonText: 'COMMON.PROCEED',
+        buttonText: LOCALIZATION_KEYS.COMMON.BUTTON.PROCEED,
         showButton: true,
         className: 'button__filled__submit',
         onClick: onSubmit

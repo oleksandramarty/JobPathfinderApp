@@ -14,6 +14,7 @@ import { BaseUnsubscribeComponent } from '@amarty/common';
 import { AuthSignInRequest, InputForm, JwtTokenResponse } from '@amarty/models';
 import { AuthService } from '../../../utils/services/auth.service';
 import { AuthFormFactory } from '../../../utils/auth-form.factory';
+import {LOCALIZATION_KEYS} from "@amarty/localizations";
 
 @Component({
   selector: 'app-auth-sign-in',
@@ -69,8 +70,8 @@ export class AuthSignInComponent extends BaseUnsubscribeComponent {
     this.renderForm.submitted = true;
     if (this.renderForm.inputFormGroup?.invalid) {
       this.snackBar.open(
-        'Fix the errors before submitting',
-        'OK',
+        LOCALIZATION_KEYS.COMMON.FIX_ERROR_BEFORE_CONTINUE,
+        LOCALIZATION_KEYS.COMMON.BUTTON.OK,
         { duration: 5000, panelClass: ['error'] }
       );
       return;
@@ -114,4 +115,6 @@ export class AuthSignInComponent extends BaseUnsubscribeComponent {
       )
       .subscribe();
   }
+
+    protected readonly LOCALIZATION_KEYS = LOCALIZATION_KEYS;
 }

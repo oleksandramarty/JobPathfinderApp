@@ -2,6 +2,7 @@ import { BaseUnsubscribeComponent } from '@amarty/common';
 import { Directive, Input } from '@angular/core';
 import { IHasId, UserProfileItemEnum } from '@amarty/models';
 import { SafeHtml } from '@angular/platform-browser';
+import {LOCALIZATION_KEYS} from "@amarty/localizations";
 
 @Directive()
 export abstract class BaseProfileSectionComponent<
@@ -83,15 +84,15 @@ export abstract class BaseProfileSectionComponent<
 export function itemTypeTitle(itemType: UserProfileItemEnum | undefined): string {
   switch (itemType) {
   case UserProfileItemEnum.Experience:
-    return 'EXPERIENCE';
+    return LOCALIZATION_KEYS.PROFILE.SECTION.WORK_EXPERIENCE;
   case UserProfileItemEnum.Education:
-    return 'EDUCATION';
+    return LOCALIZATION_KEYS.PROFILE.SECTION.EDUCATION;
   case UserProfileItemEnum.Project:
-    return 'PROJECTS';
+    return LOCALIZATION_KEYS.PROFILE.SECTION.PROJECTS;
   case UserProfileItemEnum.Achievement:
-    return 'ACHIEVEMENTS';
+    return LOCALIZATION_KEYS.PROFILE.SECTION.ACHIEVEMENTS;
   case UserProfileItemEnum.Certification:
-    return 'CERTIFICATIONS';
+    return LOCALIZATION_KEYS.PROFILE.SECTION.CERTIFICATIONS;
   default:
     return '';
   }

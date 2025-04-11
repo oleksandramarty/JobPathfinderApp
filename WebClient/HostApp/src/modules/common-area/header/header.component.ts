@@ -15,6 +15,7 @@ import { DictionaryService, LocalizationService } from '@amarty/services';
 import { LocaleResponse, MenuItem } from '@amarty/models';
 import { AuthService } from '../../../utils/services/auth.service';
 import { TranslationPipe } from '@amarty/pipes';
+import {LOCALIZATION_KEYS} from "@amarty/localizations";
 
 @Component({
   selector: 'app-header',
@@ -42,10 +43,10 @@ export class HeaderComponent extends BaseUnsubscribeComponent {
   ]);
 
   public menuItems: MenuItem[] = [
-    { key: 'MENU.HOME', url: '/home' },
-    { key: 'MENU.JOBS', url: '/jobs' },
-    { key: 'MENU.COMPANIES', url: '/companies' },
-    { key: 'MENU.KARMA', url: '/karma' }
+    { key: LOCALIZATION_KEYS.MENU.HOME, url: '/home' },
+    { key: LOCALIZATION_KEYS.MENU.JOBS, url: '/jobs' },
+    { key: LOCALIZATION_KEYS.MENU.COMPANIES, url: '/companies' },
+    { key: LOCALIZATION_KEYS.MENU.KARMA, url: '/karma' }
   ];
 
   public locales: LocaleResponse[] | undefined;

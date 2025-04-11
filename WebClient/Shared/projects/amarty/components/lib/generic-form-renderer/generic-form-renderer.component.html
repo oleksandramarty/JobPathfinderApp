@@ -4,7 +4,7 @@
       <div class="container__box__footer">
         <div class="container__box__footer-item">
           <button class="button button__link" (click)="renderForm.resetButton?.onClick?.()">
-            {{ renderForm.resetButton?.buttonText || ('COMMON.RESET' | translation) }}
+            {{ renderForm.resetButton?.buttonText || (LOCALIZATION_KEYS.COMMON.BUTTON.RESET | translation) }}
           </button>
         </div>
       </div>
@@ -50,7 +50,7 @@
             [class]="'button ' + renderForm.cancelButton?.className"
             (click)="renderForm.cancelButton?.onClick?.()"
           >
-            {{ (renderForm.cancelButton?.buttonText ?? 'COMMON.CANCEL') | translation }}
+            {{ (renderForm.cancelButton?.buttonText ?? LOCALIZATION_KEYS.COMMON.BUTTON.CANCEL) | translation }}
           </button>
         }
       </div>
@@ -60,7 +60,7 @@
             [class]="'button ' + renderForm.submitButton?.className"
             (click)="renderForm.submitButton?.onClick?.()"
           >
-            {{ (renderForm.submitButton?.buttonText || 'COMMON.PROCEED') | translation }}
+            {{ (renderForm.submitButton?.buttonText || LOCALIZATION_KEYS.COMMON.BUTTON.PROCEED) | translation }}
           </button>
         }
       </div>

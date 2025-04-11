@@ -1,6 +1,6 @@
 <div class="card">
   <div class="card__header">
-    <h3 class="card__header-title">{{ 'COMMON.SKILLS' | translation }}</h3>
+    <h3 class="card__header-title">{{ LOCALIZATION_KEYS.COMMON.SKILLS | translation }}</h3>
     <div class="card__header__buttons">
       @if(!isEmptySection) {
         <div class="button__icon" (click)="isEditMode = !isEditMode" [class.muted]="!isEditMode">
@@ -36,7 +36,7 @@
 
     @if (isEmptySection) {
       <div class="section__empty">
-        <p>{{ 'PROFILE.EMPTY_SECTION' | translation }}</p>
+        <p>{{ LOCALIZATION_KEYS.COMMON.EMPTY_SECTION | translation }}</p>
       </div>
     }
   </div>

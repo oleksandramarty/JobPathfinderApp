@@ -11,6 +11,7 @@ import { BaseUnsubscribeComponent } from '@amarty/common';
 import { GenericFormRendererComponent } from '@amarty/components';
 import { InputForm } from '@amarty/models';
 import { AuthFormFactory } from '../../../utils/auth-form.factory';
+import {LOCALIZATION_KEYS} from "@amarty/localizations";
 
 @Component({
   selector: 'app-auth-forgot',
@@ -70,8 +71,8 @@ export class AuthForgotComponent extends BaseUnsubscribeComponent {
     this.submitted = true;
     if (this.renderForm.inputFormGroup?.invalid) {
       this.snackBar.open(
-        'Fix the errors before submitting',
-        'OK',
+        LOCALIZATION_KEYS.COMMON.FIX_ERROR_BEFORE_CONTINUE,
+        LOCALIZATION_KEYS.COMMON.BUTTON.OK,
         { duration: 5000, panelClass: ['error'] }
       );
       return;
@@ -94,4 +95,6 @@ export class AuthForgotComponent extends BaseUnsubscribeComponent {
       )
       .subscribe();
   }
+
+    protected readonly LOCALIZATION_KEYS = LOCALIZATION_KEYS;
 }

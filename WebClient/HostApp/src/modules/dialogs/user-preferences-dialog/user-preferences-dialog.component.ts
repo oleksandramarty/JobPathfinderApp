@@ -19,6 +19,7 @@ import { BaseUnsubscribeComponent } from '@amarty/common';
 import { GenericFormRendererComponent } from '@amarty/components';
 import { TranslationPipe } from '@amarty/pipes';
 import { ProfileFormFactory } from '../../../utils/profile-form.factory';
+import {LOCALIZATION_KEYS} from "@amarty/localizations";
 
 @Component({
   selector: 'app-user-preferences-dialog',
@@ -56,8 +57,8 @@ export class UserPreferencesDialogComponent extends BaseUnsubscribeComponent {
           this.user = user;
           if (!user) {
             this.snackBar.open(
-              this.localizationService.getTranslation('ERROR.ENTITY.USER_NOT_FOUND')!,
-              this.localizationService.getTranslation('COMMON.UI.OK'),
+              this.localizationService.getTranslation(LOCALIZATION_KEYS.ERROR.ENTITY_NOT_FOUND)!,
+              this.localizationService.getTranslation(LOCALIZATION_KEYS.COMMON.BUTTON.OK),
               { duration: 5000, panelClass: ['error'] }
             );
             this.dialogRef.close();
@@ -99,8 +100,8 @@ export class UserPreferencesDialogComponent extends BaseUnsubscribeComponent {
 
     if (this.renderForm?.inputFormGroup?.invalid) {
       this.snackBar.open(
-        'Fix the errors before submitting',
-        'OK',
+        LOCALIZATION_KEYS.COMMON.FIX_ERROR_BEFORE_CONTINUE,
+        LOCALIZATION_KEYS.COMMON.BUTTON.OK,
         { duration: 5000, panelClass: ['error'] }
       );
       return;
@@ -134,8 +135,8 @@ export class UserPreferencesDialogComponent extends BaseUnsubscribeComponent {
           this.localizationService.userLocaleChanged(user);
         }
         this.snackBar.open(
-          this.localizationService.getTranslation('MESSAGES.CHANGES_SUCCESSFULLY_SAVED')!,
-          this.localizationService.getTranslation('COMMON.UI.OK'),
+          this.localizationService.getTranslation(LOCALIZATION_KEYS.MESSAGES.CHANGES_SUCCESSFULLY_SAVED)!,
+          this.localizationService.getTranslation(LOCALIZATION_KEYS.COMMON.BUTTON.OK),
           { duration: 5000, panelClass: ['error'] }
         );
         this.dialogRef.close(true);
@@ -147,4 +148,6 @@ export class UserPreferencesDialogComponent extends BaseUnsubscribeComponent {
       finalize(() => this.loaderService.isBusy = false)
     ).subscribe();
   }
+
+    protected readonly LOCALIZATION_KEYS = LOCALIZATION_KEYS;
 }

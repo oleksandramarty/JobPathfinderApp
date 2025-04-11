@@ -16,6 +16,7 @@ import { LocalizationService } from '@amarty/services';
 import { TranslationPipe } from '@amarty/pipes';
 import { TranslationDirective } from '@amarty/directives';
 import { BaseUnsubscribeComponent } from '@amarty/common';
+import {LOCALIZATION_KEYS} from '@amarty/localizations';
 
 @Component({
   selector: 'app-generic-input',
@@ -147,9 +148,13 @@ export class GenericInputComponent extends BaseUnsubscribeComponent {
 
   private updateCalendarLabels(locale: string): void {
     const labels: Record<string, string> = {
+      'en': 'Close calendar',
       'fr': 'Fermer le calendrier',
-      'ja-JP': 'カレンダーを閉じる',
-      'en': 'Close calendar'
+      'uk': 'Закрити календар',
+      'ru': 'Закрыть календарь',
+      'es': 'Cerrar el calendario',
+      'de': 'Kalender schließen',
+      'ja-JP': 'カレンダーを閉じる'
     };
 
     this.intl.closeCalendarLabel = labels[locale] ?? labels['en'];
@@ -256,4 +261,6 @@ export class GenericInputComponent extends BaseUnsubscribeComponent {
     console.log(this.currentValue);
     console.log(this.dataItems);
   }
+
+  protected readonly LOCALIZATION_KEYS = LOCALIZATION_KEYS;
 }
