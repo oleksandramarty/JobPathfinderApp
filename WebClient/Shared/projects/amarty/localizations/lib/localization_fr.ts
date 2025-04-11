@@ -225,4 +225,11 @@ export const localization_fr: Map<string, string> = new Map<string, string>([
   ['ROLE.TECHNICAL_SUPPORT', 'Support technique'],
   ['ROLE.ADMIN', 'Administrateur'],
   ['ROLE.SUPER_ADMIN', 'Super administrateur'],
+  ['COMMON.JOB_TITLE', 'Titre du poste'],
+  ['COMMON.SOURCE', 'Source'],
+  ['COMMON.POSTED_DATE', 'Date de publication'],
+  ['COMMON.DEADLINE', 'Date limite'],
+  ['COMMON.CONTACT_EMAIL', 'Email de contact'],
+  ['APPLICATION.APPLICATION_LINK', 'Lien de candidature'],
+  ['COMMON.NOTES', 'Notes'],
 ]);

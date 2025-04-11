@@ -225,4 +225,11 @@ export const localization_ua: Map<string, string> = new Map<string, string>([
   ['ROLE.TECHNICAL_SUPPORT', 'Технічна підтримка'],
   ['ROLE.ADMIN', 'Адміністратор'],
   ['ROLE.SUPER_ADMIN', 'Супер адміністратор'],
+  ['COMMON.JOB_TITLE', 'Назва вакансії'],
+  ['COMMON.SOURCE', 'Джерело'],
+  ['COMMON.POSTED_DATE', 'Дата публікації'],
+  ['COMMON.DEADLINE', 'Термін подання'],
+  ['COMMON.CONTACT_EMAIL', 'Контактний email'],
+  ['APPLICATION.APPLICATION_LINK', 'Посилання на заявку'],
+  ['COMMON.NOTES', 'Примітки'],
 ]);
