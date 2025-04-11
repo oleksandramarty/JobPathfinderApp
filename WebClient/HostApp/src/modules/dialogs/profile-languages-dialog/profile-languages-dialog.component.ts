@@ -18,6 +18,7 @@ import { UserApiClient } from '@amarty/api';
 import { DictionaryService, LoaderService, LocalizationService } from '@amarty/services';
 import { TranslationPipe } from '@amarty/pipes';
 import { ProfileFormFactory } from '../../../utils/profile-form.factory';
+import {LOCALIZATION_KEYS} from "@amarty/localizations";
 
 @Component({
   selector: 'app-profile-languages-dialog',
@@ -82,7 +83,7 @@ export class ProfileLanguagesDialogComponent extends BaseUnsubscribeComponent {
           tap(languageId => {
             this.languageInputError =
               (this.existingIds?.includes(String(languageId)) ?? false)
-                ? [{ error: 'COMMON.ALREADY_EXISTS' }]
+                ? [{ error: LOCALIZATION_KEYS.ERROR.ALREADY_EXISTS }]
                 : undefined;
           })
         ).subscribe();
@@ -94,8 +95,8 @@ export class ProfileLanguagesDialogComponent extends BaseUnsubscribeComponent {
 
     if (!this.renderForm?.inputFormGroup || this.renderForm.inputFormGroup.invalid || this.languageInputError) {
       this.snackBar.open(
-        'Fix the errors before submitting',
-        'OK',
+        LOCALIZATION_KEYS.COMMON.FIX_ERROR_BEFORE_CONTINUE,
+        LOCALIZATION_KEYS.COMMON.BUTTON.OK,
         { duration: 5000, panelClass: ['error'] }
       );
 
@@ -110,4 +111,6 @@ export class ProfileLanguagesDialogComponent extends BaseUnsubscribeComponent {
 
     this.dialogRef.close(this.renderForm.inputFormGroup.value);
   }
+
+  protected readonly LOCALIZATION_KEYS = LOCALIZATION_KEYS;
 }

@@ -5,10 +5,10 @@
     <i class="fa-solid fa-laptop-code" style="font-size: 5rem;"></i>
     <i class="fa-solid fa-person-digging" style="font-size: 3rem; transform: scaleX(-1);"></i>
   </div>
-  <p>Oops! Page under construction.</p>
+  <p>{{ LOCALIZATION_KEYS.IN_DEVELOPMENT.OOPS_PAGE | translation }}</p>
   @if (isAuthorized$ | async) {
-    <button class="button button__filled__submit" routerLink="/dashboard">Go Home</button>
+    <button class="button button__filled__submit" routerLink="/dashboard">{{ LOCALIZATION_KEYS.COMMON.GO_HOME | translation }}</button>
   } @else {
-    <button class="button button__filled__submit" routerLink="/auth/sign-in">Back to login</button>
+    <button class="button button__filled__submit" routerLink="/auth/sign-in">{{ LOCALIZATION_KEYS.COMMON.BACK_TO_SIGN_IN | translation }}</button>
   }
 </div>

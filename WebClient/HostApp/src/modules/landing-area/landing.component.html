@@ -2,7 +2,7 @@
   <section class="dashboard">
     <div class="dashboard__header">
       <h2 class="dashboard__title">
-        {{ 'COMMON.WELCOME_BACK' | translation }},
+        {{ LOCALIZATION_KEYS.COMMON.WELCOME_BACK | translation }},
         {{ currentUser?.login }}
         @if(countryCode) {
           <img class="profile__country big" [src]="'https://flagcdn.com/w320/' + countryCode + '.png'" [alt]="countryCode" />!
@@ -10,7 +10,7 @@
       </h2>
       <button class="button button__filled__focus" (click)="openApplicationDialog()">
         <i class="fa-solid fa-plus"></i>
-        <span>{{ 'COMMON.NEW_APPLICATION' | translation }}</span>
+        <span>{{ LOCALIZATION_KEYS.COMMON.JOB.NEW_APPLICATION | translation }}</span>
       </button>
     </div>
     <div class="stats grid-4fr">

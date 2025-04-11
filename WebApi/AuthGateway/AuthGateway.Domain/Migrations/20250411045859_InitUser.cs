@@ -39,6 +39,7 @@ namespace AuthGateway.Domain.Migrations
                     Login = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
                     FirstName = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
                     LastName = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
+                    Headline = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
                     LoginNormalized = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
                     Email = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
                     Phone = table.Column<string>(type: "character varying(11)", maxLength: 11, nullable: true),

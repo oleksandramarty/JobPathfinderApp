@@ -1046,8 +1046,9 @@ export interface IBaseDateTimeEntityOfGuid extends IBaseIdEntityOfGuid {
 
 export class UserResponse extends BaseDateTimeEntityOfGuid implements IUserResponse {
     login?: string | undefined;
-    firstName?: string;
-    lastName?: string;
+    firstName?: string | undefined;
+    lastName?: string | undefined;
+    headline?: string | undefined;
     email?: string | undefined;
     phone?: string | undefined;
     status?: StatusEnum;
@@ -1072,6 +1073,7 @@ export class UserResponse extends BaseDateTimeEntityOfGuid implements IUserRespo
             this.login = _data["login"];
             this.firstName = _data["firstName"];
             this.lastName = _data["lastName"];
+            this.headline = _data["headline"];
             this.email = _data["email"];
             this.phone = _data["phone"];
             this.status = _data["status"];
@@ -1116,6 +1118,7 @@ export class UserResponse extends BaseDateTimeEntityOfGuid implements IUserRespo
         data["login"] = this.login;
         data["firstName"] = this.firstName;
         data["lastName"] = this.lastName;
+        data["headline"] = this.headline;
         data["email"] = this.email;
         data["phone"] = this.phone;
         data["status"] = this.status;
@@ -1152,8 +1155,9 @@ export class UserResponse extends BaseDateTimeEntityOfGuid implements IUserRespo
 
 export interface IUserResponse extends IBaseDateTimeEntityOfGuid {
     login?: string | undefined;
-    firstName?: string;
-    lastName?: string;
+    firstName?: string | undefined;
+    lastName?: string | undefined;
+    headline?: string | undefined;
     email?: string | undefined;
     phone?: string | undefined;
     status?: StatusEnum;

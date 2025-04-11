@@ -15,6 +15,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { AuthService } from '../../../utils/services/auth.service';
 import { CommonModule } from '@angular/common';
 import { TranslationPipe } from '@amarty/pipes';
+import {LOCALIZATION_KEYS} from "@amarty/localizations";
 
 @Component({
   selector: 'app-footer',
@@ -80,4 +81,6 @@ export class FooterComponent implements OnInit {
     document.body.classList.remove(this.darkTheme ? 'light-theme' : 'dark-theme');
     document.body.classList.add(this.darkTheme ? 'dark-theme' : 'light-theme');
   }
+
+  protected readonly LOCALIZATION_KEYS = LOCALIZATION_KEYS;
 }

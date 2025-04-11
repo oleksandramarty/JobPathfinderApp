@@ -1,6 +1,6 @@
 // Auto-generated TypeScript file with skill data
 
-import { SkillResponse } from '@amarty/models';
+import { SkillResponse, StatusEnum } from '@amarty/models';
 
 export const SkillData: SkillResponse[] = [
   { id: 1, title: 'JavaScript' } as SkillResponse,

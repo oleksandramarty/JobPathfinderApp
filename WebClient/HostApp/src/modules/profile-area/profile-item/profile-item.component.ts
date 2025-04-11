@@ -12,6 +12,7 @@ import { TranslationPipe } from '@amarty/pipes';
 import { BaseProfileSectionComponent, itemTypeTitle } from '../base-profile-section.component';
 import { ProfileItemDialogComponent } from '../../dialogs/profile-item-dialog/profile-item-dialog.component';
 import { generateGuid } from '@amarty/utils';
+import {LOCALIZATION_KEYS} from "@amarty/localizations";
 
 @Component({
   selector: 'app-profile-item',
@@ -55,7 +56,7 @@ export class ProfileItemComponent extends BaseProfileSectionComponent<UserProfil
   }
 
   override ngOnInit() {
-    this.title = `COMMON.${itemTypeTitle(this.itemType)}`;
+    this.title = itemTypeTitle(this.itemType);
     super.ngOnInit();
   }
 
@@ -91,4 +92,6 @@ export class ProfileItemComponent extends BaseProfileSectionComponent<UserProfil
       executableAction
     );
   }
+
+    protected readonly LOCALIZATION_KEYS = LOCALIZATION_KEYS;
 }

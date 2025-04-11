@@ -6,6 +6,7 @@ import { InputForm, InputFormItemGrid } from '@amarty/models';
 import { TranslationPipe } from '@amarty/pipes';
 import { BaseUnsubscribeComponent } from '@amarty/common';
 import { takeUntil, tap } from 'rxjs';
+import { LOCALIZATION_KEYS } from '@amarty/localizations';
 
 @Component({
   selector: 'app-generic-form-renderer',
@@ -44,4 +45,6 @@ export class GenericFormRendererComponent extends BaseUnsubscribeComponent {
   get gridItems(): InputFormItemGrid[] {
     return Array.isArray(this.renderForm?.gridItems) ? this.renderForm!.gridItems! : [];
   }
+
+  protected readonly LOCALIZATION_KEYS = LOCALIZATION_KEYS;
 }

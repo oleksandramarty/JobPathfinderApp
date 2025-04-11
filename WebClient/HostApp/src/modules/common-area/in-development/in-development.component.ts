@@ -6,13 +6,17 @@ import { generateRandomId } from '@amarty/utils';
 import { BaseUnsubscribeComponent } from '@amarty/common';
 import { Observable, of } from 'rxjs';
 import { AuthService } from '../../../utils/services/auth.service';
+import {TranslationPipe} from '@amarty/pipes';
+import {LOCALIZATION_KEYS} from "@amarty/localizations";
 
 @Component({
   selector: 'app-in-development',
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    RouterLink
+    RouterLink,
+
+    TranslationPipe
   ],
   templateUrl: './in-development.component.html',
   styleUrl: './in-development.component.scss',
@@ -29,4 +33,6 @@ export class InDevelopmentComponent extends BaseUnsubscribeComponent {
   get isAuthorized$(): Observable<boolean> {
     return this.authService.isAuthorized$ ?? of(false);
   }
+
+  protected readonly LOCALIZATION_KEYS = LOCALIZATION_KEYS;
 }

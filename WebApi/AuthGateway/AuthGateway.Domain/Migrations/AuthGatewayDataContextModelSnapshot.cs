@@ -260,6 +260,10 @@ namespace AuthGateway.Domain.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("character varying(100)");
 
+                    b.Property<string>("Headline")
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
+
                     b.Property<bool>("IsTemporaryPassword")
                         .HasColumnType("boolean");
 

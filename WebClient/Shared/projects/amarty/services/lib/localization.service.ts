@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject, takeUntil, tap } from 'rxjs';
 import {
   UserResponse,
-  MenuItem } from '@amarty/models';
+  MenuItem, InputError
+} from '@amarty/models';
 import {
   localization_en,
   localization_es,
@@ -10,11 +11,11 @@ import {
   localization_ua,
   localization_ru,
   localization_it,
-  localization_de
+  localization_de,
+  LOCALIZATION_KEYS
 } from '@amarty/localizations';
 import { getLocalStorageItem, setLocalStorageItem } from '@amarty/utils';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
-import {DictionaryService} from './dictionary.service';
 import { LocaleData } from '@amarty/dictionaries';
 
 @Injectable({
@@ -88,27 +89,27 @@ export class LocalizationService {
 
   public updateLocalizations() {
     this._shortMonths = [
-      'DATES.JANUARY_SHORT',
-      'DATES.FEBRUARY_SHORT',
-      'DATES.MARCH_SHORT',
-      'DATES.APRIL_SHORT',
-      'DATES.MAY_SHORT',
-      'DATES.JUNE_SHORT',
-      'DATES.JULY_SHORT',
-      'DATES.AUGUST_SHORT',
-      'DATES.SEPTEMBER_SHORT',
-      'DATES.OCTOBER_SHORT',
-      'DATES.NOVEMBER_SHORT',
-      'DATES.DECEMBER_SHORT'
+      LOCALIZATION_KEYS.DATES.JANUARY_SHORT,
+      LOCALIZATION_KEYS.DATES.FEBRUARY_SHORT,
+      LOCALIZATION_KEYS.DATES.MARCH_SHORT,
+      LOCALIZATION_KEYS.DATES.APRIL_SHORT,
+      LOCALIZATION_KEYS.DATES.MAY_SHORT,
+      LOCALIZATION_KEYS.DATES.JUNE_SHORT,
+      LOCALIZATION_KEYS.DATES.JULY_SHORT,
+      LOCALIZATION_KEYS.DATES.AUGUST_SHORT,
+      LOCALIZATION_KEYS.DATES.SEPTEMBER_SHORT,
+      LOCALIZATION_KEYS.DATES.OCTOBER_SHORT,
+      LOCALIZATION_KEYS.DATES.NOVEMBER_SHORT,
+      LOCALIZATION_KEYS.DATES.DECEMBER_SHORT
     ].map(item => this._currentLocalization?.get(item) ?? '').filter(x => !!x);
     this._shortDays = [
-      'DATES.MONDAY_SHORT',
-      'DATES.TUESDAY_SHORT',
-      'DATES.WEDNESDAY_SHORT',
-      'DATES.THURSDAY_SHORT',
-      'DATES.FRIDAY_SHORT',
-      'DATES.SATURDAY_SHORT',
-      'DATES.SUNDAY_SHORT'
+      LOCALIZATION_KEYS.DATES.MONDAY_SHORT,
+      LOCALIZATION_KEYS.DATES.TUESDAY_SHORT,
+      LOCALIZATION_KEYS.DATES.WEDNESDAY_SHORT,
+      LOCALIZATION_KEYS.DATES.THURSDAY_SHORT,
+      LOCALIZATION_KEYS.DATES.FRIDAY_SHORT,
+      LOCALIZATION_KEYS.DATES.SATURDAY_SHORT,
+      LOCALIZATION_KEYS.DATES.SUNDAY_SHORT
     ].map(item => this._currentLocalization?.get(item) ?? '').filter(x => !!x);
   }
 
@@ -161,7 +162,7 @@ export class LocalizationService {
   }
 
   public handleApiError(error: any): void {
-    let errorMessage = 'ERROR.COMMON_ERROR';
+    let errorMessage = LOCALIZATION_KEYS.ERROR.INTERNAL_SERVER_ERROR;
     if (error.error) {
       errorMessage = error.error.message;
     } else if (error.message) {

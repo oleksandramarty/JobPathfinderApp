@@ -12,6 +12,7 @@ public class UserEntity: BaseDateTimeEntity<Guid>, IStatusEntity, IBaseVersionEn
     [Required] [MaxLength(50)] public required string Login { get; set; }
     [MaxLength(100)] public string? FirstName { get; set; }
     [MaxLength(100)] public string? LastName { get; set; }
+    [MaxLength(100)] public string? Headline { get; set; }
     [Required] [MaxLength(50)] public required string LoginNormalized { get; set; }
     [Required] [MaxLength(50)] public required string Email { get; set; }
     [MaxLength(11)] public string? Phone { get; set; }

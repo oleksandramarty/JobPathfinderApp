@@ -144,3 +144,22 @@ span.asterisk {
   color: var(--accent);
   margin: 0 1px;
 }
+
+mat-datepicker-toggle {
+  position: absolute;
+  top: 0;
+  right: #{m.pxToRem(2)};
+}
+
+:host ::ng-deep .mat-form-field {
+  display: none;
+}
+
+:host ::ng-deep .mat-datepicker-toggle,
+:host ::ng-deep .mat-date-range-input {
+  display: none;
+}
+
+:host ::ng-deep .hidden-datepicker-toggle {
+  display: none !important;
+}

@@ -3,7 +3,7 @@
       <div class="container__box__header">
         <h2 class="container__box__header-title">Job Pathfinder</h2>
         <div class="container__box__header-hint">
-          {{ 'AUTH.SIGN_IN.JOKE' | translation }}
+          {{ LOCALIZATION_KEYS.AUTH.SIGN_IN.JOKE | translation }}
           <div style="position: relative; display: inline-block; width: 60px; height: 12px;">
             @if(showLang) {
               <div class="sign-in-hint glitch glitch-red" [@fadeInOut]>{{langArray[langIndex]}}</div>
@@ -15,7 +15,7 @@
       <app-generic-form-renderer [renderForm]="renderForm"></app-generic-form-renderer>
 
       <div class="container__box__footer line">
-        <button class="button button__link" routerLink="/auth/sign-up">{{ 'AUTH.NO_ACCOUNT.SIGN_UP' | translation }}</button>
+        <button class="button button__link" routerLink="/auth/sign-up">{{ LOCALIZATION_KEYS.AUTH.NO_ACCOUNT_SIGN_UP | translation }}</button>
       </div>
     </div>
 }

@@ -147,7 +147,7 @@
             }
           } @else {
             <mat-option disabled>
-              {{ 'INPUT.TO_MANY_ITEMS.START_TYPING' | translation }}...
+              {{ LOCALIZATION_KEYS.INPUT.TOO_MANY_ITEMS_START_TYPING | translation }}...
             </mat-option>
           }
         </mat-autocomplete>
@@ -170,13 +170,13 @@
     @if(isInvalid) {
       <div class="input__error__container__body">
         @if(currentControl?.hasError('required')) {
-          <div class="input__error__container__body-item">{{ 'ERROR.FIELD_REQUIRED' | translation }}</div>
+          <div class="input__error__container__body-item">{{ LOCALIZATION_KEYS.ERROR.FIELD_REQUIRED | translation }}</div>
         }
         @if(currentControl?.hasError('requiredTrue')) {
-          <div class="input__error__container__body-item">{{ 'ERROR.CHECK_CHECKBOX' | translation }}</div>
+          <div class="input__error__container__body-item">{{ LOCALIZATION_KEYS.ERROR.CHECK_CHECKBOX | translation }}</div>
         }
         @if(currentControl?.hasError('email')) {
-          <div class="input__error__container__body-item">{{ 'ERROR.INVALID_EMAIL' | translation }}</div>
+          <div class="input__error__container__body-item">{{ LOCALIZATION_KEYS.ERROR.INVALID_EMAIL | translation }}</div>
         }
         @if(errorArray) {
           @for(errorItem of errorArray; track $index) {

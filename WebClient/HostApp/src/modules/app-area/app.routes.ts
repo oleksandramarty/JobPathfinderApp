@@ -6,7 +6,12 @@ export const routes: Routes = [
 
   { path: 'jobs', pathMatch: 'full', redirectTo: 'in-development' },
   { path: 'companies', pathMatch: 'full', redirectTo: 'in-development' },
-  { path: 'karma', pathMatch: 'full', redirectTo: 'in-development' },
+
+  {
+    path: 'karma',
+    canActivate: [AuthGuard],
+    loadComponent: () => import('../karma-area/karma-area.component').then(m => m.KarmaAreaComponent)
+  },
 
   {
     path: 'home',

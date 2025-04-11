@@ -4,13 +4,16 @@
       <div class="container__box__footer">
         <div class="container__box__footer-item">
           <button class="button button__link" (click)="renderForm.resetButton?.onClick?.()">
-            {{ renderForm.resetButton?.buttonText || ('COMMON.RESET' | translation) }}
+            {{ renderForm.resetButton?.buttonText || (LOCALIZATION_KEYS.COMMON.BUTTON.RESET | translation) }}
           </button>
         </div>
       </div>
     }
 
     @for (grid of gridItems; track $index) {
+      @if (grid.title) {
+        <div [class]="grid.titleClass">{{ grid.title }}</div>
+      }
       <div [ngClass]="'grid-' + (grid.gridCount ?? 1) + 'fr grid-gap'">
         @for (inputItem of grid.inputItems; track $index) {
           @if (inputItem.controlName) {
@@ -37,30 +40,30 @@
         }
       </div>
     }
-
-    @if (showButtons && renderForm.hasButtons) {
-      <div class="container__box__footer">
-        <div class="container__box__footer-item">
-          @if (renderForm.cancelButton?.showButton) {
-            <button
-              [class]="'button ' + renderForm.cancelButton?.className"
-              (click)="renderForm.cancelButton?.onClick?.()"
-            >
-              {{ (renderForm.cancelButton?.buttonText ?? 'COMMON.CANCEL') | translation }}
-            </button>
-          }
-        </div>
-        <div class="container__box__footer-item">
-          @if (renderForm.submitButton?.showButton) {
-            <button
-              [class]="'button ' + renderForm.submitButton?.className"
-              (click)="renderForm.submitButton?.onClick?.()"
-            >
-              {{ (renderForm.submitButton?.buttonText || 'COMMON.PROCEED') | translation }}
-            </button>
-          }
-        </div>
-      </div>
-    }
   </form>
+
+  @if (showButtons && renderForm.hasButtons) {
+    <div class="container__box__footer">
+      <div class="container__box__footer-item">
+        @if (renderForm.cancelButton?.showButton) {
+          <button
+            [class]="'button ' + renderForm.cancelButton?.className"
+            (click)="renderForm.cancelButton?.onClick?.()"
+          >
+            {{ (renderForm.cancelButton?.buttonText ?? LOCALIZATION_KEYS.COMMON.BUTTON.CANCEL) | translation }}
+          </button>
+        }
+      </div>
+      <div class="container__box__footer-item">
+        @if (renderForm.submitButton?.showButton) {
+          <button
+            [class]="'button ' + renderForm.submitButton?.className"
+            (click)="renderForm.submitButton?.onClick?.()"
+          >
+            {{ (renderForm.submitButton?.buttonText || LOCALIZATION_KEYS.COMMON.BUTTON.PROCEED) | translation }}
+          </button>
+        }
+      </div>
+    </div>
+  }
 }
