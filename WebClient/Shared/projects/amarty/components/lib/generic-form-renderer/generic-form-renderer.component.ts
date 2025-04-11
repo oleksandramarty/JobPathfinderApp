@@ -15,6 +15,7 @@ import { LOCALIZATION_KEYS } from '@amarty/localizations';
     CommonModule,
     ReactiveFormsModule,
     GenericInputComponent,
+    TranslationPipe,
     TranslationPipe
   ],
   templateUrl: './generic-form-renderer.component.html',

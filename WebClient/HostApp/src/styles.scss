@@ -369,4 +369,6 @@ input:disabled, select:disabled, textarea:disabled {
   color: var(--text-dark);
   border-bottom: var(--muted-text) #{m.pxToRem(1)} solid;
   padding-bottom: #{m.pxToRem(5)};
+  font-family: var(--font-alt), sans-serif;
+  padding-left: #{m.pxToRem(16)};
 }
