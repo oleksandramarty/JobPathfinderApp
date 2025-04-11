@@ -13,5 +13,6 @@ export const JobSourceData: JobSourceResponse[] = [
   { id: 8, title: 'JOB_SOURCE.JOB_BOARD', titleEn: 'Job Board', status: StatusEnum.Active } as JobSourceResponse,
   { id: 9, title: 'JOB_SOURCE.COMPANY_WEBSITE', titleEn: 'Company Website', status: StatusEnum.Active } as JobSourceResponse,
   { id: 10, title: 'JOB_SOURCE.RECOMMENDATION', titleEn: 'Recommendation', status: StatusEnum.Active } as JobSourceResponse,
-  { id: 11, title: 'JOB_SOURCE.OTHER', titleEn: 'Other', status: StatusEnum.Active } as JobSourceResponse,
+  { id: 11, title: 'JOB_SOURCE.SOCIAL_MEDIA', titleEn: 'Social Media', status: StatusEnum.Active } as JobSourceResponse,
+  { id: 12, title: 'JOB_SOURCE.OTHER', titleEn: 'Other', status: StatusEnum.Active } as JobSourceResponse,
 ];

@@ -130,3 +130,4 @@ Thumbs.db
 *.env
 .env.*
 /WebClient/.nx
+WebApi/CommonModule/CommonModule.Provision/provision_logs.txt

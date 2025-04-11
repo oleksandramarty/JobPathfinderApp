@@ -20,6 +20,9 @@ chmod +x "$SCRIPT_DIR/GenerateScripts/generate_locales.sh"
 chmod +x "$SCRIPT_DIR/GenerateScripts/generate_localizations.sh"
 "$SCRIPT_DIR/GenerateScripts/generate_localizations.sh"
 
+chmod +x "$SCRIPT_DIR/GenerateScripts/generate_localization_object.sh"
+"$SCRIPT_DIR/GenerateScripts/generate_localization_object.sh"
+
 chmod +x "$SCRIPT_DIR/GenerateScripts/generate_roles.sh"
 "$SCRIPT_DIR/GenerateScripts/generate_roles.sh"
 
