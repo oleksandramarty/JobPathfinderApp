@@ -1,3 +1,4 @@
+using AuthGateway.Domain.Models.Profile;
 using AuthGateway.Domain.Models.Users;
 using AuthGateway.Mediatr.Mediatr.Auth.Commands;
 using AutoMapper;
@@ -36,6 +37,16 @@ public class MappingAuthProfile: Profile
                 dest.IsTemporaryPassword = true;
                 dest.AuthType = UserAuthMethodEnum.Base;
             });
+
+        CreateMap<AddOrUpdateUserSkillCommand, UserSkillEntity>()
+            .ForMember(dest => dest.Id, opt => opt.Ignore())
+            .ForMember(dest => dest.Status, opt => opt.MapFrom(src => StatusEnum.Active));
+        CreateMap<AddOrUpdateUserLanguageCommand, UserLanguageEntity>()
+            .ForMember(dest => dest.Id, opt => opt.Ignore())
+            .ForMember(dest => dest.Status, opt => opt.MapFrom(src => StatusEnum.Active));
+        CreateMap<AddOrUpdateUserProfileItemCommand, UserProfileItemEntity>()
+            .ForMember(dest => dest.Id, opt => opt.Ignore())
+            .ForMember(dest => dest.Status, opt => opt.MapFrom(src => StatusEnum.Active));
 
         CreateMap<CreateUserSettingCommand, UserSettingEntity>();
         CreateMap<UpdateUserPreferencesCommand, UserSettingEntity>()
