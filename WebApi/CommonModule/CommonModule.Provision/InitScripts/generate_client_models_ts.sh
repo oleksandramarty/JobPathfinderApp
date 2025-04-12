@@ -17,8 +17,11 @@ for i in "${!microserviceNames[@]}"; do
 
   outputDir="$BASE_DIR/$microserviceName/$microserviceName.ClientApi"
   outputFileName="nswagconfig.nswag"
-  outputClientFile="$ANGULAR_BASE_DIR/WebClient/Shared/projects/amarty/api/lib/$microserviceClientApiName"
-
+  if [[ "$microserviceClientApiClassName" == "ApiModel" ]]; then
+    outputClientFile="$ANGULAR_BASE_DIR/WebClient/Shared/projects/amarty/models/lib/$microserviceClientApiName"
+  else
+    outputClientFile="$ANGULAR_BASE_DIR/WebClient/Shared/projects/amarty/api/lib/$microserviceClientApiName"
+  fi
   # ✅ Create folder if not exist
   mkdir -p "$outputDir"
 
