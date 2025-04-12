@@ -1,10 +1,46 @@
 <div class="container">
-  <app-profile-info [currentUser]="currentUser" [countryCode]="countryCode"></app-profile-info>
-  <app-profile-skills [existingItems]="currentUser?.skills"></app-profile-skills>
-  <app-profile-languages [existingItems]="currentUser?.languages"></app-profile-languages>
-  <app-profile-item [existingItems]="currentUser?.profileItems" [itemType]="profileItemEnum.Experience"></app-profile-item>
-  <app-profile-item [existingItems]="currentUser?.profileItems" [itemType]="profileItemEnum.Education"></app-profile-item>
-  <app-profile-item [existingItems]="currentUser?.profileItems" [itemType]="profileItemEnum.Certification"></app-profile-item>
-  <app-profile-item [existingItems]="currentUser?.profileItems" [itemType]="profileItemEnum.Project"></app-profile-item>
-  <app-profile-item [existingItems]="currentUser?.profileItems" [itemType]="profileItemEnum.Achievement"></app-profile-item>
+  <app-profile-info
+    [currentUser]="currentUser"
+    [countryCode]="countryCode"
+  ></app-profile-info>
+  <app-profile-skills
+    [itemsToAdd]="skillsToAdd"
+    [itemIdsToRemove]="skillsToRemove"
+    [existingItems]="currentUser?.skills"
+  ></app-profile-skills>
+  <app-profile-languages
+    [itemsToAdd]="languagesToAdd"
+    [itemIdsToRemove]="languagesToRemove"
+    [existingItems]="currentUser?.languages"
+  ></app-profile-languages>
+  <app-profile-item
+    [itemsToAdd]="experienceToAdd"
+    [itemIdsToRemove]="experienceToRemove"
+    [existingItems]="currentUser?.profileItems"
+    [itemType]="profileItemEnum.Experience"
+  ></app-profile-item>
+  <app-profile-item
+    [itemsToAdd]="educationToAdd"
+    [itemIdsToRemove]="educationToRemove"
+    [existingItems]="currentUser?.profileItems"
+    [itemType]="profileItemEnum.Education"
+  ></app-profile-item>
+  <app-profile-item
+    [itemsToAdd]="certificationToAdd"
+    [itemIdsToRemove]="certificationToRemove"
+    [existingItems]="currentUser?.profileItems"
+    [itemType]="profileItemEnum.Certification"
+  ></app-profile-item>
+  <app-profile-item
+    [itemsToAdd]="projectToAdd"
+    [itemIdsToRemove]="projectToRemove"
+    [existingItems]="currentUser?.profileItems"
+    [itemType]="profileItemEnum.Project"
+  ></app-profile-item>
+  <app-profile-item
+    [itemsToAdd]="achievementToAdd"
+    [itemIdsToRemove]="achievementToRemove"
+    [existingItems]="currentUser?.profileItems"
+    [itemType]="profileItemEnum.Achievement"
+  ></app-profile-item>
 </div>

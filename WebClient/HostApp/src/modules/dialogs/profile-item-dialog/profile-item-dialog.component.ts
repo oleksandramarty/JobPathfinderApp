@@ -19,7 +19,7 @@ import { takeUntil, tap } from 'rxjs';
 import { itemTypeTitle } from '../../profile-area/base-profile-section.component';
 import { selectUser } from '@amarty/store';
 import { ProfileFormFactory } from '../../../utils/profile-form.factory';
-import {LOCALIZATION_KEYS} from "@amarty/localizations";
+import { LOCALIZATION_KEYS } from '@amarty/localizations';
 
 @Component({
   selector: 'app-profile-item-dialog',

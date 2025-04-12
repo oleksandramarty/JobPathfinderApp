@@ -14,7 +14,7 @@ import { BaseUnsubscribeComponent } from '@amarty/common';
 import { AuthSignInRequest, InputForm, JwtTokenResponse } from '@amarty/models';
 import { AuthService } from '../../../utils/services/auth.service';
 import { AuthFormFactory } from '../../../utils/auth-form.factory';
-import {LOCALIZATION_KEYS} from "@amarty/localizations";
+import { LOCALIZATION_KEYS } from '@amarty/localizations';
 
 @Component({
   selector: 'app-auth-sign-in',
@@ -116,5 +116,5 @@ export class AuthSignInComponent extends BaseUnsubscribeComponent {
       .subscribe();
   }
 
-    protected readonly LOCALIZATION_KEYS = LOCALIZATION_KEYS;
+  protected readonly LOCALIZATION_KEYS = LOCALIZATION_KEYS;
 }

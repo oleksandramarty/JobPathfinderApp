@@ -16,7 +16,7 @@ import { BaseUnsubscribeComponent } from '@amarty/common';
 import { GenericFormRendererComponent } from '@amarty/components';
 import { TranslationPipe } from '@amarty/pipes';
 import { ProfileFormFactory } from '../../../utils/profile-form.factory';
-import {LOCALIZATION_KEYS} from "@amarty/localizations";
+import { LOCALIZATION_KEYS } from '@amarty/localizations';
 
 @Component({
   selector: 'app-profile-skills-dialog',
@@ -108,5 +108,5 @@ export class ProfileSkillsDialogComponent extends BaseUnsubscribeComponent {
     this.dialogRef.close(this.renderForm.inputFormGroup.value);
   }
 
-    protected readonly LOCALIZATION_KEYS = LOCALIZATION_KEYS;
+  protected readonly LOCALIZATION_KEYS = LOCALIZATION_KEYS;
 }

@@ -283,7 +283,8 @@ export interface IBaseIdEntityOfGuid {
 }
 
 export class UpdateUserPreferencesCommand extends BaseIdEntityOfGuid implements IUpdateUserPreferencesCommand {
-    login?: string;
+    login?: string | undefined;
+    headline?: string | undefined;
     phone?: string | undefined;
     firstName?: string | undefined;
     lastName?: string | undefined;
@@ -296,6 +297,12 @@ export class UpdateUserPreferencesCommand extends BaseIdEntityOfGuid implements 
     npmUrl?: string | undefined;
     gitHubUrl?: string | undefined;
     portfolioUrl?: string | undefined;
+    languageIdsToRemove?: string[];
+    skillIdsToRemove?: string[];
+    profileItemIdsToRemove?: string[];
+    addOrUpdateUserSkills?: AddOrUpdateUserSkillCommand[];
+    addOrUpdateUserLanguages?: AddOrUpdateUserLanguageCommand[];
+    addOrUpdateProfileItems?: AddOrUpdateUserProfileItemCommand[];
 
     constructor(data?: IUpdateUserPreferencesCommand) {
         super(data);
@@ -305,6 +312,7 @@ export class UpdateUserPreferencesCommand extends BaseIdEntityOfGuid implements 
         super.init(_data);
         if (_data) {
             this.login = _data["login"];
+            this.headline = _data["headline"];
             this.phone = _data["phone"];
             this.firstName = _data["firstName"];
             this.lastName = _data["lastName"];
@@ -317,6 +325,36 @@ export class UpdateUserPreferencesCommand extends BaseIdEntityOfGuid implements 
             this.npmUrl = _data["npmUrl"];
             this.gitHubUrl = _data["gitHubUrl"];
             this.portfolioUrl = _data["portfolioUrl"];
+            if (Array.isArray(_data["languageIdsToRemove"])) {
+                this.languageIdsToRemove = [] as any;
+                for (let item of _data["languageIdsToRemove"])
+                    this.languageIdsToRemove!.push(item);
+            }
+            if (Array.isArray(_data["skillIdsToRemove"])) {
+                this.skillIdsToRemove = [] as any;
+                for (let item of _data["skillIdsToRemove"])
+                    this.skillIdsToRemove!.push(item);
+            }
+            if (Array.isArray(_data["profileItemIdsToRemove"])) {
+                this.profileItemIdsToRemove = [] as any;
+                for (let item of _data["profileItemIdsToRemove"])
+                    this.profileItemIdsToRemove!.push(item);
+            }
+            if (Array.isArray(_data["addOrUpdateUserSkills"])) {
+                this.addOrUpdateUserSkills = [] as any;
+                for (let item of _data["addOrUpdateUserSkills"])
+                    this.addOrUpdateUserSkills!.push(AddOrUpdateUserSkillCommand.fromJS(item));
+            }
+            if (Array.isArray(_data["addOrUpdateUserLanguages"])) {
+                this.addOrUpdateUserLanguages = [] as any;
+                for (let item of _data["addOrUpdateUserLanguages"])
+                    this.addOrUpdateUserLanguages!.push(AddOrUpdateUserLanguageCommand.fromJS(item));
+            }
+            if (Array.isArray(_data["addOrUpdateProfileItems"])) {
+                this.addOrUpdateProfileItems = [] as any;
+                for (let item of _data["addOrUpdateProfileItems"])
+                    this.addOrUpdateProfileItems!.push(AddOrUpdateUserProfileItemCommand.fromJS(item));
+            }
         }
     }
 
@@ -330,6 +368,7 @@ export class UpdateUserPreferencesCommand extends BaseIdEntityOfGuid implements 
     override toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["login"] = this.login;
+        data["headline"] = this.headline;
         data["phone"] = this.phone;
         data["firstName"] = this.firstName;
         data["lastName"] = this.lastName;
@@ -342,13 +381,44 @@ export class UpdateUserPreferencesCommand extends BaseIdEntityOfGuid implements 
         data["npmUrl"] = this.npmUrl;
         data["gitHubUrl"] = this.gitHubUrl;
         data["portfolioUrl"] = this.portfolioUrl;
+        if (Array.isArray(this.languageIdsToRemove)) {
+            data["languageIdsToRemove"] = [];
+            for (let item of this.languageIdsToRemove)
+                data["languageIdsToRemove"].push(item);
+        }
+        if (Array.isArray(this.skillIdsToRemove)) {
+            data["skillIdsToRemove"] = [];
+            for (let item of this.skillIdsToRemove)
+                data["skillIdsToRemove"].push(item);
+        }
+        if (Array.isArray(this.profileItemIdsToRemove)) {
+            data["profileItemIdsToRemove"] = [];
+            for (let item of this.profileItemIdsToRemove)
+                data["profileItemIdsToRemove"].push(item);
+        }
+        if (Array.isArray(this.addOrUpdateUserSkills)) {
+            data["addOrUpdateUserSkills"] = [];
+            for (let item of this.addOrUpdateUserSkills)
+                data["addOrUpdateUserSkills"].push(item.toJSON());
+        }
+        if (Array.isArray(this.addOrUpdateUserLanguages)) {
+            data["addOrUpdateUserLanguages"] = [];
+            for (let item of this.addOrUpdateUserLanguages)
+                data["addOrUpdateUserLanguages"].push(item.toJSON());
+        }
+        if (Array.isArray(this.addOrUpdateProfileItems)) {
+            data["addOrUpdateProfileItems"] = [];
+            for (let item of this.addOrUpdateProfileItems)
+                data["addOrUpdateProfileItems"].push(item.toJSON());
+        }
         super.toJSON(data);
         return data;
     }
 }
 
 export interface IUpdateUserPreferencesCommand extends IBaseIdEntityOfGuid {
-    login?: string;
+    login?: string | undefined;
+    headline?: string | undefined;
     phone?: string | undefined;
     firstName?: string | undefined;
     lastName?: string | undefined;
@@ -361,6 +431,184 @@ export interface IUpdateUserPreferencesCommand extends IBaseIdEntityOfGuid {
     npmUrl?: string | undefined;
     gitHubUrl?: string | undefined;
     portfolioUrl?: string | undefined;
+    languageIdsToRemove?: string[];
+    skillIdsToRemove?: string[];
+    profileItemIdsToRemove?: string[];
+    addOrUpdateUserSkills?: AddOrUpdateUserSkillCommand[];
+    addOrUpdateUserLanguages?: AddOrUpdateUserLanguageCommand[];
+    addOrUpdateProfileItems?: AddOrUpdateUserProfileItemCommand[];
+}
+
+export class AddOrUpdateUserSkillCommand implements IAddOrUpdateUserSkillCommand {
+    id?: string | undefined;
+    skillId?: number;
+    skillLevelId?: number;
+
+    constructor(data?: IAddOrUpdateUserSkillCommand) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.id = _data["id"];
+            this.skillId = _data["skillId"];
+            this.skillLevelId = _data["skillLevelId"];
+        }
+    }
+
+    static fromJS(data: any): AddOrUpdateUserSkillCommand {
+        data = typeof data === 'object' ? data : {};
+        let result = new AddOrUpdateUserSkillCommand();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["id"] = this.id;
+        data["skillId"] = this.skillId;
+        data["skillLevelId"] = this.skillLevelId;
+        return data;
+    }
+}
+
+export interface IAddOrUpdateUserSkillCommand {
+    id?: string | undefined;
+    skillId?: number;
+    skillLevelId?: number;
+}
+
+export class AddOrUpdateUserLanguageCommand implements IAddOrUpdateUserLanguageCommand {
+    id?: string | undefined;
+    languageId?: number;
+    languageLevelId?: number;
+
+    constructor(data?: IAddOrUpdateUserLanguageCommand) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.id = _data["id"];
+            this.languageId = _data["languageId"];
+            this.languageLevelId = _data["languageLevelId"];
+        }
+    }
+
+    static fromJS(data: any): AddOrUpdateUserLanguageCommand {
+        data = typeof data === 'object' ? data : {};
+        let result = new AddOrUpdateUserLanguageCommand();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["id"] = this.id;
+        data["languageId"] = this.languageId;
+        data["languageLevelId"] = this.languageLevelId;
+        return data;
+    }
+}
+
+export interface IAddOrUpdateUserLanguageCommand {
+    id?: string | undefined;
+    languageId?: number;
+    languageLevelId?: number;
+}
+
+export class AddOrUpdateUserProfileItemCommand implements IAddOrUpdateUserProfileItemCommand {
+    id?: string | undefined;
+    profileItemType?: UserProfileItemEnum;
+    startDate?: Date;
+    endDate?: Date | undefined;
+    position?: string;
+    description?: string | undefined;
+    company?: string | undefined;
+    location?: string | undefined;
+    countryId?: number | undefined;
+    jobTypeId?: number | undefined;
+    workArrangementId?: number | undefined;
+
+    constructor(data?: IAddOrUpdateUserProfileItemCommand) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.id = _data["id"];
+            this.profileItemType = _data["profileItemType"];
+            this.startDate = _data["startDate"] ? new Date(_data["startDate"].toString()) : <any>undefined;
+            this.endDate = _data["endDate"] ? new Date(_data["endDate"].toString()) : <any>undefined;
+            this.position = _data["position"];
+            this.description = _data["description"];
+            this.company = _data["company"];
+            this.location = _data["location"];
+            this.countryId = _data["countryId"];
+            this.jobTypeId = _data["jobTypeId"];
+            this.workArrangementId = _data["workArrangementId"];
+        }
+    }
+
+    static fromJS(data: any): AddOrUpdateUserProfileItemCommand {
+        data = typeof data === 'object' ? data : {};
+        let result = new AddOrUpdateUserProfileItemCommand();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["id"] = this.id;
+        data["profileItemType"] = this.profileItemType;
+        data["startDate"] = this.startDate ? this.startDate.toISOString() : <any>undefined;
+        data["endDate"] = this.endDate ? this.endDate.toISOString() : <any>undefined;
+        data["position"] = this.position;
+        data["description"] = this.description;
+        data["company"] = this.company;
+        data["location"] = this.location;
+        data["countryId"] = this.countryId;
+        data["jobTypeId"] = this.jobTypeId;
+        data["workArrangementId"] = this.workArrangementId;
+        return data;
+    }
+}
+
+export interface IAddOrUpdateUserProfileItemCommand {
+    id?: string | undefined;
+    profileItemType?: UserProfileItemEnum;
+    startDate?: Date;
+    endDate?: Date | undefined;
+    position?: string;
+    description?: string | undefined;
+    company?: string | undefined;
+    location?: string | undefined;
+    countryId?: number | undefined;
+    jobTypeId?: number | undefined;
+    workArrangementId?: number | undefined;
+}
+
+export enum UserProfileItemEnum {
+    Experience = 1,
+    Achievement = 2,
+    Education = 3,
+    Project = 4,
+    Certification = 5,
 }
 
 export class BaseVersionEntity implements IBaseVersionEntity {
@@ -1046,8 +1294,9 @@ export interface IBaseDateTimeEntityOfGuid extends IBaseIdEntityOfGuid {
 
 export class UserResponse extends BaseDateTimeEntityOfGuid implements IUserResponse {
     login?: string | undefined;
-    firstName?: string;
-    lastName?: string;
+    firstName?: string | undefined;
+    lastName?: string | undefined;
+    headline?: string | undefined;
     email?: string | undefined;
     phone?: string | undefined;
     status?: StatusEnum;
@@ -1072,6 +1321,7 @@ export class UserResponse extends BaseDateTimeEntityOfGuid implements IUserRespo
             this.login = _data["login"];
             this.firstName = _data["firstName"];
             this.lastName = _data["lastName"];
+            this.headline = _data["headline"];
             this.email = _data["email"];
             this.phone = _data["phone"];
             this.status = _data["status"];
@@ -1116,6 +1366,7 @@ export class UserResponse extends BaseDateTimeEntityOfGuid implements IUserRespo
         data["login"] = this.login;
         data["firstName"] = this.firstName;
         data["lastName"] = this.lastName;
+        data["headline"] = this.headline;
         data["email"] = this.email;
         data["phone"] = this.phone;
         data["status"] = this.status;
@@ -1152,8 +1403,9 @@ export class UserResponse extends BaseDateTimeEntityOfGuid implements IUserRespo
 
 export interface IUserResponse extends IBaseDateTimeEntityOfGuid {
     login?: string | undefined;
-    firstName?: string;
-    lastName?: string;
+    firstName?: string | undefined;
+    lastName?: string | undefined;
+    headline?: string | undefined;
     email?: string | undefined;
     phone?: string | undefined;
     status?: StatusEnum;
@@ -1477,14 +1729,6 @@ export interface IUserProfileItemResponse extends IBaseDateTimeEntityOfGuid {
     skills?: UserProfileItemSkillResponse[];
     status?: StatusEnum;
     version: string;
-}
-
-export enum UserProfileItemEnum {
-    Experience = 1,
-    Achievement = 2,
-    Education = 3,
-    Project = 4,
-    Certification = 5,
 }
 
 export class UserProfileItemSkillResponse extends BaseIdEntityOfGuid implements IUserProfileItemSkillResponse {

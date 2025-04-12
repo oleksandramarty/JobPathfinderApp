@@ -33,6 +33,7 @@ export interface InputFormItem {
   errorArray?: InputError[];
   defaultValue?: any;
   validators?: ValidatorFn[];
+  hidden?: boolean | undefined;
 }
 
 export interface InputFormItemGrid {
@@ -144,6 +145,11 @@ export class InputFormItemBuilder {
 
   withDefaultValue(value: any): this {
     this._item.defaultValue = value;
+    return this;
+  }
+
+  withHidden(hidden: boolean = true): this {
+    this._item.hidden = hidden;
     return this;
   }
 

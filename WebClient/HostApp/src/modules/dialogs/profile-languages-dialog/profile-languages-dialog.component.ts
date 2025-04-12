@@ -18,7 +18,7 @@ import { UserApiClient } from '@amarty/api';
 import { DictionaryService, LoaderService, LocalizationService } from '@amarty/services';
 import { TranslationPipe } from '@amarty/pipes';
 import { ProfileFormFactory } from '../../../utils/profile-form.factory';
-import {LOCALIZATION_KEYS} from "@amarty/localizations";
+import { LOCALIZATION_KEYS } from '@amarty/localizations';
 
 @Component({
   selector: 'app-profile-languages-dialog',

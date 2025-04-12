@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
 import { TranslationPipe } from '@amarty/pipes';
 import { BaseProfileSectionComponent } from '../base-profile-section.component';
 import { generateGuid } from '@amarty/utils';
-import {LOCALIZATION_KEYS} from "@amarty/localizations";
+import { LOCALIZATION_KEYS } from '@amarty/localizations';
 
 @Component({
   selector: 'app-profile-skills',
@@ -51,5 +51,5 @@ export class ProfileSkillsComponent extends BaseProfileSectionComponent<UserSkil
     );
   }
 
-    protected readonly LOCALIZATION_KEYS = LOCALIZATION_KEYS;
+  protected readonly LOCALIZATION_KEYS = LOCALIZATION_KEYS;
 }

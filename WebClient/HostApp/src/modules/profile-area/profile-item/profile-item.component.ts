@@ -12,7 +12,7 @@ import { TranslationPipe } from '@amarty/pipes';
 import { BaseProfileSectionComponent, itemTypeTitle } from '../base-profile-section.component';
 import { ProfileItemDialogComponent } from '../../dialogs/profile-item-dialog/profile-item-dialog.component';
 import { generateGuid } from '@amarty/utils';
-import {LOCALIZATION_KEYS} from "@amarty/localizations";
+import { LOCALIZATION_KEYS } from '@amarty/localizations';
 
 @Component({
   selector: 'app-profile-item',
@@ -93,5 +93,5 @@ export class ProfileItemComponent extends BaseProfileSectionComponent<UserProfil
     );
   }
 
-    protected readonly LOCALIZATION_KEYS = LOCALIZATION_KEYS;
+  protected readonly LOCALIZATION_KEYS = LOCALIZATION_KEYS;
 }

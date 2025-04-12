@@ -5,7 +5,7 @@ import {
   InputFormItemBuilder,
   InputFormGridBuilder
 } from '@amarty/models';
-import {LOCALIZATION_KEYS} from "@amarty/localizations";
+import { LOCALIZATION_KEYS } from '@amarty/localizations';
 
 export class AuthFormFactory {
   static createSignInForm(onCancel: () => void, onSubmit: () => void): InputForm {

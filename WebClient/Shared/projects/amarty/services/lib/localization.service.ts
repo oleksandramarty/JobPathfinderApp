@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject, takeUntil, tap } from 'rxjs';
 import {
   UserResponse,
-  MenuItem, InputError
+  MenuItem
 } from '@amarty/models';
 import {
   localization_en,

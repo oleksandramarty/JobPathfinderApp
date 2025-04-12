@@ -10,7 +10,7 @@ import {
   UserSkillResponse
 } from '@amarty/models';
 import { DataItem } from '@amarty/models';
-import {LOCALIZATION_KEYS} from "@amarty/localizations";
+import { LOCALIZATION_KEYS } from '@amarty/localizations';
 
 export interface IProfileFormItemCtrlNames {
   position: string;
@@ -37,36 +37,36 @@ export class ProfileFormItemCtrlNames implements IProfileFormItemCtrlNames {
 
   constructor(itemType: UserProfileItemEnum) {
     switch (itemType) {
-      case UserProfileItemEnum.Education:
-        this.position = LOCALIZATION_KEYS.PROFILE.EDUCATION.FIELD_OF_STUDY;
-        this.company = LOCALIZATION_KEYS.PROFILE.EDUCATION.INSTITUTION;
-        this.startDate = LOCALIZATION_KEYS.COMMON.START_DATE;
-        this.endDate = LOCALIZATION_KEYS.COMMON.END_DATE;
-        break;
-      case UserProfileItemEnum.Certification:
-        this.position = LOCALIZATION_KEYS.PROFILE.CERTIFICATION.CERTIFICATION;
-        this.company = LOCALIZATION_KEYS.PROFILE.CERTIFICATION.ISSUER;
-        this.startDate = LOCALIZATION_KEYS.COMMON.ISSUE_DATE;
-        this.endDate = LOCALIZATION_KEYS.COMMON.EXPIRATION_DATE;
-        break;
-      case UserProfileItemEnum.Project:
-        this.position = LOCALIZATION_KEYS.PROFILE.PROJECT.PROJECT;
-        this.company = LOCALIZATION_KEYS.PROFILE.COMPANY.COMPANY;
-        this.startDate = LOCALIZATION_KEYS.COMMON.START_DATE;
-        this.endDate = LOCALIZATION_KEYS.COMMON.END_DATE;
-        break;
-      case UserProfileItemEnum.Achievement:
-        this.position = LOCALIZATION_KEYS.PROFILE.ACHIEVEMENT.ACHIEVEMENT;
-        this.company = LOCALIZATION_KEYS.PROFILE.COMPANY.COMPANY;
-        this.startDate = LOCALIZATION_KEYS.COMMON.START_DATE;
-        this.endDate = LOCALIZATION_KEYS.COMMON.END_DATE;
-        break;
-      default:
-        this.position = LOCALIZATION_KEYS.COMMON.POSITION;
-        this.company = LOCALIZATION_KEYS.PROFILE.COMPANY.COMPANY;
-        this.startDate = LOCALIZATION_KEYS.COMMON.START_DATE;
-        this.endDate = LOCALIZATION_KEYS.COMMON.END_DATE;
-        break;
+    case UserProfileItemEnum.Education:
+      this.position = LOCALIZATION_KEYS.PROFILE.EDUCATION.FIELD_OF_STUDY;
+      this.company = LOCALIZATION_KEYS.PROFILE.EDUCATION.INSTITUTION;
+      this.startDate = LOCALIZATION_KEYS.COMMON.START_DATE;
+      this.endDate = LOCALIZATION_KEYS.COMMON.END_DATE;
+      break;
+    case UserProfileItemEnum.Certification:
+      this.position = LOCALIZATION_KEYS.PROFILE.CERTIFICATION.CERTIFICATION;
+      this.company = LOCALIZATION_KEYS.PROFILE.CERTIFICATION.ISSUER;
+      this.startDate = LOCALIZATION_KEYS.COMMON.ISSUE_DATE;
+      this.endDate = LOCALIZATION_KEYS.COMMON.EXPIRATION_DATE;
+      break;
+    case UserProfileItemEnum.Project:
+      this.position = LOCALIZATION_KEYS.PROFILE.PROJECT.PROJECT;
+      this.company = LOCALIZATION_KEYS.PROFILE.COMPANY.COMPANY;
+      this.startDate = LOCALIZATION_KEYS.COMMON.START_DATE;
+      this.endDate = LOCALIZATION_KEYS.COMMON.END_DATE;
+      break;
+    case UserProfileItemEnum.Achievement:
+      this.position = LOCALIZATION_KEYS.PROFILE.ACHIEVEMENT.ACHIEVEMENT;
+      this.company = LOCALIZATION_KEYS.PROFILE.COMPANY.COMPANY;
+      this.startDate = LOCALIZATION_KEYS.COMMON.START_DATE;
+      this.endDate = LOCALIZATION_KEYS.COMMON.END_DATE;
+      break;
+    default:
+      this.position = LOCALIZATION_KEYS.COMMON.POSITION;
+      this.company = LOCALIZATION_KEYS.PROFILE.COMPANY.COMPANY;
+      this.startDate = LOCALIZATION_KEYS.COMMON.START_DATE;
+      this.endDate = LOCALIZATION_KEYS.COMMON.END_DATE;
+      break;
     }
 
     this.location = LOCALIZATION_KEYS.COMMON.LOCATION;
@@ -95,8 +95,8 @@ export class ProfileFormFactory {
       .withDefaultValue(skill?.skillId);
 
     const skillLevelIdInput = new InputFormItemBuilder('skillLevelId', 'autocomplete')
-      .withLabel(LOCALIZATION_KEYS.EXPERIENCE_LEVEL.EXPERIENCE_LEVEL)
-      .withPlaceholder(LOCALIZATION_KEYS.EXPERIENCE_LEVEL.EXPERIENCE_LEVEL)
+      .withLabel(LOCALIZATION_KEYS.SKILL_LEVEL.SKILL_LEVEL)
+      .withPlaceholder(LOCALIZATION_KEYS.SKILL_LEVEL.SKILL_LEVEL)
       .withValidators([Validators.required])
       .withDataItems(skillLevels ?? [])
       .withDefaultValue(skill?.skillLevelId);
@@ -312,6 +312,12 @@ export class ProfileFormFactory {
       .addGrid(new InputFormGridBuilder()
         .withGridCount(1)
         .addItems([
+          new InputFormItemBuilder('id', 'input')
+            .withDefaultValue(profileItem?.id)
+            .withHidden(),
+          new InputFormItemBuilder('profileItemType', 'input')
+            .withDefaultValue(profileItemType)
+            .withHidden(),
           new InputFormItemBuilder('position', 'input')
             .withLabel(ctrlNames.position)
             .withPlaceholder(ctrlNames.position)

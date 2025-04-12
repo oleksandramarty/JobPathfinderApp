@@ -11,7 +11,7 @@ import { BaseUnsubscribeComponent } from '@amarty/common';
 import { GenericFormRendererComponent } from '@amarty/components';
 import { InputForm } from '@amarty/models';
 import { AuthFormFactory } from '../../../utils/auth-form.factory';
-import {LOCALIZATION_KEYS} from "@amarty/localizations";
+import { LOCALIZATION_KEYS } from '@amarty/localizations';
 
 @Component({
   selector: 'app-auth-forgot',
@@ -96,5 +96,5 @@ export class AuthForgotComponent extends BaseUnsubscribeComponent {
       .subscribe();
   }
 
-    protected readonly LOCALIZATION_KEYS = LOCALIZATION_KEYS;
+  protected readonly LOCALIZATION_KEYS = LOCALIZATION_KEYS;
 }

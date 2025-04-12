@@ -16,7 +16,7 @@ import { LocalizationService } from '@amarty/services';
 import { TranslationPipe } from '@amarty/pipes';
 import { TranslationDirective } from '@amarty/directives';
 import { BaseUnsubscribeComponent } from '@amarty/common';
-import {LOCALIZATION_KEYS} from '@amarty/localizations';
+import { LOCALIZATION_KEYS } from '@amarty/localizations';
 
 @Component({
   selector: 'app-generic-input',
@@ -61,6 +61,7 @@ export class GenericInputComponent extends BaseUnsubscribeComponent {
   @Input() mode: 'inline' | 'block' | null = 'block';
   @Input() errorArray: InputError[] | undefined;
   @Input() submitted: boolean = true;
+  @Input() hidden: boolean = false;
 
   filteredDataItems: Observable<DataItem[] | undefined> | undefined;
   selectedDataItems: DataItem[] = [];

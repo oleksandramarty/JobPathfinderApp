@@ -10,9 +10,9 @@ import { BaseUnsubscribeComponent } from '@amarty/common';
 import { DictionaryService } from '@amarty/services';
 import { selectUser } from '@amarty/store';
 import { InputForm, UserResponse } from '@amarty/models';
-import {GenericFormRendererComponent, GenericInputComponent} from '@amarty/components';
+import { GenericFormRendererComponent, GenericInputComponent } from '@amarty/components';
 import { LOCALIZATION_KEYS } from '@amarty/localizations';
-import {ApplicationFormFactory} from '../../../utils/application-form.factory';
+import { ApplicationFormFactory } from '../../../utils/application-form.factory';
 
 @Component({
   selector: 'app-application-dialog',

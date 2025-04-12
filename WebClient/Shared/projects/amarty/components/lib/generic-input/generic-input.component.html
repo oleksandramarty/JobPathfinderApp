@@ -1,4 +1,4 @@
-@if(formGroup) {
+@if(formGroup && !hidden) {
   <div
     [ngClass]="className ? 'input__container ' + className : 'input__container'"
     (click)="showDebugInfo()"

@@ -27,11 +27,20 @@ export class ProfileInfoComponent extends BaseUnsubscribeComponent {
   }
 
   public openEditProfileDialog(): void {
+    const executableAction = (model: UserResponse | undefined) => {
+      this.currentUser = model;
+    };
+
     this.dialogService.showDialog<UserPreferencesDialogComponent, any>(
       UserPreferencesDialogComponent,
       {
+        data: {
+          user: this.currentUser
+        },
         width: '800px',
         maxWidth: '90vw',
-      });
+      },
+      executableAction
+    );
   }
 }

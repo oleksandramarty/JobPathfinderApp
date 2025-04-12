@@ -1,25 +1,18 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Store } from '@ngrx/store';
-import { catchError, finalize, switchMap, takeUntil, tap, throwError } from 'rxjs';
 import { CommonModule } from '@angular/common';
-
 import {
-  UpdateUserPreferencesCommand,
   UserResponse,
   InputForm,
   DataItem
 } from '@amarty/models';
-
-import { UserApiClient } from '@amarty/api';
-import { auth_setUser, selectUser } from '@amarty/store';
-import { DictionaryService, LoaderService, LocalizationService } from '@amarty/services';
+import { DictionaryService, LoaderService } from '@amarty/services';
 import { BaseUnsubscribeComponent } from '@amarty/common';
 import { GenericFormRendererComponent } from '@amarty/components';
 import { TranslationPipe } from '@amarty/pipes';
 import { ProfileFormFactory } from '../../../utils/profile-form.factory';
-import {LOCALIZATION_KEYS} from "@amarty/localizations";
+import { LOCALIZATION_KEYS } from '@amarty/localizations';
 
 @Component({
   selector: 'app-user-preferences-dialog',
@@ -40,33 +33,17 @@ export class UserPreferencesDialogComponent extends BaseUnsubscribeComponent {
 
   constructor(
     public dialogRef: MatDialogRef<UserPreferencesDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: undefined,
+    @Inject(MAT_DIALOG_DATA) public data: {
+      user: UserResponse | undefined;
+    } | undefined,
     private readonly snackBar: MatSnackBar,
-    private readonly localizationService: LocalizationService,
     private readonly loaderService: LoaderService,
-    private readonly userApiClient: UserApiClient,
-    private readonly dictionaryService: DictionaryService,
-    private readonly store: Store
+    private readonly dictionaryService: DictionaryService
   ) {
     super();
 
-    this.store.select(selectUser)
-      .pipe(
-        takeUntil(this.ngUnsubscribe),
-        tap(user => {
-          this.user = user;
-          if (!user) {
-            this.snackBar.open(
-              this.localizationService.getTranslation(LOCALIZATION_KEYS.ERROR.ENTITY_NOT_FOUND)!,
-              this.localizationService.getTranslation(LOCALIZATION_KEYS.COMMON.BUTTON.OK),
-              { duration: 5000, panelClass: ['error'] }
-            );
-            this.dialogRef.close();
-          } else {
-            this.buildForm(user);
-          }
-        })
-      ).subscribe();
+    this.user = data?.user;
+    this._buildForm(this.user!);
   }
 
   get countries(): DataItem[] {
@@ -79,7 +56,7 @@ export class UserPreferencesDialogComponent extends BaseUnsubscribeComponent {
     return this.dictionaryService.localeDataItems ?? [];
   }
 
-  private buildForm(user: UserResponse): void {
+  private _buildForm(user: UserResponse): void {
     const defaultLocaleId = this.dictionaryService.localeData?.find(
       item => item.isoCode === (user.userSetting?.defaultLocale ?? 'en')
     )?.id ?? 1;
@@ -112,42 +89,30 @@ export class UserPreferencesDialogComponent extends BaseUnsubscribeComponent {
     const values = this.renderForm?.inputFormGroup?.value;
     const selectedLocale = this.dictionaryService.localeData?.find(item => item.id === values.defaultLocale);
 
-    const cmd = new UpdateUserPreferencesCommand();
-    cmd.login = values.login;
-    cmd.firstName = values.firstName;
-    cmd.lastName = values.lastName;
-    cmd.defaultLocale = selectedLocale?.isoCode ?? 'en';
-    cmd.timeZone = values.timeZone || undefined;
-    cmd.countryId = values.countryId || undefined;
-    cmd.currencyId = values.currencyId || undefined;
-    cmd.linkedInUrl = values.linkedInUrl;
-    cmd.npmUrl = values.npmUrl;
-    cmd.gitHubUrl = values.gitHubUrl;
-    cmd.phone = values.phone;
-    cmd.applicationAiPrompt = values.applicationAiPrompt;
+    if (!this.user) {
+      this.dialogRef.close(undefined);
+      return;
+    }
 
-    this.userApiClient.user_UpdateSettings(cmd).pipe(
-      takeUntil(this.ngUnsubscribe),
-      switchMap(() => this.userApiClient.user_Current()),
-      tap(user => {
-        if (user) {
-          this.store.dispatch(auth_setUser({ user }));
-          this.localizationService.userLocaleChanged(user);
-        }
-        this.snackBar.open(
-          this.localizationService.getTranslation(LOCALIZATION_KEYS.MESSAGES.CHANGES_SUCCESSFULLY_SAVED)!,
-          this.localizationService.getTranslation(LOCALIZATION_KEYS.COMMON.BUTTON.OK),
-          { duration: 5000, panelClass: ['error'] }
-        );
-        this.dialogRef.close(true);
-      }),
-      catchError(err => {
-        this.localizationService.handleApiError(err);
-        return throwError(() => err);
-      }),
-      finalize(() => this.loaderService.isBusy = false)
-    ).subscribe();
+    this.user.login = values.login;
+    this.user.headline = values.headline;
+    this.user.firstName = values.firstName;
+    this.user.lastName = values.lastName;
+    this.user.phone = values.phone;
+
+    if (this.user.userSetting) {
+      this.user.userSetting.defaultLocale = selectedLocale?.isoCode ?? 'en';
+      this.user.userSetting.timeZone = values.timeZone;
+      this.user.userSetting.countryId = values.countryId;
+      this.user.userSetting.currencyId = values.currencyId;
+      this.user.userSetting.linkedInUrl = values.linkedInUrl;
+      this.user.userSetting.npmUrl = values.npmUrl;
+      this.user.userSetting.gitHubUrl = values.gitHubUrl;
+      this.user.userSetting.applicationAiPrompt = values.applicationAiPrompt;
+    }
+
+    this.dialogRef.close(this.user);
   }
 
-    protected readonly LOCALIZATION_KEYS = LOCALIZATION_KEYS;
+  protected readonly LOCALIZATION_KEYS = LOCALIZATION_KEYS;
 }

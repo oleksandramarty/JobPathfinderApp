@@ -11,7 +11,7 @@ import { GenericFormRendererComponent } from '@amarty/components';
 import { InputForm } from '@amarty/models';
 import { Router, RouterLink } from '@angular/router';
 import { AuthFormFactory } from '../../../utils/auth-form.factory';
-import {LOCALIZATION_KEYS} from "@amarty/localizations";
+import { LOCALIZATION_KEYS } from '@amarty/localizations';
 
 @Component({
   selector: 'app-auth-sign-up',
@@ -96,5 +96,5 @@ export class AuthSignUpComponent extends BaseUnsubscribeComponent {
       .subscribe();
   }
 
-    protected readonly LOCALIZATION_KEYS = LOCALIZATION_KEYS;
+  protected readonly LOCALIZATION_KEYS = LOCALIZATION_KEYS;
 }

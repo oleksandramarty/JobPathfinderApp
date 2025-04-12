@@ -2,7 +2,7 @@ import { BaseUnsubscribeComponent } from '@amarty/common';
 import { Directive, Input } from '@angular/core';
 import { IHasId, UserProfileItemEnum } from '@amarty/models';
 import { SafeHtml } from '@angular/platform-browser';
-import {LOCALIZATION_KEYS} from "@amarty/localizations";
+import { LOCALIZATION_KEYS } from '@amarty/localizations';
 
 @Directive()
 export abstract class BaseProfileSectionComponent<
@@ -11,8 +11,8 @@ export abstract class BaseProfileSectionComponent<
 > extends BaseUnsubscribeComponent {
   @Input() existingItems: TSectionItemResponse[] | undefined;
 
-  public itemsToAdd: TSectionItemResponse[] | undefined;
-  public itemIdsToRemove: TSectionItemId[] | undefined;
+  @Input() itemsToAdd: TSectionItemResponse[] | undefined;
+  @Input() itemIdsToRemove: TSectionItemId[] | undefined;
 
   public isEditMode: boolean = false;
 

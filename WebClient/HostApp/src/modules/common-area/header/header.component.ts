@@ -15,7 +15,7 @@ import { DictionaryService, LocalizationService } from '@amarty/services';
 import { LocaleResponse, MenuItem } from '@amarty/models';
 import { AuthService } from '../../../utils/services/auth.service';
 import { TranslationPipe } from '@amarty/pipes';
-import {LOCALIZATION_KEYS} from "@amarty/localizations";
+import { LOCALIZATION_KEYS } from '@amarty/localizations';
 
 @Component({
   selector: 'app-header',
