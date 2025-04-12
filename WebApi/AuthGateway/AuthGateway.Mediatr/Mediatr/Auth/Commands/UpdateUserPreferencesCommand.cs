@@ -21,6 +21,9 @@ public class UpdateUserPreferencesCommand: BaseIdEntity<Guid>, IRequest
     public string? GitHubUrl { get; set; }
     public string? PortfolioUrl { get; set; }
     
+    public bool ShowCurrentPosition { get; set; }
+    public bool ShowHighestEducation { get; set; }
+    
     public List<Guid> LanguageIdsToRemove { get; set; }
     public List<Guid> SkillIdsToRemove { get; set; }
     public List<Guid> ProfileItemIdsToRemove { get; set; }

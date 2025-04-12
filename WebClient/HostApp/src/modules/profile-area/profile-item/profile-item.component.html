@@ -38,7 +38,7 @@
             </div>
 
           </div>
-          <div class="profile__resume__item-edit">
+          <div class="profile__resume__item-edit" (click)="openItemDialog(false, item.id)">
             <i class="fa-solid fa-pencil"></i>
           </div>
         </div>
@@ -70,7 +70,7 @@
             </div>
 
           </div>
-          <div class="profile__resume__item-edit">
+          <div class="profile__resume__item-edit" (click)="openItemDialog(true, item.id)">
             <i class="fa-solid fa-pencil"></i>
           </div>
         </div>

@@ -381,6 +381,12 @@ namespace AuthGateway.Domain.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("character varying(100)");
 
+                    b.Property<bool>("ShowCurrentPosition")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("ShowHighestEducation")
+                        .HasColumnType("boolean");
+
                     b.Property<int?>("TimeZone")
                         .HasColumnType("integer");
 

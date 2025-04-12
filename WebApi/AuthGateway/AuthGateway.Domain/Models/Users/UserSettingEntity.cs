@@ -20,6 +20,9 @@ public class UserSettingEntity: BaseDateTimeEntity<Guid>, IBaseVersionEntity
     [MaxLength(100)] public string? GitHubUrl { get; set; }
     [MaxLength(100)] public string? PortfolioUrl { get; set; }
     
+    public bool ShowCurrentPosition { get; set; }
+    public bool ShowHighestEducation { get; set; }
+    
     [Required]
     [StringLength(32, MinimumLength = 32)]
     public string Version { get; set; } = VersionExtension.GenerateVersion();

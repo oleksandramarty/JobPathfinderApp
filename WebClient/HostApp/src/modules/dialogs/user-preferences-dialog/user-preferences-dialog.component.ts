@@ -7,7 +7,7 @@ import {
   InputForm,
   DataItem
 } from '@amarty/models';
-import { DictionaryService, LoaderService } from '@amarty/services';
+import { DictionaryService } from '@amarty/services';
 import { BaseUnsubscribeComponent } from '@amarty/common';
 import { GenericFormRendererComponent } from '@amarty/components';
 import { TranslationPipe } from '@amarty/pipes';
@@ -37,7 +37,6 @@ export class UserPreferencesDialogComponent extends BaseUnsubscribeComponent {
       user: UserResponse | undefined;
     } | undefined,
     private readonly snackBar: MatSnackBar,
-    private readonly loaderService: LoaderService,
     private readonly dictionaryService: DictionaryService
   ) {
     super();
@@ -67,8 +66,8 @@ export class UserPreferencesDialogComponent extends BaseUnsubscribeComponent {
       this.locales,
       this.countries,
       this.currencies,
-      () => this.dialogRef.close(false),
-      () => this.onApplicationSubmit()
+      () => this.onApplicationSubmit(),
+      () => this.dialogRef.close(false)
     );
   }
 
@@ -83,8 +82,6 @@ export class UserPreferencesDialogComponent extends BaseUnsubscribeComponent {
       );
       return;
     }
-
-    this.loaderService.isBusy = true;
 
     const values = this.renderForm?.inputFormGroup?.value;
     const selectedLocale = this.dictionaryService.localeData?.find(item => item.id === values.defaultLocale);

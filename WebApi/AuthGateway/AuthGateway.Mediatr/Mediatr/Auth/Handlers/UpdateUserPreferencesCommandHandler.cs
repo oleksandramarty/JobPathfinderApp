@@ -90,6 +90,8 @@ public class UpdateUserPreferencesCommandHandler: IRequestHandler<UpdateUserPref
                 LinkedInUrl = command.LinkedInUrl,
                 NpmUrl = command.NpmUrl,
                 GitHubUrl = command.GitHubUrl,
+                ShowCurrentPosition = command.ShowCurrentPosition,
+                ShowHighestEducation = command.ShowHighestEducation
             };
             
             await _genericUserRepository.UpdateAsync(

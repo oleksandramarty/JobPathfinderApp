@@ -238,3 +238,5 @@ id;locale;key;valueEn;value;isPublic;
 550e8400-e29b-41d4-a716-300023600000;fr;SKILL_LEVEL.EXPERT;Expert;Expert;1;
 550e8400-e29b-41d4-a716-300023700000;fr;SKILL_LEVEL.MASTER;Master;Maître;1;
 550e8400-e29b-41d4-a716-300023800000;fr;SKILL_LEVEL.WORLD_CLASS;World-Class;De classe mondiale;1;
+550e8400-e29b-41d4-a716-300023900000;fr;PROFILE.SHOW_CURRENT_POSITION;Show current position;Afficher le poste actuel;1;
+550e8400-e29b-41d4-a716-300024000000;fr;PROFILE.SHOW_HIGHEST_EDUCATION;Show highest education;Afficher la formation la plus élevée;1;

@@ -240,4 +240,6 @@ export const localization_ua: Map<string, string> = new Map<string, string>([
   ['SKILL_LEVEL.EXPERT', 'Експерт'],
   ['SKILL_LEVEL.MASTER', 'Майстер'],
   ['SKILL_LEVEL.WORLD_CLASS', 'Світовий клас'],
+  ['PROFILE.SHOW_CURRENT_POSITION', 'Показати поточну посаду'],
+  ['PROFILE.SHOW_HIGHEST_EDUCATION', 'Показати найвищу освіту'],
 ]);

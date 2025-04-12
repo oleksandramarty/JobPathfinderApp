@@ -23,6 +23,7 @@ import { ProfileLanguagesComponent } from './profile-languages/profile-languages
 import { ProfileItemComponent } from './profile-item/profile-item.component';
 import { UserApiClient } from '@amarty/api';
 import { LOCALIZATION_KEYS } from '@amarty/localizations';
+import {TranslationPipe} from '@amarty/pipes';
 
 @Component({
   selector: 'app-profile-area',
@@ -32,7 +33,9 @@ import { LOCALIZATION_KEYS } from '@amarty/localizations';
     ProfileInfoComponent,
     ProfileSkillsComponent,
     ProfileLanguagesComponent,
-    ProfileItemComponent
+    ProfileItemComponent,
+
+    TranslationPipe
   ],
   standalone: true,
   templateUrl: './profile-area.component.html',
@@ -78,7 +81,7 @@ export class ProfileAreaComponent extends BaseUnsubscribeComponent {
       .pipe(
         takeUntil(this.ngUnsubscribe),
         tap((user) => {
-          this.currentUser = user;
+          this.currentUser = { ...user } as UserResponse;
           this.countryCode = this.dictionaryService.countryData?.find(item => item.id === this.currentUser?.userSetting?.countryId)?.code?.toLowerCase();
         })
       ).subscribe();
@@ -157,4 +160,6 @@ export class ProfileAreaComponent extends BaseUnsubscribeComponent {
       })
     );
   }
+
+  protected readonly LOCALIZATION_KEYS = LOCALIZATION_KEYS;
 }

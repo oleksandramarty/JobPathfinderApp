@@ -163,6 +163,8 @@ namespace AuthGateway.Domain.Migrations
                     NpmUrl = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
                     GitHubUrl = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
                     PortfolioUrl = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
+                    ShowCurrentPosition = table.Column<bool>(type: "boolean", nullable: false),
+                    ShowHighestEducation = table.Column<bool>(type: "boolean", nullable: false),
                     Version = table.Column<string>(type: "character(32)", fixedLength: true, maxLength: 32, nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)

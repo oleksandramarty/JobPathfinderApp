@@ -210,11 +210,12 @@ button:focus {
   grid-template-columns: repeat(1, 1fr);
 }
 
+.grid-gap {
+  gap: #{m.pxToRem(8)};
+}
+
 @media (min-width: 600px) {
   .grid-2fr, .grid-3fr, .grid-4fr { grid-template-columns: repeat(2, 1fr); }
-  .grid-gap {
-    gap: #{m.pxToRem(8)};
-  }
 }
 @media (min-width: 768px) {
   .grid-3fr, .grid-4fr { grid-template-columns: repeat(3, 1fr); }

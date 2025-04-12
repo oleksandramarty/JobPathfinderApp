@@ -7,7 +7,7 @@
         </div>
         <div class="profile__info">
           <div class="profile__info-name">
-            {{ currentUser.login }}
+            {{ userDisplayName }}
             @if(countryCode) {
               <img class="profile__country small" [src]="'https://flagcdn.com/w320/' + countryCode + '.png'" [alt]="countryCode" />!
             }

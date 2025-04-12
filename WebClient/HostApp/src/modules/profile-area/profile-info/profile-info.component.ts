@@ -26,6 +26,26 @@ export class ProfileInfoComponent extends BaseUnsubscribeComponent {
     super();
   }
 
+  get userDisplayName(): string {
+    const parts: string[] = [];
+    let hasName: boolean = false;
+
+    if (this.currentUser?.firstName) {
+      parts.push(this.currentUser.firstName);
+      hasName = true;
+    }
+
+    if (this.currentUser?.lastName) {
+      parts.push(this.currentUser.lastName);
+      hasName = true;
+    }
+
+    const namePart = parts.length > 0 ? parts.join(' ') : '';
+    const loginPart = this.currentUser?.login ? this.currentUser.login : '';
+
+    return namePart + (hasName ? ' | ' : '') + loginPart;
+  }
+
   public openEditProfileDialog(): void {
     const executableAction = (model: UserResponse | undefined) => {
       this.currentUser = model;

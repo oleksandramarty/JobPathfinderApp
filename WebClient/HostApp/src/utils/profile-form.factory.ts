@@ -7,7 +7,7 @@ import {
   UserLanguageResponse,
   UserProfileItemEnum,
   UserProfileItemResponse,
-  UserSkillResponse
+  UserSkillResponse, UserResponse
 } from '@amarty/models';
 import { DataItem } from '@amarty/models';
 import { LOCALIZATION_KEYS } from '@amarty/localizations';
@@ -174,7 +174,7 @@ export class ProfileFormFactory {
 
   static createUserPreferencesForm(
     defaultLocaleId: number,
-    user: any,
+    user: UserResponse,
     locales: DataItem[],
     countries: DataItem[],
     currencies: DataItem[],
@@ -245,6 +245,26 @@ export class ProfileFormFactory {
             .withDefaultValue(user.userSetting?.countryId),
         ]))
       .addGrid(new InputFormGridBuilder()
+        .withGridCount(2)
+        .withTitleClass('section__title')
+        .addItems([
+          new InputFormItemBuilder('phone', 'input')
+            .withLabel(LOCALIZATION_KEYS.COMMON.PHONE)
+            .withPlaceholder(LOCALIZATION_KEYS.COMMON.PHONE)
+            .withDefaultValue(user.phone)
+        ]))
+      .addGrid(new InputFormGridBuilder()
+        .withGridCount(2)
+        .withTitleClass('section__title')
+        .addItems([
+          new InputFormItemBuilder('showCurrentPosition', 'checkbox')
+            .withLabel(LOCALIZATION_KEYS.PROFILE.SHOW_CURRENT_POSITION)
+            .withDefaultValue(user.userSetting?.showCurrentPosition ?? false),
+          new InputFormItemBuilder('showCurrentPosition', 'checkbox')
+            .withLabel(LOCALIZATION_KEYS.PROFILE.SHOW_HIGHEST_EDUCATION)
+            .withDefaultValue(user.userSetting?.showHighestEducation ?? false)
+        ]))
+      .addGrid(new InputFormGridBuilder()
         .withGridCount(3)
         .withTitle(LOCALIZATION_KEYS.PROFILE.LINKS)
         .withTitleClass('section__title')
@@ -261,16 +281,6 @@ export class ProfileFormFactory {
             .withLabel('GitHub')
             .withPlaceholder('GitHub')
             .withDefaultValue(user.userSetting?.gitHubUrl)
-        ]))
-      .addGrid(new InputFormGridBuilder()
-        .withGridCount(2)
-        .withTitle(LOCALIZATION_KEYS.PROFILE.LINKS)
-        .withTitleClass('section__title')
-        .addItems([
-          new InputFormItemBuilder('phone', 'input')
-            .withLabel(LOCALIZATION_KEYS.COMMON.PHONE)
-            .withPlaceholder(LOCALIZATION_KEYS.COMMON.PHONE)
-            .withDefaultValue(user.phone)
         ]))
       .addGrid(new InputFormGridBuilder()
         .withGridCount(1)

@@ -238,3 +238,5 @@ id;d''eocale;key;valueEn;value;isPublic;
 550e8400-e29b-41d4-a716-700023600000;it;SKILL_LEVEL.EXPERT;Expert;Esperto;1;
 550e8400-e29b-41d4-a716-700023700000;it;SKILL_LEVEL.MASTER;Master;Master;1;
 550e8400-e29b-41d4-a716-700023800000;it;SKILL_LEVEL.WORLD_CLASS;World-Class;Di fama mondiale;1;
+550e8400-e29b-41d4-a716-700023900000;it;PROFILE.SHOW_CURRENT_POSITION;Show current position;Mostra posizione attuale;1;
+550e8400-e29b-41d4-a716-700024000000;it;PROFILE.SHOW_HIGHEST_EDUCATION;Show highest education;Mostra istruzione più alta;1;

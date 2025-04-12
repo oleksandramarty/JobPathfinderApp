@@ -297,6 +297,8 @@ export class UpdateUserPreferencesCommand extends BaseIdEntityOfGuid implements 
     npmUrl?: string | undefined;
     gitHubUrl?: string | undefined;
     portfolioUrl?: string | undefined;
+    showCurrentPosition?: boolean;
+    showHighestEducation?: boolean;
     languageIdsToRemove?: string[];
     skillIdsToRemove?: string[];
     profileItemIdsToRemove?: string[];
@@ -325,6 +327,8 @@ export class UpdateUserPreferencesCommand extends BaseIdEntityOfGuid implements 
             this.npmUrl = _data["npmUrl"];
             this.gitHubUrl = _data["gitHubUrl"];
             this.portfolioUrl = _data["portfolioUrl"];
+            this.showCurrentPosition = _data["showCurrentPosition"];
+            this.showHighestEducation = _data["showHighestEducation"];
             if (Array.isArray(_data["languageIdsToRemove"])) {
                 this.languageIdsToRemove = [] as any;
                 for (let item of _data["languageIdsToRemove"])
@@ -381,6 +385,8 @@ export class UpdateUserPreferencesCommand extends BaseIdEntityOfGuid implements 
         data["npmUrl"] = this.npmUrl;
         data["gitHubUrl"] = this.gitHubUrl;
         data["portfolioUrl"] = this.portfolioUrl;
+        data["showCurrentPosition"] = this.showCurrentPosition;
+        data["showHighestEducation"] = this.showHighestEducation;
         if (Array.isArray(this.languageIdsToRemove)) {
             data["languageIdsToRemove"] = [];
             for (let item of this.languageIdsToRemove)
@@ -431,6 +437,8 @@ export interface IUpdateUserPreferencesCommand extends IBaseIdEntityOfGuid {
     npmUrl?: string | undefined;
     gitHubUrl?: string | undefined;
     portfolioUrl?: string | undefined;
+    showCurrentPosition?: boolean;
+    showHighestEducation?: boolean;
     languageIdsToRemove?: string[];
     skillIdsToRemove?: string[];
     profileItemIdsToRemove?: string[];
@@ -1848,6 +1856,8 @@ export class UserSettingResponse extends BaseIdEntityOfGuid implements IUserSett
     npmUrl?: string | undefined;
     gitHubUrl?: string | undefined;
     portfolioUrl?: string | undefined;
+    showCurrentPosition?: boolean;
+    showHighestEducation?: boolean;
     version!: string;
 
     constructor(data?: IUserSettingResponse) {
@@ -1867,6 +1877,8 @@ export class UserSettingResponse extends BaseIdEntityOfGuid implements IUserSett
             this.npmUrl = _data["npmUrl"];
             this.gitHubUrl = _data["gitHubUrl"];
             this.portfolioUrl = _data["portfolioUrl"];
+            this.showCurrentPosition = _data["showCurrentPosition"];
+            this.showHighestEducation = _data["showHighestEducation"];
             this.version = _data["version"];
         }
     }
@@ -1890,6 +1902,8 @@ export class UserSettingResponse extends BaseIdEntityOfGuid implements IUserSett
         data["npmUrl"] = this.npmUrl;
         data["gitHubUrl"] = this.gitHubUrl;
         data["portfolioUrl"] = this.portfolioUrl;
+        data["showCurrentPosition"] = this.showCurrentPosition;
+        data["showHighestEducation"] = this.showHighestEducation;
         data["version"] = this.version;
         super.toJSON(data);
         return data;
@@ -1907,6 +1921,8 @@ export interface IUserSettingResponse extends IBaseIdEntityOfGuid {
     npmUrl?: string | undefined;
     gitHubUrl?: string | undefined;
     portfolioUrl?: string | undefined;
+    showCurrentPosition?: boolean;
+    showHighestEducation?: boolean;
     version: string;
 }
 

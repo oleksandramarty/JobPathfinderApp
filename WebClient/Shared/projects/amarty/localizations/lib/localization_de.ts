@@ -240,4 +240,6 @@ export const localization_de: Map<string, string> = new Map<string, string>([
   ['SKILL_LEVEL.EXPERT', 'Experte'],
   ['SKILL_LEVEL.MASTER', 'Meister'],
   ['SKILL_LEVEL.WORLD_CLASS', 'Weltklasse'],
+  ['PROFILE.SHOW_CURRENT_POSITION', 'Aktuelle Position anzeigen'],
+  ['PROFILE.SHOW_HIGHEST_EDUCATION', 'Höchste Ausbildung anzeigen'],
 ]);
