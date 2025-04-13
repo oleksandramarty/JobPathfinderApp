@@ -23,12 +23,4 @@ public class UpdateUserPreferencesCommand: BaseIdEntity<Guid>, IRequest
     
     public bool ShowCurrentPosition { get; set; }
     public bool ShowHighestEducation { get; set; }
-    
-    public List<Guid> LanguageIdsToRemove { get; set; }
-    public List<Guid> SkillIdsToRemove { get; set; }
-    public List<Guid> ProfileItemIdsToRemove { get; set; }
-    
-    public List<AddOrUpdateUserSkillCommand> AddOrUpdateUserSkills { get; set; }
-    public List<AddOrUpdateUserLanguageCommand> AddOrUpdateUserLanguages { get; set; }
-    public List<AddOrUpdateUserProfileItemCommand> AddOrUpdateProfileItems { get; set; }
 }

@@ -1,5 +1,4 @@
 using System.ComponentModel.DataAnnotations;
-using AuthGateway.Domain.Models.Profile;
 using CommonModule.Shared.Common;
 using CommonModule.Shared.Common.BaseInterfaces;
 using CommonModule.Shared.Core;
@@ -27,9 +26,6 @@ public class UserEntity: BaseDateTimeEntity<Guid>, IStatusEntity, IBaseVersionEn
     public DateTime? LastForgotPasswordRequest { get; set; }
     
     public ICollection<UserRoleEntity> Roles { get; set; }
-    public ICollection<UserLanguageEntity> Languages { get; set; }
-    public ICollection<UserSkillEntity> Skills { get; set; }
-    public ICollection<UserProfileItemEntity> ProfileItems { get; set; }
     
     public Guid? UserSettingId { get; set; }
     public UserSettingEntity? UserSetting { get; set; }

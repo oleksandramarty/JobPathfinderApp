@@ -3,7 +3,6 @@ using CommonModule.Shared.Common;
 using CommonModule.Shared.Common.BaseInterfaces;
 using CommonModule.Shared.Core;
 using CommonModule.Shared.Enums;
-using CommonModule.Shared.Responses.AuthGateway.Profile;
 
 namespace CommonModule.Shared.Responses.AuthGateway.Users;
 
@@ -23,9 +22,6 @@ public class UserResponse: BaseDateTimeEntity<Guid>, IStatusEntity, IBaseVersion
     public DateTime? LastForgotPasswordRequest { get; set; }
     
     public ICollection<RoleResponse> Roles { get; set; }
-    public ICollection<UserLanguageResponse> Languages { get; set; }
-    public ICollection<UserSkillResponse> Skills { get; set; }
-    public ICollection<UserProfileItemResponse> ProfileItems { get; set; }
     
     public UserSettingResponse? UserSetting { get; set; }
 

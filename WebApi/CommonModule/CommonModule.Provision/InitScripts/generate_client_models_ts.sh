@@ -5,9 +5,9 @@ BASE_DIR=$(cd "$(dirname "$0")" && pwd | sed 's|/CommonModule/CommonModule.Provi
 ANGULAR_BASE_DIR=$(cd "$(dirname "$0")" && pwd | sed 's|/WebApi/CommonModule/CommonModule.Provision/InitScripts||')
 
 # Microservices arrays
-microserviceNames=("AuthGateway" "Dictionaries" "AuditTrail" "Localizations" "CommonModule")
-microserviceClientApiNames=("user-api.service.ts" "dictionary-api.service.ts" "audit-trail-api.service.ts" "localization-api.service.ts" "api.model.ts")
-microserviceClientApiClassNames=("UserApiClient" "DictionaryApiClient" "AuditTrailApiClient" "LocalizationApiClient" "ApiModel")
+microserviceNames=("AuthGateway" "Dictionaries" "AuditTrail" "Localizations" "CommonModule" "Profile")
+microserviceClientApiNames=("user-api.service.ts" "dictionary-api.service.ts" "audit-trail-api.service.ts" "localization-api.service.ts" "api.model.ts" "profile-api.service.ts")
+microserviceClientApiClassNames=("UserApiClient" "DictionaryApiClient" "AuditTrailApiClient" "LocalizationApiClient" "ApiModel" "ProfileApiClient")
 
 # 🔄 Generating API clients
 for i in "${!microserviceNames[@]}"; do

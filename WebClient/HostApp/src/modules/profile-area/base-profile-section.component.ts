@@ -12,6 +12,7 @@ export abstract class BaseProfileSectionComponent<
   @Input() existingItems: TSectionItemResponse[] | undefined;
 
   @Input() itemsToAdd: TSectionItemResponse[] | undefined;
+  @Input() itemsIdsToUpdate: TSectionItemId[] | undefined;
   @Input() itemIdsToRemove: TSectionItemId[] | undefined;
 
   public isEditMode: boolean = false;
@@ -39,6 +40,12 @@ export abstract class BaseProfileSectionComponent<
 
       if (index > -1) {
         targetList[index] = model;
+        if (!isNew) {
+          this.itemsIdsToUpdate ??= [];
+          if (!this.itemsIdsToUpdate.includes(model.id!)) {
+            this.itemsIdsToUpdate.push(model.id!);
+          }
+        }
       } else {
         targetList.push(model);
       }

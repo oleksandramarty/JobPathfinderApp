@@ -35,7 +35,8 @@ public class CurrentUserRequestHandler: MediatrAuthBase, IRequestHandler<Current
                 user
                     .Include(u => u.Roles)
                     .ThenInclude(ur => ur.Role)
-                    .Include(u => u.UserSetting));
+                    .Include(u => u.UserSetting)
+                );
         if (user == null)
         {
             throw new EntityNotFoundException();

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Store } from '@ngrx/store';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { catchError, finalize, takeUntil, tap, throwError } from 'rxjs';
 import { BaseUnsubscribeComponent } from '@amarty/common';
@@ -15,8 +14,7 @@ import {
   UserResponse,
   UserSkillResponse
 } from '@amarty/models';
-import { CommonDialogService, DictionaryService, LoaderService, LocalizationService } from '@amarty/services';
-import { selectUser } from '@amarty/store';
+import { DictionaryService, LoaderService, LocalizationService } from '@amarty/services';
 import { ProfileInfoComponent } from './profile-info/profile-info.component';
 import { ProfileSkillsComponent } from './profile-skills/profile-skills.component';
 import { ProfileLanguagesComponent } from './profile-languages/profile-languages.component';
@@ -51,6 +49,8 @@ export class ProfileAreaComponent extends BaseUnsubscribeComponent {
   public skillsToRemove: string[] = [];
   public languagesToAdd: UserLanguageResponse[] = [];
   public languagesToRemove: string[] = [];
+  public skillsToUpdate: string[] = [];
+  public languagesToUpdate: string[] = [];
   public experienceToAdd: UserProfileItemResponse[] = [];
   public educationToAdd: UserProfileItemResponse[] = [];
   public certificationToAdd: UserProfileItemResponse[] = [];
@@ -61,11 +61,34 @@ export class ProfileAreaComponent extends BaseUnsubscribeComponent {
   public certificationToRemove: string[] = [];
   public projectToRemove: string[] = [];
   public achievementToRemove: string[] = [];
+  public experienceToUpdate: string[] = [];
+  public educationToUpdate: string[] = [];
+  public certificationToUpdate: string[] = [];
+  public projectToUpdate: string[] = [];
+  public achievementToUpdate: string[] = [];
+
+  public isCurrentUserChanged: boolean = false;
+
+  get isInfoChanged(): boolean {
+    return this.skillsToAdd.length > 0 ||
+            this.languagesToAdd.length > 0 ||
+            this.experienceToAdd.length > 0 ||
+            this.educationToAdd.length > 0 ||
+            this.certificationToAdd.length > 0 ||
+            this.projectToAdd.length > 0 ||
+            this.achievementToAdd.length > 0 ||
+            this.skillsToRemove.length > 0 ||
+            this.languagesToRemove.length > 0 ||
+            this.experienceToRemove.length > 0 ||
+            this.educationToRemove.length > 0 ||
+            this.certificationToRemove.length > 0 ||
+            this.projectToRemove.length > 0 ||
+            this.achievementToRemove.length > 0 ||
+      this.isCurrentUserChanged;
+  }
 
   constructor(
-    private readonly dialogService: CommonDialogService,
     private readonly dictionaryService: DictionaryService,
-    private readonly store: Store,
     private readonly snackBar: MatSnackBar,
     private readonly userApiClient: UserApiClient,
     private readonly loaderService: LoaderService,
@@ -77,15 +100,21 @@ export class ProfileAreaComponent extends BaseUnsubscribeComponent {
   }
 
   override ngOnInit(): void {
-    this.store.select(selectUser)
+    this.userApiClient.user_Current()
       .pipe(
         takeUntil(this.ngUnsubscribe),
         tap((user) => {
-          this.currentUser = { ...user } as UserResponse;
+          this.currentUser = user;
           this.countryCode = this.dictionaryService.countryData?.find(item => item.id === this.currentUser?.userSetting?.countryId)?.code?.toLowerCase();
         })
       ).subscribe();
+
     super.ngOnInit();
+  }
+
+  public currentUserChanged(event: UserResponse): void {
+    this.isCurrentUserChanged = true;
+    this.currentUser = event;
   }
 
   public updateProfile(): void {
@@ -113,17 +142,17 @@ export class ProfileAreaComponent extends BaseUnsubscribeComponent {
         ...this.projectToRemove,
         ...this.achievementToRemove
       ],
-      addOrUpdateUserSkills: this.skillsToAdd.map(skill => ({
+      addUserSkills: this.skillsToAdd.map(skill => ({
         id: skill.id,
         skillId: skill.skillId,
         skillLevelId: skill.skillLevelId
       } as AddOrUpdateUserSkillCommand)),
-      addOrUpdateUserLanguages: this.languagesToAdd.map(language => ({
+      addUserLanguages: this.languagesToAdd.map(language => ({
         id: language.id,
         languageId: language.languageId,
         languageLevelId: language.languageLevelId
       } as AddOrUpdateUserLanguageCommand)),
-      addOrUpdateProfileItems: [
+      addProfileItems: [
         ...this.experienceToAdd,
         ...this.educationToAdd,
         ...this.certificationToAdd,
@@ -141,7 +170,45 @@ export class ProfileAreaComponent extends BaseUnsubscribeComponent {
         countryId: item.countryId,
         jobTypeId: item.jobTypeId,
         workArrangementId: item.workArrangementId
-      } as AddOrUpdateUserProfileItemCommand))
+      } as AddOrUpdateUserProfileItemCommand)),
+      updateUserSkills: this.skillsToUpdate.map(skillId => {
+        const existingSkill = this.currentUser?.skills?.find(skill => skill.id === skillId);
+        return !!existingSkill ? ({
+          id: existingSkill.id,
+          skillId: existingSkill.skillId,
+          skillLevelId: existingSkill.skillLevelId
+        } as AddOrUpdateUserSkillCommand) : undefined;
+      }).filter(item => !!item),
+      updateUserLanguages: this.languagesToUpdate.map(languageId => {
+        const existingLanguage = this.currentUser?.languages?.find(language => language.id === languageId);
+        return !!existingLanguage ? ({
+          id: existingLanguage.id,
+          languageId: existingLanguage.languageId,
+          languageLevelId: existingLanguage.languageLevelId
+        } as AddOrUpdateUserLanguageCommand) : undefined;
+      }).filter(item => !!item),
+      updateProfileItems: [
+        ...this.experienceToUpdate,
+        ...this.educationToUpdate,
+        ...this.certificationToUpdate,
+        ...this.projectToUpdate,
+        ...this.achievementToUpdate
+      ].map(itemId => {
+        const existingItem = this.currentUser?.profileItems?.find(item => item.id === itemId);
+        return !!existingItem ? ({
+          id: existingItem.id,
+          profileItemType: existingItem.profileItemType,
+          startDate: existingItem.startDate,
+          endDate: existingItem.endDate,
+          position: existingItem.position,
+          description: existingItem.description,
+          company: existingItem.company,
+          location: existingItem.location,
+          countryId: existingItem.countryId,
+          jobTypeId: existingItem.jobTypeId,
+          workArrangementId: existingItem.workArrangementId
+        } as AddOrUpdateUserProfileItemCommand) : undefined;
+      }).filter(item => !!item),
     } as UpdateUserPreferencesCommand).pipe(
       takeUntil(this.ngUnsubscribe),
       tap(() => {
@@ -158,7 +225,7 @@ export class ProfileAreaComponent extends BaseUnsubscribeComponent {
       finalize(() => {
         this.loaderService.isBusy = false;
       })
-    );
+    ).subscribe();
   }
 
   protected readonly LOCALIZATION_KEYS = LOCALIZATION_KEYS;

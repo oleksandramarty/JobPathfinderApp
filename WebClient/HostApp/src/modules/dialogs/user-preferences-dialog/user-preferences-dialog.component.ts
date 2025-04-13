@@ -106,6 +106,8 @@ export class UserPreferencesDialogComponent extends BaseUnsubscribeComponent {
       this.user.userSetting.npmUrl = values.npmUrl;
       this.user.userSetting.gitHubUrl = values.gitHubUrl;
       this.user.userSetting.applicationAiPrompt = values.applicationAiPrompt;
+      this.user.userSetting.showCurrentPosition = values.showCurrentPosition;
+      this.user.userSetting.showHighestEducation = values.showHighestEducation;
     }
 
     this.dialogRef.close(this.user);
