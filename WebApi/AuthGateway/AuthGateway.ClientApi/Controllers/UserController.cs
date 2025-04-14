@@ -19,6 +19,13 @@ public class UserController: BaseController
         _mediator = mediator;
     }
     
+    [HttpGet("{id:guid}")]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(UserResponse))]
+    public async Task<ActionResult<UserResponse>> UserById([FromRoute] Guid id, CancellationToken cancellationToken)
+    {
+        return Ok(await _mediator.Send(new UserByIdRequest { Id = id }, cancellationToken));
+    }
+    
     [HttpGet("current")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(UserResponse))]    
     public async Task<IActionResult> Current(CancellationToken cancellationToken)

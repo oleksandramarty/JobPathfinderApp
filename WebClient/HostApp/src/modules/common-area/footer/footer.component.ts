@@ -16,6 +16,7 @@ import { AuthService } from '../../../utils/services/auth.service';
 import { CommonModule } from '@angular/common';
 import { TranslationPipe } from '@amarty/pipes';
 import { LOCALIZATION_KEYS } from '@amarty/localizations';
+import {profile_clearAll} from '@amarty/store/lib/actions/profile.action';
 
 @Component({
   selector: 'app-footer',
@@ -63,6 +64,7 @@ export class FooterComponent implements OnInit {
 
   public resetSite(): void {
     this.store.dispatch(auth_clearAll());
+    this.store.dispatch(profile_clearAll());
     clearLocalStorageAndRefresh(true);
     window.location.reload();
   }

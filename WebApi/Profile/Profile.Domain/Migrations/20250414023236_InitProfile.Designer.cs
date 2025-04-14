@@ -12,7 +12,7 @@ using Profile.Domain;
 namespace Profile.Domain.Migrations
 {
     [DbContext(typeof(ProfileDataContext))]
-    [Migration("20250413053221_InitProfile")]
+    [Migration("20250414023236_InitProfile")]
     partial class InitProfile
     {
         /// <inheritdoc />

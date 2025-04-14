@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 import { auth_clearAll, auth_setToken, selectIsAdmin, selectIsSuperAdmin, selectIsUser, selectToken } from '@amarty/store';
 import { getLocalStorageItem, removeLocalStorageItem, setLocalStorageItem } from '@amarty/utils';
+import {profile_clearAll} from '@amarty/store/lib/actions/profile.action';
 
 @Injectable({
   providedIn: 'root'
@@ -91,5 +92,6 @@ export class AuthService {
     removeLocalStorageItem(this._tokenKey);
     this._localToken = undefined;
     this.store.dispatch(auth_clearAll());
+    this.store.dispatch(profile_clearAll());
   }
 }

@@ -7,7 +7,7 @@ using CommonModule.Shared.Enums.Users;
 
 namespace Profile.Domain.Models.Profile;
 
-public class UserProfileItemEntity: BaseDateTimeEntity<Guid>, IStatusEntity, IBaseVersionEntity
+public class UserProfileItemEntity: BaseDateTimeEntity<Guid>, IStatusEntity, IBaseVersionEntity, IUserIdEntity
 {
     public Guid UserId { get; set; }
     

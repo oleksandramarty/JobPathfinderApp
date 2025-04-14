@@ -11,7 +11,8 @@ import { reducers } from '@amarty/store';
 import {
   API_BASE_URL_AuthGateway,
   API_BASE_URL_Localizations,
-  API_BASE_URL_Dictionaries
+  API_BASE_URL_Dictionaries,
+  API_BASE_URL_Profile
 } from '@amarty/api';
 import { routes } from './app.routes';
 import { environment } from '../../utils/environments/environment';
@@ -45,6 +46,7 @@ export const appConfig: ApplicationConfig = {
 
     { provide: API_BASE_URL_AuthGateway, useValue: environment.authGatewayApiUrl },
     { provide: API_BASE_URL_Localizations, useValue: environment.localizationApiUrl },
-    { provide: API_BASE_URL_Dictionaries, useValue: environment.dictionaryApiUrl }
+    { provide: API_BASE_URL_Dictionaries, useValue: environment.dictionaryApiUrl },
+    { provide: API_BASE_URL_Profile, useValue: environment.profileApiUrl },
   ]
 };

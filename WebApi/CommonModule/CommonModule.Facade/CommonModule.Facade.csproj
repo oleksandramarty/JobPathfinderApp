@@ -12,6 +12,7 @@
       <ProjectReference Include="..\..\AuthGateway\AuthGateway.Mediatr\AuthGateway.Mediatr.csproj" />
       <ProjectReference Include="..\..\Dictionaries\Dictionaries.Mediatr\Dictionaries.Mediatr.csproj" />
       <ProjectReference Include="..\..\Localizations\Localizations.Mediatr\Localizations.Mediatr.csproj" />
+      <ProjectReference Include="..\..\Profile\Profile.Mediatr\Profile.Mediatr.csproj" />
       <ProjectReference Include="..\CommonModule.Interfaces\CommonModule.Interfaces.csproj" />
       <ProjectReference Include="..\CommonModule.Repositories\CommonModule.Repositories.csproj" />
       <ProjectReference Include="..\CommonModule.Shared\CommonModule.Shared.csproj" />

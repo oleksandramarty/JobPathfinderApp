@@ -1,27 +1,21 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { catchError, finalize, takeUntil, tap, throwError } from 'rxjs';
+import { forkJoin, takeUntil, tap} from 'rxjs';
 import { BaseUnsubscribeComponent } from '@amarty/common';
 import {
-  AddOrUpdateUserLanguageCommand,
-  AddOrUpdateUserProfileItemCommand,
-  AddOrUpdateUserSkillCommand,
-  UpdateUserPreferencesCommand,
-  UserLanguageResponse,
   UserProfileItemEnum,
-  UserProfileItemResponse,
+  UserProfileResponse,
   UserResponse,
-  UserSkillResponse
 } from '@amarty/models';
-import { DictionaryService, LoaderService, LocalizationService } from '@amarty/services';
+import { DictionaryService } from '@amarty/services';
 import { ProfileInfoComponent } from './profile-info/profile-info.component';
 import { ProfileSkillsComponent } from './profile-skills/profile-skills.component';
 import { ProfileLanguagesComponent } from './profile-languages/profile-languages.component';
 import { ProfileItemComponent } from './profile-item/profile-item.component';
-import { UserApiClient } from '@amarty/api';
 import { LOCALIZATION_KEYS } from '@amarty/localizations';
 import {TranslationPipe} from '@amarty/pipes';
+import {Store} from '@ngrx/store';
+import {selectProfile, selectUser} from '@amarty/store';
 
 @Component({
   selector: 'app-profile-area',
@@ -41,58 +35,14 @@ import {TranslationPipe} from '@amarty/pipes';
 })
 export class ProfileAreaComponent extends BaseUnsubscribeComponent {
   public currentUser: UserResponse | undefined;
+  public userProfile: UserProfileResponse | undefined;
   public countryCode: string | undefined;
 
   public profileItemEnum = UserProfileItemEnum;
 
-  public skillsToAdd: UserSkillResponse[] = [];
-  public skillsToRemove: string[] = [];
-  public languagesToAdd: UserLanguageResponse[] = [];
-  public languagesToRemove: string[] = [];
-  public skillsToUpdate: string[] = [];
-  public languagesToUpdate: string[] = [];
-  public experienceToAdd: UserProfileItemResponse[] = [];
-  public educationToAdd: UserProfileItemResponse[] = [];
-  public certificationToAdd: UserProfileItemResponse[] = [];
-  public projectToAdd: UserProfileItemResponse[] = [];
-  public achievementToAdd: UserProfileItemResponse[] = [];
-  public experienceToRemove: string[] = [];
-  public educationToRemove: string[] = [];
-  public certificationToRemove: string[] = [];
-  public projectToRemove: string[] = [];
-  public achievementToRemove: string[] = [];
-  public experienceToUpdate: string[] = [];
-  public educationToUpdate: string[] = [];
-  public certificationToUpdate: string[] = [];
-  public projectToUpdate: string[] = [];
-  public achievementToUpdate: string[] = [];
-
-  public isCurrentUserChanged: boolean = false;
-
-  get isInfoChanged(): boolean {
-    return this.skillsToAdd.length > 0 ||
-            this.languagesToAdd.length > 0 ||
-            this.experienceToAdd.length > 0 ||
-            this.educationToAdd.length > 0 ||
-            this.certificationToAdd.length > 0 ||
-            this.projectToAdd.length > 0 ||
-            this.achievementToAdd.length > 0 ||
-            this.skillsToRemove.length > 0 ||
-            this.languagesToRemove.length > 0 ||
-            this.experienceToRemove.length > 0 ||
-            this.educationToRemove.length > 0 ||
-            this.certificationToRemove.length > 0 ||
-            this.projectToRemove.length > 0 ||
-            this.achievementToRemove.length > 0 ||
-      this.isCurrentUserChanged;
-  }
-
   constructor(
     private readonly dictionaryService: DictionaryService,
-    private readonly snackBar: MatSnackBar,
-    private readonly userApiClient: UserApiClient,
-    private readonly loaderService: LoaderService,
-    private readonly localizationService: LocalizationService
+    private readonly store: Store,
   ) {
     super();
 
@@ -100,132 +50,20 @@ export class ProfileAreaComponent extends BaseUnsubscribeComponent {
   }
 
   override ngOnInit(): void {
-    this.userApiClient.user_Current()
-      .pipe(
+    forkJoin([
+      this.store.select(selectUser),
+      this.store.select(selectProfile)
+    ]).pipe(
         takeUntil(this.ngUnsubscribe),
-        tap((user) => {
-          this.currentUser = user;
+        tap(data => {
+          this.currentUser = data[0];
+          this.userProfile = data[1];
           this.countryCode = this.dictionaryService.countryData?.find(item => item.id === this.currentUser?.userSetting?.countryId)?.code?.toLowerCase();
         })
-      ).subscribe();
+      )
+      .subscribe();
 
     super.ngOnInit();
-  }
-
-  public currentUserChanged(event: UserResponse): void {
-    this.isCurrentUserChanged = true;
-    this.currentUser = event;
-  }
-
-  public updateProfile(): void {
-    this.userApiClient.user_UpdateSettings({
-      login: this.currentUser?.login,
-      headline: this.currentUser?.headline,
-      phone: this.currentUser?.phone,
-      firstName: this.currentUser?.firstName,
-      lastName: this.currentUser?.lastName,
-      defaultLocale: this.currentUser?.userSetting?.defaultLocale,
-      timeZone: this.currentUser?.userSetting?.timeZone,
-      countryId: this.currentUser?.userSetting?.countryId,
-      currencyId: this.currentUser?.userSetting?.currencyId,
-      applicationAiPrompt: this.currentUser?.userSetting?.applicationAiPrompt,
-      linkedInUrl: this.currentUser?.userSetting?.linkedInUrl,
-      npmUrl: this.currentUser?.userSetting?.npmUrl,
-      gitHubUrl: this.currentUser?.userSetting?.gitHubUrl,
-      portfolioUrl: this.currentUser?.userSetting?.portfolioUrl,
-      languageIdsToRemove: this.languagesToRemove,
-      skillIdsToRemove: this.skillsToRemove,
-      profileItemIdsToRemove: [
-        ...this.experienceToRemove,
-        ...this.educationToRemove,
-        ...this.certificationToRemove,
-        ...this.projectToRemove,
-        ...this.achievementToRemove
-      ],
-      addUserSkills: this.skillsToAdd.map(skill => ({
-        id: skill.id,
-        skillId: skill.skillId,
-        skillLevelId: skill.skillLevelId
-      } as AddOrUpdateUserSkillCommand)),
-      addUserLanguages: this.languagesToAdd.map(language => ({
-        id: language.id,
-        languageId: language.languageId,
-        languageLevelId: language.languageLevelId
-      } as AddOrUpdateUserLanguageCommand)),
-      addProfileItems: [
-        ...this.experienceToAdd,
-        ...this.educationToAdd,
-        ...this.certificationToAdd,
-        ...this.projectToAdd,
-        ...this.achievementToAdd
-      ].map(item => ({
-        id: item.id,
-        profileItemType: item.profileItemType,
-        startDate: item.startDate,
-        endDate: item.endDate,
-        position: item.position,
-        description: item.description,
-        company: item.company,
-        location: item.location,
-        countryId: item.countryId,
-        jobTypeId: item.jobTypeId,
-        workArrangementId: item.workArrangementId
-      } as AddOrUpdateUserProfileItemCommand)),
-      updateUserSkills: this.skillsToUpdate.map(skillId => {
-        const existingSkill = this.currentUser?.skills?.find(skill => skill.id === skillId);
-        return !!existingSkill ? ({
-          id: existingSkill.id,
-          skillId: existingSkill.skillId,
-          skillLevelId: existingSkill.skillLevelId
-        } as AddOrUpdateUserSkillCommand) : undefined;
-      }).filter(item => !!item),
-      updateUserLanguages: this.languagesToUpdate.map(languageId => {
-        const existingLanguage = this.currentUser?.languages?.find(language => language.id === languageId);
-        return !!existingLanguage ? ({
-          id: existingLanguage.id,
-          languageId: existingLanguage.languageId,
-          languageLevelId: existingLanguage.languageLevelId
-        } as AddOrUpdateUserLanguageCommand) : undefined;
-      }).filter(item => !!item),
-      updateProfileItems: [
-        ...this.experienceToUpdate,
-        ...this.educationToUpdate,
-        ...this.certificationToUpdate,
-        ...this.projectToUpdate,
-        ...this.achievementToUpdate
-      ].map(itemId => {
-        const existingItem = this.currentUser?.profileItems?.find(item => item.id === itemId);
-        return !!existingItem ? ({
-          id: existingItem.id,
-          profileItemType: existingItem.profileItemType,
-          startDate: existingItem.startDate,
-          endDate: existingItem.endDate,
-          position: existingItem.position,
-          description: existingItem.description,
-          company: existingItem.company,
-          location: existingItem.location,
-          countryId: existingItem.countryId,
-          jobTypeId: existingItem.jobTypeId,
-          workArrangementId: existingItem.workArrangementId
-        } as AddOrUpdateUserProfileItemCommand) : undefined;
-      }).filter(item => !!item),
-    } as UpdateUserPreferencesCommand).pipe(
-      takeUntil(this.ngUnsubscribe),
-      tap(() => {
-        this.snackBar.open(
-          this.localizationService.getTranslation(LOCALIZATION_KEYS.MESSAGES.CHANGES_SUCCESSFULLY_SAVED)!,
-          this.localizationService.getTranslation(LOCALIZATION_KEYS.COMMON.BUTTON.OK),
-          { duration: 5000, panelClass: ['error'] }
-        );
-      }),
-      catchError((error: any) => {
-        this.localizationService.handleApiError(error);
-        return throwError(() => error);
-      }),
-      finalize(() => {
-        this.loaderService.isBusy = false;
-      })
-    ).subscribe();
   }
 
   protected readonly LOCALIZATION_KEYS = LOCALIZATION_KEYS;

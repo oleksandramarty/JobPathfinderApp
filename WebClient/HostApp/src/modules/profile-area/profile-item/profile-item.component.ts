@@ -9,10 +9,10 @@ import { CommonDialogService, DictionaryService } from '@amarty/services';
 import { SafeHtml } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { TranslationPipe } from '@amarty/pipes';
-import { BaseProfileSectionComponent, itemTypeTitle } from '../base-profile-section.component';
 import { ProfileItemDialogComponent } from '../../dialogs/profile-item-dialog/profile-item-dialog.component';
 import { generateGuid } from '@amarty/utils';
 import { LOCALIZATION_KEYS } from '@amarty/localizations';
+import {BaseUnsubscribeComponent} from '@amarty/common';
 
 @Component({
   selector: 'app-profile-item',
@@ -24,8 +24,10 @@ import { LOCALIZATION_KEYS } from '@amarty/localizations';
   templateUrl: './profile-item.component.html',
   styleUrl: '../profile-area.component.scss'
 })
-export class ProfileItemComponent extends BaseProfileSectionComponent<UserProfileItemResponse, string> {
+export class ProfileItemComponent extends BaseUnsubscribeComponent {
   @Input() itemType: UserProfileItemEnum | undefined;
+
+  public profileItems: UserProfileItemResponse[] | undefined;
 
   public title: string | undefined;
 
@@ -34,21 +36,6 @@ export class ProfileItemComponent extends BaseProfileSectionComponent<UserProfil
     private readonly dictionaryService: DictionaryService
   ) {
     super();
-  }
-
-  get existingSectionItems(): UserProfileItemResponse[] {
-    return this.existingItems?.filter(item => item.profileItemType === this.itemType) ?? [];
-  }
-
-  set existingSectionItems(value: UserProfileItemResponse[]) {
-    if (!this.existingItems) {
-      return;
-    }
-
-    this.existingSectionItems = [
-      ...(this.existingItems ?? []),
-      ...value
-    ];
   }
 
   override get isEmptySection(): boolean {
@@ -91,6 +78,23 @@ export class ProfileItemComponent extends BaseProfileSectionComponent<UserProfil
       },
       executableAction
     );
+  }
+
+  private _itemTypeTitle(itemType: UserProfileItemEnum | undefined): string {
+    switch (itemType) {
+      case UserProfileItemEnum.Experience:
+        return LOCALIZATION_KEYS.PROFILE.SECTION.WORK_EXPERIENCE;
+      case UserProfileItemEnum.Education:
+        return LOCALIZATION_KEYS.PROFILE.SECTION.EDUCATION;
+      case UserProfileItemEnum.Project:
+        return LOCALIZATION_KEYS.PROFILE.SECTION.PROJECTS;
+      case UserProfileItemEnum.Achievement:
+        return LOCALIZATION_KEYS.PROFILE.SECTION.ACHIEVEMENTS;
+      case UserProfileItemEnum.Certification:
+        return LOCALIZATION_KEYS.PROFILE.SECTION.CERTIFICATIONS;
+      default:
+        return '';
+    }
   }
 
   protected readonly LOCALIZATION_KEYS = LOCALIZATION_KEYS;

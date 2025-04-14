@@ -7,4 +7,5 @@ export const environment = {
   dictionaryApiUrl: 'https://localhost:7192',
   auditTrailApiUrl: 'https://localhost:7284',
   localizationApiUrl: 'https://localhost:7082',
+  profileApiUrl: 'https://localhost:7221',
 };

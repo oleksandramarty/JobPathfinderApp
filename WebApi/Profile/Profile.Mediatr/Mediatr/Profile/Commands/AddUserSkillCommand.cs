@@ -1,9 +1,10 @@
+using CommonModule.Shared.Responses.Base;
+using MediatR;
+
 namespace Profile.Mediatr.Mediatr.Profile.Commands;
 
-public class AddOrUpdateUserSkillCommand
+public class AddUserSkillCommand: IRequest<BaseBoolResponse>
 {
-    public Guid? Id { get; set; }
-    
     public int SkillId { get; set; }
     public int SkillLevelId { get; set; }
 }

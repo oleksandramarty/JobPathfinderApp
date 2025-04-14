@@ -907,6 +907,265 @@ export interface IBaseAmountRangeFilterRequest {
     amountTo?: number | undefined;
 }
 
+export class AddUserSkillCommand implements IAddUserSkillCommand {
+    skillId?: number;
+    skillLevelId?: number;
+
+    constructor(data?: IAddUserSkillCommand) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.skillId = _data["skillId"];
+            this.skillLevelId = _data["skillLevelId"];
+        }
+    }
+
+    static fromJS(data: any): AddUserSkillCommand {
+        data = typeof data === 'object' ? data : {};
+        let result = new AddUserSkillCommand();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["skillId"] = this.skillId;
+        data["skillLevelId"] = this.skillLevelId;
+        return data;
+    }
+}
+
+export interface IAddUserSkillCommand {
+    skillId?: number;
+    skillLevelId?: number;
+}
+
+export class AddUserLanguageCommand implements IAddUserLanguageCommand {
+    languageId?: number;
+    languageLevelId?: number;
+
+    constructor(data?: IAddUserLanguageCommand) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.languageId = _data["languageId"];
+            this.languageLevelId = _data["languageLevelId"];
+        }
+    }
+
+    static fromJS(data: any): AddUserLanguageCommand {
+        data = typeof data === 'object' ? data : {};
+        let result = new AddUserLanguageCommand();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["languageId"] = this.languageId;
+        data["languageLevelId"] = this.languageLevelId;
+        return data;
+    }
+}
+
+export interface IAddUserLanguageCommand {
+    languageId?: number;
+    languageLevelId?: number;
+}
+
+export class AddUserProfileItemCommand implements IAddUserProfileItemCommand {
+    profileItemType?: UserProfileItemEnum;
+    startDate?: Date;
+    endDate?: Date | undefined;
+    position?: string;
+    description?: string | undefined;
+    company?: string | undefined;
+    location?: string | undefined;
+    countryId?: number | undefined;
+    jobTypeId?: number | undefined;
+    workArrangementId?: number | undefined;
+
+    constructor(data?: IAddUserProfileItemCommand) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.profileItemType = _data["profileItemType"];
+            this.startDate = _data["startDate"] ? new Date(_data["startDate"].toString()) : <any>undefined;
+            this.endDate = _data["endDate"] ? new Date(_data["endDate"].toString()) : <any>undefined;
+            this.position = _data["position"];
+            this.description = _data["description"];
+            this.company = _data["company"];
+            this.location = _data["location"];
+            this.countryId = _data["countryId"];
+            this.jobTypeId = _data["jobTypeId"];
+            this.workArrangementId = _data["workArrangementId"];
+        }
+    }
+
+    static fromJS(data: any): AddUserProfileItemCommand {
+        data = typeof data === 'object' ? data : {};
+        let result = new AddUserProfileItemCommand();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["profileItemType"] = this.profileItemType;
+        data["startDate"] = this.startDate ? this.startDate.toISOString() : <any>undefined;
+        data["endDate"] = this.endDate ? this.endDate.toISOString() : <any>undefined;
+        data["position"] = this.position;
+        data["description"] = this.description;
+        data["company"] = this.company;
+        data["location"] = this.location;
+        data["countryId"] = this.countryId;
+        data["jobTypeId"] = this.jobTypeId;
+        data["workArrangementId"] = this.workArrangementId;
+        return data;
+    }
+}
+
+export interface IAddUserProfileItemCommand {
+    profileItemType?: UserProfileItemEnum;
+    startDate?: Date;
+    endDate?: Date | undefined;
+    position?: string;
+    description?: string | undefined;
+    company?: string | undefined;
+    location?: string | undefined;
+    countryId?: number | undefined;
+    jobTypeId?: number | undefined;
+    workArrangementId?: number | undefined;
+}
+
+export enum UserProfileItemEnum {
+    Experience = 1,
+    Achievement = 2,
+    Education = 3,
+    Project = 4,
+    Certification = 5,
+}
+
+export class UpdateUserSkillCommand extends AddUserSkillCommand implements IUpdateUserSkillCommand {
+    id?: string;
+
+    constructor(data?: IUpdateUserSkillCommand) {
+        super(data);
+    }
+
+    override init(_data?: any) {
+        super.init(_data);
+        if (_data) {
+            this.id = _data["id"];
+        }
+    }
+
+    static override fromJS(data: any): UpdateUserSkillCommand {
+        data = typeof data === 'object' ? data : {};
+        let result = new UpdateUserSkillCommand();
+        result.init(data);
+        return result;
+    }
+
+    override toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["id"] = this.id;
+        super.toJSON(data);
+        return data;
+    }
+}
+
+export interface IUpdateUserSkillCommand extends IAddUserSkillCommand {
+    id?: string;
+}
+
+export class UpdateUserLanguageCommand extends AddUserLanguageCommand implements IUpdateUserLanguageCommand {
+    id?: string;
+
+    constructor(data?: IUpdateUserLanguageCommand) {
+        super(data);
+    }
+
+    override init(_data?: any) {
+        super.init(_data);
+        if (_data) {
+            this.id = _data["id"];
+        }
+    }
+
+    static override fromJS(data: any): UpdateUserLanguageCommand {
+        data = typeof data === 'object' ? data : {};
+        let result = new UpdateUserLanguageCommand();
+        result.init(data);
+        return result;
+    }
+
+    override toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["id"] = this.id;
+        super.toJSON(data);
+        return data;
+    }
+}
+
+export interface IUpdateUserLanguageCommand extends IAddUserLanguageCommand {
+    id?: string;
+}
+
+export class UpdateUserProfileItemCommand extends AddUserProfileItemCommand implements IUpdateUserProfileItemCommand {
+    id?: string;
+
+    constructor(data?: IUpdateUserProfileItemCommand) {
+        super(data);
+    }
+
+    override init(_data?: any) {
+        super.init(_data);
+        if (_data) {
+            this.id = _data["id"];
+        }
+    }
+
+    static override fromJS(data: any): UpdateUserProfileItemCommand {
+        data = typeof data === 'object' ? data : {};
+        let result = new UpdateUserProfileItemCommand();
+        result.init(data);
+        return result;
+    }
+
+    override toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["id"] = this.id;
+        super.toJSON(data);
+        return data;
+    }
+}
+
+export interface IUpdateUserProfileItemCommand extends IAddUserProfileItemCommand {
+    id?: string;
+}
+
 export class SiteSettingsResponse implements ISiteSettingsResponse {
     version?: CacheVersionResponse | undefined;
 
@@ -1760,6 +2019,391 @@ export class SkillResponse extends BaseIdEntityOfInteger implements ISkillRespon
 export interface ISkillResponse extends IBaseIdEntityOfInteger {
     title?: string | undefined;
     status?: StatusEnum;
+}
+
+export class UserLanguageResponse extends BaseDateTimeEntityOfGuid implements IUserLanguageResponse {
+    userId?: string;
+    languageId?: number;
+    languageLevelId?: number;
+    userProfileItems?: UserProfileItemLanguageResponse[];
+    status?: StatusEnum;
+    version!: string;
+
+    constructor(data?: IUserLanguageResponse) {
+        super(data);
+    }
+
+    override init(_data?: any) {
+        super.init(_data);
+        if (_data) {
+            this.userId = _data["userId"];
+            this.languageId = _data["languageId"];
+            this.languageLevelId = _data["languageLevelId"];
+            if (Array.isArray(_data["userProfileItems"])) {
+                this.userProfileItems = [] as any;
+                for (let item of _data["userProfileItems"])
+                    this.userProfileItems!.push(UserProfileItemLanguageResponse.fromJS(item));
+            }
+            this.status = _data["status"];
+            this.version = _data["version"];
+        }
+    }
+
+    static override fromJS(data: any): UserLanguageResponse {
+        data = typeof data === 'object' ? data : {};
+        let result = new UserLanguageResponse();
+        result.init(data);
+        return result;
+    }
+
+    override toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["userId"] = this.userId;
+        data["languageId"] = this.languageId;
+        data["languageLevelId"] = this.languageLevelId;
+        if (Array.isArray(this.userProfileItems)) {
+            data["userProfileItems"] = [];
+            for (let item of this.userProfileItems)
+                data["userProfileItems"].push(item.toJSON());
+        }
+        data["status"] = this.status;
+        data["version"] = this.version;
+        super.toJSON(data);
+        return data;
+    }
+}
+
+export interface IUserLanguageResponse extends IBaseDateTimeEntityOfGuid {
+    userId?: string;
+    languageId?: number;
+    languageLevelId?: number;
+    userProfileItems?: UserProfileItemLanguageResponse[];
+    status?: StatusEnum;
+    version: string;
+}
+
+export class UserProfileItemLanguageResponse extends BaseIdEntityOfGuid implements IUserProfileItemLanguageResponse {
+    userSkillId?: string;
+    userLanguage?: UserLanguageResponse | undefined;
+    userProfileItemId?: string;
+    userProfileItem?: UserProfileItemResponse | undefined;
+
+    constructor(data?: IUserProfileItemLanguageResponse) {
+        super(data);
+    }
+
+    override init(_data?: any) {
+        super.init(_data);
+        if (_data) {
+            this.userSkillId = _data["userSkillId"];
+            this.userLanguage = _data["userLanguage"] ? UserLanguageResponse.fromJS(_data["userLanguage"]) : <any>undefined;
+            this.userProfileItemId = _data["userProfileItemId"];
+            this.userProfileItem = _data["userProfileItem"] ? UserProfileItemResponse.fromJS(_data["userProfileItem"]) : <any>undefined;
+        }
+    }
+
+    static override fromJS(data: any): UserProfileItemLanguageResponse {
+        data = typeof data === 'object' ? data : {};
+        let result = new UserProfileItemLanguageResponse();
+        result.init(data);
+        return result;
+    }
+
+    override toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["userSkillId"] = this.userSkillId;
+        data["userLanguage"] = this.userLanguage ? this.userLanguage.toJSON() : <any>undefined;
+        data["userProfileItemId"] = this.userProfileItemId;
+        data["userProfileItem"] = this.userProfileItem ? this.userProfileItem.toJSON() : <any>undefined;
+        super.toJSON(data);
+        return data;
+    }
+}
+
+export interface IUserProfileItemLanguageResponse extends IBaseIdEntityOfGuid {
+    userSkillId?: string;
+    userLanguage?: UserLanguageResponse | undefined;
+    userProfileItemId?: string;
+    userProfileItem?: UserProfileItemResponse | undefined;
+}
+
+export class UserProfileItemResponse extends BaseDateTimeEntityOfGuid implements IUserProfileItemResponse {
+    userId?: string;
+    profileItemType?: UserProfileItemEnum;
+    startDate?: Date;
+    endDate?: Date | undefined;
+    position!: string;
+    description?: string | undefined;
+    company?: string | undefined;
+    location?: string | undefined;
+    countryId?: number | undefined;
+    jobTypeId?: number | undefined;
+    workArrangementId?: number | undefined;
+    languages?: UserProfileItemLanguageResponse[];
+    skills?: UserProfileItemSkillResponse[];
+    status?: StatusEnum;
+    version!: string;
+
+    constructor(data?: IUserProfileItemResponse) {
+        super(data);
+    }
+
+    override init(_data?: any) {
+        super.init(_data);
+        if (_data) {
+            this.userId = _data["userId"];
+            this.profileItemType = _data["profileItemType"];
+            this.startDate = _data["startDate"] ? new Date(_data["startDate"].toString()) : <any>undefined;
+            this.endDate = _data["endDate"] ? new Date(_data["endDate"].toString()) : <any>undefined;
+            this.position = _data["position"];
+            this.description = _data["description"];
+            this.company = _data["company"];
+            this.location = _data["location"];
+            this.countryId = _data["countryId"];
+            this.jobTypeId = _data["jobTypeId"];
+            this.workArrangementId = _data["workArrangementId"];
+            if (Array.isArray(_data["languages"])) {
+                this.languages = [] as any;
+                for (let item of _data["languages"])
+                    this.languages!.push(UserProfileItemLanguageResponse.fromJS(item));
+            }
+            if (Array.isArray(_data["skills"])) {
+                this.skills = [] as any;
+                for (let item of _data["skills"])
+                    this.skills!.push(UserProfileItemSkillResponse.fromJS(item));
+            }
+            this.status = _data["status"];
+            this.version = _data["version"];
+        }
+    }
+
+    static override fromJS(data: any): UserProfileItemResponse {
+        data = typeof data === 'object' ? data : {};
+        let result = new UserProfileItemResponse();
+        result.init(data);
+        return result;
+    }
+
+    override toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["userId"] = this.userId;
+        data["profileItemType"] = this.profileItemType;
+        data["startDate"] = this.startDate ? this.startDate.toISOString() : <any>undefined;
+        data["endDate"] = this.endDate ? this.endDate.toISOString() : <any>undefined;
+        data["position"] = this.position;
+        data["description"] = this.description;
+        data["company"] = this.company;
+        data["location"] = this.location;
+        data["countryId"] = this.countryId;
+        data["jobTypeId"] = this.jobTypeId;
+        data["workArrangementId"] = this.workArrangementId;
+        if (Array.isArray(this.languages)) {
+            data["languages"] = [];
+            for (let item of this.languages)
+                data["languages"].push(item.toJSON());
+        }
+        if (Array.isArray(this.skills)) {
+            data["skills"] = [];
+            for (let item of this.skills)
+                data["skills"].push(item.toJSON());
+        }
+        data["status"] = this.status;
+        data["version"] = this.version;
+        super.toJSON(data);
+        return data;
+    }
+}
+
+export interface IUserProfileItemResponse extends IBaseDateTimeEntityOfGuid {
+    userId?: string;
+    profileItemType?: UserProfileItemEnum;
+    startDate?: Date;
+    endDate?: Date | undefined;
+    position: string;
+    description?: string | undefined;
+    company?: string | undefined;
+    location?: string | undefined;
+    countryId?: number | undefined;
+    jobTypeId?: number | undefined;
+    workArrangementId?: number | undefined;
+    languages?: UserProfileItemLanguageResponse[];
+    skills?: UserProfileItemSkillResponse[];
+    status?: StatusEnum;
+    version: string;
+}
+
+export class UserProfileItemSkillResponse extends BaseIdEntityOfGuid implements IUserProfileItemSkillResponse {
+    userSkillId?: string;
+    userSkill?: UserSkillResponse | undefined;
+    userProfileItemId?: string;
+    userProfileItem?: UserProfileItemResponse | undefined;
+
+    constructor(data?: IUserProfileItemSkillResponse) {
+        super(data);
+    }
+
+    override init(_data?: any) {
+        super.init(_data);
+        if (_data) {
+            this.userSkillId = _data["userSkillId"];
+            this.userSkill = _data["userSkill"] ? UserSkillResponse.fromJS(_data["userSkill"]) : <any>undefined;
+            this.userProfileItemId = _data["userProfileItemId"];
+            this.userProfileItem = _data["userProfileItem"] ? UserProfileItemResponse.fromJS(_data["userProfileItem"]) : <any>undefined;
+        }
+    }
+
+    static override fromJS(data: any): UserProfileItemSkillResponse {
+        data = typeof data === 'object' ? data : {};
+        let result = new UserProfileItemSkillResponse();
+        result.init(data);
+        return result;
+    }
+
+    override toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["userSkillId"] = this.userSkillId;
+        data["userSkill"] = this.userSkill ? this.userSkill.toJSON() : <any>undefined;
+        data["userProfileItemId"] = this.userProfileItemId;
+        data["userProfileItem"] = this.userProfileItem ? this.userProfileItem.toJSON() : <any>undefined;
+        super.toJSON(data);
+        return data;
+    }
+}
+
+export interface IUserProfileItemSkillResponse extends IBaseIdEntityOfGuid {
+    userSkillId?: string;
+    userSkill?: UserSkillResponse | undefined;
+    userProfileItemId?: string;
+    userProfileItem?: UserProfileItemResponse | undefined;
+}
+
+export class UserSkillResponse extends BaseDateTimeEntityOfGuid implements IUserSkillResponse {
+    userId?: string;
+    skillId?: number;
+    skillLevelId?: number;
+    userProfileItems?: UserProfileItemSkillResponse[];
+    status?: StatusEnum;
+    version!: string;
+
+    constructor(data?: IUserSkillResponse) {
+        super(data);
+    }
+
+    override init(_data?: any) {
+        super.init(_data);
+        if (_data) {
+            this.userId = _data["userId"];
+            this.skillId = _data["skillId"];
+            this.skillLevelId = _data["skillLevelId"];
+            if (Array.isArray(_data["userProfileItems"])) {
+                this.userProfileItems = [] as any;
+                for (let item of _data["userProfileItems"])
+                    this.userProfileItems!.push(UserProfileItemSkillResponse.fromJS(item));
+            }
+            this.status = _data["status"];
+            this.version = _data["version"];
+        }
+    }
+
+    static override fromJS(data: any): UserSkillResponse {
+        data = typeof data === 'object' ? data : {};
+        let result = new UserSkillResponse();
+        result.init(data);
+        return result;
+    }
+
+    override toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["userId"] = this.userId;
+        data["skillId"] = this.skillId;
+        data["skillLevelId"] = this.skillLevelId;
+        if (Array.isArray(this.userProfileItems)) {
+            data["userProfileItems"] = [];
+            for (let item of this.userProfileItems)
+                data["userProfileItems"].push(item.toJSON());
+        }
+        data["status"] = this.status;
+        data["version"] = this.version;
+        super.toJSON(data);
+        return data;
+    }
+}
+
+export interface IUserSkillResponse extends IBaseDateTimeEntityOfGuid {
+    userId?: string;
+    skillId?: number;
+    skillLevelId?: number;
+    userProfileItems?: UserProfileItemSkillResponse[];
+    status?: StatusEnum;
+    version: string;
+}
+
+export class UserProfileResponse implements IUserProfileResponse {
+    skills?: UserSkillResponse[];
+    languages?: UserLanguageResponse[];
+    items?: UserProfileItemResponse[];
+
+    constructor(data?: IUserProfileResponse) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            if (Array.isArray(_data["skills"])) {
+                this.skills = [] as any;
+                for (let item of _data["skills"])
+                    this.skills!.push(UserSkillResponse.fromJS(item));
+            }
+            if (Array.isArray(_data["languages"])) {
+                this.languages = [] as any;
+                for (let item of _data["languages"])
+                    this.languages!.push(UserLanguageResponse.fromJS(item));
+            }
+            if (Array.isArray(_data["items"])) {
+                this.items = [] as any;
+                for (let item of _data["items"])
+                    this.items!.push(UserProfileItemResponse.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): UserProfileResponse {
+        data = typeof data === 'object' ? data : {};
+        let result = new UserProfileResponse();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (Array.isArray(this.skills)) {
+            data["skills"] = [];
+            for (let item of this.skills)
+                data["skills"].push(item.toJSON());
+        }
+        if (Array.isArray(this.languages)) {
+            data["languages"] = [];
+            for (let item of this.languages)
+                data["languages"].push(item.toJSON());
+        }
+        if (Array.isArray(this.items)) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        return data;
+    }
+}
+
+export interface IUserProfileResponse {
+    skills?: UserSkillResponse[];
+    languages?: UserLanguageResponse[];
+    items?: UserProfileItemResponse[];
 }
 
 export class VersionedListResponseOfCurrencyResponse extends BaseVersionEntity implements IVersionedListResponseOfCurrencyResponse {

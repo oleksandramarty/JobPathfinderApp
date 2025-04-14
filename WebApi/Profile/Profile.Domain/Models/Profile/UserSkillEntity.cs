@@ -6,7 +6,7 @@ using CommonModule.Shared.Enums;
 
 namespace Profile.Domain.Models.Profile;
 
-public class UserSkillEntity: BaseDateTimeEntity<Guid>, IStatusEntity, IBaseVersionEntity
+public class UserSkillEntity: BaseDateTimeEntity<Guid>, IStatusEntity, IBaseVersionEntity, IUserIdEntity
 {
     public Guid UserId { get; set; }
     public int SkillId { get; set; }

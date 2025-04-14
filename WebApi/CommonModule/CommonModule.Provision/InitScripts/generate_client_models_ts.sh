@@ -102,6 +102,15 @@ EOL
       "LocalizationsResponse"
       "SiteSettingsResponse"
       "UserResponse"
+      "UpdateProfileCommand"
+      "BaseBoolResponse"
+      "UserProfileResponse"
+      "AddUserSkillCommand"
+      "AddUserLanguageCommand"
+      "AddUserProfileItemCommand"
+      "UpdateUserSkillCommand"
+      "UpdateUserLanguageCommand"
+      "UpdateUserProfileItemCommand"
     )
 
     # Detect used classes

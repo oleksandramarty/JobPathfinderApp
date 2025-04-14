@@ -1,11 +1,11 @@
 using CommonModule.Shared.Enums.Users;
+using CommonModule.Shared.Responses.Base;
+using MediatR;
 
 namespace Profile.Mediatr.Mediatr.Profile.Commands;
 
-public class AddOrUpdateUserProfileItemCommand
+public class AddUserProfileItemCommand: IRequest<BaseBoolResponse>
 {
-    public Guid? Id { get; set; }
-    
     public UserProfileItemEnum ProfileItemType { get; set; }
     
     public DateTime StartDate { get; set; }
