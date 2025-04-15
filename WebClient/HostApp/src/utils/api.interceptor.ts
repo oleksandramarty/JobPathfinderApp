@@ -7,7 +7,7 @@ import { clearLocalStorageAndRefresh, getLocalStorageItem } from '@amarty/utils'
 import { JwtTokenResponse } from '@amarty/models';
 import { environment } from './environments/environment';
 import { auth_clearAll } from '@amarty/store';
-import {profile_clearAll} from '@amarty/store';
+import { profile_clearAll } from '@amarty/store';
 
 @Injectable()
 export class BaseUrlInterceptor implements HttpInterceptor {

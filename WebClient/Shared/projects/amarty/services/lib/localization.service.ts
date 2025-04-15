@@ -14,7 +14,7 @@ import {
   localization_de,
   LOCALIZATION_KEYS
 } from '@amarty/localizations';
-import {getLocalStorageItem, handleGraphQlError, setLocalStorageItem} from '@amarty/utils';
+import { getLocalStorageItem, handleGraphQlError, setLocalStorageItem } from '@amarty/utils';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { LocaleData } from '@amarty/dictionaries';
 

@@ -1,6 +1,6 @@
 import { UserResponse } from '@amarty/models';
 import { BaseUnsubscribeComponent } from '@amarty/common';
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserPreferencesDialogComponent } from '../../dialogs/user-preferences-dialog/user-preferences-dialog.component';
 import { CommonDialogService } from '@amarty/services';

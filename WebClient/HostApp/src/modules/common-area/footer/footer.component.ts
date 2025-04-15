@@ -16,7 +16,7 @@ import { AuthService } from '../../../utils/services/auth.service';
 import { CommonModule } from '@angular/common';
 import { TranslationPipe } from '@amarty/pipes';
 import { LOCALIZATION_KEYS } from '@amarty/localizations';
-import {profile_clearAll} from '@amarty/store';
+import { profile_clearAll } from '@amarty/store';
 
 @Component({
   selector: 'app-footer',

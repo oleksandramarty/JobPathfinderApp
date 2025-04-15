@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { forkJoin, takeUntil, tap} from 'rxjs';
+import { forkJoin, takeUntil, tap } from 'rxjs';
 import { BaseUnsubscribeComponent } from '@amarty/common';
 import {
   UserProfileItemEnum,
@@ -13,8 +13,8 @@ import { ProfileSkillsComponent } from './profile-skills/profile-skills.componen
 import { ProfileLanguagesComponent } from './profile-languages/profile-languages.component';
 import { ProfileItemComponent } from './profile-item/profile-item.component';
 import { LOCALIZATION_KEYS } from '@amarty/localizations';
-import {Store} from '@ngrx/store';
-import {selectProfile, selectUser} from '@amarty/store';
+import { Store } from '@ngrx/store';
+import { selectProfile, selectUser } from '@amarty/store';
 
 @Component({
   selector: 'app-profile-area',
@@ -51,13 +51,13 @@ export class ProfileAreaComponent extends BaseUnsubscribeComponent {
       this.store.select(selectUser),
       this.store.select(selectProfile)
     ]).pipe(
-        takeUntil(this.ngUnsubscribe),
-        tap(data => {
-          this.currentUser = data[0];
-          this.userProfile = data[1];
-          this.countryCode = this.dictionaryService.countryData?.find(item => item.id === this.currentUser?.userSetting?.countryId)?.code?.toLowerCase();
-        })
-      )
+      takeUntil(this.ngUnsubscribe),
+      tap(data => {
+        this.currentUser = data[0];
+        this.userProfile = data[1];
+        this.countryCode = this.dictionaryService.countryData?.find(item => item.id === this.currentUser?.userSetting?.countryId)?.code?.toLowerCase();
+      })
+    )
       .subscribe();
 
     super.ngOnInit();

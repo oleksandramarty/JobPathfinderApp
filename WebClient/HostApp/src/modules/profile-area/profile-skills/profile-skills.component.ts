@@ -1,11 +1,11 @@
-import {Component, Input} from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ProfileSkillsDialogComponent } from '../../dialogs/profile-skills-dialog/profile-skills-dialog.component';
 import { UserSkillResponse } from '@amarty/models';
 import { CommonDialogService, DictionaryService } from '@amarty/services';
 import { CommonModule } from '@angular/common';
 import { TranslationPipe } from '@amarty/pipes';
 import { LOCALIZATION_KEYS } from '@amarty/localizations';
-import {BaseUnsubscribeComponent} from '@amarty/common';
+import { BaseUnsubscribeComponent } from '@amarty/common';
 
 @Component({
   selector: 'app-profile-skills',

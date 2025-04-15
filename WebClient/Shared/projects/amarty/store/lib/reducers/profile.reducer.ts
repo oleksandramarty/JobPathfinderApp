@@ -1,6 +1,6 @@
 import { UserProfileResponse } from '@amarty/models';
 import { createReducer, on } from '@ngrx/store';
-import {profile_clearAll, profile_clearProfile, profile_setProfile} from '../actions/profile.action';
+import { profile_clearAll, profile_clearProfile, profile_setProfile } from '../actions/profile.action';
 
 export interface IProfileState {
   profile: UserProfileResponse | undefined;

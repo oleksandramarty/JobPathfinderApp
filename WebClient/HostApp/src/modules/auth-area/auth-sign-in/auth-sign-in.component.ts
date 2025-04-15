@@ -3,19 +3,18 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { Router, RouterLink } from '@angular/router';
-import {interval, takeUntil, tap, finalize, catchError, throwError, switchMap} from 'rxjs';
-import {GenericConfirmationMessageDialogComponent, GenericFormRendererComponent} from '@amarty/components';
+import { interval, takeUntil, tap, finalize, catchError, throwError } from 'rxjs';
+import { GenericConfirmationMessageDialogComponent, GenericFormRendererComponent } from '@amarty/components';
 import { fadeInOut } from '@amarty/animations';
 import { generateRandomId } from '@amarty/utils';
-import {CommonDialogService, LoaderService, LocalizationService} from '@amarty/services';
+import { CommonDialogService, LoaderService, LocalizationService } from '@amarty/services';
 import { TranslationPipe } from '@amarty/pipes';
 import { BaseUnsubscribeComponent } from '@amarty/common';
-import {InputForm, JwtTokenResponse} from '@amarty/models';
+import { InputForm, JwtTokenResponse } from '@amarty/models';
 import { AuthService } from '../../../utils/services/auth.service';
 import { AuthFormFactory } from '../utils/form-renderer/auth-form.factory';
 import { LOCALIZATION_KEYS } from '@amarty/localizations';
-import {ProfileItemDialogComponent} from '../../dialogs/profile-item-dialog/profile-item-dialog.component';
-import {GraphQlAuthService} from '../utils/graph-ql/services/graph-ql-auth.service';
+import { GraphQlAuthService } from '../utils/graph-ql/services/graph-ql-auth.service';
 
 @Component({
   selector: 'app-auth-sign-in',
@@ -101,7 +100,7 @@ export class AuthSignInComponent extends BaseUnsubscribeComponent {
           this.loaderService.isBusy = false;
         })
       ).subscribe();
-    }
+    };
 
     this.dialogService.showDialog<GenericConfirmationMessageDialogComponent, boolean>(
       GenericConfirmationMessageDialogComponent,

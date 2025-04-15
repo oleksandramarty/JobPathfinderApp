@@ -10,9 +10,8 @@ import { SafeHtml } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { TranslationPipe } from '@amarty/pipes';
 import { ProfileItemDialogComponent } from '../../dialogs/profile-item-dialog/profile-item-dialog.component';
-import { generateGuid } from '@amarty/utils';
 import { LOCALIZATION_KEYS } from '@amarty/localizations';
-import {BaseUnsubscribeComponent} from '@amarty/common';
+import { BaseUnsubscribeComponent } from '@amarty/common';
 
 @Component({
   selector: 'app-profile-item',
@@ -79,18 +78,18 @@ export class ProfileItemComponent extends BaseUnsubscribeComponent {
 
   private _itemTypeTitle(itemType: UserProfileItemEnum | undefined): string {
     switch (itemType) {
-      case UserProfileItemEnum.Experience:
-        return LOCALIZATION_KEYS.PROFILE.SECTION.WORK_EXPERIENCE;
-      case UserProfileItemEnum.Education:
-        return LOCALIZATION_KEYS.PROFILE.SECTION.EDUCATION;
-      case UserProfileItemEnum.Project:
-        return LOCALIZATION_KEYS.PROFILE.SECTION.PROJECTS;
-      case UserProfileItemEnum.Achievement:
-        return LOCALIZATION_KEYS.PROFILE.SECTION.ACHIEVEMENTS;
-      case UserProfileItemEnum.Certification:
-        return LOCALIZATION_KEYS.PROFILE.SECTION.CERTIFICATIONS;
-      default:
-        return '';
+    case UserProfileItemEnum.Experience:
+      return LOCALIZATION_KEYS.PROFILE.SECTION.WORK_EXPERIENCE;
+    case UserProfileItemEnum.Education:
+      return LOCALIZATION_KEYS.PROFILE.SECTION.EDUCATION;
+    case UserProfileItemEnum.Project:
+      return LOCALIZATION_KEYS.PROFILE.SECTION.PROJECTS;
+    case UserProfileItemEnum.Achievement:
+      return LOCALIZATION_KEYS.PROFILE.SECTION.ACHIEVEMENTS;
+    case UserProfileItemEnum.Certification:
+      return LOCALIZATION_KEYS.PROFILE.SECTION.CERTIFICATIONS;
+    default:
+      return '';
     }
   }
 

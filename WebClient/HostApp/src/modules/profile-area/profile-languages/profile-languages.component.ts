@@ -1,12 +1,12 @@
-import {Component, Input} from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ProfileLanguagesDialogComponent } from '../../dialogs/profile-languages-dialog/profile-languages-dialog.component';
-import {UserLanguageResponse} from '@amarty/models';
+import { UserLanguageResponse } from '@amarty/models';
 import { CommonDialogService, DictionaryService } from '@amarty/services';
 import { SafeHtml } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { TranslationPipe } from '@amarty/pipes';
 import { LOCALIZATION_KEYS } from '@amarty/localizations';
-import {BaseUnsubscribeComponent} from '@amarty/common';
+import { BaseUnsubscribeComponent } from '@amarty/common';
 
 @Component({
   selector: 'app-profile-languages',
