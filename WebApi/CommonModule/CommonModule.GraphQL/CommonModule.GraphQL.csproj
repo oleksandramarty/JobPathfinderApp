@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="MediatR" Version="12.4.1"/>
+        <PackageReference Include="GraphQL" Version="8.1.0" />
+        <PackageReference Include="GraphQL.MicrosoftDI" Version="8.1.0" />
+        <PackageReference Include="GraphQL.Server.Transports.AspNetCore" Version="8.0.3" />
+        <PackageReference Include="GraphQL.Server.Transports.WebSockets" Version="4.4.1" />
+        <PackageReference Include="GraphQL.Server.Ui.Playground" Version="8.0.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Types\Responses\Dictionaries\Models\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\AuthGateway\AuthGateway.Mediatr\AuthGateway.Mediatr.csproj" />
+      <ProjectReference Include="..\..\Dictionaries\Dictionaries.Mediatr\Dictionaries.Mediatr.csproj" />
+      <ProjectReference Include="..\CommonModule.Core\CommonModule.Core.csproj" />
+      <ProjectReference Include="..\CommonModule.Shared\CommonModule.Shared.csproj" />
+    </ItemGroup>
+
+</Project>

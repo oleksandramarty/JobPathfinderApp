@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.AspNetCore.Authentication.BearerToken;
+using GraphQL;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -259,5 +259,20 @@ public static class WebAppExtension
 
     #endregion
     
-    
+    #region GraphQL
+
+    public static void AddGraphQl(this WebApplicationBuilder builder)
+    {
+        builder.Services.AddGraphQL(options =>
+            options.ConfigureExecution((opt, next) =>
+                {
+                    opt.EnableMetrics = true;
+                    opt.ThrowOnUnhandledException = true;
+                    return next(opt);
+                })
+                .AddSystemTextJson()
+        );
+    }
+
+    #endregion
 }
