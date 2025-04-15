@@ -2,42 +2,24 @@
   <div class="card__header">
     <h3 class="card__header-title">{{ LOCALIZATION_KEYS.COMMON.SKILLS | translation }}</h3>
     <div class="card__header__buttons">
-      @if(!isEmptySection) {
-        <div class="button__icon" (click)="isEditMode = !isEditMode" [class.muted]="!isEditMode">
-          <i class="fa-solid fa-pencil"></i>
-        </div>
-      }
-      <div class="button__icon" (click)="openItemDialog(true, undefined)">
+      <div class="button__icon" (click)="openItemDialog()">
         <i class="fa-solid fa-plus"></i>
       </div>
     </div>
   </div>
   <div class="badges">
-    @if (itemsToAdd) {
-      @for(skill of itemsToAdd; track $index) {
-        <div class="badge">
-          {{ getItemTitle(skill) }}
-          @if(isEditMode) {
-            <i class="fa-solid fa-pencil" (click)="openItemDialog(true, skill.id)"></i>
-            <i class="fa-solid fa-xmark" (click)="removeItem(true, skill.id!)"></i>
-          }
-        </div>
-      }
-    }
-    @if (!!existingItems) {
-      @for(skill of existingItems; track $index) {
-        <div class="badge">
-          {{ getItemTitle(skill) }}
-          <i class="fa-solid fa-pencil" (click)="openItemDialog(false, skill.id)"></i>
-          <i class="fa-solid fa-xmark" (click)="removeItem(false, skill.id!)"></i>
-        </div>
-      }
-    }
-
     @if (isEmptySection) {
       <div class="section__empty">
         <p>{{ LOCALIZATION_KEYS.COMMON.EMPTY_SECTION | translation }}</p>
       </div>
+    } @else {
+      @for(skill of existingItems; track $index) {
+        <div class="badge">
+          {{ getItemTitle(skill) }}
+          <i class="fa-solid fa-pencil" (click)="openItemDialog(skill.id)"></i>
+          <i class="fa-solid fa-xmark" (click)="removeItem(skill.id!)"></i>
+        </div>
+      }
     }
   </div>
 </div>

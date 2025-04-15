@@ -1,12 +1,11 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import { ProfileSkillsDialogComponent } from '../../dialogs/profile-skills-dialog/profile-skills-dialog.component';
 import { UserSkillResponse } from '@amarty/models';
 import { CommonDialogService, DictionaryService } from '@amarty/services';
 import { CommonModule } from '@angular/common';
 import { TranslationPipe } from '@amarty/pipes';
-import { BaseProfileSectionComponent } from '../base-profile-section.component';
-import { generateGuid } from '@amarty/utils';
 import { LOCALIZATION_KEYS } from '@amarty/localizations';
+import {BaseUnsubscribeComponent} from '@amarty/common';
 
 @Component({
   selector: 'app-profile-skills',
@@ -18,7 +17,9 @@ import { LOCALIZATION_KEYS } from '@amarty/localizations';
   templateUrl: './profile-skills.component.html',
   styleUrl: '../profile-area.component.scss'
 })
-export class ProfileSkillsComponent extends BaseProfileSectionComponent<UserSkillResponse, string> {
+export class ProfileSkillsComponent extends BaseUnsubscribeComponent{
+  @Input() existingItems: UserSkillResponse[] | undefined;
+
   constructor(
     private readonly dialogService: CommonDialogService,
     private readonly dictionaryService: DictionaryService
@@ -26,29 +27,27 @@ export class ProfileSkillsComponent extends BaseProfileSectionComponent<UserSkil
     super();
   }
 
-  protected override getItemTitle(skill: UserSkillResponse | undefined): string {
+  get isEmptySection(): boolean {
+    return !this.existingItems?.length;
+  }
+
+  public getItemTitle(skill: UserSkillResponse | undefined): string {
     return this.dictionaryService.getSkillTitle(skill);
   }
 
-  protected override getExistingIds(): string[] {
-    return Array.from(new Set([
-      ...(this.existingItems?.map(item => item.skillId) ?? []),
-      ...(this.itemsToAdd?.map(item => item.skillId) ?? [])
-    ].filter(id => !!id))).map(item => String(item));;
-  }
-
-  protected override openItemDialog(isNew: boolean, skillId?: string): void {
-    const executableAction = this.openDialogExecutableAction(isNew, isNew && !skillId ? generateGuid() : skillId!);
-
+  public openItemDialog(id?: string): void {
     this.dialogService.showDialog<ProfileSkillsDialogComponent, UserSkillResponse>(
       ProfileSkillsDialogComponent,
       {
-        data: { skill: this.findItem(isNew, skillId), existingIds: this.getExistingIds() },
+        data: { skill: this.existingItems?.find(item => item.id == id) },
         width: '400px',
         maxWidth: '90vw',
-      },
-      executableAction
+      }
     );
+  }
+
+  public removeItem(id: string): void {
+    console.log('removeItem', id);
   }
 
   protected readonly LOCALIZATION_KEYS = LOCALIZATION_KEYS;

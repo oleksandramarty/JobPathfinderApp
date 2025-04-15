@@ -26,8 +26,7 @@ import {BaseUnsubscribeComponent} from '@amarty/common';
 })
 export class ProfileItemComponent extends BaseUnsubscribeComponent {
   @Input() itemType: UserProfileItemEnum | undefined;
-
-  public profileItems: UserProfileItemResponse[] | undefined;
+  @Input() existingItems: UserProfileItemResponse[] | undefined;
 
   public title: string | undefined;
 
@@ -38,12 +37,12 @@ export class ProfileItemComponent extends BaseUnsubscribeComponent {
     super();
   }
 
-  override get isEmptySection(): boolean {
+  get isEmptySection(): boolean {
     return !this.existingItems?.some(item => item.profileItemType === this.itemType);
   }
 
   override ngOnInit() {
-    this.title = itemTypeTitle(this.itemType);
+    this.title = this._itemTypeTitle(this.itemType);
     super.ngOnInit();
   }
 
@@ -55,29 +54,27 @@ export class ProfileItemComponent extends BaseUnsubscribeComponent {
     return this.dictionaryService.getLanguageTitle(language);
   }
 
-  protected override getItemTitle(skill: UserSkillResponse | undefined): string {
+  public getItemTitle(skill: UserSkillResponse | undefined): string {
     return this.dictionaryService.getSkillTitle(skill);
   }
 
-  protected override getExistingIds(): string[] {
-    return Array.from(new Set([
-      ...(this.existingItems?.map(item => item.id) ?? []),
-      ...(this.itemsToAdd?.map(item => item.id) ?? [])
-    ].filter(id => !!id))).map(item => String(item));
-  }
-
-  protected override openItemDialog(isNew: boolean, itemId?: string): void {
-    const executableAction = this.openDialogExecutableAction(isNew, isNew && !itemId ? generateGuid() : itemId!);
-
+  public openItemDialog(itemId?: string): void {
     this.dialogService.showDialog<ProfileItemDialogComponent, UserProfileItemResponse>(
       ProfileItemDialogComponent,
       {
-        data: { profileItem: this.findItem(isNew, itemId), profileItemType: this.itemType },
+        data: {
+          profileItem: this.existingItems?.find(item => item.id === itemId),
+          profileItemType: this.itemType,
+          title: this.title,
+        },
         width: '600px',
         maxWidth: '90vw',
-      },
-      executableAction
+      }
     );
+  }
+
+  public removeItem(id: string): void {
+    console.log('removeItem', id);
   }
 
   private _itemTypeTitle(itemType: UserProfileItemEnum | undefined): string {

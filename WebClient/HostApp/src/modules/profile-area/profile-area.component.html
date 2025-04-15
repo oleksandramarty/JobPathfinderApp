@@ -5,69 +5,34 @@
   ></app-profile-info>
 
   <app-profile-item
-    [itemsToAdd]="experienceToAdd"
-    [itemIdsToRemove]="experienceToRemove"
-    [existingItems]="currentUser?.profileItems"
-    [itemsIdsToUpdate]="experienceToUpdate"
+    [existingItems]="userProfile?.items"
     [itemType]="profileItemEnum.Experience"
   ></app-profile-item>
   <app-profile-item
-    [itemsToAdd]="educationToAdd"
-    [itemIdsToRemove]="educationToRemove"
-    [existingItems]="currentUser?.profileItems"
-    [itemsIdsToUpdate]="educationToUpdate"
+    [existingItems]="userProfile?.items"
     [itemType]="profileItemEnum.Education"
   ></app-profile-item>
 
   <div class="grid-2fr grid-gap">
     <app-profile-skills
-      [itemsToAdd]="skillsToAdd"
-      [itemIdsToRemove]="skillsToRemove"
-      [existingItems]="currentUser?.skills"
-      [itemsIdsToUpdate]="skillsToUpdate"
+      [existingItems]="userProfile?.skills"
     ></app-profile-skills>
     <app-profile-languages
-      [itemsToAdd]="languagesToAdd"
-      [itemIdsToRemove]="languagesToRemove"
-      [existingItems]="currentUser?.languages"
-      [itemsIdsToUpdate]="languagesToUpdate"
+      [existingItems]="userProfile?.languages"
     ></app-profile-languages>
 
     <app-profile-item
-      [itemsToAdd]="certificationToAdd"
-      [itemIdsToRemove]="certificationToRemove"
-      [existingItems]="currentUser?.profileItems"
-      [itemsIdsToUpdate]="certificationToUpdate"
+      [existingItems]="userProfile?.items"
       [itemType]="profileItemEnum.Certification"
     ></app-profile-item>
     <app-profile-item
-      [itemsToAdd]="achievementToAdd"
-      [itemIdsToRemove]="achievementToRemove"
-      [existingItems]="currentUser?.profileItems"
-      [itemsIdsToUpdate]="achievementToUpdate"
+      [existingItems]="userProfile?.items"
       [itemType]="profileItemEnum.Achievement"
     ></app-profile-item>
   </div>
 
   <app-profile-item
-    [itemsToAdd]="projectToAdd"
-    [itemIdsToRemove]="projectToRemove"
-    [existingItems]="currentUser?.profileItems"
-    [itemsIdsToUpdate]="projectToUpdate"
+    [existingItems]="userProfile?.items"
     [itemType]="profileItemEnum.Project"
   ></app-profile-item>
-
-  <div class="container__box__footer">
-    <div class="container__box__footer-item">
-    </div>
-    <div class="container__box__footer-item">
-      <button
-        class="button button__filled__submit"
-        [disabled]="!isInfoChanged"
-        (click)="updateProfile()"
-      >
-        {{ LOCALIZATION_KEYS.COMMON.BUTTON.UPDATE | translation }}
-      </button>
-    </div>
-  </div>
 </div>

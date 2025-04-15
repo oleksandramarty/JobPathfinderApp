@@ -13,7 +13,6 @@ import { ProfileSkillsComponent } from './profile-skills/profile-skills.componen
 import { ProfileLanguagesComponent } from './profile-languages/profile-languages.component';
 import { ProfileItemComponent } from './profile-item/profile-item.component';
 import { LOCALIZATION_KEYS } from '@amarty/localizations';
-import {TranslationPipe} from '@amarty/pipes';
 import {Store} from '@ngrx/store';
 import {selectProfile, selectUser} from '@amarty/store';
 
@@ -25,9 +24,7 @@ import {selectProfile, selectUser} from '@amarty/store';
     ProfileInfoComponent,
     ProfileSkillsComponent,
     ProfileLanguagesComponent,
-    ProfileItemComponent,
-
-    TranslationPipe
+    ProfileItemComponent
   ],
   standalone: true,
   templateUrl: './profile-area.component.html',
