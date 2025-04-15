@@ -11,7 +11,7 @@ import { DictionaryService } from '@amarty/services';
 import { BaseUnsubscribeComponent } from '@amarty/common';
 import { GenericFormRendererComponent } from '@amarty/components';
 import { TranslationPipe } from '@amarty/pipes';
-import { ProfileFormFactory } from '../../../utils/profile-form.factory';
+import { ProfileFormFactory } from '../../profile-area/utils/form-renderer/profile-form.factory';
 import { LOCALIZATION_KEYS } from '@amarty/localizations';
 
 @Component({

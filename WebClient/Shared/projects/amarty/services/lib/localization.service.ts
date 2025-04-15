@@ -14,7 +14,7 @@ import {
   localization_de,
   LOCALIZATION_KEYS
 } from '@amarty/localizations';
-import { getLocalStorageItem, setLocalStorageItem } from '@amarty/utils';
+import {getLocalStorageItem, handleGraphQlError, setLocalStorageItem} from '@amarty/utils';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { LocaleData } from '@amarty/dictionaries';
 
@@ -162,16 +162,7 @@ export class LocalizationService {
   }
 
   public handleApiError(error: any): void {
-    let errorMessage = LOCALIZATION_KEYS.ERROR.INTERNAL_SERVER_ERROR;
-    if (error.error) {
-      errorMessage = error.error.message;
-    } else if (error.message) {
-      errorMessage = error.message;
-    } else if (error.statusText) {
-      errorMessage = error.statusText;
-    }
-
-    this.showError(errorMessage);
+    this.showError(handleGraphQlError(error, LOCALIZATION_KEYS.ERROR.INTERNAL_SERVER_ERROR));
   }
 
   public showInfo(translationKey: string, action: string = 'Close'): void {

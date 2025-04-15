@@ -18,7 +18,7 @@ import { HeaderComponent } from '../../common-area/header/header.component';
 import { FooterComponent } from '../../common-area/footer/footer.component';
 import { SpinnerComponent } from '../../common-area/spinner/spinner.component';
 import {SiteSettingsResponse, UserProfileResponse, UserResponse} from '@amarty/models';
-import {profile_setProfile} from '@amarty/store/lib/actions/profile.action';
+import {profile_setProfile} from '@amarty/store';
 
 @Component({
   selector: 'app-root',

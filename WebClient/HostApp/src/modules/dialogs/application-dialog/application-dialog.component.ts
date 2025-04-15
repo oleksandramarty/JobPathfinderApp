@@ -12,7 +12,7 @@ import { selectUser } from '@amarty/store';
 import { InputForm, UserResponse } from '@amarty/models';
 import { GenericFormRendererComponent, GenericInputComponent } from '@amarty/components';
 import { LOCALIZATION_KEYS } from '@amarty/localizations';
-import { ApplicationFormFactory } from '../../../utils/application-form.factory';
+import { ApplicationFormFactory } from '../../landing-area/utils/form-renderer/application-form.factory';
 
 @Component({
   selector: 'app-application-dialog',

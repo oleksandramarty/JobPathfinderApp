@@ -3,18 +3,19 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { Router, RouterLink } from '@angular/router';
-import { interval, takeUntil, tap, finalize, catchError, throwError } from 'rxjs';
-import { GenericFormRendererComponent } from '@amarty/components';
+import {interval, takeUntil, tap, finalize, catchError, throwError, switchMap} from 'rxjs';
+import {GenericConfirmationMessageDialogComponent, GenericFormRendererComponent} from '@amarty/components';
 import { fadeInOut } from '@amarty/animations';
 import { generateRandomId } from '@amarty/utils';
-import { UserApiClient } from '@amarty/api';
-import { LoaderService, LocalizationService } from '@amarty/services';
+import {CommonDialogService, LoaderService, LocalizationService} from '@amarty/services';
 import { TranslationPipe } from '@amarty/pipes';
 import { BaseUnsubscribeComponent } from '@amarty/common';
-import { AuthSignInRequest, InputForm, JwtTokenResponse } from '@amarty/models';
+import {InputForm, JwtTokenResponse} from '@amarty/models';
 import { AuthService } from '../../../utils/services/auth.service';
-import { AuthFormFactory } from '../../../utils/auth-form.factory';
+import { AuthFormFactory } from '../utils/form-renderer/auth-form.factory';
 import { LOCALIZATION_KEYS } from '@amarty/localizations';
+import {ProfileItemDialogComponent} from '../../dialogs/profile-item-dialog/profile-item-dialog.component';
+import {GraphQlAuthService} from '../utils/graph-ql/services/graph-ql-auth.service';
 
 @Component({
   selector: 'app-auth-sign-in',
@@ -45,11 +46,12 @@ export class AuthSignInComponent extends BaseUnsubscribeComponent {
   public showLang: boolean = true;
 
   constructor(
-    private readonly authService: AuthService,
     private readonly snackBar: MatSnackBar,
-    private readonly userApiClient: UserApiClient,
+    private readonly authService: AuthService,
+    private readonly dialogService: CommonDialogService,
     private readonly loaderService: LoaderService,
     private readonly localizationService: LocalizationService,
+    private readonly graphQlAuthService: GraphQlAuthService,
     private readonly router: Router,
   ) {
     super();
@@ -77,28 +79,47 @@ export class AuthSignInComponent extends BaseUnsubscribeComponent {
       return;
     }
 
-    this.loaderService.isBusy = true;
+    const loginActon = () => {
+      this.loaderService.isBusy = true;
 
-    this.userApiClient.auth_SignIn(new AuthSignInRequest({
-      login: this.renderForm.inputFormGroup?.value.loginEmail,
-      password: this.renderForm.inputFormGroup?.value.password,
-      rememberMe: this.renderForm.inputFormGroup?.value.rememberMe
-    })).pipe(
-      takeUntil(this.ngUnsubscribe),
-      tap((token: JwtTokenResponse | undefined) => {
-        if (!!token) {
+      this.graphQlAuthService.signIn(
+        this.renderForm.inputFormGroup?.value.loginEmail,
+        this.renderForm.inputFormGroup?.value.password,
+        this.renderForm.inputFormGroup?.value.rememberMe).pipe(
+        takeUntil(this.ngUnsubscribe),
+        tap((result) => {
+          const token = result?.data?.auth_gateway_sign_in as JwtTokenResponse;
           this.authService.updateToken(token);
           this.router.navigate(['/home']);
+          this.loaderService.isBusy = false;
+        }),
+        catchError((error: any) => {
+          this.localizationService.handleApiError(error);
+          return throwError(() => error);
+        }),
+        finalize(() => {
+          this.loaderService.isBusy = false;
+        })
+      ).subscribe();
+    }
+
+    this.dialogService.showDialog<GenericConfirmationMessageDialogComponent, boolean>(
+      GenericConfirmationMessageDialogComponent,
+      {
+        width: '400px',
+        maxWidth: '80vw',
+        data: {
+          yesBtn: LOCALIZATION_KEYS.COMMON.BUTTON.PROCEED,
+          noBtn: LOCALIZATION_KEYS.COMMON.BUTTON.CANCEL,
+          title: LOCALIZATION_KEYS.AUTH.SIGN_IN.SIGN_IN,
+          htmlBlock: `
+        <h2 style="color: #dc3545; text-align: center;">${this.localizationService.getTranslation(LOCALIZATION_KEYS.COMMON.DO_NOT_STORE_ANY_SENSITIVE_DATA)}</h2>
+        <p style="text-align: center"><u>${this.localizationService.getTranslation(LOCALIZATION_KEYS.COMMON.NO_COMPLAINTS)}</u></p>
+        `
         }
-      }),
-      catchError((error: any) => {
-        this.localizationService.handleApiError(error);
-        return throwError(() => error);
-      }),
-      finalize(() => {
-        this.loaderService.isBusy = false;
-      })
-    ).subscribe();
+      },
+      loginActon
+    );
   }
 
   private _startTimer(): void {

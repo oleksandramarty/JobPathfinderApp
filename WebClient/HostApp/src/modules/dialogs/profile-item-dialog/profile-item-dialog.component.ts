@@ -16,9 +16,8 @@ import { DictionaryService, LoaderService, LocalizationService } from '@amarty/s
 import { UserApiClient } from '@amarty/api';
 import { Store } from '@ngrx/store';
 import { takeUntil, tap } from 'rxjs';
-import { itemTypeTitle } from '../../profile-area/base-profile-section.component';
 import { selectUser } from '@amarty/store';
-import { ProfileFormFactory } from '../../../utils/profile-form.factory';
+import { ProfileFormFactory } from '../../profile-area/utils/form-renderer/profile-form.factory';
 import { LOCALIZATION_KEYS } from '@amarty/localizations';
 
 @Component({
@@ -46,6 +45,7 @@ export class ProfileItemDialogComponent extends BaseUnsubscribeComponent {
     @Inject(MAT_DIALOG_DATA) public data: {
       profileItem: UserProfileItemResponse | undefined,
       profileItemType: UserProfileItemEnum | undefined;
+      title: string | undefined;
     } | undefined,
     private readonly snackBar: MatSnackBar,
     private readonly localizationService: LocalizationService,
@@ -58,11 +58,10 @@ export class ProfileItemDialogComponent extends BaseUnsubscribeComponent {
 
     this.profileItem = data?.profileItem;
     this.profileItemType = data?.profileItemType;
+    this.title = data?.title;
   }
 
   override ngOnInit(): void {
-    this.title = itemTypeTitle(this.profileItemType);
-
     this.store.select(selectUser)
       .pipe(
         takeUntil(this.ngUnsubscribe),
