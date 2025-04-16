@@ -2,10 +2,7 @@ import { ApolloError } from '@apollo/client';
 
 export const apolloEnvironments = {
   authGateway: 'authGateway',
-  localizations: 'localizations',
-  expenses: 'expenses',
-  dictionaries: 'dictionaries',
-  auditTrail: 'auditTrail'
+  profile: 'profile',
 };
 
 export const apolloFetchPolicy = {

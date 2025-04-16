@@ -130,6 +130,8 @@ id;locale;key;valueEn;value;isPublic;
 550e8400-e29b-41d4-a716-400013000000;ua;MENU.TODOS;To-dos;Завдання;1;
 550e8400-e29b-41d4-a716-400013100000;ua;MENU.RESPONSE_RATE;Response rate;Частота відповідей;1;
 550e8400-e29b-41d4-a716-400013200000;ua;MENU.UPCOMING_INTERVIEWS;Upcoming interviews;Майбутні співбесіди;1;
+550e8400-e29b-41d4-a716-400013200001;ua;MENU.PROFILE;Profile;Профіль;1;
+550e8400-e29b-41d4-a716-400013200002;ua;MENU.LOGOUT;Logout;Вийти з системи;1;
 550e8400-e29b-41d4-a716-400013300000;ua;STATS.NEW_JOB_LISTINGS_PER_DAY;New job listings per day;Нові вакансії за день;1;
 550e8400-e29b-41d4-a716-400013400000;ua;STATS.JOB_APPLICATIONS_TREND;Job applications trend;Тенденція заявок;1;
 550e8400-e29b-41d4-a716-400013500000;ua;COMMON.JOB.NEW_APPLICATION;Job application;Заявка на роботу;1;

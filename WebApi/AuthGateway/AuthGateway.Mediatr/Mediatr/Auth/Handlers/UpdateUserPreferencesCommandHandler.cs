@@ -6,12 +6,13 @@ using CommonModule.Core.Exceptions;
 using CommonModule.Core.Extensions;
 using CommonModule.Interfaces;
 using CommonModule.Shared.Constants;
+using CommonModule.Shared.Responses.Base;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace AuthGateway.Mediatr.Mediatr.Auth.Handlers;
 
-public class UpdateUserPreferencesCommandHandler: IRequestHandler<UpdateUserPreferencesCommand>
+public class UpdateUserPreferencesCommandHandler: IRequestHandler<UpdateUserPreferencesCommand, BaseBoolResponse>
 {
     private readonly IMapper _mapper;
     private readonly IEntityValidator<AuthGatewayDataContext> _entityValidator;
@@ -31,7 +32,7 @@ public class UpdateUserPreferencesCommandHandler: IRequestHandler<UpdateUserPref
         _genericUserRepository = genericUserRepository;
     }
     
-    public async Task Handle(UpdateUserPreferencesCommand command, CancellationToken cancellationToken)
+    public async Task<BaseBoolResponse> Handle(UpdateUserPreferencesCommand command, CancellationToken cancellationToken)
     {
         Guid? userId = await _currentUserRepository.CurrentUserIdAsync();
         if (!userId.HasValue)
@@ -88,7 +89,7 @@ public class UpdateUserPreferencesCommandHandler: IRequestHandler<UpdateUserPref
                 cancellationToken
             );
             
-            return;
+            return new BaseBoolResponse();;
         }
 
         UserSettingEntity? updatedUserSettingEntity = _mapper.Map(command, user.UserSetting);
@@ -101,6 +102,8 @@ public class UpdateUserPreferencesCommandHandler: IRequestHandler<UpdateUserPref
             user,
             cancellationToken
         );
+
+        return new BaseBoolResponse();
     }
 
     private string? ProcessUrl(string? url, string? currentUrl)

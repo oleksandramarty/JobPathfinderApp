@@ -29,6 +29,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\CommonModule\CommonModule.Facade\CommonModule.Facade.csproj" />
+      <ProjectReference Include="..\..\Profile.GraphQL\Profile.GraphQL.csproj" />
       <ProjectReference Include="..\Profile.Domain\Profile.Domain.csproj" />
       <ProjectReference Include="..\Profile.Mediatr\Profile.Mediatr.csproj" />
     </ItemGroup>

@@ -52,6 +52,10 @@ export const appConfig: ApplicationConfig = {
           cache: new InMemoryCache(),
           link: httpLink.create({ uri: environment.authGatewayApiUrl + '/graphql' }),
         },
+        profile: {
+          cache: new InMemoryCache(),
+          link: httpLink.create({ uri: environment.profileApiUrl + '/graphql' }),
+        },
       };
     }),
 

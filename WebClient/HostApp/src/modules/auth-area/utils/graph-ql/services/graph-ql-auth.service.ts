@@ -4,7 +4,7 @@ import { ApolloQueryResult } from '@apollo/client';
 import {
   AUTH_GATEWAY_CURRENT_USER,
   AUTH_GATEWAY_SIGN_IN,
-  AUTH_GATEWAY_SIGN_OUT
+  AUTH_GATEWAY_SIGN_OUT, USER_INFO, USER_UPDATE_PREFERENCE
 } from '../queries/graph-ql-auth.query';
 import { Apollo, ApolloBase } from 'apollo-angular';
 import { BaseBoolResponse, JwtTokenResponse, UserResponse } from '@amarty/models';
@@ -52,5 +52,40 @@ export class GraphQlAuthService {
         query: AUTH_GATEWAY_CURRENT_USER,
         fetchPolicy: 'network-only',
       }).valueChanges as Observable<ApolloQueryResult<{ auth_gateway_current_user: UserResponse | undefined }>>;
+  }
+
+  public userById(id: string): Observable<ApolloQueryResult<{ user_info_by_id: UserResponse | undefined }>> {
+    return this.apolloClient
+      .watchQuery({
+        query: USER_INFO,
+        variables: {
+          id
+        },
+        fetchPolicy: 'network-only',
+      }).valueChanges as Observable<ApolloQueryResult<{ user_info_by_id: UserResponse | undefined }>>;
+  }
+
+  public updateUserPreferences(input: {
+    login?: string;
+    headline?: string;
+    phone?: string;
+    firstName?: string;
+    lastName?: string;
+    defaultLocale?: string;
+    timeZone?: number;
+    countryId?: number;
+    currencyId?: number;
+    applicationAiPrompt: boolean;
+    linkedInUrl?: string;
+    npmUrl?: string;
+    gitHubUrl?: string;
+    portfolioUrl?: string;
+    showCurrentPosition: boolean;
+    showHighestEducation: boolean;
+  }): Observable<ApolloQueryResult<BaseBoolResponse>> {
+    return this.apolloClient.mutate({
+      mutation: USER_UPDATE_PREFERENCE,
+      variables: input
+    }) as Observable<ApolloQueryResult<BaseBoolResponse>>;
   }
 }

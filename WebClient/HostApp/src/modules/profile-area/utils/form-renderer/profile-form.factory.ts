@@ -260,7 +260,7 @@ export class ProfileFormFactory {
           new InputFormItemBuilder('showCurrentPosition', 'checkbox')
             .withLabel(LOCALIZATION_KEYS.PROFILE.SHOW_CURRENT_POSITION)
             .withDefaultValue(user.userSetting?.showCurrentPosition ?? false),
-          new InputFormItemBuilder('showCurrentPosition', 'checkbox')
+          new InputFormItemBuilder('showHighestEducation', 'checkbox')
             .withLabel(LOCALIZATION_KEYS.PROFILE.SHOW_HIGHEST_EDUCATION)
             .withDefaultValue(user.userSetting?.showHighestEducation ?? false)
         ]))

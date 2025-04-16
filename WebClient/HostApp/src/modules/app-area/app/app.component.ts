@@ -5,8 +5,7 @@ import { RouterOutlet } from '@angular/router';
 import { generateRandomId } from '@amarty/utils';
 import { auth_setUser } from '@amarty/store';
 import {
-  DictionaryApiClient, ProfileApiClient,
-  UserApiClient
+  DictionaryApiClient
 } from '@amarty/api';
 import {
   DictionaryService,
@@ -19,6 +18,9 @@ import { FooterComponent } from '../../common-area/footer/footer.component';
 import { SpinnerComponent } from '../../common-area/spinner/spinner.component';
 import { SiteSettingsResponse, UserProfileResponse, UserResponse } from '@amarty/models';
 import { profile_setProfile } from '@amarty/store';
+import { GraphQlAuthService } from '../../auth-area/utils/graph-ql/services/graph-ql-auth.service';
+import { ApolloQueryResult } from '@apollo/client';
+import { GraphQlProfileService } from '../../profile-area/utils/graph-ql/services/graph-ql-profile.service';
 
 @Component({
   selector: 'app-root',
@@ -35,8 +37,8 @@ import { profile_setProfile } from '@amarty/store';
 })
 export class AppComponent implements OnInit {
   constructor(
-    private readonly userApiClient: UserApiClient,
-    private readonly profileApiClient: ProfileApiClient,
+    private readonly graphQlAuthService: GraphQlAuthService,
+    private readonly graphQlProfileService: GraphQlProfileService,
     private readonly dictionaryApiService: DictionaryApiClient,
     private readonly authService: AuthService,
     private readonly localizationService: LocalizationService,
@@ -53,16 +55,18 @@ export class AppComponent implements OnInit {
 
     this.authService.isAuthorized$?.pipe(
       switchMap(isAuthorized => isAuthorized
-        ? this.userApiClient.user_Current()
+        ? this.graphQlAuthService.currentUser()
         : of(undefined)),
-      switchMap((user: UserResponse | undefined) => {
+      switchMap((result: ApolloQueryResult<{ auth_gateway_current_user: UserResponse | undefined; }> | undefined ) => {
+        const user = result?.data?.auth_gateway_current_user as UserResponse;
         if (!!user) {
           this.store.dispatch(auth_setUser({ user }));
           this.localizationService.userLocaleChanged(user);
         }
-        return !!user ? this.profileApiClient.profile_CurrentUserProfile() : of(undefined);
+        return !!user ? this.graphQlProfileService.currentUserProfile() : of(undefined);
       }),
-      tap((userProfile: UserProfileResponse | undefined) => {
+      tap((result:ApolloQueryResult<{ profile_current_user_profile: UserProfileResponse | undefined }> | undefined) => {
+        const userProfile = result?.data?.profile_current_user_profile as UserResponse;
         if (!!userProfile) {
           this.store.dispatch(profile_setProfile({ profile: userProfile }));
         }

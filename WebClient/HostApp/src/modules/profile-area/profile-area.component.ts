@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { forkJoin, takeUntil, tap } from 'rxjs';
+import { takeUntil, tap } from 'rxjs';
 import { BaseUnsubscribeComponent } from '@amarty/common';
 import {
   UserProfileItemEnum,
@@ -47,18 +47,22 @@ export class ProfileAreaComponent extends BaseUnsubscribeComponent {
   }
 
   override ngOnInit(): void {
-    forkJoin([
-      this.store.select(selectUser),
-      this.store.select(selectProfile)
-    ]).pipe(
-      takeUntil(this.ngUnsubscribe),
-      tap(data => {
-        this.currentUser = data[0];
-        this.userProfile = data[1];
-        this.countryCode = this.dictionaryService.countryData?.find(item => item.id === this.currentUser?.userSetting?.countryId)?.code?.toLowerCase();
-      })
-    )
-      .subscribe();
+    this.store.select(selectUser)
+      .pipe(
+        takeUntil(this.ngUnsubscribe),
+        tap(data => {
+          this.currentUser = data;
+          this.countryCode = this.dictionaryService.countryData?.find(item => item.id === this.currentUser?.userSetting?.countryId)?.code?.toLowerCase();
+        })
+      ).subscribe();
+
+    this.store.select(selectProfile)
+      .pipe(
+        takeUntil(this.ngUnsubscribe),
+        tap(data => {
+          this.userProfile = data;
+        })
+      ).subscribe();
 
     super.ngOnInit();
   }

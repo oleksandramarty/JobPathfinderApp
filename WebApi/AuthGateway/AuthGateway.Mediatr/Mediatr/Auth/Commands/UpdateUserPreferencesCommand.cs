@@ -1,9 +1,10 @@
 using CommonModule.Shared.Common;
+using CommonModule.Shared.Responses.Base;
 using MediatR;
 
 namespace AuthGateway.Mediatr.Mediatr.Auth.Commands;
 
-public class UpdateUserPreferencesCommand: BaseIdEntity<Guid>, IRequest
+public class UpdateUserPreferencesCommand: BaseIdEntity<Guid>, IRequest<BaseBoolResponse>
 {
     public string? Login { get; set; }
     public string? Headline { get; set; }

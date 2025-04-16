@@ -46,6 +46,12 @@ button:focus {
   outline: none;
 }
 
+.custom-menu-header-position {
+  & i {
+    margin-right: #{m.pxToRem(8)};
+  }
+}
+
 .page__container {
   min-height: var(--container-min-height);
   background: var(--background);

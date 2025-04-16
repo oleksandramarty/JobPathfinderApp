@@ -130,6 +130,8 @@ id;d''eocale;key;valueEn;value;isPublic;
 550e8400-e29b-41d4-a716-700013000000;it;MENU.TODOS;To-dos;Da fare;1;
 550e8400-e29b-41d4-a716-700013100000;it;MENU.RESPONSE_RATE;Response rate;Tasso di risposta;1;
 550e8400-e29b-41d4-a716-700013200000;it;MENU.UPCOMING_INTERVIEWS;Upcoming interviews;Colloqui in arrivo;1;
+550e8400-e29b-41d4-a716-700013200001;it;MENU.PROFILE;Profile;Profilo;1;
+550e8400-e29b-41d4-a716-700013200002;it;MENU.LOGOUT;Logout;Disconnessione;1;
 550e8400-e29b-41d4-a716-700013300000;it;STATS.NEW_JOB_LISTINGS_PER_DAY;New job listings per day;Nuove offerte di lavoro al giorno;1;
 550e8400-e29b-41d4-a716-700013400000;it;STATS.JOB_APPLICATIONS_TREND;Job applications trend;Andamento delle candidature;1;
 550e8400-e29b-41d4-a716-700013500000;it;COMMON.JOB.NEW_APPLICATION;Job application;Candidatura;1;

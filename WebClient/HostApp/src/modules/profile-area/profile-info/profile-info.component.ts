@@ -1,10 +1,15 @@
 import { UserResponse } from '@amarty/models';
 import { BaseUnsubscribeComponent } from '@amarty/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserPreferencesDialogComponent } from '../../dialogs/user-preferences-dialog/user-preferences-dialog.component';
-import { CommonDialogService } from '@amarty/services';
+import { CommonDialogService, LocalizationService } from '@amarty/services';
 import { CommonModule } from '@angular/common';
+import { catchError, takeUntil, tap, throwError } from 'rxjs';
+import { ApolloQueryResult } from '@apollo/client';
+import { auth_setUser } from '@amarty/store';
+import { Store } from '@ngrx/store';
+import { GraphQlAuthService } from '../../auth-area/utils/graph-ql/services/graph-ql-auth.service';
 
 @Component({
   selector: 'app-profile-info',
@@ -18,10 +23,12 @@ import { CommonModule } from '@angular/common';
 export class ProfileInfoComponent extends BaseUnsubscribeComponent {
   @Input() currentUser: UserResponse | undefined;
   @Input() countryCode: string | undefined;
-  @Output() currentUserChange: EventEmitter<UserResponse> = new EventEmitter<UserResponse>();
 
   constructor(
     private readonly dialogService: CommonDialogService,
+    private readonly localizationService: LocalizationService,
+    private readonly store: Store,
+    private readonly graphQlAuthService: GraphQlAuthService,
     private readonly snackBar: MatSnackBar
   ) {
     super();
@@ -48,37 +55,29 @@ export class ProfileInfoComponent extends BaseUnsubscribeComponent {
   }
 
   public openEditProfileDialog(): void {
-    const executableAction = (model: UserResponse | undefined) => {
-      const isCurrentUserChanged =
-        this.currentUser?.firstName !== model?.firstName ||
-        this.currentUser?.lastName !== model?.lastName ||
-        this.currentUser?.login !== model?.login ||
-        this.currentUser?.email !== model?.email ||
-        this.currentUser?.phone !== model?.phone ||
-        this.currentUser?.headline !== model?.headline ||
-        this.currentUser?.userSetting?.defaultLocale !== model?.userSetting?.defaultLocale ||
-        this.currentUser?.userSetting?.timeZone !== model?.userSetting?.timeZone ||
-        this.currentUser?.userSetting?.countryId !== model?.userSetting?.countryId ||
-        this.currentUser?.userSetting?.currencyId !== model?.userSetting?.currencyId ||
-        this.currentUser?.userSetting?.linkedInUrl !== model?.userSetting?.linkedInUrl ||
-        this.currentUser?.userSetting?.npmUrl !== model?.userSetting?.npmUrl ||
-        this.currentUser?.userSetting?.gitHubUrl !== model?.userSetting?.gitHubUrl ||
-        this.currentUser?.userSetting?.applicationAiPrompt !== model?.userSetting?.applicationAiPrompt ||
-        this.currentUser?.userSetting?.showCurrentPosition !== model?.userSetting?.showCurrentPosition ||
-        this.currentUser?.userSetting?.showHighestEducation !== model?.userSetting?.showHighestEducation;
-
-      this.currentUser = model;
-
-      if (isCurrentUserChanged) {
-        this.currentUserChange.emit(this.currentUser);
-      }
+    const executableAction = () => {
+      this.graphQlAuthService.currentUser()
+        .pipe(
+          takeUntil(this.ngUnsubscribe),
+          tap((result: ApolloQueryResult<{ auth_gateway_current_user: UserResponse | undefined; }> | undefined ) => {
+            const user = result?.data?.auth_gateway_current_user as UserResponse;
+            if (!!user) {
+              this.store.dispatch(auth_setUser({ user }));
+              this.localizationService.userLocaleChanged(user);
+            }
+          }),
+          catchError((error: any) => {
+            this.localizationService.handleApiError(error);
+            return throwError(() => error);
+          })
+        ).subscribe();
     };
 
     this.dialogService.showDialog<UserPreferencesDialogComponent, any>(
       UserPreferencesDialogComponent,
       {
         data: {
-          user: { ...this.currentUser },
+          user: this.currentUser,
         },
         width: '800px',
         maxWidth: '90vw',

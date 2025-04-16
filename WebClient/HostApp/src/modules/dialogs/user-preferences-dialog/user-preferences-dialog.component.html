@@ -2,11 +2,11 @@
   <div class="modal__header">
     <div class="modal__header">
       <h2 class="modal__header-title" mat-dialog-title>{{ LOCALIZATION_KEYS.PROFILE.USER_PREFERENCES | translation }}</h2>
-      <span class="modal__close" (click)="dialogRef.close()">
+      <span class="modal__close" (click)="dialogRef.close(false)">
         <i class="fa-solid fa-robot"></i><i class="fa-solid fa-stopwatch"></i>
       </span>
     </div>
-    <span class="modal__close" (click)="dialogRef.close()">
+    <span class="modal__close" (click)="dialogRef.close(false)">
       <i class="fa-solid fa-xmark"></i>
     </span>
   </div>

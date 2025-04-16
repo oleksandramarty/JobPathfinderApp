@@ -130,6 +130,8 @@ id;locale;key;valueEn;value;isPublic;
 550e8400-e29b-41d4-a716-200013000000;es;MENU.TODOS;To-dos;Tareas pendientes;1;
 550e8400-e29b-41d4-a716-200013100000;es;MENU.RESPONSE_RATE;Response rate;Tasa de respuesta;1;
 550e8400-e29b-41d4-a716-200013200000;es;MENU.UPCOMING_INTERVIEWS;Upcoming interviews;Entrevistas próximas;1;
+550e8400-e29b-41d4-a716-200013200001;es;MENU.PROFILE;Profile;Perfil;1;
+550e8400-e29b-41d4-a716-200013200002;es;MENU.LOGOUT;Logout;Cerrar sesión;1;
 550e8400-e29b-41d4-a716-200013300000;es;STATS.NEW_JOB_LISTINGS_PER_DAY;New job listings per day;Nuevas ofertas por día;1;
 550e8400-e29b-41d4-a716-200013400000;es;STATS.JOB_APPLICATIONS_TREND;Job applications trend;Tendencia de solicitudes;1;
 550e8400-e29b-41d4-a716-200013500000;es;COMMON.JOB.NEW_APPLICATION;Job application;Solicitud de empleo;1;

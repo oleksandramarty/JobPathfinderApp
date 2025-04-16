@@ -263,6 +263,9 @@ export class InputFormBuilder {
 
     const formGroup = new FormGroup(group);
 
+    console.log(flatItems);
+    console.log(formGroup);
+
     if (this._onChange) {
       formGroup.valueChanges.subscribe(() => this._onChange?.(formGroup));
     }

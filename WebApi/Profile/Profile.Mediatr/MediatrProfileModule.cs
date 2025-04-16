@@ -13,7 +13,7 @@ public class MediatrProfileModule: Autofac.Module
         builder.RegisterAssemblyTypes(typeof(IMediator).GetTypeInfo().Assembly)
             .AsImplementedInterfaces();
         
-        builder.RegisterAssemblyTypes(typeof(UserProfileRequest).GetTypeInfo().Assembly).AsClosedTypesOf(typeof(IRequestHandler<>));
+        builder.RegisterAssemblyTypes(typeof(UserProfileRequest).GetTypeInfo().Assembly).AsClosedTypesOf(typeof(IRequestHandler<,>));
         
         builder.RegisterAssemblyTypes(typeof(AddUserSkillCommand).GetTypeInfo().Assembly).AsClosedTypesOf(typeof(IRequestHandler<>));
         builder.RegisterAssemblyTypes(typeof(UpdateUserSkillCommand).GetTypeInfo().Assembly).AsClosedTypesOf(typeof(IRequestHandler<>));
