@@ -132,6 +132,8 @@ export const localization_it: Map<string, string> = new Map<string, string>([
   ['MENU.TODOS', 'Da fare'],
   ['MENU.RESPONSE_RATE', 'Tasso di risposta'],
   ['MENU.UPCOMING_INTERVIEWS', 'Colloqui in arrivo'],
+  ['MENU.PROFILE', 'Profilo'],
+  ['MENU.LOGOUT', 'Disconnessione'],
   ['STATS.NEW_JOB_LISTINGS_PER_DAY', 'Nuove offerte di lavoro al giorno'],
   ['STATS.JOB_APPLICATIONS_TREND', 'Andamento delle candidature'],
   ['COMMON.JOB.NEW_APPLICATION', 'Candidatura'],

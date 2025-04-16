@@ -132,6 +132,8 @@ export const localization_ua: Map<string, string> = new Map<string, string>([
   ['MENU.TODOS', 'Завдання'],
   ['MENU.RESPONSE_RATE', 'Частота відповідей'],
   ['MENU.UPCOMING_INTERVIEWS', 'Майбутні співбесіди'],
+  ['MENU.PROFILE', 'Профіль'],
+  ['MENU.LOGOUT', 'Вийти з системи'],
   ['STATS.NEW_JOB_LISTINGS_PER_DAY', 'Нові вакансії за день'],
   ['STATS.JOB_APPLICATIONS_TREND', 'Тенденція заявок'],
   ['COMMON.JOB.NEW_APPLICATION', 'Заявка на роботу'],
