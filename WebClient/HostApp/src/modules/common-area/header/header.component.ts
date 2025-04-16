@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -54,11 +53,9 @@ export class HeaderComponent extends BaseUnsubscribeComponent {
   public userAvatar = 'assets/images/avatar.png';
 
   constructor(
-    private readonly snackBar: MatSnackBar,
     private readonly authService: AuthService,
     private readonly localizationService: LocalizationService,
-    private readonly dictionaryService: DictionaryService,
-    private readonly router: Router
+    private readonly dictionaryService: DictionaryService
   ) {
     super();
   }
@@ -81,15 +78,13 @@ export class HeaderComponent extends BaseUnsubscribeComponent {
     return this.localizationService.currentLocale;
   }
 
-  public goto(url: string | undefined): void {
-    this.router.navigate([`/${url ?? ''}`]);
-  }
-
   public logout() {
-    console.log('logout');
+    this.authService.logout();
   }
 
   public localeChanged(code: string | undefined): void {
     this.localizationService.localeChanged(code);
   }
+
+  protected readonly LOCALIZATION_KEYS = LOCALIZATION_KEYS;
 }
