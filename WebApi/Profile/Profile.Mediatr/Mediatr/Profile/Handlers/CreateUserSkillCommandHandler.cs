@@ -6,9 +6,9 @@ using Profile.Mediatr.Mediatr.Profile.Commands;
 
 namespace Profile.Mediatr.Mediatr.Profile.Handlers;
 
-public class AddUserSkillCommandHandler(
+public class CreateUserSkillCommandHandler(
     IMapper mapper,
     ICurrentUserRepository currentUserRepository,
     IGenericRepository<Guid, UserSkillEntity, ProfileDataContext> userSkillRepository)
-    : AddProfileGenericItemHandler<AddUserSkillCommand, UserSkillEntity>(mapper, currentUserRepository,
+    : CreateProfileGenericItemHandler<CreateUserSkillCommand, UserSkillEntity>(mapper, currentUserRepository,
         userSkillRepository);

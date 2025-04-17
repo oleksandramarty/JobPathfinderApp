@@ -8,6 +8,6 @@ public class ProfileGraphQLSchema: Schema
     public ProfileGraphQLSchema(IServiceProvider serviceProvider) : base(serviceProvider)
     {
         Query = serviceProvider.GetRequiredService<ProfileRootQuery>();
-        // Mutation = serviceProvider.GetRequiredService<ProfileRootMutation>();
+        Mutation = serviceProvider.GetRequiredService<ProfileRootMutation>();
     }
 }

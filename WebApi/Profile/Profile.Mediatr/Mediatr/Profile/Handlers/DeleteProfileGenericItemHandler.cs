@@ -7,14 +7,14 @@ using Profile.Domain;
 
 namespace Profile.Mediatr.Mediatr.Profile.Handlers;
 
-public class RemoveProfileGenericItemHandler<TRemoveCommand, TEntity>: IRequestHandler<TRemoveCommand, BaseBoolResponse>
-    where TRemoveCommand : IBaseIdEntity<Guid>, IRequest<BaseBoolResponse>
+public class DeleteProfileGenericItemHandler<TDeleteCommand, TEntity>: IRequestHandler<TDeleteCommand, BaseBoolResponse>
+    where TDeleteCommand : IBaseIdEntity<Guid>, IRequest<BaseBoolResponse>
     where TEntity : class, IBaseIdEntity<Guid>, IUserIdEntity
 {
     private readonly ICurrentUserRepository _currentUserRepository;
     private readonly IGenericRepository<Guid, TEntity, ProfileDataContext> _genericRepository;
     
-    public RemoveProfileGenericItemHandler(
+    public DeleteProfileGenericItemHandler(
         ICurrentUserRepository currentUserRepository,
         IGenericRepository<Guid, TEntity, ProfileDataContext> genericRepository)
     {
@@ -22,7 +22,7 @@ public class RemoveProfileGenericItemHandler<TRemoveCommand, TEntity>: IRequestH
         _genericRepository = genericRepository;
     }
     
-    public async Task<BaseBoolResponse> Handle(TRemoveCommand command, CancellationToken cancellationToken)
+    public async Task<BaseBoolResponse> Handle(TDeleteCommand command, CancellationToken cancellationToken)
     {
         Guid? userId = await _currentUserRepository.CurrentUserIdAsync();
         

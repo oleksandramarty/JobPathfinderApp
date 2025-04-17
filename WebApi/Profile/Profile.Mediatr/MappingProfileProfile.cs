@@ -14,7 +14,7 @@ public class MappingProfileProfile: AutoMapper.Profile
         CreateMap<UserLanguageEntity, UserLanguageResponse>();
         CreateMap<UserProfileItemEntity, UserProfileItemResponse>();
         
-        CreateMap<AddUserSkillCommand, UserSkillEntity>()
+        CreateMap<CreateUserSkillCommand, UserSkillEntity>()
             .ForMember(dest => dest.Id, opt => opt.Ignore())
             .ForMember(dest => dest.Status, opt => opt.MapFrom(src => StatusEnum.Active))
             .AfterMap((src, dest) =>
@@ -22,7 +22,7 @@ public class MappingProfileProfile: AutoMapper.Profile
                 dest.Id = Guid.NewGuid();
                 dest.Status = StatusEnum.Active;
             });
-        CreateMap<AddUserLanguageCommand, UserLanguageEntity>()
+        CreateMap<CreateUserLanguageCommand, UserLanguageEntity>()
             .ForMember(dest => dest.Id, opt => opt.Ignore())
             .ForMember(dest => dest.Status, opt => opt.MapFrom(src => StatusEnum.Active))
             .AfterMap((src, dest) =>
@@ -30,7 +30,7 @@ public class MappingProfileProfile: AutoMapper.Profile
                 dest.Id = Guid.NewGuid();
                 dest.Status = StatusEnum.Active;
             });
-        CreateMap<AddUserProfileItemCommand, UserProfileItemEntity>()
+        CreateMap<CreateUserProfileItemCommand, UserProfileItemEntity>()
             .ForMember(dest => dest.Id, opt => opt.Ignore())
             .ForMember(dest => dest.Status, opt => opt.MapFrom(src => StatusEnum.Active))
             .AfterMap((src, dest) =>

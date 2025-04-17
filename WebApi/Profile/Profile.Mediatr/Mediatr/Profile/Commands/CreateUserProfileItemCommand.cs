@@ -4,7 +4,7 @@ using MediatR;
 
 namespace Profile.Mediatr.Mediatr.Profile.Commands;
 
-public class AddUserProfileItemCommand: IRequest<BaseBoolResponse>
+public class CreateUserProfileItemCommand: IRequest<BaseEntityIdResponse<Guid>>
 {
     public UserProfileItemEnum ProfileItemType { get; set; }
     

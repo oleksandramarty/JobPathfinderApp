@@ -4,6 +4,6 @@ using MediatR;
 
 namespace Profile.Mediatr.Mediatr.Profile.Commands;
 
-public class RemoveUserLanguageCommand: BaseIdEntity<Guid>, IRequest<BaseBoolResponse>
+public class DeleteUserSkillCommand: BaseIdEntity<Guid>, IRequest<BaseBoolResponse>
 {
 }

@@ -15,14 +15,14 @@ public class MediatrProfileModule: Autofac.Module
         
         builder.RegisterAssemblyTypes(typeof(UserProfileRequest).GetTypeInfo().Assembly).AsClosedTypesOf(typeof(IRequestHandler<,>));
         
-        builder.RegisterAssemblyTypes(typeof(AddUserSkillCommand).GetTypeInfo().Assembly).AsClosedTypesOf(typeof(IRequestHandler<>));
+        builder.RegisterAssemblyTypes(typeof(CreateUserSkillCommand).GetTypeInfo().Assembly).AsClosedTypesOf(typeof(IRequestHandler<>));
         builder.RegisterAssemblyTypes(typeof(UpdateUserSkillCommand).GetTypeInfo().Assembly).AsClosedTypesOf(typeof(IRequestHandler<>));
-        builder.RegisterAssemblyTypes(typeof(RemoveUserSkillCommand).GetTypeInfo().Assembly).AsClosedTypesOf(typeof(IRequestHandler<>));
-        builder.RegisterAssemblyTypes(typeof(AddUserLanguageCommand).GetTypeInfo().Assembly).AsClosedTypesOf(typeof(IRequestHandler<>));
-        builder.RegisterAssemblyTypes(typeof(RemoveUserLanguageCommand).GetTypeInfo().Assembly).AsClosedTypesOf(typeof(IRequestHandler<>));
+        builder.RegisterAssemblyTypes(typeof(DeleteUserSkillCommand).GetTypeInfo().Assembly).AsClosedTypesOf(typeof(IRequestHandler<>));
+        builder.RegisterAssemblyTypes(typeof(CreateUserLanguageCommand).GetTypeInfo().Assembly).AsClosedTypesOf(typeof(IRequestHandler<>));
+        builder.RegisterAssemblyTypes(typeof(DeleteUserLanguageCommand).GetTypeInfo().Assembly).AsClosedTypesOf(typeof(IRequestHandler<>));
         builder.RegisterAssemblyTypes(typeof(UpdateUserLanguageCommand).GetTypeInfo().Assembly).AsClosedTypesOf(typeof(IRequestHandler<>));
-        builder.RegisterAssemblyTypes(typeof(AddUserProfileItemCommand).GetTypeInfo().Assembly).AsClosedTypesOf(typeof(IRequestHandler<>));
-        builder.RegisterAssemblyTypes(typeof(RemoveUserProfileItemCommand).GetTypeInfo().Assembly).AsClosedTypesOf(typeof(IRequestHandler<>));
+        builder.RegisterAssemblyTypes(typeof(CreateUserProfileItemCommand).GetTypeInfo().Assembly).AsClosedTypesOf(typeof(IRequestHandler<>));
+        builder.RegisterAssemblyTypes(typeof(DeleteUserProfileItemCommand).GetTypeInfo().Assembly).AsClosedTypesOf(typeof(IRequestHandler<>));
         builder.RegisterAssemblyTypes(typeof(UpdateUserProfileItemCommand).GetTypeInfo().Assembly).AsClosedTypesOf(typeof(IRequestHandler<>));
         
     }

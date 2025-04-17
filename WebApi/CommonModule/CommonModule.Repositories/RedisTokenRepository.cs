@@ -33,13 +33,13 @@ public class RedisTokenRepository : AuditableNonNullableKey, ITokenRepository
         return await _database.KeyExistsAsync(key);
     }
 
-    public async Task RemoveTokenAsync(string token)
+    public async Task DeleteTokenAsync(string token)
     {
         string key = $"{Key}:{_jwtTokenFactory.UserIdFromToken(token)}:{token}";
         await _database.KeyDeleteAsync(key);
     }
 
-    public async Task RemoveUserTokenAsync(Guid userId)
+    public async Task DeleteUserTokenAsync(Guid userId)
     {
         string pattern = $"{Key}:{userId.ToString()}:*";
         var keys = _database.Multiplexer.GetServer(_database.Multiplexer.GetEndPoints()[0]).Keys(pattern: pattern);
@@ -49,7 +49,7 @@ public class RedisTokenRepository : AuditableNonNullableKey, ITokenRepository
         }
     }
 
-    public async Task RemoveAllTokensAsync(Guid userId)
+    public async Task DeleteAllTokensAsync(Guid userId)
     {
         string key = $"{Key}:{userId.ToString()}:*";
         var keys = _database.Multiplexer.GetServer(_database.Multiplexer.GetEndPoints()[0]).Keys(pattern: key);

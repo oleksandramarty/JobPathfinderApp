@@ -50,9 +50,9 @@ public static class GraphQLModelExtension
             
             config.DocumentProcessors.Add(new AddAdditionalClassTypeProcessor<BaseFilterRequest>());
             
-            config.DocumentProcessors.Add(new AddAdditionalClassTypeProcessor<AddUserSkillCommand>());
-            config.DocumentProcessors.Add(new AddAdditionalClassTypeProcessor<AddUserLanguageCommand>());
-            config.DocumentProcessors.Add(new AddAdditionalClassTypeProcessor<AddUserProfileItemCommand>());
+            config.DocumentProcessors.Add(new AddAdditionalClassTypeProcessor<CreateUserSkillCommand>());
+            config.DocumentProcessors.Add(new AddAdditionalClassTypeProcessor<CreateUserLanguageCommand>());
+            config.DocumentProcessors.Add(new AddAdditionalClassTypeProcessor<CreateUserProfileItemCommand>());
             config.DocumentProcessors.Add(new AddAdditionalClassTypeProcessor<UpdateUserSkillCommand>());
             config.DocumentProcessors.Add(new AddAdditionalClassTypeProcessor<UpdateUserLanguageCommand>());
             config.DocumentProcessors.Add(new AddAdditionalClassTypeProcessor<UpdateUserProfileItemCommand>());

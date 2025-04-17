@@ -1,3 +1,4 @@
+using CommonModule.GraphQL.Types.Responses.Base;
 using CommonModule.Shared.Common.BaseInterfaces;
 using CommonModule.Shared.Responses.Base;
 using GraphQL;
@@ -29,12 +30,12 @@ public class GraphQlMutationResolver: ObjectGraphType, IGraphQlMutationResolver
             });
     }
     
-    public void UpdateEntity<TEntityInputType, TEntityTypeId, TEntityId, TCommand>(GraphQlEndpoint endpoint)
+    public void UpdateEntity<TEntityInputType, TEntityTypeId, TEntityId, TCommand, TEntityResponse>(GraphQlEndpoint endpoint)
         where TEntityInputType : InputObjectGraphType
         where TEntityTypeId : ScalarGraphType
-        where TCommand : IBaseIdEntity<TEntityId>, IRequest
+        where TCommand : IBaseIdEntity<TEntityId>, IRequest<TEntityResponse>
     {
-        Field<BooleanGraphType>(endpoint.Name)
+        Field<BaseBoolResponseType>(endpoint.Name)
             .Arguments(new QueryArguments(
                 new QueryArgument<NonNullGraphType<TEntityTypeId>> { Name = "id" },
                 new QueryArgument<NonNullGraphType<TEntityInputType>> { Name = "input" }
@@ -47,7 +48,7 @@ public class GraphQlMutationResolver: ObjectGraphType, IGraphQlMutationResolver
                 command.Id = context.GetArgument<TEntityId>("id");
                 IMediator? mediator = context.RequestServices?.GetRequiredService<IMediator>();
                 await ExecuteCommandAsync(mediator, command, cancellationToken, context);
-                return true;
+                return new BaseBoolResponse();
             });
     }
     
@@ -55,7 +56,7 @@ public class GraphQlMutationResolver: ObjectGraphType, IGraphQlMutationResolver
         where TEntityTypeId : ScalarGraphType
         where TCommand : IBaseIdEntity<TEntityId>, IRequest<BaseBoolResponse>, new()
     {
-        Field<BooleanGraphType>(endpoint.Name)
+        Field<BaseBoolResponseType>(endpoint.Name)
             .Arguments(new QueryArguments(
                 new QueryArgument<NonNullGraphType<TEntityTypeId>> { Name = "id" }
             ))
@@ -69,7 +70,7 @@ public class GraphQlMutationResolver: ObjectGraphType, IGraphQlMutationResolver
                 };
                 IMediator? mediator = context.RequestServices?.GetRequiredService<IMediator>();
                 await ExecuteCommandAsync<BaseBoolResponse>(mediator, command, cancellationToken, context);
-                return true;
+                return new BaseBoolResponse();
             });
     }
     

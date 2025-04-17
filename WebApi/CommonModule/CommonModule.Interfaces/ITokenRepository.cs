@@ -4,8 +4,8 @@ public interface ITokenRepository
 {
     Task AddTokenAsync(string token, TimeSpan expiration);
     Task<bool> IsTokenValidAsync(string token);
-    Task RemoveTokenAsync(string token);
-    Task RemoveUserTokenAsync(Guid userId);
-    Task RemoveAllTokensAsync(Guid userId);
+    Task DeleteTokenAsync(string token);
+    Task DeleteUserTokenAsync(Guid userId);
+    Task DeleteAllTokensAsync(Guid userId);
     bool IsTokenExpired(string token);
 }

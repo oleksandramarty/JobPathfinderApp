@@ -12,10 +12,10 @@ public interface IGraphQlMutationResolver
         where TEntityInputType : InputObjectGraphType
         where TCommand : IRequest<TEntityResponse>;
 
-    void UpdateEntity<TEntityInputType, TEntityTypeId, TEntityId, TCommand>(GraphQlEndpoint endpoint)
+    void UpdateEntity<TEntityInputType, TEntityTypeId, TEntityId, TCommand, TEntityResponse>(GraphQlEndpoint endpoint)
         where TEntityInputType : InputObjectGraphType
         where TEntityTypeId : ScalarGraphType
-        where TCommand : IBaseIdEntity<TEntityId>, IRequest;
+        where TCommand : IBaseIdEntity<TEntityId>, IRequest<TEntityResponse>;
 
     void DeleteEntity<TCommand, TEntityTypeId, TEntityId>(GraphQlEndpoint endpoint)
         where TEntityTypeId : ScalarGraphType

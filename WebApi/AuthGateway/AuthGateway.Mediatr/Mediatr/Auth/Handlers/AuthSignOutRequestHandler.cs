@@ -36,7 +36,7 @@ public class AuthSignOutRequestHandler: MediatrAuthBase, IRequestHandler<AuthSig
 
         user.CheckInvalidStatus();
 
-        await _tokenRepository.RemoveUserTokenAsync(user.Id);
+        await _tokenRepository.DeleteUserTokenAsync(user.Id);
 
         return new BaseBoolResponse();
     }

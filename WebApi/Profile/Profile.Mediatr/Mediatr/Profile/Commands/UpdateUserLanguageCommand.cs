@@ -1,8 +1,11 @@
-using CommonModule.Shared.Common.BaseInterfaces;
+using CommonModule.Shared.Common;
+using CommonModule.Shared.Responses.Base;
+using MediatR;
 
 namespace Profile.Mediatr.Mediatr.Profile.Commands;
 
-public class UpdateUserLanguageCommand: AddUserLanguageCommand, IBaseIdEntity<Guid>
+public class UpdateUserLanguageCommand: BaseIdEntity<Guid>, IRequest<BaseBoolResponse>
 {
-    public Guid Id { get; set; }
+    public int LanguageId { get; set; }
+    public int LanguageLevelId { get; set; }
 }

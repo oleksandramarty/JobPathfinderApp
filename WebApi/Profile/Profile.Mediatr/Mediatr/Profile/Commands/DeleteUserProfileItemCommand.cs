@@ -4,6 +4,6 @@ using MediatR;
 
 namespace Profile.Mediatr.Mediatr.Profile.Commands;
 
-public class RemoveUserSkillCommand: BaseIdEntity<Guid>, IRequest<BaseBoolResponse>
+public class DeleteUserProfileItemCommand: BaseIdEntity<Guid>, IRequest<BaseBoolResponse>
 {
 }

@@ -1,6 +1,7 @@
 using AutoMapper;
 using CommonModule.Core.Exceptions;
 using CommonModule.Interfaces;
+using CommonModule.Shared.Common;
 using CommonModule.Shared.Common.BaseInterfaces;
 using CommonModule.Shared.Responses.Base;
 using MediatR;
@@ -8,15 +9,15 @@ using Profile.Domain;
 
 namespace Profile.Mediatr.Mediatr.Profile.Handlers;
 
-public class AddProfileGenericItemHandler<TAddCommand, TEntity>: IRequestHandler<TAddCommand, BaseBoolResponse>
-where TAddCommand : IRequest<BaseBoolResponse>
+public class CreateProfileGenericItemHandler<TAddCommand, TEntity>: IRequestHandler<TAddCommand, BaseEntityIdResponse<Guid>>
+where TAddCommand : IRequest<BaseEntityIdResponse<Guid>>
 where TEntity : class, IBaseIdEntity<Guid>, IUserIdEntity
 {
     private readonly IMapper _mapper;
     private readonly ICurrentUserRepository _currentUserRepository;
     private readonly IGenericRepository<Guid, TEntity, ProfileDataContext> _genericRepository;
     
-    public AddProfileGenericItemHandler(
+    public CreateProfileGenericItemHandler(
         IMapper mapper,
         ICurrentUserRepository currentUserRepository,
         IGenericRepository<Guid, TEntity, ProfileDataContext> genericRepository)
@@ -26,7 +27,7 @@ where TEntity : class, IBaseIdEntity<Guid>, IUserIdEntity
         _genericRepository = genericRepository;
     }
     
-    public async Task<BaseBoolResponse> Handle(TAddCommand command, CancellationToken cancellationToken)
+    public async Task<BaseEntityIdResponse<Guid>> Handle(TAddCommand command, CancellationToken cancellationToken)
     {
         Guid? userId = await _currentUserRepository.CurrentUserIdAsync();
         
@@ -40,6 +41,9 @@ where TEntity : class, IBaseIdEntity<Guid>, IUserIdEntity
         
         await _genericRepository.AddAsync(userProfileGenericItem, cancellationToken);
 
-        return new BaseBoolResponse();
+        return new BaseEntityIdResponse<Guid>
+        {
+            Id = userProfileGenericItem.Id
+        };
     }
 }

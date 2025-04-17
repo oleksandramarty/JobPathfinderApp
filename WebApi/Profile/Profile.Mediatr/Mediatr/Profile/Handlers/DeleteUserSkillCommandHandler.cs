@@ -5,8 +5,8 @@ using Profile.Mediatr.Mediatr.Profile.Commands;
 
 namespace Profile.Mediatr.Mediatr.Profile.Handlers;
 
-public class RemoveUserSkillCommandHandler(
+public class DeleteUserSkillCommandHandler(
     ICurrentUserRepository currentUserRepository,
     IGenericRepository<Guid, UserSkillEntity, ProfileDataContext> userSkillRepository)
-    : RemoveProfileGenericItemHandler<RemoveUserSkillCommand, UserSkillEntity>(currentUserRepository,
+    : DeleteProfileGenericItemHandler<DeleteUserSkillCommand, UserSkillEntity>(currentUserRepository,
         userSkillRepository);

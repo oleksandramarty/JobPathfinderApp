@@ -10,6 +10,15 @@ public static class GraphQlEndpoints
     public static readonly GraphQlEndpoint UserUpdatePreference = new GraphQlEndpoint("user_update_preference");
     public static readonly GraphQlEndpoint UserInfo = new GraphQlEndpoint("user_info_by_id");
     public static readonly GraphQlEndpoint ProfileCurrentUserProfile = new GraphQlEndpoint("profile_current_user_profile");
+    public static readonly GraphQlEndpoint ProfileCreateUserSkill = new GraphQlEndpoint("profile_create_user_skill");
+    public static readonly GraphQlEndpoint ProfileUpdateUserSkill = new GraphQlEndpoint("profile_update_user_skill");
+    public static readonly GraphQlEndpoint ProfileDeleteUserSkill = new GraphQlEndpoint("profile_delete_user_skill");
+    public static readonly GraphQlEndpoint ProfileCreateUserLanguage = new GraphQlEndpoint("profile_create_user_language");
+    public static readonly GraphQlEndpoint ProfileUpdateUserLanguage = new GraphQlEndpoint("profile_update_user_language");
+    public static readonly GraphQlEndpoint ProfileDeleteUserLanguage = new GraphQlEndpoint("profile_delete_user_language");
+    public static readonly GraphQlEndpoint ProfileCreateUserProfileItem = new GraphQlEndpoint("profile_create_user_profile_item");
+    public static readonly GraphQlEndpoint ProfileUpdateUserProfileItem = new GraphQlEndpoint("profile_update_user_profile_item");
+    public static readonly GraphQlEndpoint ProfileDeleteUserProfileItem = new GraphQlEndpoint("profile_delete_user_profile_item");
 }
 
 
