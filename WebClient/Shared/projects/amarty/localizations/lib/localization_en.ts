@@ -244,4 +244,5 @@ export const localization_en: Map<string, string> = new Map<string, string>([
   ['SKILL_LEVEL.WORLD_CLASS', 'World-Class'],
   ['PROFILE.SHOW_CURRENT_POSITION', 'Show current position'],
   ['PROFILE.SHOW_HIGHEST_EDUCATION', 'Show highest education'],
+  ['COMMON.CURRENT', 'Current'],
 ]);

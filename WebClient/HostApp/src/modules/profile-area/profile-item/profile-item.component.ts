@@ -8,7 +8,7 @@ import {
 import { CommonDialogService, DictionaryService } from '@amarty/services';
 import { SafeHtml } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
-import { TranslationPipe } from '@amarty/pipes';
+import { TranslationPipe, MonthYearFormatPipe } from '@amarty/pipes';
 import { ProfileItemDialogComponent } from '../../dialogs/profile-item-dialog/profile-item-dialog.component';
 import { LOCALIZATION_KEYS } from '@amarty/localizations';
 import { BaseUnsubscribeComponent } from '@amarty/common';
@@ -17,7 +17,8 @@ import { BaseUnsubscribeComponent } from '@amarty/common';
   selector: 'app-profile-item',
   imports: [
     CommonModule,
-    TranslationPipe
+    TranslationPipe,
+    MonthYearFormatPipe
   ],
   standalone: true,
   templateUrl: './profile-item.component.html',
@@ -55,6 +56,18 @@ export class ProfileItemComponent extends BaseUnsubscribeComponent {
 
   public getItemTitle(skill: UserSkillResponse | undefined): string {
     return this.dictionaryService.getSkillTitle(skill);
+  }
+
+  public getCountry(id: number | undefined): string | undefined {
+    return this.dictionaryService.countryData?.find(item => item.id === id)?.title;
+  }
+
+  public getJobType(id: number | undefined): string | undefined {
+    return this.dictionaryService.jobTypeData?.find(item => item.id === id)?.title;
+  }
+
+  public getWorkArrangement(id: number | undefined): string | undefined {
+    return this.dictionaryService.workArrangementData?.find(item => item.id === id)?.title;
   }
 
   public openItemDialog(itemId?: string): void {

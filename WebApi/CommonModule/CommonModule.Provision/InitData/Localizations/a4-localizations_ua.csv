@@ -242,3 +242,4 @@ id;locale;key;valueEn;value;isPublic;
 550e8400-e29b-41d4-a716-400023800000;ua;SKILL_LEVEL.WORLD_CLASS;World-Class;Світовий клас;1;
 550e8400-e29b-41d4-a716-400023900000;ua;PROFILE.SHOW_CURRENT_POSITION;Show current position;Показати поточну посаду;1;
 550e8400-e29b-41d4-a716-400024000000;ua;PROFILE.SHOW_HIGHEST_EDUCATION;Show highest education;Показати найвищу освіту;1;
+550e8400-e29b-41d4-a716-400024100000;ua;COMMON.CURRENT;Current;Поточний;1;

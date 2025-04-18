@@ -14,6 +14,9 @@ export type InputType =
   | 'multiautocomplete'
   | null;
 
+export type InputDatepickerType =
+  'day-month-year' | 'month-year';
+
 export interface InputFormItem {
   controlName?: string;
   inputType?: InputType;
@@ -34,6 +37,7 @@ export interface InputFormItem {
   defaultValue?: any;
   validators?: ValidatorFn[];
   hidden?: boolean | undefined;
+  datepickerFormat?: InputDatepickerType | undefined;
 }
 
 export interface InputFormItemGrid {
@@ -150,6 +154,11 @@ export class InputFormItemBuilder {
 
   withHidden(hidden: boolean = true): this {
     this._item.hidden = hidden;
+    return this;
+  }
+
+  withDatepickerFormat(datepickerFormat: InputDatepickerType = 'day-month-year'): this {
+    this._item.datepickerFormat = datepickerFormat;
     return this;
   }
 

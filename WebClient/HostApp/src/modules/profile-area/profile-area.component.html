@@ -1,36 +1,39 @@
-<div class="container">
-  <app-profile-info
-    [currentUser]="currentUser"
-    [countryCode]="countryCode"
-  ></app-profile-info>
+@if(currentUser && userProfile) {
+  <div class="container">
+    <app-profile-info
+      [currentUser]="currentUser"
+      [countryCode]="countryCode"
+      [userProfile]="userProfile"
+    ></app-profile-info>
 
-  <app-profile-item
-    [existingItems]="userProfile?.items"
-    [itemType]="profileItemEnum.Experience"
-  ></app-profile-item>
-  <app-profile-item
-    [existingItems]="userProfile?.items"
-    [itemType]="profileItemEnum.Education"
-  ></app-profile-item>
+    <app-profile-item
+      [existingItems]="userProfile.items"
+      [itemType]="profileItemEnum.Experience"
+    ></app-profile-item>
+    <app-profile-item
+      [existingItems]="userProfile.items"
+      [itemType]="profileItemEnum.Education"
+    ></app-profile-item>
 
-  <app-profile-skills
-    [existingItems]="userProfile?.skills"
-  ></app-profile-skills>
-  <app-profile-languages
-    [existingItems]="userProfile?.languages"
-  ></app-profile-languages>
+    <app-profile-skills
+      [existingItems]="userProfile.skills"
+    ></app-profile-skills>
+    <app-profile-languages
+      [existingItems]="userProfile.languages"
+    ></app-profile-languages>
 
-  <app-profile-item
-    [existingItems]="userProfile?.items"
-    [itemType]="profileItemEnum.Certification"
-  ></app-profile-item>
-  <app-profile-item
-    [existingItems]="userProfile?.items"
-    [itemType]="profileItemEnum.Achievement"
-  ></app-profile-item>
+    <app-profile-item
+      [existingItems]="userProfile.items"
+      [itemType]="profileItemEnum.Certification"
+    ></app-profile-item>
+    <app-profile-item
+      [existingItems]="userProfile.items"
+      [itemType]="profileItemEnum.Achievement"
+    ></app-profile-item>
 
-  <app-profile-item
-    [existingItems]="userProfile?.items"
-    [itemType]="profileItemEnum.Project"
-  ></app-profile-item>
-</div>
+    <app-profile-item
+      [existingItems]="userProfile.items"
+      [itemType]="profileItemEnum.Project"
+    ></app-profile-item>
+  </div>
+}

@@ -346,9 +346,11 @@ export class ProfileFormFactory {
           new InputFormItemBuilder('startDate', 'datepicker')
             .withLabel(ctrlNames.startDate)
             .withValidators([Validators.required])
+            .withDatepickerFormat('month-year')
             .withDefaultValue(profileItem?.startDate),
           new InputFormItemBuilder('endDate', 'datepicker')
             .withLabel(ctrlNames.endDate)
+            .withDatepickerFormat('month-year')
             .withDefaultValue(profileItem?.endDate),
           new InputFormItemBuilder('location', 'input')
             .withLabel(ctrlNames.location)

@@ -242,3 +242,4 @@ id;locale;key;valueEn;value;isPublic;
 550e8400-e29b-41d4-a716-500023800000;ru;SKILL_LEVEL.WORLD_CLASS;World-Class;Мировой уровень;1;
 550e8400-e29b-41d4-a716-500023900000;ru;PROFILE.SHOW_CURRENT_POSITION;Show current position;Показать текущую должность;1;
 550e8400-e29b-41d4-a716-500024000000;ru;PROFILE.SHOW_HIGHEST_EDUCATION;Show highest education;Показать высшее образование;1;
+550e8400-e29b-41d4-a716-500024100000;ru;COMMON.CURRENT;Current;Текущий;1;

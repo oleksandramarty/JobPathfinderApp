@@ -3,6 +3,7 @@ using CommonModule.Core.Exceptions;
 using CommonModule.Interfaces;
 using CommonModule.Shared.Responses.Profile.Profile;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using Profile.Domain;
 using Profile.Domain.Models.Profile;
 using Profile.Mediatr.Mediatr.Profile.Requests;
@@ -42,7 +43,10 @@ public class UserProfileRequestHandler: IRequestHandler<UserProfileRequest, User
         
         List<UserSkillEntity> userSkills = await _userSkillRepository.ListAsync(x => x.UserId == userId, cancellationToken);
         List<UserLanguageEntity> userLanguages = await _userLanguageRepository.ListAsync(x => x.UserId == userId, cancellationToken);
-        List<UserProfileItemEntity> userProfileItems = await _userProfileItemRepository.ListAsync(x => x.UserId == userId, cancellationToken);
+        List<UserProfileItemEntity> userProfileItems = await _userProfileItemRepository
+            .Queryable(x => x.UserId == userId)
+            .OrderByDescending(x => x.StartDate)
+            .ToListAsync(cancellationToken);
 
         return new UserProfileResponse
         {

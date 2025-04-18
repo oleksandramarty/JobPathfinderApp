@@ -242,3 +242,4 @@ id;locale;key;valueEn;value;isPublic;
 550e8400-e29b-41d4-a716-600023800000;de;SKILL_LEVEL.WORLD_CLASS;World-Class;Weltklasse;1;
 550e8400-e29b-41d4-a716-600023900000;de;PROFILE.SHOW_CURRENT_POSITION;Show current position;Aktuelle Position anzeigen;1;
 550e8400-e29b-41d4-a716-600024000000;de;PROFILE.SHOW_HIGHEST_EDUCATION;Show highest education;Höchste Ausbildung anzeigen;1;
+550e8400-e29b-41d4-a716-600024100000;de;COMMON.CURRENT;Current;Aktuell;1;
