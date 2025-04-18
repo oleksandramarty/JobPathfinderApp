@@ -907,11 +907,11 @@ export interface IBaseAmountRangeFilterRequest {
     amountTo?: number | undefined;
 }
 
-export class AddUserSkillCommand implements IAddUserSkillCommand {
+export class CreateUserSkillCommand implements ICreateUserSkillCommand {
     skillId?: number;
     skillLevelId?: number;
 
-    constructor(data?: IAddUserSkillCommand) {
+    constructor(data?: ICreateUserSkillCommand) {
         if (data) {
             for (var property in data) {
                 if (data.hasOwnProperty(property))
@@ -927,9 +927,9 @@ export class AddUserSkillCommand implements IAddUserSkillCommand {
         }
     }
 
-    static fromJS(data: any): AddUserSkillCommand {
+    static fromJS(data: any): CreateUserSkillCommand {
         data = typeof data === 'object' ? data : {};
-        let result = new AddUserSkillCommand();
+        let result = new CreateUserSkillCommand();
         result.init(data);
         return result;
     }
@@ -942,16 +942,16 @@ export class AddUserSkillCommand implements IAddUserSkillCommand {
     }
 }
 
-export interface IAddUserSkillCommand {
+export interface ICreateUserSkillCommand {
     skillId?: number;
     skillLevelId?: number;
 }
 
-export class AddUserLanguageCommand implements IAddUserLanguageCommand {
+export class CreateUserLanguageCommand implements ICreateUserLanguageCommand {
     languageId?: number;
     languageLevelId?: number;
 
-    constructor(data?: IAddUserLanguageCommand) {
+    constructor(data?: ICreateUserLanguageCommand) {
         if (data) {
             for (var property in data) {
                 if (data.hasOwnProperty(property))
@@ -967,9 +967,9 @@ export class AddUserLanguageCommand implements IAddUserLanguageCommand {
         }
     }
 
-    static fromJS(data: any): AddUserLanguageCommand {
+    static fromJS(data: any): CreateUserLanguageCommand {
         data = typeof data === 'object' ? data : {};
-        let result = new AddUserLanguageCommand();
+        let result = new CreateUserLanguageCommand();
         result.init(data);
         return result;
     }
@@ -982,12 +982,12 @@ export class AddUserLanguageCommand implements IAddUserLanguageCommand {
     }
 }
 
-export interface IAddUserLanguageCommand {
+export interface ICreateUserLanguageCommand {
     languageId?: number;
     languageLevelId?: number;
 }
 
-export class AddUserProfileItemCommand implements IAddUserProfileItemCommand {
+export class CreateUserProfileItemCommand implements ICreateUserProfileItemCommand {
     profileItemType?: UserProfileItemEnum;
     startDate?: Date;
     endDate?: Date | undefined;
@@ -999,7 +999,7 @@ export class AddUserProfileItemCommand implements IAddUserProfileItemCommand {
     jobTypeId?: number | undefined;
     workArrangementId?: number | undefined;
 
-    constructor(data?: IAddUserProfileItemCommand) {
+    constructor(data?: ICreateUserProfileItemCommand) {
         if (data) {
             for (var property in data) {
                 if (data.hasOwnProperty(property))
@@ -1023,9 +1023,9 @@ export class AddUserProfileItemCommand implements IAddUserProfileItemCommand {
         }
     }
 
-    static fromJS(data: any): AddUserProfileItemCommand {
+    static fromJS(data: any): CreateUserProfileItemCommand {
         data = typeof data === 'object' ? data : {};
-        let result = new AddUserProfileItemCommand();
+        let result = new CreateUserProfileItemCommand();
         result.init(data);
         return result;
     }
@@ -1046,7 +1046,7 @@ export class AddUserProfileItemCommand implements IAddUserProfileItemCommand {
     }
 }
 
-export interface IAddUserProfileItemCommand {
+export interface ICreateUserProfileItemCommand {
     profileItemType?: UserProfileItemEnum;
     startDate?: Date;
     endDate?: Date | undefined;
@@ -1067,8 +1067,9 @@ export enum UserProfileItemEnum {
     Certification = 5,
 }
 
-export class UpdateUserSkillCommand extends AddUserSkillCommand implements IUpdateUserSkillCommand {
-    id?: string;
+export class UpdateUserSkillCommand extends BaseIdEntityOfGuid implements IUpdateUserSkillCommand {
+    skillId?: number;
+    skillLevelId?: number;
 
     constructor(data?: IUpdateUserSkillCommand) {
         super(data);
@@ -1077,7 +1078,8 @@ export class UpdateUserSkillCommand extends AddUserSkillCommand implements IUpda
     override init(_data?: any) {
         super.init(_data);
         if (_data) {
-            this.id = _data["id"];
+            this.skillId = _data["skillId"];
+            this.skillLevelId = _data["skillLevelId"];
         }
     }
 
@@ -1090,18 +1092,21 @@ export class UpdateUserSkillCommand extends AddUserSkillCommand implements IUpda
 
     override toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data["id"] = this.id;
+        data["skillId"] = this.skillId;
+        data["skillLevelId"] = this.skillLevelId;
         super.toJSON(data);
         return data;
     }
 }
 
-export interface IUpdateUserSkillCommand extends IAddUserSkillCommand {
-    id?: string;
+export interface IUpdateUserSkillCommand extends IBaseIdEntityOfGuid {
+    skillId?: number;
+    skillLevelId?: number;
 }
 
-export class UpdateUserLanguageCommand extends AddUserLanguageCommand implements IUpdateUserLanguageCommand {
-    id?: string;
+export class UpdateUserLanguageCommand extends BaseIdEntityOfGuid implements IUpdateUserLanguageCommand {
+    languageId?: number;
+    languageLevelId?: number;
 
     constructor(data?: IUpdateUserLanguageCommand) {
         super(data);
@@ -1110,7 +1115,8 @@ export class UpdateUserLanguageCommand extends AddUserLanguageCommand implements
     override init(_data?: any) {
         super.init(_data);
         if (_data) {
-            this.id = _data["id"];
+            this.languageId = _data["languageId"];
+            this.languageLevelId = _data["languageLevelId"];
         }
     }
 
@@ -1123,18 +1129,29 @@ export class UpdateUserLanguageCommand extends AddUserLanguageCommand implements
 
     override toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data["id"] = this.id;
+        data["languageId"] = this.languageId;
+        data["languageLevelId"] = this.languageLevelId;
         super.toJSON(data);
         return data;
     }
 }
 
-export interface IUpdateUserLanguageCommand extends IAddUserLanguageCommand {
-    id?: string;
+export interface IUpdateUserLanguageCommand extends IBaseIdEntityOfGuid {
+    languageId?: number;
+    languageLevelId?: number;
 }
 
-export class UpdateUserProfileItemCommand extends AddUserProfileItemCommand implements IUpdateUserProfileItemCommand {
-    id?: string;
+export class UpdateUserProfileItemCommand extends BaseIdEntityOfGuid implements IUpdateUserProfileItemCommand {
+    profileItemType?: UserProfileItemEnum;
+    startDate?: Date;
+    endDate?: Date | undefined;
+    position?: string;
+    description?: string | undefined;
+    company?: string | undefined;
+    location?: string | undefined;
+    countryId?: number | undefined;
+    jobTypeId?: number | undefined;
+    workArrangementId?: number | undefined;
 
     constructor(data?: IUpdateUserProfileItemCommand) {
         super(data);
@@ -1143,7 +1160,16 @@ export class UpdateUserProfileItemCommand extends AddUserProfileItemCommand impl
     override init(_data?: any) {
         super.init(_data);
         if (_data) {
-            this.id = _data["id"];
+            this.profileItemType = _data["profileItemType"];
+            this.startDate = _data["startDate"] ? new Date(_data["startDate"].toString()) : <any>undefined;
+            this.endDate = _data["endDate"] ? new Date(_data["endDate"].toString()) : <any>undefined;
+            this.position = _data["position"];
+            this.description = _data["description"];
+            this.company = _data["company"];
+            this.location = _data["location"];
+            this.countryId = _data["countryId"];
+            this.jobTypeId = _data["jobTypeId"];
+            this.workArrangementId = _data["workArrangementId"];
         }
     }
 
@@ -1156,14 +1182,32 @@ export class UpdateUserProfileItemCommand extends AddUserProfileItemCommand impl
 
     override toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data["id"] = this.id;
+        data["profileItemType"] = this.profileItemType;
+        data["startDate"] = this.startDate ? this.startDate.toISOString() : <any>undefined;
+        data["endDate"] = this.endDate ? this.endDate.toISOString() : <any>undefined;
+        data["position"] = this.position;
+        data["description"] = this.description;
+        data["company"] = this.company;
+        data["location"] = this.location;
+        data["countryId"] = this.countryId;
+        data["jobTypeId"] = this.jobTypeId;
+        data["workArrangementId"] = this.workArrangementId;
         super.toJSON(data);
         return data;
     }
 }
 
-export interface IUpdateUserProfileItemCommand extends IAddUserProfileItemCommand {
-    id?: string;
+export interface IUpdateUserProfileItemCommand extends IBaseIdEntityOfGuid {
+    profileItemType?: UserProfileItemEnum;
+    startDate?: Date;
+    endDate?: Date | undefined;
+    position?: string;
+    description?: string | undefined;
+    company?: string | undefined;
+    location?: string | undefined;
+    countryId?: number | undefined;
+    jobTypeId?: number | undefined;
+    workArrangementId?: number | undefined;
 }
 
 export class SiteSettingsResponse implements ISiteSettingsResponse {

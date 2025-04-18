@@ -5,7 +5,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { of } from 'rxjs';
 
 import { AuthService } from '../../../utils/services/auth.service';
-import { UserApiClient, DictionaryApiClient } from '@amarty/api';
+import { DictionaryApiClient } from '@amarty/api';
 import {
   DictionaryService,
   LocalizationService,
@@ -15,7 +15,6 @@ import { Store } from '@ngrx/store';
 
 describe('AppComponent', () => {
   let authServiceMock: Partial<AuthService>;
-  let userApiClientMock: Partial<UserApiClient>;
   let localizationServiceMock: Partial<LocalizationService>;
   let dictionaryApiServiceMock: Partial<DictionaryApiClient>;
   let siteSettingsServiceMock: Partial<SiteSettingsService>;
@@ -26,10 +25,6 @@ describe('AppComponent', () => {
     authServiceMock = {
       initialize: jasmine.createSpy('initialize'),
       isAuthorized$: of(false),
-    };
-
-    userApiClientMock = {
-      user_Current: jasmine.createSpy('user_Current').and.returnValue(of({ id: 1, name: 'Test' })),
     };
 
     localizationServiceMock = {
@@ -56,7 +51,6 @@ describe('AppComponent', () => {
       imports: [MatSnackBarModule, provideRouter([])],
       providers: [
         { provide: AuthService, useValue: authServiceMock },
-        { provide: UserApiClient, useValue: userApiClientMock },
         { provide: LocalizationService, useValue: localizationServiceMock },
         { provide: DictionaryApiClient, useValue: dictionaryApiServiceMock },
         { provide: SiteSettingsService, useValue: siteSettingsServiceMock },
@@ -74,7 +68,6 @@ describe('AppComponent', () => {
 
     // Injection check
     expect((component as any).authService).toBeTruthy();
-    expect((component as any).userApiClient).toBeTruthy();
     expect((component as any).localizationService).toBeTruthy();
     expect((component as any).dictionaryApiService).toBeTruthy();
     expect((component as any).siteSettingsService).toBeTruthy();

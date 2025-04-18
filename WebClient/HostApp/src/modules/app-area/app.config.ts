@@ -16,10 +16,8 @@ import { InMemoryCache } from '@apollo/client/core';
 
 import { reducers } from '@amarty/store';
 import {
-  API_BASE_URL_AuthGateway,
   API_BASE_URL_Localizations,
-  API_BASE_URL_Dictionaries,
-  API_BASE_URL_Profile
+  API_BASE_URL_Dictionaries
 } from '@amarty/api';
 
 import { BaseUrlInterceptor } from '../../utils/api.interceptor';
@@ -65,9 +63,7 @@ export const appConfig: ApplicationConfig = {
       multi: true,
     },
 
-    { provide: API_BASE_URL_AuthGateway, useValue: environment.authGatewayApiUrl },
     { provide: API_BASE_URL_Localizations, useValue: environment.localizationApiUrl },
     { provide: API_BASE_URL_Dictionaries, useValue: environment.dictionaryApiUrl },
-    { provide: API_BASE_URL_Profile, useValue: environment.profileApiUrl },
   ],
 };
