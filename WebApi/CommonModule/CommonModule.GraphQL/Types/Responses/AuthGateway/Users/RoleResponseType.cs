@@ -10,6 +10,9 @@ public sealed class RoleResponseType : ObjectGraphType<RoleResponse>
     {
         Field(x => x.Id);
         Field(x => x.Title, nullable: true);
-        Field(x => x.UserRole, type: typeof(EnumerationGraphType<UserRoleEnum>));
+        Field<IntGraphType>(
+            nameof(RoleResponse.UserRole),
+            resolve: context => (int)context.Source.UserRole
+        );
     }
 }

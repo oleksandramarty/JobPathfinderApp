@@ -92,7 +92,7 @@ export class GraphQlProfileService {
 
   // === PROFILE ITEMS ===
   public createUserProfileItem(input: {
-    profileItemType: string;
+    profileItemType: number;
     startDate: string;
     endDate?: string;
     position: string;
@@ -110,7 +110,7 @@ export class GraphQlProfileService {
   }
 
   public updateUserProfileItem(id: string, input: {
-    profileItemType: string;
+    profileItemType: number;
     startDate: string;
     endDate?: string;
     position: string;

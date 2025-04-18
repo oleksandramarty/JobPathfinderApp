@@ -47,3 +47,7 @@ export function traceCreation(instance: any, trace: boolean = true) {
   console.trace(`🧩 Creating ${className}`);
 }
 
+export function mapEnumValue<T extends Record<string, string | number>>(enumObj: T, value: number): string | null {
+  const mapped = enumObj[value];
+  return typeof mapped === 'string' ? mapped : null;
+}

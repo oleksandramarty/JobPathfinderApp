@@ -9,7 +9,7 @@ public class UpdateUserProfileItemInputType : InputObjectGraphType
     {
         Name = "UpdateUserProfileItemInputType";
 
-        Field<NonNullGraphType<EnumerationGraphType<UserProfileItemEnum>>>("profileItemType");
+        Field<NonNullGraphType<IntGraphType>>("profileItemType");
         Field<NonNullGraphType<DateGraphType>>("startDate");
         Field<DateGraphType>("endDate");
         Field<NonNullGraphType<StringGraphType>>("position");

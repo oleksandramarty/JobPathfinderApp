@@ -123,7 +123,7 @@ export const PROFILE_CREATE_USER_LANGUAGE = gql`
 
 export const PROFILE_CREATE_USER_PROFILE_ITEM = gql`
   mutation ProfileCreateUserProfileItem(
-    $profileItemType: UserProfileItemEnum!,
+    $profileItemType: Int!,
     $startDate: Date!,
     $endDate: Date,
     $position: String!,
@@ -192,7 +192,7 @@ export const PROFILE_UPDATE_USER_LANGUAGE = gql`
 export const PROFILE_UPDATE_USER_PROFILE_ITEM = gql`
   mutation ProfileUpdateUserProfileItem(
     $id: Guid!,
-    $profileItemType: UserProfileItemEnum!,
+    $profileItemType: Int!,
     $startDate: Date!,
     $endDate: Date,
     $position: String!,

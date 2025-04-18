@@ -7,7 +7,6 @@ import {
   BaseIdEntityOfGuid,
   BaseBoolResponse,
   DataItem,
-  InputForm,
   UserProfileItemEnum,
   UserProfileItemResponse,
   UserResponse
@@ -21,6 +20,7 @@ import { GraphQlProfileService } from '../../profile-area/utils/graph-ql/service
 import { ProfileUserGenericProfileItem } from '../../profile-area/utils/profile-user-generic-profile-item';
 import { selectUser } from '@amarty/store';
 import { ProfileFormFactory } from '../../profile-area/utils/form-renderer/profile-form.factory';
+import {formatDateToYMD, mapEnumValue} from '@amarty/utils';
 
 @Component({
   selector: 'app-profile-item-dialog',
@@ -98,9 +98,17 @@ export class ProfileItemDialogComponent
   }
 
   protected override userProfileGenericInput(): any {
+    const formValue = this.renderForm!.inputFormGroup?.value;
+
     return {
-      ...this.renderForm!.inputFormGroup?.value,
-      userId: this.currentUser?.id
+      ...formValue,
+      userId: this.currentUser?.id,
+      profileItemType: Number(formValue.profileItemType),
+      startDate: formValue.startDate ? formatDateToYMD(formValue.startDate) : null,
+      endDate: formValue.endDate ? formatDateToYMD(formValue.endDate) : null,
+      countryId: formValue.countryId ? Number(formValue.countryId) : null,
+      jobTypeId: formValue.jobTypeId ? Number(formValue.jobTypeId) : null,
+      workArrangementId: formValue.workArrangementId ? Number(formValue.workArrangementId) : null,
     };
   }
 

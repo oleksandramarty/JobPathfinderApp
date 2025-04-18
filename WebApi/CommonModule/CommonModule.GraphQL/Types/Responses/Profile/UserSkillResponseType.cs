@@ -13,7 +13,10 @@ public sealed class UserSkillResponseType : ObjectGraphType<UserSkillResponse>
         Field(x => x.SkillId);
         Field(x => x.SkillLevelId);
         Field<ListGraphType<UserProfileItemSkillResponseType>>(nameof(UserSkillResponse.UserProfileItems));
-        Field(x => x.Status, type: typeof(StatusEnumType));
+        Field<IntGraphType>(
+            nameof(UserSkillResponse.Status),
+            resolve: context => (int)context.Source.Status
+        );
         Field(x => x.Version);
         Field(x => x.CreatedAt);
         Field(x => x.UpdatedAt, nullable: true);

@@ -308,6 +308,11 @@ button:focus {
   font-size: m.pxToRem(14);
   cursor: default;
 
+  .language__item {
+    display: flex;
+    gap: #{m.pxToRem(8)};
+  }
+
   &__language {
     display: flex;
     align-items: flex-start;

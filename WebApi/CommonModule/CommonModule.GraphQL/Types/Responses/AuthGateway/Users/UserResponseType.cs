@@ -1,5 +1,4 @@
 using CommonModule.GraphQL.Types.EnumType;
-using CommonModule.Shared.Enums;
 using CommonModule.Shared.Responses.AuthGateway.Users;
 using GraphQL.Types;
 
@@ -16,9 +15,15 @@ public sealed class UserResponseType : ObjectGraphType<UserResponse>
         Field(x => x.Headline, nullable: true);
         Field(x => x.Email, nullable: true);
         Field(x => x.Phone, nullable: true);
-        Field(x => x.Status, type: typeof(StatusEnumType));
+        Field<IntGraphType>(
+            nameof(UserResponse.Status),
+            resolve: context => (int)context.Source.Status
+        );
         Field(x => x.IsTemporaryPassword);
-        Field(x => x.AuthType, type: typeof(EnumerationGraphType<UserAuthMethodEnum>));
+        Field<IntGraphType>(
+            nameof(UserResponse.AuthType),
+            resolve: context => (int)context.Source.AuthType
+        );
         Field(x => x.LastForgotPassword, nullable: true);
         Field(x => x.LastForgotPasswordRequest, nullable: true);
         Field<ListGraphType<RoleResponseType>>(nameof(UserResponse.Roles));

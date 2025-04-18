@@ -14,7 +14,10 @@ public sealed class UserLanguageResponseType : ObjectGraphType<UserLanguageRespo
         Field(x => x.LanguageId);
         Field(x => x.LanguageLevelId);
         Field<ListGraphType<UserProfileItemLanguageResponseType>>(nameof(UserLanguageResponse.UserProfileItems));
-        Field(x => x.Status, type: typeof(StatusEnumType));
+        Field<IntGraphType>(
+            nameof(UserLanguageResponse.Status),
+            resolve: context => (int)context.Source.Status
+        );
         Field(x => x.Version);
         Field(x => x.CreatedAt);
         Field(x => x.UpdatedAt, nullable: true);

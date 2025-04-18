@@ -17,3 +17,13 @@ export function getUTCString(): string {
   const sign = offset >= 0 ? '+' : '-';
   return `UTC ${sign}${Math.abs(offset)}`;
 }
+
+export function formatDateToYMD(date: Date | string): string {
+  if (typeof date === 'string') {
+    return date.slice(0, 10);
+  }
+  if (date instanceof Date) {
+    return date.toISOString().slice(0, 10);
+  }
+  throw new Error('Unsupported date type');
+}

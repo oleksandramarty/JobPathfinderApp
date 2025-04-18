@@ -11,7 +11,10 @@ public sealed class UserProfileItemResponseType : ObjectGraphType<UserProfileIte
     {
         Field(x => x.Id);
         Field(x => x.UserId);
-        Field(x => x.ProfileItemType, type: typeof(EnumerationGraphType<UserProfileItemEnum>));
+        Field<IntGraphType>(
+            nameof(UserProfileItemResponse.ProfileItemType),
+            resolve: context => (int)context.Source.ProfileItemType
+        );
         Field(x => x.StartDate);
         Field(x => x.EndDate, nullable: true);
         Field(x => x.Position);
@@ -23,7 +26,10 @@ public sealed class UserProfileItemResponseType : ObjectGraphType<UserProfileIte
         Field(x => x.WorkArrangementId, nullable: true);
         Field<ListGraphType<UserProfileItemLanguageResponseType>>(nameof(UserProfileItemResponse.Languages));
         Field<ListGraphType<UserProfileItemSkillResponseType>>(nameof(UserProfileItemResponse.Skills));
-        Field(x => x.Status, type: typeof(StatusEnumType));
+        Field<IntGraphType>(
+            nameof(UserProfileItemResponse.Status),
+            resolve: context => (int)context.Source.Status
+        );
         Field(x => x.Version);
         Field(x => x.CreatedAt);
         Field(x => x.UpdatedAt, nullable: true);

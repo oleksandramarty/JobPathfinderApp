@@ -13,23 +13,21 @@
     [itemType]="profileItemEnum.Education"
   ></app-profile-item>
 
-  <div class="grid-2fr grid-gap">
-    <app-profile-skills
-      [existingItems]="userProfile?.skills"
-    ></app-profile-skills>
-    <app-profile-languages
-      [existingItems]="userProfile?.languages"
-    ></app-profile-languages>
+  <app-profile-skills
+    [existingItems]="userProfile?.skills"
+  ></app-profile-skills>
+  <app-profile-languages
+    [existingItems]="userProfile?.languages"
+  ></app-profile-languages>
 
-    <app-profile-item
-      [existingItems]="userProfile?.items"
-      [itemType]="profileItemEnum.Certification"
-    ></app-profile-item>
-    <app-profile-item
-      [existingItems]="userProfile?.items"
-      [itemType]="profileItemEnum.Achievement"
-    ></app-profile-item>
-  </div>
+  <app-profile-item
+    [existingItems]="userProfile?.items"
+    [itemType]="profileItemEnum.Certification"
+  ></app-profile-item>
+  <app-profile-item
+    [existingItems]="userProfile?.items"
+    [itemType]="profileItemEnum.Achievement"
+  ></app-profile-item>
 
   <app-profile-item
     [existingItems]="userProfile?.items"

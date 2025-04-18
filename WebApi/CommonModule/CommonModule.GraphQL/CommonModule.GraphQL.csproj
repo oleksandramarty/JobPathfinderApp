@@ -16,10 +16,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Types\Responses\Dictionaries\Models\" />
-    </ItemGroup>
-
-    <ItemGroup>
       <ProjectReference Include="..\..\AuthGateway\AuthGateway.Mediatr\AuthGateway.Mediatr.csproj" />
       <ProjectReference Include="..\..\Dictionaries\Dictionaries.Mediatr\Dictionaries.Mediatr.csproj" />
       <ProjectReference Include="..\..\Profile\Profile.Mediatr\Profile.Mediatr.csproj" />
