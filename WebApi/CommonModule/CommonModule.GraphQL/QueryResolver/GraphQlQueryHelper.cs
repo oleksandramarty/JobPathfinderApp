@@ -33,7 +33,10 @@ public class GraphQlQueryHelper: GraphQlQueryResolver
             UserProfileRequest,
             UserProfileResponse
         >(GraphQlEndpoints.ProfileCurrentUserProfile);
-
+        
+        EntityById<GuidGraphType, UserSkillResponseType, Guid, UserSkillResponse, UserSkillByIdRequest, UserSkillResponse>(GraphQlEndpoints.ProfileUserSkillById);
+        EntityById<GuidGraphType, UserLanguageResponseType, Guid, UserLanguageResponse, UserLanguageByIdRequest, UserLanguageResponse>(GraphQlEndpoints.ProfileUserLanguageById);
+        EntityById<GuidGraphType, UserProfileItemResponseType, Guid, UserProfileItemResponse, UserProfileItemByIdRequest, UserProfileItemResponse>(GraphQlEndpoints.ProfileUserProfileItemById);
     }
 
     public void AddDictionariesQueries()
