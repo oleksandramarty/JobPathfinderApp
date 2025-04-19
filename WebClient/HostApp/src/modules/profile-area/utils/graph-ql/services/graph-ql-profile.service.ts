@@ -16,7 +16,7 @@ import {
   PROFILE_DELETE_USER_LANGUAGE,
   PROFILE_CREATE_USER_PROFILE_ITEM,
   PROFILE_UPDATE_USER_PROFILE_ITEM,
-  PROFILE_DELETE_USER_PROFILE_ITEM, PROFILE_USER_SKILL_BY_ID
+  PROFILE_DELETE_USER_PROFILE_ITEM, PROFILE_USER_SKILL_BY_ID, PROFILE_USER_PROFILE_BY_ID
 } from '../queries/graph-ql-profile.query';
 
 @Injectable({
@@ -132,5 +132,14 @@ export class GraphQlProfileService {
       mutation: PROFILE_DELETE_USER_PROFILE_ITEM,
       variables: { id },
     }) as Observable<ApolloQueryResult<{ profile_delete_user_profile_item: BaseBoolResponse | undefined }>>;
+  }
+
+  public userProfileById(id: string): Observable<ApolloQueryResult<{ profile_user_profile_by_id: UserProfileResponse | undefined }>> {
+    return this.apolloClient
+      .watchQuery({
+        query: PROFILE_USER_PROFILE_BY_ID,
+        variables: { id },
+        fetchPolicy: 'cache-and-network',
+      }).valueChanges as Observable<ApolloQueryResult<{ profile_user_profile_by_id: UserProfileResponse | undefined }>>;
   }
 }

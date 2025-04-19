@@ -1,4 +1,5 @@
 using CommonModule.GraphQL.Types.EnumType;
+using CommonModule.GraphQL.Types.Responses.Profile;
 using CommonModule.Shared.Responses.AuthGateway.Users;
 using GraphQL.Types;
 

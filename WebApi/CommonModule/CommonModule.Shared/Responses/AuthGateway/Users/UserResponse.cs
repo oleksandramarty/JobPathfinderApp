@@ -3,6 +3,7 @@ using CommonModule.Shared.Common;
 using CommonModule.Shared.Common.BaseInterfaces;
 using CommonModule.Shared.Core;
 using CommonModule.Shared.Enums;
+using CommonModule.Shared.Responses.Profile.Profile;
 
 namespace CommonModule.Shared.Responses.AuthGateway.Users;
 

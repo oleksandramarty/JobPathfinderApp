@@ -104,6 +104,37 @@ export const USER_INFO = gql`
   }
 `;
 
+export const USER_INFO_BY_LOGIN = gql`
+  query UserInfoByLogin($login: String) {
+    user_info_by_login(login: $login) {
+      id
+      login
+      firstName
+      lastName
+      headline
+      email
+      phone
+      status
+      userSetting {
+        timeZone
+        countryId
+        currencyId
+        linkedInUrl
+        npmUrl
+        gitHubUrl
+        portfolioUrl
+        showCurrentPosition
+        showHighestEducation
+        version
+      }
+      createdAt
+      updatedAt
+      status
+      version
+    }
+  }
+`;
+
 export const USER_UPDATE_PREFERENCE = gql`
   mutation UpdateUserPreference(
     $login: String

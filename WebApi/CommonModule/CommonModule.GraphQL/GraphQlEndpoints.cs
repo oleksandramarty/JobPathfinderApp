@@ -22,6 +22,8 @@ public static class GraphQlEndpoints
     public static readonly GraphQlEndpoint ProfileUserSkillById = new GraphQlEndpoint("profile_user_skill_by_id");
     public static readonly GraphQlEndpoint ProfileUserLanguageById = new GraphQlEndpoint("profile_user_language_by_id");
     public static readonly GraphQlEndpoint ProfileUserProfileItemById = new GraphQlEndpoint("profile_user_profile_item_by_id");
+    public static readonly GraphQlEndpoint ProfileUserProfileById = new GraphQlEndpoint("profile_user_profile_by_id");
+    public static readonly GraphQlEndpoint UserInfoByLogin = new GraphQlEndpoint("user_info_by_login");
 }
 
 

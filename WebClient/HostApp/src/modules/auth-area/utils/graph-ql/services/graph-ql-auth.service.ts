@@ -4,11 +4,11 @@ import { ApolloQueryResult } from '@apollo/client';
 import {
   AUTH_GATEWAY_CURRENT_USER,
   AUTH_GATEWAY_SIGN_IN,
-  AUTH_GATEWAY_SIGN_OUT, USER_INFO, USER_UPDATE_PREFERENCE
+  AUTH_GATEWAY_SIGN_OUT, USER_INFO, USER_INFO_BY_LOGIN, USER_UPDATE_PREFERENCE
 } from '../queries/graph-ql-auth.query';
 import { Apollo, ApolloBase } from 'apollo-angular';
 import { BaseBoolResponse, JwtTokenResponse, UserResponse } from '@amarty/models';
-import { apolloEnvironments } from '@amarty/utils';
+import {apolloEnvironments, apolloFetchPolicy} from '@amarty/utils';
 
 @Injectable({
   providedIn: 'root',
@@ -63,6 +63,17 @@ export class GraphQlAuthService {
         },
         fetchPolicy: 'network-only',
       }).valueChanges as Observable<ApolloQueryResult<{ user_info_by_id: UserResponse | undefined }>>;
+  }
+
+  public userByLogin(login: string): Observable<ApolloQueryResult<{ user_info_by_login: UserResponse | undefined }>> {
+    return this.apolloClient
+      .watchQuery({
+        query: USER_INFO_BY_LOGIN,
+        variables: {
+          login
+        },
+        fetchPolicy: 'cache-and-network',
+      }).valueChanges as Observable<ApolloQueryResult<{ user_info_by_login: UserResponse | undefined }>>;
   }
 
   public updateUserPreferences(input: {

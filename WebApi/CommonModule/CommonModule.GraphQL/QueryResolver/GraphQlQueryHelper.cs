@@ -1,5 +1,7 @@
 using AuthGateway.Mediatr.Mediatr.Auth.Requests;
 using CommonModule.GraphQL.Types.InputTypes.AuthGateway;
+using CommonModule.GraphQL.Types.InputTypes.AuthGateway.Users;
+using CommonModule.GraphQL.Types.InputTypes.Profile;
 using CommonModule.GraphQL.Types.Responses.AuthGateway;
 using CommonModule.GraphQL.Types.Responses.AuthGateway.Users;
 using CommonModule.GraphQL.Types.Responses.Base;
@@ -33,6 +35,15 @@ public class GraphQlQueryHelper: GraphQlQueryResolver
             UserProfileRequest,
             UserProfileResponse
         >(GraphQlEndpoints.ProfileCurrentUserProfile);
+        
+        EntityById<
+            GuidGraphType,
+            UserProfileResponseType,
+            Guid,
+            UserProfileResponse,
+            UserProfileByIdRequest,
+            UserProfileResponse
+        >(GraphQlEndpoints.ProfileUserProfileById);
         
         EntityById<GuidGraphType, UserSkillResponseType, Guid, UserSkillResponse, UserSkillByIdRequest, UserSkillResponse>(GraphQlEndpoints.ProfileUserSkillById);
         EntityById<GuidGraphType, UserLanguageResponseType, Guid, UserLanguageResponse, UserLanguageByIdRequest, UserLanguageResponse>(GraphQlEndpoints.ProfileUserLanguageById);
@@ -74,6 +85,14 @@ public class GraphQlQueryHelper: GraphQlQueryResolver
             UserByIdRequest,
             UserResponse
         >(GraphQlEndpoints.UserInfo);
+        
+        ResultForNonEmptyCommand<
+            UserLoginInputType,
+            UserResponseType,
+            UserResponse,
+            UserByLoginRequest,
+            UserResponse
+        >(GraphQlEndpoints.UserInfoByLogin);
         
         ExecuteForEmptyCommand<BaseBoolResponseType, AuthSignOutRequest, BaseBoolResponse>(GraphQlEndpoints.SignOut);
     }

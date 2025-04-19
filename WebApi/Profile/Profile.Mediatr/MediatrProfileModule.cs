@@ -27,6 +27,7 @@ public class MediatrProfileModule: Autofac.Module
         builder.RegisterAssemblyTypes(typeof(CreateUserProfileItemCommand).GetTypeInfo().Assembly).AsClosedTypesOf(typeof(IRequestHandler<,>));
         builder.RegisterAssemblyTypes(typeof(DeleteUserProfileItemCommand).GetTypeInfo().Assembly).AsClosedTypesOf(typeof(IRequestHandler<,>));
         builder.RegisterAssemblyTypes(typeof(UpdateUserProfileItemCommand).GetTypeInfo().Assembly).AsClosedTypesOf(typeof(IRequestHandler<,>));
+        builder.RegisterAssemblyTypes(typeof(UserProfileByIdRequest).GetTypeInfo().Assembly).AsClosedTypesOf(typeof(IRequestHandler<,>));
         
     }
 }
