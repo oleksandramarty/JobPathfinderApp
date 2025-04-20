@@ -1,11 +1,12 @@
 using System.Linq.Expressions;
 using CommonModule.Interfaces;
+using CommonModule.Shared.Common.BaseInterfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace CommonModule.Repositories;
 
 public class GenericRepository<TEntityId, TEntity, TDataContext> : IGenericRepository<TEntityId, TEntity, TDataContext>
-    where TEntity : class
+    where TEntity : class, IBaseIdEntity<TEntityId>
     where TDataContext : DbContext
 {
     private readonly TDataContext _dataContext;
@@ -131,10 +132,21 @@ public class GenericRepository<TEntityId, TEntity, TDataContext> : IGenericRepos
 
     public async Task DeleteByIdAsync(TEntityId id, CancellationToken cancellationToken)
     {
-        var entity = await ByIdAsync(id, cancellationToken);
+        TEntity entity = await ByIdAsync(id, cancellationToken);
         if (entity != null)
         {
             _dbSet.Remove(entity);
+            await _dataContext.SaveChangesAsync(cancellationToken);
+        }
+    }
+
+    public async Task DeleteByIdsAsync(List<TEntityId> ids, CancellationToken cancellationToken)
+    {
+        IQueryable<TEntity> entities = _dbSet.Where(e => ids.Contains(e.Id));
+
+        if (entities.Any())
+        {
+            _dbSet.RemoveRange(entities);
             await _dataContext.SaveChangesAsync(cancellationToken);
         }
     }

@@ -12,7 +12,7 @@
 
     @for (grid of gridItems; track $index) {
       @if (grid.title) {
-        <div [class]="grid.titleClass">{{ grid.title }}</div>
+        <div [class]="grid.titleClass">{{ grid.title | translation }}</div>
       }
       <div [ngClass]="'grid-' + (grid.gridCount ?? 1) + 'fr grid-gap'">
         @for (inputItem of grid.inputItems; track $index) {
@@ -35,6 +35,8 @@
               [mode]="inputItem.mode"
               [errorArray]="inputItem.errorArray"
               [submitted]="renderForm.submitted"
+              [hidden]="inputItem.hidden"
+              [datepickerFormat]="inputItem.datepickerFormat"
             ></app-generic-input>
           }
         }

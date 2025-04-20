@@ -2,43 +2,28 @@
   <div class="card__header">
     <h3 class="card__header-title">{{ LOCALIZATION_KEYS.COMMON.LANGUAGES | translation }}</h3>
     <div class="card__header__buttons">
-      @if(!isEmptySection) {
-        <div class="button__icon" (click)="isEditMode = !isEditMode" [class.muted]="!isEditMode">
-          <i class="fa-solid fa-pencil"></i>
+      @if (isCurrentUser) {
+        <div class="button__icon" (click)="openItemDialog()">
+          <i class="fa-solid fa-plus"></i>
         </div>
       }
-      <div class="button__icon" (click)="openItemDialog(true, undefined)">
-        <i class="fa-solid fa-plus"></i>
-      </div>
     </div>
   </div>
   <div class="badges">
-    @if (itemsToAdd) {
-      @for(language of itemsToAdd; track $index) {
-        <div class="badge">
-          <div class="badge__language" [innerHTML]="getItemTitle(language)"></div>
-          @if(isEditMode) {
-            <i class="fa-solid fa-pencil" (click)="openItemDialog(true, language.id)"></i>
-            <i class="fa-solid fa-xmark" (click)="removeItem(true, language.id!)"></i>
-          }
-        </div>
-      }
-    }
-    @if (!!existingItems) {
-      @for(language of existingItems; track $index) {
-        <div class="badge">
-          {{ getItemTitle(language) }}
-          @if(isEditMode) {
-            <i class="fa-solid fa-pencil" (click)="openItemDialog(false, language.id)"></i>
-            <i class="fa-solid fa-xmark" (click)="removeItem(false, language.id!)"></i>
-          }
-        </div>
-      }
-    }
       @if (isEmptySection) {
       <div class="section__empty">
         <p>{{ LOCALIZATION_KEYS.COMMON.EMPTY_SECTION | translation }}</p>
       </div>
-    }
+    } @else {
+        @for(language of existingItems; track $index) {
+          <div class="badge">
+            <div class="language__item" [innerHTML]="getItemTitle(language)"></div>
+            @if (isCurrentUser) {
+              <i class="fa-solid fa-pencil" (click)="openItemDialog(language.id)"></i>
+              <i class="fa-solid fa-xmark" (click)="removeItem(language.id!)"></i>
+            }
+          </div>
+        }
+      }
   </div>
 </div>

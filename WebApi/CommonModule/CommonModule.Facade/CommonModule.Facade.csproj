@@ -12,6 +12,7 @@
       <ProjectReference Include="..\..\AuthGateway\AuthGateway.Mediatr\AuthGateway.Mediatr.csproj" />
       <ProjectReference Include="..\..\Dictionaries\Dictionaries.Mediatr\Dictionaries.Mediatr.csproj" />
       <ProjectReference Include="..\..\Localizations\Localizations.Mediatr\Localizations.Mediatr.csproj" />
+      <ProjectReference Include="..\..\Profile\Profile.Mediatr\Profile.Mediatr.csproj" />
       <ProjectReference Include="..\CommonModule.Interfaces\CommonModule.Interfaces.csproj" />
       <ProjectReference Include="..\CommonModule.Repositories\CommonModule.Repositories.csproj" />
       <ProjectReference Include="..\CommonModule.Shared\CommonModule.Shared.csproj" />
@@ -40,6 +41,11 @@
       <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="7.3.1" />
       <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="7.3.1" />
       <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.6.0" />
+      <PackageReference Include="GraphQL" Version="8.1.0" />
+      <PackageReference Include="GraphQL.MicrosoftDI" Version="8.1.0" />
+      <PackageReference Include="GraphQL.Server.Transports.AspNetCore" Version="8.0.3" />
+      <PackageReference Include="GraphQL.Server.Transports.WebSockets" Version="4.4.1" />
+      <PackageReference Include="GraphQL.Server.Ui.Playground" Version="8.0.3" />
     </ItemGroup>
 
 </Project>

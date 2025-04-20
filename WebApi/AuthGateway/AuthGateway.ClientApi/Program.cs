@@ -1,4 +1,5 @@
 using AuthGateway.Domain;
+using AuthGateway.GraphQL;
 using AuthGateway.Mediatr;
 using AuthGateway.Mediatr.Validators.Auth;
 using Autofac;
@@ -6,6 +7,8 @@ using Autofac.Extensions.DependencyInjection;
 using CommonModule.Core.Extensions;
 using CommonModule.Facade;
 using FluentValidation;
+using GraphQL.MicrosoftDI;
+using GraphQL.Types;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,6 +32,12 @@ builder.Services.AddControllers();
 // Fluent validation starts
 builder.Services.AddValidatorsFromAssemblyContaining<AuthSignUpCommandValidator>();
 // Fluent validation ends
+
+// GraphQL schema
+builder.Services.AddSingleton<ISchema, AuthGatewayGraphQLSchema>(services => new AuthGatewayGraphQLSchema(new SelfActivatingServiceProvider(services)));
+// GraphQL schema ends
+
+builder.AddGraphQl();
 
 // Custom DI
 // Custom DI ends
@@ -62,6 +71,7 @@ if (app.Environment.IsDevelopment())
     {
         c.SwaggerEndpoint("/swagger/v1/swagger.json", builder.Configuration.GetSwaggerEndpointName());
     });
+    app.UseGraphQLPlayground("/graphql/playground");
 }
 
 app.UseCors("AllowSpecificOrigins");
@@ -72,5 +82,6 @@ app.UseAuthentication();
 app.UseAuthorization();
 app.UseTokenValidator();
 app.MapControllers();
+app.UseGraphQL();
 
 app.Run();

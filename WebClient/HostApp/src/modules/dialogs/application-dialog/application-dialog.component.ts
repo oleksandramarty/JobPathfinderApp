@@ -1,136 +1,126 @@
 import { Component, Inject } from '@angular/core';
-import { generateRandomId } from '@amarty/utils';
 import { CommonModule } from '@angular/common';
-import { MatButtonModule } from '@angular/material/button';
+import { generateRandomId } from '@amarty/utils';
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
-import { GenericInputComponent } from '@amarty/components';
-import { BaseUnsubscribeComponent } from '@amarty/common';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { DataItem, InputError } from '@amarty/models';
-import { DictionaryService } from '@amarty/services';
 import { Store } from '@ngrx/store';
-import { selectUser } from '@amarty/store';
 import { takeUntil, tap } from 'rxjs';
 import { TranslationPipe } from '@amarty/pipes';
-import {LOCALIZATION_KEYS} from "@amarty/localizations";
+import { BaseUnsubscribeComponent } from '@amarty/common';
+import { DictionaryService } from '@amarty/services';
+import { selectUser } from '@amarty/store';
+import { InputForm, UserResponse } from '@amarty/models';
+import { GenericFormRendererComponent, GenericInputComponent } from '@amarty/components';
+import { LOCALIZATION_KEYS } from '@amarty/localizations';
+import { ApplicationFormFactory } from '../../landing-area/utils/form-renderer/application-form.factory';
 
 @Component({
   selector: 'app-application-dialog',
+  standalone: true,
   imports: [
     CommonModule,
     TranslationPipe,
-    MatButtonModule,
     MatDialogTitle,
-    ReactiveFormsModule,
-    FormsModule,
+    GenericFormRendererComponent,
     GenericInputComponent
   ],
-  standalone: true,
   templateUrl: './application-dialog.component.html',
   styleUrl: './application-dialog.component.scss',
   host: { 'data-id': generateRandomId(12) }
 })
-export class ApplicationDialogComponent extends BaseUnsubscribeComponent{
-  private readonly _applicationId: string | undefined;
+export class ApplicationDialogComponent extends BaseUnsubscribeComponent {
+  public renderForm: InputForm | undefined;
+  public submitted = false;
+  public aiPrompt = false;
+  public user: UserResponse | undefined;
 
-  public applicationForm: FormGroup | undefined;
-  public submitted: boolean = false;
-  public aiPrompt: boolean = false;
-  public salaryInputError: InputError[] | undefined;
+  private readonly isEdit: boolean;
 
   constructor(
     public dialogRef: MatDialogRef<ApplicationDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: {
-      applicationId?: string | undefined
-    } | undefined,
+    @Inject(MAT_DIALOG_DATA) public data: { applicationId?: string } | undefined,
     private readonly snackBar: MatSnackBar,
-    private readonly dictionaryService: DictionaryService,
-    private readonly store: Store
+    private readonly store: Store,
+    private readonly dictionaryService: DictionaryService
   ) {
     super();
+    this.isEdit = !!data?.applicationId;
+  }
 
-    this._applicationId = data?.applicationId;
-
+  override ngOnInit(): void {
     this.store.select(selectUser)
       .pipe(
         takeUntil(this.ngUnsubscribe),
         tap(user => {
+          this.user = user;
           this.aiPrompt = !!user?.userSetting?.applicationAiPrompt;
+          this.buildForm();
         })
-      );
-
-    this.createFormGroup();
+      )
+      .subscribe();
   }
 
   get dialogTitle(): string {
-    return this._applicationId ? LOCALIZATION_KEYS.COMMON.BUTTON.EDIT : LOCALIZATION_KEYS.COMMON.BUTTON.CREATE;
+    return this.isEdit
+      ? LOCALIZATION_KEYS.COMMON.BUTTON.EDIT
+      : LOCALIZATION_KEYS.COMMON.BUTTON.CREATE;
   }
 
-  get saveButtonLabel(): string {
-    return this._applicationId ? LOCALIZATION_KEYS.COMMON.BUTTON.EDIT : LOCALIZATION_KEYS.COMMON.BUTTON.CREATE;
+  private buildForm(): void {
+    this.renderForm = ApplicationFormFactory.createApplicationForm(
+      this.isEdit,
+      this.user,
+      this.dictionaryService.experienceLevelDataItems ?? [],
+      this.dictionaryService.jobTypeDataItems ?? [],
+      this.dictionaryService.jobSourceDataItems ?? [],
+      this.dictionaryService.currencyDataItems ?? [],
+      () => this.onSubmit(),
+      () => this.dialogRef.close(false)
+    );
   }
 
-  get experienceLevels(): DataItem[] {
-    return this.dictionaryService.experienceLevelDataItems ?? [];
-  }
-  get jobTypes(): DataItem[] {
-    return this.dictionaryService.jobTypeDataItems ?? [];
-  }
-  get jobSources(): DataItem[] {
-    return this.dictionaryService.jobSourceDataItems ?? [];
-  }
-
-  get currencies(): DataItem[] {
-    return this.dictionaryService.currencyDataItems ?? [];
-  }
-
-  createFormGroup(): void {
-    this.applicationForm = new FormGroup({
-      title: new FormControl('', [Validators.required, Validators.maxLength(100)]),
-      company: new FormControl('', Validators.required),
-      location: new FormControl('', Validators.required),
-      jobType: new FormControl('', Validators.required),
-      source: new FormControl('', Validators.required),
-      salaryFrom: new FormControl(null, [Validators.min(0)]),
-      salaryTo: new FormControl(null, [Validators.min(0)]),
-      currency: new FormControl(''),
-      description: new FormControl('', [Validators.required, Validators.minLength(10)]),
-      experienceLevel: new FormControl('', Validators.required),
-      postedDate: new FormControl(new Date(), Validators.required),
-      applicationDeadline: new FormControl(null),
-      contactEmail: new FormControl('', [Validators.required, Validators.email]),
-      applicationLink: new FormControl('', [Validators.pattern('https?://.+')]),
-      notes: new FormControl(null),
-      prompt: new FormControl(null),
-    });
-  }
-
-  public onApplicationSubmit(): void {
+  public onSubmit(): void {
     this.submitted = true;
-    if (this.applicationForm?.invalid) {
+    if (this.renderForm?.inputFormGroup?.invalid) {
       this.snackBar.open(
         LOCALIZATION_KEYS.COMMON.FIX_ERROR_BEFORE_CONTINUE,
         LOCALIZATION_KEYS.COMMON.BUTTON.OK,
-        {
-          duration: 5000,
-          panelClass: ['error']
-        });
+        { duration: 5000, panelClass: ['error'] }
+      );
       return;
     }
 
-    this.dialogRef.close(true);
+    this.dialogRef.close(this.renderForm!.inputFormGroup!.value);
   }
 
   public parsePrompt(): void {
-    if (!this.applicationForm) {
-      return;
+    if (!this.renderForm?.inputFormGroup) return;
+
+    try {
+      const model = JSON.parse(this.renderForm.inputFormGroup.get('prompt')?.value ?? '{}');
+      Object.entries(model).forEach(([key, value]) => {
+        if (this.renderForm?.inputFormGroup?.get(key)) {
+          this.renderForm.inputFormGroup.get(key)?.setValue(value);
+        }
+      });
+    } catch (e) {
+      console.warn('Invalid JSON prompt');
     }
-    const model = JSON.parse(this.applicationForm?.value.prompt);
-    Object.keys(this.applicationForm.controls).forEach(controlName => {
-      if (this.applicationForm?.get(controlName) && model[controlName]) {
-        this.applicationForm?.get(controlName)?.setValue(model[controlName]);
-      }
-    });
   }
 }
+
+// <pre class="code"><code>&#123;
+// "title": "Senior Angular Developer",
+//   "company": "ABC Company",
+//   "location": "Montreal",
+//   "jobType": "full-time",
+//   "source": null,
+//   "salaryFrom": 80000,
+//   "salaryTo": 100000,
+//   "currency": "CAD",
+//   "postedDate": "2025-03-10",
+//   "applicationDeadline": "2025-03-20",
+//   "contactEmail": "jobs&#64;abc.com",
+//   "applicationLink": "https://abc.com/job",
+//   "notes": null
+// &#125;</code></pre>

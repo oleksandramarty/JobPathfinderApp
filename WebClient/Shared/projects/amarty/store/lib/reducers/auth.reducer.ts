@@ -7,13 +7,13 @@ export interface IAuthState {
   user: UserResponse | undefined;
 }
 
-export const initialState: IAuthState = {
+export const initialAuthState: IAuthState = {
   token: undefined,
   user: undefined,
 };
 
 export const authReducer = createReducer(
-  initialState,
+  initialAuthState,
   on(auth_setToken, (state, { token }) => ({ ...state, token })),
   on(auth_clearToken, state => ({ ...state, token: undefined })),
   on(auth_setUser, (state, { user }) => ({ ...state, user })),

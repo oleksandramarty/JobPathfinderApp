@@ -16,9 +16,9 @@ export ASPNETCORE_ENVIRONMENT=Development
 truncate -s 0 "$SCRIPT_DIR/provision_logs.txt"
 
 # Set the dropMigrations parameter
-dropMigrations=true 
+dropMigrations=false 
 # Set the addNewMigration parameter
-addNewMigration=true
+addNewMigration=false
 # Set the isBulkUpdate parameter
 isBulkUpdate=true
 

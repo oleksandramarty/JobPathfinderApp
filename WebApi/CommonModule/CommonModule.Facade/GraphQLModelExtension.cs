@@ -2,7 +2,6 @@ using AuditTrail.Mediatr.Mediatr.Requests;
 using AuthGateway.Mediatr.Mediatr.Auth.Commands;
 using AuthGateway.Mediatr.Mediatr.Auth.Requests;
 using CommonModule.Core.Exceptions.Errors;
-using CommonModule.Shared.Enums;
 using CommonModule.Shared.Requests.Base;
 using CommonModule.Shared.Responses.AuthGateway;
 using CommonModule.Shared.Responses.AuthGateway.Users;
@@ -18,9 +17,11 @@ using CommonModule.Shared.Responses.Dictionaries.Models.Skills;
 using CommonModule.Shared.Responses.Dictionaries.Models.WorkArrangements;
 using CommonModule.Shared.Responses.Localizations;
 using CommonModule.Shared.Responses.Localizations.Models.Locales;
+using CommonModule.Shared.Responses.Profile.Profile;
 using Dictionaries.Mediatr.Mediatr.Requests;
 using Localizations.Mediatr.Mediatr.Localizations.Requests;
 using NSwag.Generation.AspNetCore;
+using Profile.Mediatr.Mediatr.Profile.Commands;
 
 namespace CommonModule.Facade;
 
@@ -49,6 +50,13 @@ public static class GraphQLModelExtension
             
             config.DocumentProcessors.Add(new AddAdditionalClassTypeProcessor<BaseFilterRequest>());
             
+            config.DocumentProcessors.Add(new AddAdditionalClassTypeProcessor<CreateUserSkillCommand>());
+            config.DocumentProcessors.Add(new AddAdditionalClassTypeProcessor<CreateUserLanguageCommand>());
+            config.DocumentProcessors.Add(new AddAdditionalClassTypeProcessor<CreateUserProfileItemCommand>());
+            config.DocumentProcessors.Add(new AddAdditionalClassTypeProcessor<UpdateUserSkillCommand>());
+            config.DocumentProcessors.Add(new AddAdditionalClassTypeProcessor<UpdateUserLanguageCommand>());
+            config.DocumentProcessors.Add(new AddAdditionalClassTypeProcessor<UpdateUserProfileItemCommand>());
+            
             config.DocumentProcessors.Add(new AddAdditionalClassTypeProcessor<SiteSettingsResponse>());
             config.DocumentProcessors.Add(new AddAdditionalClassTypeProcessor<JwtTokenResponse>());
             config.DocumentProcessors.Add(new AddAdditionalClassTypeProcessor<UserResponse>());
@@ -56,6 +64,11 @@ public static class GraphQLModelExtension
             config.DocumentProcessors.Add(new AddAdditionalClassTypeProcessor<VersionedListResponse<LocaleResponse>>());
             config.DocumentProcessors.Add(new AddAdditionalClassTypeProcessor<VersionedListResponse<CountryResponse>>());
             config.DocumentProcessors.Add(new AddAdditionalClassTypeProcessor<VersionedListResponse<SkillResponse>>());
+            
+            config.DocumentProcessors.Add(new AddAdditionalClassTypeProcessor<UserLanguageResponse>());
+            config.DocumentProcessors.Add(new AddAdditionalClassTypeProcessor<UserSkillResponse>());
+            config.DocumentProcessors.Add(new AddAdditionalClassTypeProcessor<UserProfileItemResponse>());
+            config.DocumentProcessors.Add(new AddAdditionalClassTypeProcessor<UserProfileResponse>());
             
             config.DocumentProcessors.Add(new AddAdditionalClassTypeProcessor<VersionedListResponse<CurrencyResponse>>());
             config.DocumentProcessors.Add(new AddAdditionalClassTypeProcessor<VersionedListResponse<ExperienceLevelResponse>>());

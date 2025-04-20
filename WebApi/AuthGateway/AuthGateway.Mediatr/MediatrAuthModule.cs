@@ -15,12 +15,14 @@ public class MediatrAuthModule: Autofac.Module
         
         builder.RegisterAssemblyTypes(typeof(AuthForgotRequest).GetTypeInfo().Assembly).AsClosedTypesOf(typeof(IRequestHandler<>));
         builder.RegisterAssemblyTypes(typeof(CreateUserSettingCommand).GetTypeInfo().Assembly).AsClosedTypesOf(typeof(IRequestHandler<>));
-        builder.RegisterAssemblyTypes(typeof(UpdateUserPreferencesCommand).GetTypeInfo().Assembly).AsClosedTypesOf(typeof(IRequestHandler<>));
+        builder.RegisterAssemblyTypes(typeof(UpdateUserPreferencesCommand).GetTypeInfo().Assembly).AsClosedTypesOf(typeof(IRequestHandler<,>));
         builder.RegisterAssemblyTypes(typeof(AuthSignInRequest).GetTypeInfo().Assembly).AsClosedTypesOf(typeof(IRequestHandler<,>));
         builder.RegisterAssemblyTypes(typeof(AuthSignOutRequest).GetTypeInfo().Assembly).AsClosedTypesOf(typeof(IRequestHandler<,>));
         builder.RegisterAssemblyTypes(typeof(AuthSignUpCommand).GetTypeInfo().Assembly).AsClosedTypesOf(typeof(IRequestHandler<>));
         builder.RegisterAssemblyTypes(typeof(AuthRestorePasswordCommand).GetTypeInfo().Assembly).AsClosedTypesOf(typeof(IRequestHandler<>));
         builder.RegisterAssemblyTypes(typeof(AuthRestoreCommand).GetTypeInfo().Assembly).AsClosedTypesOf(typeof(IRequestHandler<>));
+        builder.RegisterAssemblyTypes(typeof(UserByIdRequest).GetTypeInfo().Assembly).AsClosedTypesOf(typeof(IRequestHandler<,>));
+        builder.RegisterAssemblyTypes(typeof(UserByLoginRequest).GetTypeInfo().Assembly).AsClosedTypesOf(typeof(IRequestHandler<,>));
         
         builder.RegisterAssemblyTypes(typeof(CurrentUserRequest).GetTypeInfo().Assembly).AsClosedTypesOf(typeof(IRequestHandler<>));
     }

@@ -14,7 +14,7 @@ db_password="postgres"
 export PGPASSWORD=$db_password
 
   # Array of database names
-  dbNames=("JP_LocalizationDb" "JP_UserDb" "JP_DictionaryDb" "JP_AuditTrailDb")
+  dbNames=("JP_LocalizationDb" "JP_UserDb" "JP_DictionaryDb" "JP_AuditTrailDb" "JP_ProfileDb")
   
   # Loop through each database name and drop it
   for db_name in "${dbNames[@]}"; do

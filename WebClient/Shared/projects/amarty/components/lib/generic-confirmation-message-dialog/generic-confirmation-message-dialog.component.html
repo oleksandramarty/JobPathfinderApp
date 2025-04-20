@@ -1,0 +1,38 @@
+<div class="modal">
+  <div class="modal__header">
+    <div class="modal__header">
+      <h2 class="modal__header-title" mat-dialog-title>{{ title | translation }}</h2>
+      <span class="modal__close" (click)="dialogRef.close()">
+        <i class="fa-solid fa-robot"></i><i class="fa-solid fa-stopwatch"></i>
+      </span>
+    </div>
+    <span class="modal__close" (click)="dialogRef.close()">
+      <i class="fa-solid fa-xmark"></i>
+    </span>
+  </div>
+
+  <div class="modal__body">
+    <i class="fa-solid fa-triangle-exclamation modal__icon"></i>
+    @if(descriptions) {
+      @for(description of descriptions; track $index) {
+        <p>{{ description }}</p>
+      }
+    }
+    @if(htmlBlock) {
+      <div [innerHTML]="htmlBlock | sanitizeHtml"></div>
+    }
+  </div>
+
+  <div class="container__box__footer">
+    <div class="container__box__footer-item">
+      <button class="button button__link" (click)="dialogRef.close(false)">
+        {{ noBtn | translation }}
+      </button>
+    </div>
+    <div class="container__box__footer-item">
+      <button class="button button__filled__submit" (click)="dialogRef.close(true)">
+        {{ yesBtn | translation }}
+      </button>
+    </div>
+  </div>
+</div>

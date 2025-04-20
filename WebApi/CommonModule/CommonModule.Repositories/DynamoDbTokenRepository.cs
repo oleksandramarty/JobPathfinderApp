@@ -41,13 +41,13 @@ public class DynamoDbTokenRepository: ITokenRepository
         return tokenItem != null && tokenItem.Expiration > DateTime.UtcNow;
     }
 
-    public async Task RemoveTokenAsync(string token)
+    public async Task DeleteTokenAsync(string token)
     {
         var userId = _jwtTokenFactory.UserIdFromToken(token);
         await _context.DeleteAsync<TokenItemEntity>(userId, token);
     }
 
-    public async Task RemoveUserTokenAsync(Guid userId)
+    public async Task DeleteUserTokenAsync(Guid userId)
     {
         var tokens = await _context.QueryAsync<TokenItemEntity>(userId.ToString()).GetRemainingAsync();
         foreach (var token in tokens)
@@ -56,9 +56,9 @@ public class DynamoDbTokenRepository: ITokenRepository
         }
     }
 
-    public async Task RemoveAllTokensAsync(Guid userId)
+    public async Task DeleteAllTokensAsync(Guid userId)
     {
-        await RemoveUserTokenAsync(userId);
+        await DeleteUserTokenAsync(userId);
     }
 
     public bool IsTokenExpired(string token)

@@ -7,17 +7,20 @@
         </div>
         <div class="profile__info">
           <div class="profile__info-name">
-            {{ currentUser.login }}
+            {{ userDisplayName }}
             @if(countryCode) {
               <img class="profile__country small" [src]="'https://flagcdn.com/w320/' + countryCode + '.png'" [alt]="countryCode" />!
             }
           </div>
-          <div class="profile__info-company">ACCENTURE</div>
-          <div class="profile__info-position">
-            SOFTWARE DEV
-            <span class="profile__position-type glitch glitch-blue">Position</span>
-          </div>
-          <div class="profile__info-location">location</div>
+          @if (currentUser.userSetting?.showCurrentPosition && currentPosition) {
+            <div class="profile__info-company">{{ currentPosition.company }}</div>
+            <div class="profile__info-position">
+              {{ currentPosition.position }}
+              <span class="profile__position-type glitch glitch-blue">{{ getJobType(currentPosition.jobTypeId) | translation }}</span>
+              <span class="profile__position-type glitch glitch-blue">{{ getWorkArrangement(currentPosition.workArrangementId) | translation }}</span>
+            </div>
+            <div class="profile__info-location">{{ currentPosition.location }} {{ getCountry(currentPosition.countryId) | translation }}</div>
+          }
           <div class="profile__info-email">
             <a class="link-button" [href]="'mailto:' + currentUser.email"><i class="fa-solid fa-envelope"></i> {{ currentUser.email }}</a>
           </div>
@@ -44,9 +47,11 @@
       </div>
       <div class="profile__header__right">
         <div class="card__header__buttons">
-          <div class="button__icon" (click)="openEditProfileDialog()">
-            <i class="fa-solid fa-pencil"></i>
-          </div>
+          @if (isCurrentUser) {
+            <div class="button__icon" (click)="openEditProfileDialog()">
+              <i class="fa-solid fa-pencil"></i>
+            </div>
+          }
         </div>
 
       </div>

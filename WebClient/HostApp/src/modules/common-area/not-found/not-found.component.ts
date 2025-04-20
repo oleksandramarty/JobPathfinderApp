@@ -6,8 +6,8 @@ import { generateRandomId } from '@amarty/utils';
 import { BaseUnsubscribeComponent } from '@amarty/common';
 import { Observable, of } from 'rxjs';
 import { AuthService } from '../../../utils/services/auth.service';
-import {LOCALIZATION_KEYS} from "@amarty/localizations";
-import {TranslationPipe} from '@amarty/pipes';
+import { LOCALIZATION_KEYS } from '@amarty/localizations';
+import { TranslationPipe } from '@amarty/pipes';
 
 @Component({
   selector: 'app-not-found',

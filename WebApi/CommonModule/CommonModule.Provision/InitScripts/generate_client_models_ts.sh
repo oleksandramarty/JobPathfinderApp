@@ -5,9 +5,9 @@ BASE_DIR=$(cd "$(dirname "$0")" && pwd | sed 's|/CommonModule/CommonModule.Provi
 ANGULAR_BASE_DIR=$(cd "$(dirname "$0")" && pwd | sed 's|/WebApi/CommonModule/CommonModule.Provision/InitScripts||')
 
 # Microservices arrays
-microserviceNames=("AuthGateway" "Dictionaries" "AuditTrail" "Localizations" "CommonModule")
-microserviceClientApiNames=("user-api.service.ts" "dictionary-api.service.ts" "audit-trail-api.service.ts" "localization-api.service.ts" "api.model.ts")
-microserviceClientApiClassNames=("UserApiClient" "DictionaryApiClient" "AuditTrailApiClient" "LocalizationApiClient" "ApiModel")
+microserviceNames=("Dictionaries" "AuditTrail" "Localizations" "CommonModule")
+microserviceClientApiNames=("dictionary-api.service.ts" "audit-trail-api.service.ts" "localization-api.service.ts" "api.model.ts")
+microserviceClientApiClassNames=("DictionaryApiClient" "AuditTrailApiClient" "LocalizationApiClient" "ApiModel")
 
 # 🔄 Generating API clients
 for i in "${!microserviceNames[@]}"; do
@@ -17,8 +17,11 @@ for i in "${!microserviceNames[@]}"; do
 
   outputDir="$BASE_DIR/$microserviceName/$microserviceName.ClientApi"
   outputFileName="nswagconfig.nswag"
-  outputClientFile="$ANGULAR_BASE_DIR/WebClient/Shared/projects/amarty/api/lib/$microserviceClientApiName"
-
+  if [[ "$microserviceClientApiClassName" == "ApiModel" ]]; then
+    outputClientFile="$ANGULAR_BASE_DIR/WebClient/Shared/projects/amarty/models/lib/$microserviceClientApiName"
+  else
+    outputClientFile="$ANGULAR_BASE_DIR/WebClient/Shared/projects/amarty/api/lib/$microserviceClientApiName"
+  fi
   # ✅ Create folder if not exist
   mkdir -p "$outputDir"
 
@@ -99,6 +102,15 @@ EOL
       "LocalizationsResponse"
       "SiteSettingsResponse"
       "UserResponse"
+      "UpdateProfileCommand"
+      "BaseBoolResponse"
+      "UserProfileResponse"
+      "AddUserSkillCommand"
+      "AddUserLanguageCommand"
+      "AddUserProfileItemCommand"
+      "UpdateUserSkillCommand"
+      "UpdateUserLanguageCommand"
+      "UpdateUserProfileItemCommand"
     )
 
     # Detect used classes

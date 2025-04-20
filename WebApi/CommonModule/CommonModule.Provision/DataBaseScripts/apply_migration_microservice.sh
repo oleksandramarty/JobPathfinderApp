@@ -11,7 +11,7 @@ SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd)
 BASE_DIR=$(echo "$SCRIPT_DIR" | sed 's|/CommonModule/CommonModule.Provision/DataBaseScripts||')
 
 # Define the microservice names as an array
-microservices=("Localizations" "AuthGateway" "Dictionaries" "AuditTrail")
+microservices=("Localizations" "AuthGateway" "Dictionaries" "AuditTrail" "Profile")
 
 # Loop through each microservice and apply the migrations
 for microserviceName in "${microservices[@]}"; do

@@ -7,6 +7,7 @@ import { clearLocalStorageAndRefresh, getLocalStorageItem } from '@amarty/utils'
 import { JwtTokenResponse } from '@amarty/models';
 import { environment } from './environments/environment';
 import { auth_clearAll } from '@amarty/store';
+import { profile_clearAll } from '@amarty/store';
 
 @Injectable()
 export class BaseUrlInterceptor implements HttpInterceptor {
@@ -32,6 +33,7 @@ export class BaseUrlInterceptor implements HttpInterceptor {
 
         if (error.status === 401) {
           this.store.dispatch(auth_clearAll());
+          this.store.dispatch(profile_clearAll());
           clearLocalStorageAndRefresh(true);
         } else if (error.status === 404) {
           console.warn('Entity not found:', error.message);

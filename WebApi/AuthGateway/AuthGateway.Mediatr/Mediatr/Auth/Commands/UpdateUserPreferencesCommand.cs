@@ -1,11 +1,13 @@
 using CommonModule.Shared.Common;
+using CommonModule.Shared.Responses.Base;
 using MediatR;
 
 namespace AuthGateway.Mediatr.Mediatr.Auth.Commands;
 
-public class UpdateUserPreferencesCommand: BaseIdEntity<Guid>, IRequest
+public class UpdateUserPreferencesCommand: BaseIdEntity<Guid>, IRequest<BaseBoolResponse>
 {
-    public required string Login { get; set; }
+    public string? Login { get; set; }
+    public string? Headline { get; set; }
     public string? Phone { get; set; }
     public string? FirstName { get; set; }
     public string? LastName { get; set; }
@@ -19,4 +21,7 @@ public class UpdateUserPreferencesCommand: BaseIdEntity<Guid>, IRequest
     public string? NpmUrl { get; set; }
     public string? GitHubUrl { get; set; }
     public string? PortfolioUrl { get; set; }
+    
+    public bool ShowCurrentPosition { get; set; }
+    public bool ShowHighestEducation { get; set; }
 }

@@ -1,10 +1,47 @@
-<div class="container">
-  <app-profile-info [currentUser]="currentUser" [countryCode]="countryCode"></app-profile-info>
-  <app-profile-skills [existingItems]="currentUser?.skills"></app-profile-skills>
-  <app-profile-languages [existingItems]="currentUser?.languages"></app-profile-languages>
-  <app-profile-item [existingItems]="currentUser?.profileItems" [itemType]="profileItemEnum.Experience"></app-profile-item>
-  <app-profile-item [existingItems]="currentUser?.profileItems" [itemType]="profileItemEnum.Education"></app-profile-item>
-  <app-profile-item [existingItems]="currentUser?.profileItems" [itemType]="profileItemEnum.Certification"></app-profile-item>
-  <app-profile-item [existingItems]="currentUser?.profileItems" [itemType]="profileItemEnum.Project"></app-profile-item>
-  <app-profile-item [existingItems]="currentUser?.profileItems" [itemType]="profileItemEnum.Achievement"></app-profile-item>
-</div>
+@if(user && userProfile) {
+  <div class="container">
+    <app-profile-info
+      [currentUser]="user"
+      [countryCode]="countryCode"
+      [userProfile]="userProfile"
+      [isCurrentUser]="isCurrentUser"
+    ></app-profile-info>
+
+    <app-profile-item
+      [existingItems]="userProfile.items"
+      [itemType]="profileItemEnum.Experience"
+      [isCurrentUser]="isCurrentUser"
+    ></app-profile-item>
+    <app-profile-item
+      [existingItems]="userProfile.items"
+      [itemType]="profileItemEnum.Education"
+      [isCurrentUser]="isCurrentUser"
+    ></app-profile-item>
+
+    <app-profile-skills
+      [existingItems]="userProfile.skills"
+      [isCurrentUser]="isCurrentUser"
+    ></app-profile-skills>
+    <app-profile-languages
+      [existingItems]="userProfile.languages"
+      [isCurrentUser]="isCurrentUser"
+    ></app-profile-languages>
+
+    <app-profile-item
+      [existingItems]="userProfile.items"
+      [itemType]="profileItemEnum.Certification"
+      [isCurrentUser]="isCurrentUser"
+    ></app-profile-item>
+    <app-profile-item
+      [existingItems]="userProfile.items"
+      [itemType]="profileItemEnum.Achievement"
+      [isCurrentUser]="isCurrentUser"
+    ></app-profile-item>
+
+    <app-profile-item
+      [existingItems]="userProfile.items"
+      [itemType]="profileItemEnum.Project"
+      [isCurrentUser]="isCurrentUser"
+    ></app-profile-item>
+  </div>
+}

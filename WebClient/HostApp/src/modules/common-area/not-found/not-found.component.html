@@ -3,7 +3,7 @@
   <p class="not-found-text">{{ LOCALIZATION_KEYS.NOT_FOUND.PAGE_NOT_FOUND | translation }}</p>
   <p class="glitch glitch-red not-found-subtext">// Looks like someone forgot a semicolon... 😅</p>
   @if (isAuthorized$ | async) {
-    <button class="button button__filled__submit" routerLink="/dashboard">{{ LOCALIZATION_KEYS.COMMON.GO_HOME | translation }}</button>
+    <button class="button button__filled__submit" routerLink="/home">{{ LOCALIZATION_KEYS.COMMON.GO_HOME | translation }}</button>
   } @else {
     <button class="button button__filled__submit" routerLink="/auth/sign-in">{{ LOCALIZATION_KEYS.COMMON.BACK_TO_SIGN_IN | translation }}</button>
   }

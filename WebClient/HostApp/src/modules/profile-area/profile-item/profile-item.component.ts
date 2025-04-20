@@ -8,24 +8,26 @@ import {
 import { CommonDialogService, DictionaryService } from '@amarty/services';
 import { SafeHtml } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
-import { TranslationPipe } from '@amarty/pipes';
-import { BaseProfileSectionComponent, itemTypeTitle } from '../base-profile-section.component';
+import { TranslationPipe, MonthYearFormatPipe } from '@amarty/pipes';
 import { ProfileItemDialogComponent } from '../../dialogs/profile-item-dialog/profile-item-dialog.component';
-import { generateGuid } from '@amarty/utils';
-import {LOCALIZATION_KEYS} from "@amarty/localizations";
+import { LOCALIZATION_KEYS } from '@amarty/localizations';
+import { BaseUnsubscribeComponent } from '@amarty/common';
 
 @Component({
   selector: 'app-profile-item',
   imports: [
     CommonModule,
-    TranslationPipe
+    TranslationPipe,
+    MonthYearFormatPipe
   ],
   standalone: true,
   templateUrl: './profile-item.component.html',
   styleUrl: '../profile-area.component.scss'
 })
-export class ProfileItemComponent extends BaseProfileSectionComponent<UserProfileItemResponse, string> {
+export class ProfileItemComponent extends BaseUnsubscribeComponent {
   @Input() itemType: UserProfileItemEnum | undefined;
+  @Input() existingItems: UserProfileItemResponse[] | undefined;
+  @Input() isCurrentUser: boolean | undefined;
 
   public title: string | undefined;
 
@@ -36,27 +38,12 @@ export class ProfileItemComponent extends BaseProfileSectionComponent<UserProfil
     super();
   }
 
-  get existingSectionItems(): UserProfileItemResponse[] {
-    return this.existingItems?.filter(item => item.profileItemType === this.itemType) ?? [];
-  }
-
-  set existingSectionItems(value: UserProfileItemResponse[]) {
-    if (!this.existingItems) {
-      return;
-    }
-
-    this.existingSectionItems = [
-      ...(this.existingItems ?? []),
-      ...value
-    ];
-  }
-
-  override get isEmptySection(): boolean {
+  get isEmptySection(): boolean {
     return !this.existingItems?.some(item => item.profileItemType === this.itemType);
   }
 
   override ngOnInit() {
-    this.title = itemTypeTitle(this.itemType);
+    this.title = this._itemTypeTitle(this.itemType);
     super.ngOnInit();
   }
 
@@ -68,30 +55,65 @@ export class ProfileItemComponent extends BaseProfileSectionComponent<UserProfil
     return this.dictionaryService.getLanguageTitle(language);
   }
 
-  protected override getItemTitle(skill: UserSkillResponse | undefined): string {
+  public getItemTitle(skill: UserSkillResponse | undefined): string {
     return this.dictionaryService.getSkillTitle(skill);
   }
 
-  protected override getExistingIds(): string[] {
-    return Array.from(new Set([
-      ...(this.existingItems?.map(item => item.id) ?? []),
-      ...(this.itemsToAdd?.map(item => item.id) ?? [])
-    ].filter(id => !!id))).map(item => String(item));
+  public getCountry(id: number | undefined): string | undefined {
+    return this.dictionaryService.countryData?.find(item => item.id === id)?.title;
   }
 
-  protected override openItemDialog(isNew: boolean, itemId?: string): void {
-    const executableAction = this.openDialogExecutableAction(isNew, isNew && !itemId ? generateGuid() : itemId!);
+  public getJobType(id: number | undefined): string | undefined {
+    return this.dictionaryService.jobTypeData?.find(item => item.id === id)?.title;
+  }
+
+  public getWorkArrangement(id: number | undefined): string | undefined {
+    return this.dictionaryService.workArrangementData?.find(item => item.id === id)?.title;
+  }
+
+  public openItemDialog(itemId?: string): void {
+    if (!this.isCurrentUser) {
+      return;
+    }
 
     this.dialogService.showDialog<ProfileItemDialogComponent, UserProfileItemResponse>(
       ProfileItemDialogComponent,
       {
-        data: { profileItem: this.findItem(isNew, itemId), profileItemType: this.itemType },
+        data: {
+          profileItem: this.existingItems?.find(item => item.id === itemId),
+          profileItemType: this.itemType,
+          title: this.title,
+        },
         width: '600px',
         maxWidth: '90vw',
-      },
-      executableAction
+      }
     );
   }
 
-    protected readonly LOCALIZATION_KEYS = LOCALIZATION_KEYS;
+  public removeItem(id: string): void {
+    if (!this.isCurrentUser) {
+      return;
+    }
+
+    console.log('removeItem', id);
+  }
+
+  private _itemTypeTitle(itemType: UserProfileItemEnum | undefined): string {
+    switch (itemType) {
+    case UserProfileItemEnum.Experience:
+      return LOCALIZATION_KEYS.PROFILE.SECTION.WORK_EXPERIENCE;
+    case UserProfileItemEnum.Education:
+      return LOCALIZATION_KEYS.PROFILE.SECTION.EDUCATION;
+    case UserProfileItemEnum.Project:
+      return LOCALIZATION_KEYS.PROFILE.SECTION.PROJECTS;
+    case UserProfileItemEnum.Achievement:
+      return LOCALIZATION_KEYS.PROFILE.SECTION.ACHIEVEMENTS;
+    case UserProfileItemEnum.Certification:
+      return LOCALIZATION_KEYS.PROFILE.SECTION.CERTIFICATIONS;
+    default:
+      return '';
+    }
+  }
+
+  protected readonly LOCALIZATION_KEYS = LOCALIZATION_KEYS;
 }

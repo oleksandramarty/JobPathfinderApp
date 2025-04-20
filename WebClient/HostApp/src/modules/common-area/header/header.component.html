@@ -31,9 +31,21 @@
         </mat-menu>
       }
 
-      <a routerLink="/profile" class="header__profile">
+      <a class="header__profile" [matMenuTriggerFor]="menu">
         <img [src]="userAvatar" alt="Profile" class="header__profile-img" />
       </a>
+
+      <mat-menu #menu="matMenu" class="custom-menu-header-position">
+        <button mat-menu-item routerLink="/profile">
+          <i class="fa-solid fa-gears"></i>
+          <span>{{ LOCALIZATION_KEYS.MENU.PROFILE | translation }}</span>
+        </button>
+        <button mat-menu-item (click)="logout()">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i>
+          <span>{{ LOCALIZATION_KEYS.MENU.LOGOUT | translation }}</span>
+        </button>
+      </mat-menu>
+
     } @else {
       @if(currentLocale) {
         <div class="header__lang__container" [matMenuTriggerFor]="menuLang">

@@ -44,6 +44,11 @@ public class AuthSignUpCommandHandler: IRequestHandler<AuthSignUpCommand, BaseEn
             u => u.Email == command.Email, 
             ErrorMessages.EntityWithEmailAlreadyExists, 
             cancellationToken);
+        
+        await _entityValidator.ValidateExistParamAsync<UserEntity>(
+            u => u.Login == command.Login, 
+            ErrorMessages.EntityWithLoginAlreadyExists, 
+            cancellationToken);
 
         UserEntity userEntity = _mapper.Map<AuthSignUpCommand, UserEntity>(command);
         

@@ -1,4 +1,4 @@
-@if(formGroup) {
+@if(formGroup && !hidden) {
   <div
     [ngClass]="className ? 'input__container ' + className : 'input__container'"
     (click)="showDebugInfo()"
@@ -66,16 +66,23 @@
           [class.invalid]="isInvalid"
           type="text"
           [formControlName]="controlName"
-          [matDatepicker]="picker"
-          [min]="minDate"
-          [max]="maxDate"
+          [matDatepicker]="datepickerFormat === 'month-year' ? monthPicker : picker"
           [id]="inputId"
           [translation]="placeholder"
-          [translationAttr]="'placeholder'">
-        <mat-datepicker-toggle matSuffix [for]="picker" class="hidden-datepicker-toggle"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
+          [translationAttr]="'placeholder'"
+          [min]="minDate"
+          [max]="maxDate">
+
+        <mat-datepicker-toggle matSuffix [for]="datepickerFormat === 'month-year' ? monthPicker : picker" class="hidden-datepicker-toggle"></mat-datepicker-toggle>
+
+        @if(datepickerFormat === 'month-year') {
+          <mat-datepicker #monthPicker startView="multi-year" (monthSelected)="chosenMonthHandler($event, monthPicker)" panelClass="month-picker"></mat-datepicker>
+        } @else {
+          <mat-datepicker #picker></mat-datepicker>
+        }
       </div>
     }
+
 
     @if(type === 'rangedatepicker') {
       <div class="datepicker-range" [formGroup]="formGroup">

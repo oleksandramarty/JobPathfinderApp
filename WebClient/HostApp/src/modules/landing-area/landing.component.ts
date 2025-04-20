@@ -12,7 +12,7 @@ import { MenuItem } from '@amarty/models';
 import { BaseUnsubscribeComponent } from '@amarty/common';
 import { CommonModule } from '@angular/common';
 import { TranslationPipe } from '@amarty/pipes';
-import {LOCALIZATION_KEYS} from "@amarty/localizations";
+import { LOCALIZATION_KEYS } from '@amarty/localizations';
 
 @Component({
   selector: 'app-landing',

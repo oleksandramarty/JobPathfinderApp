@@ -46,6 +46,12 @@ button:focus {
   outline: none;
 }
 
+.custom-menu-header-position {
+  & i {
+    margin-right: #{m.pxToRem(8)};
+  }
+}
+
 .page__container {
   min-height: var(--container-min-height);
   background: var(--background);
@@ -210,11 +216,12 @@ button:focus {
   grid-template-columns: repeat(1, 1fr);
 }
 
+.grid-gap {
+  gap: #{m.pxToRem(8)};
+}
+
 @media (min-width: 600px) {
   .grid-2fr, .grid-3fr, .grid-4fr { grid-template-columns: repeat(2, 1fr); }
-  .grid-gap {
-    gap: #{m.pxToRem(8)};
-  }
 }
 @media (min-width: 768px) {
   .grid-3fr, .grid-4fr { grid-template-columns: repeat(3, 1fr); }
@@ -301,6 +308,11 @@ button:focus {
   font-size: m.pxToRem(14);
   cursor: default;
 
+  .language__item {
+    display: flex;
+    gap: #{m.pxToRem(8)};
+  }
+
   &__language {
     display: flex;
     align-items: flex-start;
@@ -369,4 +381,6 @@ input:disabled, select:disabled, textarea:disabled {
   color: var(--text-dark);
   border-bottom: var(--muted-text) #{m.pxToRem(1)} solid;
   padding-bottom: #{m.pxToRem(5)};
+  font-family: var(--font-alt), sans-serif;
+  padding-left: #{m.pxToRem(16)};
 }

@@ -2,23 +2,17 @@ import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Store } from '@ngrx/store';
-import { takeUntil, tap } from 'rxjs';
 import { CommonModule } from '@angular/common';
+import { Observable } from 'rxjs';
+import { ApolloQueryResult } from '@apollo/client';
 
-import {
-  UserLanguageResponse,
-  DataItem,
-  InputError,
-  InputForm
-} from '@amarty/models';
-
+import { UserLanguageResponse, DataItem, BaseIdEntityOfGuid, BaseBoolResponse } from '@amarty/models';
+import { DictionaryService, LocalizationService } from '@amarty/services';
 import { GenericFormRendererComponent } from '@amarty/components';
-import { BaseUnsubscribeComponent } from '@amarty/common';
-import { UserApiClient } from '@amarty/api';
-import { DictionaryService, LoaderService, LocalizationService } from '@amarty/services';
 import { TranslationPipe } from '@amarty/pipes';
-import { ProfileFormFactory } from '../../../utils/profile-form.factory';
-import {LOCALIZATION_KEYS} from "@amarty/localizations";
+import { ProfileFormFactory } from '../../profile-area/utils/form-renderer/profile-form.factory';
+import { GraphQlProfileService } from '../../profile-area/utils/graph-ql/services/graph-ql-profile.service';
+import { ProfileUserGenericProfileItem } from '../../profile-area/utils/profile-user-generic-profile-item';
 
 @Component({
   selector: 'app-profile-languages-dialog',
@@ -32,31 +26,62 @@ import {LOCALIZATION_KEYS} from "@amarty/localizations";
   templateUrl: './profile-languages-dialog.component.html',
   styleUrl: './profile-languages-dialog.component.scss'
 })
-export class ProfileLanguagesDialogComponent extends BaseUnsubscribeComponent {
-  public renderForm: InputForm | undefined;
-  public submitted: boolean = false;
-  public language: UserLanguageResponse | undefined;
-  public existingIds: string[] | undefined;
-  public languageInputError: InputError[] | undefined;
-
+export class ProfileLanguagesDialogComponent
+  extends
+    ProfileUserGenericProfileItem<
+      UserLanguageResponse,
+      ProfileLanguagesDialogComponent,
+      { profile_create_user_language: BaseIdEntityOfGuid | undefined },
+      { profile_update_user_language: BaseBoolResponse | undefined }
+    >
+{
   constructor(
-    public dialogRef: MatDialogRef<ProfileLanguagesDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: {
-      language: UserLanguageResponse | undefined,
-      existingIds: string[] | undefined
-    },
-    private readonly snackBar: MatSnackBar,
-    private readonly localizationService: LocalizationService,
-    private readonly loaderService: LoaderService,
-    private readonly userApiClient: UserApiClient,
+    override readonly dialogRef: MatDialogRef<ProfileLanguagesDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: { language: UserLanguageResponse | undefined, existingIds: string[] | undefined },
+    override readonly snackBar: MatSnackBar,
+    override readonly localizationService: LocalizationService,
     private readonly dictionaryService: DictionaryService,
-    private readonly store: Store
+    private readonly graphQlProfileService: GraphQlProfileService
   ) {
-    super();
+    super(
+      dialogRef,
+      snackBar,
+      localizationService,
+      'profile_create_user_language',
+      'profile_update_user_language'
+    );
 
-    this.language = data?.language;
+    this.genericItem = data?.language;
     this.existingIds = data?.existingIds;
+
     this.buildForm();
+  }
+
+  protected override buildForm(): void {
+    this.renderForm = ProfileFormFactory.createLanguageForm(
+      () => this.submitForm(),
+      () => this.dialogRef.close(false),
+      this.genericItem,
+      this.languages,
+      this.languageLevels
+    );
+
+    this.onExistingIdValueChange('languageId');
+  }
+
+  protected override userProfileGenericInput(): { languageId: number; languageLevelId: number } {
+    return {
+      languageId: Number(this.renderForm!.inputFormGroup!.value.languageId),
+      languageLevelId: Number(this.renderForm!.inputFormGroup!.value.languageLevelId)
+    };
+  }
+
+  protected override createMutation$(): Observable<ApolloQueryResult<{ profile_create_user_language: BaseIdEntityOfGuid | undefined }>> {
+    return this.graphQlProfileService.createUserLanguage(this.userProfileGenericInput());
+  }
+
+  protected override updateMutation$(): Observable<ApolloQueryResult<{ profile_update_user_language: BaseBoolResponse | undefined }>> {
+    return this.graphQlProfileService.updateUserLanguage(this.genericItem!.id!, this.userProfileGenericInput());
   }
 
   get languageLevels(): DataItem[] {
@@ -66,51 +91,4 @@ export class ProfileLanguagesDialogComponent extends BaseUnsubscribeComponent {
   get languages(): DataItem[] {
     return this.dictionaryService.languageDataItems ?? [];
   }
-
-  private buildForm(): void {
-    this.renderForm = ProfileFormFactory.createLanguageForm(
-      () => this.submitForm(),
-      () => this.dialogRef.close(false),
-      this.language,
-      this.languages,
-      this.languageLevels
-    );
-
-    if (!this.language) {
-      this.renderForm.inputFormGroup?.get('languageId')?.valueChanges
-        .pipe(
-          takeUntil(this.ngUnsubscribe),
-          tap(languageId => {
-            this.languageInputError =
-              (this.existingIds?.includes(String(languageId)) ?? false)
-                ? [{ error: LOCALIZATION_KEYS.ERROR.ALREADY_EXISTS }]
-                : undefined;
-          })
-        ).subscribe();
-    }
-  }
-
-  public submitForm(): void {
-    this.submitted = true;
-
-    if (!this.renderForm?.inputFormGroup || this.renderForm.inputFormGroup.invalid || this.languageInputError) {
-      this.snackBar.open(
-        LOCALIZATION_KEYS.COMMON.FIX_ERROR_BEFORE_CONTINUE,
-        LOCALIZATION_KEYS.COMMON.BUTTON.OK,
-        { duration: 5000, panelClass: ['error'] }
-      );
-
-      if (!!this.languageInputError) {
-        this.languageInputError.forEach(error => {
-          !!error.error && this.localizationService.showError(error.error);
-        });
-      }
-
-      return;
-    }
-
-    this.dialogRef.close(this.renderForm.inputFormGroup.value);
-  }
-
-  protected readonly LOCALIZATION_KEYS = LOCALIZATION_KEYS;
 }

@@ -14,6 +14,9 @@ export type InputType =
   | 'multiautocomplete'
   | null;
 
+export type InputDatepickerType =
+  'day-month-year' | 'month-year';
+
 export interface InputFormItem {
   controlName?: string;
   inputType?: InputType;
@@ -33,6 +36,8 @@ export interface InputFormItem {
   errorArray?: InputError[];
   defaultValue?: any;
   validators?: ValidatorFn[];
+  hidden?: boolean | undefined;
+  datepickerFormat?: InputDatepickerType | undefined;
 }
 
 export interface InputFormItemGrid {
@@ -147,6 +152,16 @@ export class InputFormItemBuilder {
     return this;
   }
 
+  withHidden(hidden: boolean = true): this {
+    this._item.hidden = hidden;
+    return this;
+  }
+
+  withDatepickerFormat(datepickerFormat: InputDatepickerType = 'day-month-year'): this {
+    this._item.datepickerFormat = datepickerFormat;
+    return this;
+  }
+
   withValidators(validators: ValidatorFn[]): this {
     this._item.validators = validators;
     return this;
@@ -256,6 +271,9 @@ export class InputFormBuilder {
     }
 
     const formGroup = new FormGroup(group);
+
+    console.log(flatItems);
+    console.log(formGroup);
 
     if (this._onChange) {
       formGroup.valueChanges.subscribe(() => this._onChange?.(formGroup));
