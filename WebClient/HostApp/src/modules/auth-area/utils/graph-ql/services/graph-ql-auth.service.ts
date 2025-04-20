@@ -4,10 +4,10 @@ import { ApolloQueryResult } from '@apollo/client';
 import {
   AUTH_GATEWAY_CURRENT_USER,
   AUTH_GATEWAY_SIGN_IN,
-  AUTH_GATEWAY_SIGN_OUT, USER_INFO, USER_INFO_BY_LOGIN, USER_UPDATE_PREFERENCE
+  AUTH_GATEWAY_SIGN_OUT, AUTH_GATEWAY_SIGN_UP, USER_INFO, USER_INFO_BY_LOGIN, USER_UPDATE_PREFERENCE
 } from '../queries/graph-ql-auth.query';
 import { Apollo, ApolloBase } from 'apollo-angular';
-import { BaseBoolResponse, JwtTokenResponse, UserResponse } from '@amarty/models';
+import {BaseBoolResponse, BaseIdEntityOfGuid, JwtTokenResponse, UserResponse} from '@amarty/models';
 import {apolloEnvironments, apolloFetchPolicy} from '@amarty/utils';
 
 @Injectable({
@@ -36,6 +36,28 @@ export class GraphQlAuthService {
         },
         fetchPolicy: 'network-only',
       }).valueChanges as Observable<ApolloQueryResult<{ auth_gateway_sign_in: JwtTokenResponse | undefined }>>;
+  }
+
+  public signUp(
+    input: {
+      login: string,
+      email: string,
+      password: string,
+      passwordAgain: string,
+      firstName?: string | undefined,
+      lastName?: string | undefined
+    }
+    ): Observable<ApolloQueryResult<{ auth_gateway_sign_up: BaseIdEntityOfGuid | undefined }>> {
+    return this.apolloClient
+      .watchQuery({
+        query: AUTH_GATEWAY_SIGN_UP,
+        variables: {
+          input: {
+            ...input
+          }
+        },
+        fetchPolicy: 'network-only',
+      }).valueChanges as Observable<ApolloQueryResult<{ auth_gateway_sign_up: BaseIdEntityOfGuid | undefined }>>;
   }
 
   public signOut(): Observable<ApolloQueryResult<BaseBoolResponse>> {

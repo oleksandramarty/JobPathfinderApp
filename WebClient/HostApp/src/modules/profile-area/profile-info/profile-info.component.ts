@@ -27,6 +27,7 @@ export class ProfileInfoComponent extends BaseUnsubscribeComponent {
   @Input() currentUser: UserResponse | undefined;
   @Input() countryCode: string | undefined;
   @Input() userProfile: UserProfileResponse | undefined;
+  @Input() isCurrentUser: boolean | undefined;
 
   public currentPosition: UserProfileItemResponse | undefined;
   public currentEducation: UserProfileItemResponse | undefined;
@@ -99,6 +100,10 @@ export class ProfileInfoComponent extends BaseUnsubscribeComponent {
   }
 
   public openEditProfileDialog(): void {
+    if (!this.isCurrentUser) {
+      return;
+    }
+
     const executableAction = () => {
       this.graphQlAuthService.currentUser()
         .pipe(

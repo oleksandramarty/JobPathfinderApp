@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {catchError, switchMap, takeUntil, tap, throwError} from 'rxjs';
+import {catchError, filter, switchMap, takeUntil, tap, throwError} from 'rxjs';
 import { BaseUnsubscribeComponent } from '@amarty/common';
 import {
   UserProfileItemEnum,
@@ -58,6 +58,7 @@ export class ProfileAreaComponent extends BaseUnsubscribeComponent {
   override ngOnInit(): void {
     this.store.select(selectUser)
       .pipe(
+        filter(user => !!user),
         takeUntil(this.ngUnsubscribe),
         switchMap(data => {
           this.currentUser = data;
@@ -66,7 +67,7 @@ export class ProfileAreaComponent extends BaseUnsubscribeComponent {
         }),
         tap(params => {
           const login = params.get('login');
-          this.isCurrentUser = this.user?.login === login;
+          this.isCurrentUser = this.currentUser?.login === login;
           if (this.isCurrentUser) {
             this.user = this.currentUser;
             this.countryCode = this.dictionaryService.countryData?.find(item => item.id === this.user?.userSetting?.countryId)?.code?.toLowerCase();

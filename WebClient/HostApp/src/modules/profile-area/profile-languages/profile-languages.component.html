@@ -2,9 +2,11 @@
   <div class="card__header">
     <h3 class="card__header-title">{{ LOCALIZATION_KEYS.COMMON.LANGUAGES | translation }}</h3>
     <div class="card__header__buttons">
-      <div class="button__icon" (click)="openItemDialog()">
-        <i class="fa-solid fa-plus"></i>
-      </div>
+      @if (isCurrentUser) {
+        <div class="button__icon" (click)="openItemDialog()">
+          <i class="fa-solid fa-plus"></i>
+        </div>
+      }
     </div>
   </div>
   <div class="badges">
@@ -16,8 +18,10 @@
         @for(language of existingItems; track $index) {
           <div class="badge">
             <div class="language__item" [innerHTML]="getItemTitle(language)"></div>
-            <i class="fa-solid fa-pencil" (click)="openItemDialog(language.id)"></i>
-            <i class="fa-solid fa-xmark" (click)="removeItem(language.id!)"></i>
+            @if (isCurrentUser) {
+              <i class="fa-solid fa-pencil" (click)="openItemDialog(language.id)"></i>
+              <i class="fa-solid fa-xmark" (click)="removeItem(language.id!)"></i>
+            }
           </div>
         }
       }

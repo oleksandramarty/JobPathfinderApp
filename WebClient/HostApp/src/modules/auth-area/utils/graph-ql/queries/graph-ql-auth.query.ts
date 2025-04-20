@@ -8,6 +8,14 @@ export const AUTH_GATEWAY_SIGN_IN = gql`
     }
 `;
 
+export const AUTH_GATEWAY_SIGN_UP = gql`
+  query SignIn($input: AuthSignUpInputType!) {
+    auth_gateway_sign_up(input: $input) {
+      id
+    }
+  }
+`;
+
 export const AUTH_GATEWAY_SIGN_OUT = gql`
     query SignOut {
         auth_gateway_sign_out {
@@ -105,8 +113,8 @@ export const USER_INFO = gql`
 `;
 
 export const USER_INFO_BY_LOGIN = gql`
-  query UserInfoByLogin($login: String) {
-    user_info_by_login(login: $login) {
+  query UserInfoByLogin($login: String!) {
+    user_info_by_login(input: { login: $login }) {
       id
       login
       firstName

@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-import { interval, takeUntil, tap } from 'rxjs';
-
+import {catchError, interval, takeUntil, tap, throwError} from 'rxjs';
 import { fadeInOut } from '@amarty/animations';
 import { generateRandomId } from '@amarty/utils';
 import { TranslationPipe } from '@amarty/pipes';
@@ -12,6 +11,8 @@ import { InputForm } from '@amarty/models';
 import { Router, RouterLink } from '@angular/router';
 import { AuthFormFactory } from '../utils/form-renderer/auth-form.factory';
 import { LOCALIZATION_KEYS } from '@amarty/localizations';
+import {GraphQlAuthService} from '../utils/graph-ql/services/graph-ql-auth.service';
+import {LocalizationService} from '@amarty/services';
 
 @Component({
   selector: 'app-auth-sign-up',
@@ -57,6 +58,8 @@ export class AuthSignUpComponent extends BaseUnsubscribeComponent {
   public langIndex = 0;
 
   constructor(
+    private readonly graphQlAuthService: GraphQlAuthService,
+    private readonly localizationService: LocalizationService,
     private readonly snackBar: MatSnackBar,
     private readonly router: Router
   ) {
@@ -66,12 +69,12 @@ export class AuthSignUpComponent extends BaseUnsubscribeComponent {
 
   override ngOnInit() {
     this.renderForm = AuthFormFactory.createSignUpForm(
-      () => this.register()
+      () => this.signUp()
     );
     super.ngOnInit();
   }
 
-  public register(): void {
+  public signUp(): void {
     this.submitted = true;
     if (this.renderForm.inputFormGroup?.invalid) {
       this.snackBar.open(
@@ -81,6 +84,24 @@ export class AuthSignUpComponent extends BaseUnsubscribeComponent {
       );
       return;
     }
+
+    this.graphQlAuthService.signUp({
+      firstName: this.renderForm.inputFormGroup?.value?.firstName,
+      lastName: this.renderForm.inputFormGroup?.value?.lastName,
+      login: this.renderForm.inputFormGroup?.value?.login,
+      email: this.renderForm.inputFormGroup?.value?.email,
+      password: this.renderForm.inputFormGroup?.value?.newPassword,
+      passwordAgain: this.renderForm.inputFormGroup?.value?.confirmNewPassword
+    }).pipe(
+      takeUntil(this.ngUnsubscribe),
+      tap(() => {
+        this.router.navigate(['/auth/sign-in']);
+      }),
+      catchError((error: any) => {
+        this.localizationService.handleApiError(error);
+        return throwError(() => error);
+      })
+    ).subscribe();
 
     console.log('Sign-up form submitted:', this.renderForm.inputFormGroup?.value);
   }

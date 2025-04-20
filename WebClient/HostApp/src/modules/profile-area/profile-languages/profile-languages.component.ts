@@ -20,6 +20,7 @@ import { BaseUnsubscribeComponent } from '@amarty/common';
 })
 export class ProfileLanguagesComponent extends BaseUnsubscribeComponent {
   @Input() existingItems: UserLanguageResponse[] | undefined;
+  @Input() isCurrentUser: boolean | undefined;
 
   constructor(
     private readonly dialogService: CommonDialogService,
@@ -37,6 +38,10 @@ export class ProfileLanguagesComponent extends BaseUnsubscribeComponent {
   }
 
   public openItemDialog(languageId?: string): void {
+    if (!this.isCurrentUser) {
+      return;
+    }
+
     this.dialogService.showDialog<ProfileLanguagesDialogComponent, UserLanguageResponse>(
       ProfileLanguagesDialogComponent,
       {
@@ -48,6 +53,10 @@ export class ProfileLanguagesComponent extends BaseUnsubscribeComponent {
   }
 
   public removeItem(id: string): void {
+    if (!this.isCurrentUser) {
+      return;
+    }
+
     console.log('removeItem', id);
   }
 

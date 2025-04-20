@@ -47,9 +47,11 @@
       </div>
       <div class="profile__header__right">
         <div class="card__header__buttons">
-          <div class="button__icon" (click)="openEditProfileDialog()">
-            <i class="fa-solid fa-pencil"></i>
-          </div>
+          @if (isCurrentUser) {
+            <div class="button__icon" (click)="openEditProfileDialog()">
+              <i class="fa-solid fa-pencil"></i>
+            </div>
+          }
         </div>
 
       </div>

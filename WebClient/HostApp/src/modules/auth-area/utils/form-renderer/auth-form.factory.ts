@@ -78,6 +78,13 @@ export class AuthFormFactory {
   static createSignUpForm(onSubmit: () => void): InputForm {
     return new InputFormBuilder()
       .addGrid(new InputFormGridBuilder()
+        .withGridCount(1)
+        .addItem(
+          new InputFormItemBuilder('login', 'input')
+            .withPlaceholder(LOCALIZATION_KEYS.COMMON.LOGIN)
+            .withValidators([Validators.required])
+        ))
+      .addGrid(new InputFormGridBuilder()
         .withGridCount(2)
         .addItem(
           new InputFormItemBuilder('firstName', 'input')
@@ -87,7 +94,9 @@ export class AuthFormFactory {
         .addItem(
           new InputFormItemBuilder('lastName', 'input')
             .withPlaceholder(LOCALIZATION_KEYS.COMMON.LAST_NAME)
-        )
+        ))
+      .addGrid(new InputFormGridBuilder()
+        .withGridCount(2)
         .addItem(
           new InputFormItemBuilder('email', 'input')
             .withPlaceholder(LOCALIZATION_KEYS.COMMON.EMAIL)

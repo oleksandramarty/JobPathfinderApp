@@ -1,39 +1,47 @@
-@if(currentUser && userProfile) {
+@if(user && userProfile) {
   <div class="container">
     <app-profile-info
-      [currentUser]="currentUser"
+      [currentUser]="user"
       [countryCode]="countryCode"
       [userProfile]="userProfile"
+      [isCurrentUser]="isCurrentUser"
     ></app-profile-info>
 
     <app-profile-item
       [existingItems]="userProfile.items"
       [itemType]="profileItemEnum.Experience"
+      [isCurrentUser]="isCurrentUser"
     ></app-profile-item>
     <app-profile-item
       [existingItems]="userProfile.items"
       [itemType]="profileItemEnum.Education"
+      [isCurrentUser]="isCurrentUser"
     ></app-profile-item>
 
     <app-profile-skills
       [existingItems]="userProfile.skills"
+      [isCurrentUser]="isCurrentUser"
     ></app-profile-skills>
     <app-profile-languages
       [existingItems]="userProfile.languages"
+      [isCurrentUser]="isCurrentUser"
     ></app-profile-languages>
 
     <app-profile-item
       [existingItems]="userProfile.items"
       [itemType]="profileItemEnum.Certification"
+      [isCurrentUser]="isCurrentUser"
     ></app-profile-item>
     <app-profile-item
       [existingItems]="userProfile.items"
       [itemType]="profileItemEnum.Achievement"
+      [isCurrentUser]="isCurrentUser"
     ></app-profile-item>
 
     <app-profile-item
       [existingItems]="userProfile.items"
       [itemType]="profileItemEnum.Project"
+      [isCurrentUser]="isCurrentUser"
     ></app-profile-item>
   </div>
 }

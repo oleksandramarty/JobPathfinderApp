@@ -2,9 +2,11 @@
   <div class="card__header">
     <h3 class="card__header-title">{{ title | translation }}</h3>
     <div class="card__header__buttons">
-      <div class="button__icon" (click)="openItemDialog()">
-        <i class="fa-solid fa-plus"></i>
-      </div>
+      @if (isCurrentUser) {
+        <div class="button__icon" (click)="openItemDialog()">
+          <i class="fa-solid fa-plus"></i>
+        </div>
+      }
     </div>
   </div>
   <div class="profile__resume">
@@ -40,9 +42,11 @@
               </div>
 
             </div>
-            <div class="profile__resume__item-edit" (click)="openItemDialog(item.id)">
-              <i class="fa-solid fa-pencil"></i>
-            </div>
+            @if (isCurrentUser) {
+              <div class="profile__resume__item-edit" (click)="openItemDialog(item.id)">
+                <i class="fa-solid fa-pencil"></i>
+              </div>
+            }
           </div>
         }
       }

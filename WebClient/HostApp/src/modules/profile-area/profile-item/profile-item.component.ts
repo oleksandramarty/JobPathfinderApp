@@ -27,6 +27,7 @@ import { BaseUnsubscribeComponent } from '@amarty/common';
 export class ProfileItemComponent extends BaseUnsubscribeComponent {
   @Input() itemType: UserProfileItemEnum | undefined;
   @Input() existingItems: UserProfileItemResponse[] | undefined;
+  @Input() isCurrentUser: boolean | undefined;
 
   public title: string | undefined;
 
@@ -71,6 +72,10 @@ export class ProfileItemComponent extends BaseUnsubscribeComponent {
   }
 
   public openItemDialog(itemId?: string): void {
+    if (!this.isCurrentUser) {
+      return;
+    }
+
     this.dialogService.showDialog<ProfileItemDialogComponent, UserProfileItemResponse>(
       ProfileItemDialogComponent,
       {
@@ -86,6 +91,10 @@ export class ProfileItemComponent extends BaseUnsubscribeComponent {
   }
 
   public removeItem(id: string): void {
+    if (!this.isCurrentUser) {
+      return;
+    }
+
     console.log('removeItem', id);
   }
 

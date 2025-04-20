@@ -8,7 +8,9 @@ public sealed class AuthSignUpInputType : InputObjectGraphType
 {
     public AuthSignUpInputType()
     {
-        Name = "AuthSignUpCommandInputType";
+        Name = "AuthSignUpInputType";
+        Field<StringGraphType>("firstName");
+        Field<StringGraphType>("lastName");
         Field<NonNullGraphType<StringGraphType>>("login");
         Field<NonNullGraphType<StringGraphType>>("email");
         Field<NonNullGraphType<StringGraphType>>("password");

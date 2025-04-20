@@ -19,6 +19,7 @@ import { BaseUnsubscribeComponent } from '@amarty/common';
 })
 export class ProfileSkillsComponent extends BaseUnsubscribeComponent{
   @Input() existingItems: UserSkillResponse[] | undefined;
+  @Input() isCurrentUser: boolean | undefined;
 
   constructor(
     private readonly dialogService: CommonDialogService,
@@ -36,6 +37,10 @@ export class ProfileSkillsComponent extends BaseUnsubscribeComponent{
   }
 
   public openItemDialog(id?: string): void {
+    if (!this.isCurrentUser) {
+      return;
+    }
+
     this.dialogService.showDialog<ProfileSkillsDialogComponent, UserSkillResponse>(
       ProfileSkillsDialogComponent,
       {
@@ -47,6 +52,10 @@ export class ProfileSkillsComponent extends BaseUnsubscribeComponent{
   }
 
   public removeItem(id: string): void {
+    if (!this.isCurrentUser) {
+      return;
+    }
+
     console.log('removeItem', id);
   }
 

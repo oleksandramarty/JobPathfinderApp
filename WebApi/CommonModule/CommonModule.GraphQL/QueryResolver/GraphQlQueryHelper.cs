@@ -1,3 +1,4 @@
+using AuthGateway.Mediatr.Mediatr.Auth.Commands;
 using AuthGateway.Mediatr.Mediatr.Auth.Requests;
 using CommonModule.GraphQL.Types.InputTypes.AuthGateway;
 using CommonModule.GraphQL.Types.InputTypes.AuthGateway.Users;
@@ -76,6 +77,14 @@ public class GraphQlQueryHelper: GraphQlQueryResolver
             AuthSignInRequest,
             JwtTokenResponse
         >(GraphQlEndpoints.SignIn);
+        
+        ResultForNonEmptyCommand<
+            AuthSignUpInputType,
+            BaseEntityIdOfGuidResponseType,
+            BaseEntityIdResponse<Guid>,
+            AuthSignUpCommand,
+            BaseEntityIdResponse<Guid>
+        >(GraphQlEndpoints.SignUp);
 
         EntityById<
             GuidGraphType,
