@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApolloQueryResult } from '@apollo/client';
-import {
-  AUTH_GATEWAY_CURRENT_USER,
-  AUTH_GATEWAY_SIGN_IN,
-  AUTH_GATEWAY_SIGN_OUT, AUTH_GATEWAY_SIGN_UP, USER_INFO, USER_INFO_BY_LOGIN, USER_UPDATE_PREFERENCE
-} from '../queries/graph-ql-auth.query';
 import { Apollo, ApolloBase } from 'apollo-angular';
 import {BaseBoolResponse, BaseIdEntityOfGuid, JwtTokenResponse, UserResponse} from '@amarty/models';
 import {apolloEnvironments, apolloFetchPolicy} from '@amarty/utils';
+import {AUTH_GATEWAY_SIGN_IN} from '../queries/auth/sign-in.query';
+import {AUTH_GATEWAY_SIGN_UP} from '../mutations/auth/auth-sign-up.mutation';
+import {AUTH_GATEWAY_SIGN_OUT} from '../queries/auth/sign-out.query';
+import {AUTH_GATEWAY_CURRENT_USER} from '../queries/users/curent-user.query';
+import {USER_INFO} from '../queries/users/user-by-id.query';
+import {USER_INFO_BY_LOGIN} from '../queries/users/user-by-login.query';
+import {USER_UPDATE_PREFERENCE} from '../mutations/users/user-update-preference.mutation';
 
 @Injectable({
   providedIn: 'root',

@@ -16,7 +16,7 @@ import { DictionaryService, LocalizationService } from '@amarty/services';
 import { Store } from '@ngrx/store';
 import {Observable, takeUntil, tap} from 'rxjs';
 import { ApolloQueryResult } from '@apollo/client';
-import { GraphQlProfileService } from '../../profile-area/utils/graph-ql/services/graph-ql-profile.service';
+import { GraphQlProfileService } from '../../../utils/api/services/graph-ql-profile.service';
 import { ProfileUserGenericProfileItem } from '../../profile-area/utils/profile-user-generic-profile-item';
 import { selectUser } from '@amarty/store';
 import { ProfileFormFactory } from '../../profile-area/utils/form-renderer/profile-form.factory';

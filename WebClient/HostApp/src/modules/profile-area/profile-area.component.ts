@@ -16,8 +16,8 @@ import { LOCALIZATION_KEYS } from '@amarty/localizations';
 import { Store } from '@ngrx/store';
 import { selectProfile, selectUser } from '@amarty/store';
 import {ActivatedRoute, Router, RouterModule} from '@angular/router';
-import {GraphQlAuthService} from '../auth-area/utils/graph-ql/services/graph-ql-auth.service';
-import {GraphQlProfileService} from './utils/graph-ql/services/graph-ql-profile.service';
+import {GraphQlAuthService} from '../../utils/api/services/graph-ql-auth.service';
+import {GraphQlProfileService} from '../../utils/api/services/graph-ql-profile.service';
 
 @Component({
   selector: 'app-profile-area',

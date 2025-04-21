@@ -13,7 +13,7 @@ import {
   selectToken
 } from '@amarty/store';
 import { getLocalStorageItem, removeLocalStorageItem, setLocalStorageItem } from '@amarty/utils';
-import { GraphQlAuthService } from '../../modules/auth-area/utils/graph-ql/services/graph-ql-auth.service';
+import { GraphQlAuthService } from '../api/services/graph-ql-auth.service';
 import { LoaderService, LocalizationService } from '@amarty/services';
 import { Router } from '@angular/router';
 

@@ -18,9 +18,9 @@ import { FooterComponent } from '../../common-area/footer/footer.component';
 import { SpinnerComponent } from '../../common-area/spinner/spinner.component';
 import { SiteSettingsResponse, UserProfileResponse, UserResponse } from '@amarty/models';
 import { profile_setProfile } from '@amarty/store';
-import { GraphQlAuthService } from '../../auth-area/utils/graph-ql/services/graph-ql-auth.service';
+import { GraphQlAuthService } from '../../../utils/api/services/graph-ql-auth.service';
 import { ApolloQueryResult } from '@apollo/client';
-import { GraphQlProfileService } from '../../profile-area/utils/graph-ql/services/graph-ql-profile.service';
+import { GraphQlProfileService } from '../../../utils/api/services/graph-ql-profile.service';
 
 @Component({
   selector: 'app-root',

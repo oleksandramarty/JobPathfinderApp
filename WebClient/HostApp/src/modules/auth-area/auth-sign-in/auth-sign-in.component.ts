@@ -14,7 +14,7 @@ import { InputForm, JwtTokenResponse } from '@amarty/models';
 import { AuthService } from '../../../utils/services/auth.service';
 import { AuthFormFactory } from '../utils/form-renderer/auth-form.factory';
 import { LOCALIZATION_KEYS } from '@amarty/localizations';
-import { GraphQlAuthService } from '../utils/graph-ql/services/graph-ql-auth.service';
+import { GraphQlAuthService } from '../../../utils/api/services/graph-ql-auth.service';
 
 @Component({
   selector: 'app-auth-sign-in',

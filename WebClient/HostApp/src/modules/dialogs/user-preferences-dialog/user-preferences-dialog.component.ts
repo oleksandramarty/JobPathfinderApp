@@ -13,7 +13,7 @@ import { GenericFormRendererComponent } from '@amarty/components';
 import { TranslationPipe } from '@amarty/pipes';
 import { ProfileFormFactory } from '../../profile-area/utils/form-renderer/profile-form.factory';
 import { LOCALIZATION_KEYS } from '@amarty/localizations';
-import { GraphQlAuthService } from '../../auth-area/utils/graph-ql/services/graph-ql-auth.service';
+import { GraphQlAuthService } from '../../../utils/api/services/graph-ql-auth.service';
 import { catchError, takeUntil, tap, throwError } from 'rxjs';
 
 @Component({

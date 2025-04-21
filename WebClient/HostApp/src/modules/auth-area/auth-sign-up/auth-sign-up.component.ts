@@ -11,7 +11,7 @@ import { InputForm } from '@amarty/models';
 import { Router, RouterLink } from '@angular/router';
 import { AuthFormFactory } from '../utils/form-renderer/auth-form.factory';
 import { LOCALIZATION_KEYS } from '@amarty/localizations';
-import {GraphQlAuthService} from '../utils/graph-ql/services/graph-ql-auth.service';
+import {GraphQlAuthService} from '../../../utils/api/services/graph-ql-auth.service';
 import {LocalizationService} from '@amarty/services';
 
 @Component({

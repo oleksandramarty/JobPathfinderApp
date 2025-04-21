@@ -11,7 +11,7 @@ import { DictionaryService, LocalizationService } from '@amarty/services';
 import { GenericFormRendererComponent } from '@amarty/components';
 import { TranslationPipe } from '@amarty/pipes';
 import { ProfileFormFactory } from '../../profile-area/utils/form-renderer/profile-form.factory';
-import { GraphQlProfileService } from '../../profile-area/utils/graph-ql/services/graph-ql-profile.service';
+import { GraphQlProfileService } from '../../../utils/api/services/graph-ql-profile.service';
 import { ProfileUserGenericProfileItem } from '../../profile-area/utils/profile-user-generic-profile-item';
 
 @Component({

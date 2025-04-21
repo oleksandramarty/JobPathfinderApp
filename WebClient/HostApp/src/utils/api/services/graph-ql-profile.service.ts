@@ -5,19 +5,18 @@ import { ApolloQueryResult } from '@apollo/client';
 
 import { apolloEnvironments } from '@amarty/utils';
 import {BaseBoolResponse, BaseIdEntityOfGuid, UserProfileResponse, UserSkillResponse} from '@amarty/models';
-
-import {
-  PROFILE_CURRENT_USER_PROFILE,
-  PROFILE_CREATE_USER_SKILL,
-  PROFILE_UPDATE_USER_SKILL,
-  PROFILE_DELETE_USER_SKILL,
-  PROFILE_CREATE_USER_LANGUAGE,
-  PROFILE_UPDATE_USER_LANGUAGE,
-  PROFILE_DELETE_USER_LANGUAGE,
-  PROFILE_CREATE_USER_PROFILE_ITEM,
-  PROFILE_UPDATE_USER_PROFILE_ITEM,
-  PROFILE_DELETE_USER_PROFILE_ITEM, PROFILE_USER_SKILL_BY_ID, PROFILE_USER_PROFILE_BY_ID
-} from '../queries/graph-ql-profile.query';
+import {PROFILE_CURRENT_USER_PROFILE} from '../queries/profiles/current-user-profile.mutation';
+import {PROFILE_USER_SKILL_BY_ID} from '../queries/profiles/user-skill-by-id.query';
+import {PROFILE_CREATE_USER_SKILL} from '../mutations/profiles/create-user-skill.mutation';
+import {PROFILE_UPDATE_USER_SKILL} from '../mutations/profiles/update-user-skill.mutation';
+import {PROFILE_DELETE_USER_SKILL} from '../mutations/profiles/delete-user-skill.mutation';
+import {PROFILE_CREATE_USER_LANGUAGE} from '../mutations/profiles/create-user-language.mutation';
+import {PROFILE_UPDATE_USER_LANGUAGE} from '../mutations/profiles/update-user-language.mutation';
+import {PROFILE_DELETE_USER_LANGUAGE} from '../mutations/profiles/delete-user-language.mutatuion';
+import {PROFILE_CREATE_USER_PROFILE_ITEM} from '../mutations/profiles/create-user-profile-item.mutation';
+import {PROFILE_UPDATE_USER_PROFILE_ITEM} from '../mutations/profiles/update-user-profile-item.mutation';
+import {PROFILE_DELETE_USER_PROFILE_ITEM} from '../mutations/profiles/delete-user-profile-item.mutation';
+import {PROFILE_USER_PROFILE_BY_ID} from '../queries/profiles/user-profile-by-id.query';
 
 @Injectable({
   providedIn: 'root',

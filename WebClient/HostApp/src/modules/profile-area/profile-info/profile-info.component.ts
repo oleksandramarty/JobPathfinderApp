@@ -9,7 +9,7 @@ import {catchError, takeUntil, tap, throwError} from 'rxjs';
 import {ApolloQueryResult} from '@apollo/client';
 import {auth_setUser} from '@amarty/store';
 import {Store} from '@ngrx/store';
-import {GraphQlAuthService} from '../../auth-area/utils/graph-ql/services/graph-ql-auth.service';
+import {GraphQlAuthService} from '../../../utils/api/services/graph-ql-auth.service';
 import {TranslationPipe} from '@amarty/pipes';
 import {LOCALIZATION_KEYS} from '@amarty/localizations';
 
