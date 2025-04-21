@@ -16,7 +16,11 @@
     <span class="footer__text" style="color: #f44336; text-transform: uppercase;">
       [<strong>{{ LOCALIZATION_KEYS.COMMON.DO_NOT_STORE_ANY_SENSITIVE_DATA | translation }}</strong>]
     </span>
-    @if(buildVersion !== 'production'){
+    @if(buildVersion !== 'production') {
+      <span class="footer__text"> | </span>
+      <span class="footer__text">
+        [<strong>{{ buildVersion }}</strong>]
+      </span>
       <span class="footer__text"> | </span>
       <span class="footer__text" (click)="turnOffLoader()">
         [<strong matTooltip="Turn off loader"

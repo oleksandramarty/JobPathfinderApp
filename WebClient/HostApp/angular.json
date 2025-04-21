@@ -68,7 +68,24 @@
             "development": {
               "optimization": false,
               "extractLicenses": false,
-              "sourceMap": true
+              "sourceMap": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/utils/environments/environment.ts",
+                  "with": "src/utils/environments/environment.development.ts"
+                }
+              ]
+            },
+            "monolith": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/utils/environments/environment.ts",
+                  "with": "src/utils/environments/environment.monolith.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -88,9 +105,12 @@
             },
             "development": {
               "buildTarget": "HostApp:build:development"
+            },
+            "monolith": {
+              "buildTarget": "HostApp:build:monolith"
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "monolith"
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n"
