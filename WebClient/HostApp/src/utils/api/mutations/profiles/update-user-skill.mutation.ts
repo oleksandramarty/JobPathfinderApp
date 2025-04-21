@@ -1,4 +1,4 @@
-import {gql} from '@apollo/client';
+import { gql } from '@apollo/client';
 
 export const PROFILE_UPDATE_USER_SKILL = gql`
   mutation ProfileUpdateUserSkill(

@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {catchError, filter, switchMap, takeUntil, tap, throwError} from 'rxjs';
+import { catchError, filter, switchMap, takeUntil, tap, throwError } from 'rxjs';
 import { BaseUnsubscribeComponent } from '@amarty/common';
 import {
   UserProfileItemEnum,
   UserProfileResponse,
   UserResponse,
 } from '@amarty/models';
-import {DictionaryService, LocalizationService} from '@amarty/services';
+import { DictionaryService, LocalizationService } from '@amarty/services';
 import { ProfileInfoComponent } from './profile-info/profile-info.component';
 import { ProfileSkillsComponent } from './profile-skills/profile-skills.component';
 import { ProfileLanguagesComponent } from './profile-languages/profile-languages.component';
@@ -15,9 +15,9 @@ import { ProfileItemComponent } from './profile-item/profile-item.component';
 import { LOCALIZATION_KEYS } from '@amarty/localizations';
 import { Store } from '@ngrx/store';
 import { selectProfile, selectUser } from '@amarty/store';
-import {ActivatedRoute, Router, RouterModule} from '@angular/router';
-import {GraphQlAuthService} from '../../utils/api/services/graph-ql-auth.service';
-import {GraphQlProfileService} from '../../utils/api/services/graph-ql-profile.service';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { GraphQlAuthService } from '../../utils/api/services/graph-ql-auth.service';
+import { GraphQlProfileService } from '../../utils/api/services/graph-ql-profile.service';
 
 @Component({
   selector: 'app-profile-area',

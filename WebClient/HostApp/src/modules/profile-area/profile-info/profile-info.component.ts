@@ -1,17 +1,17 @@
-import {UserProfileItemEnum, UserProfileItemResponse, UserProfileResponse, UserResponse} from '@amarty/models';
-import {BaseUnsubscribeComponent} from '@amarty/common';
-import {Component, Input} from '@angular/core';
-import {MatSnackBar} from '@angular/material/snack-bar';
-import {UserPreferencesDialogComponent} from '../../dialogs/user-preferences-dialog/user-preferences-dialog.component';
-import {CommonDialogService, DictionaryService, LocalizationService} from '@amarty/services';
-import {CommonModule} from '@angular/common';
-import {catchError, takeUntil, tap, throwError} from 'rxjs';
-import {ApolloQueryResult} from '@apollo/client';
-import {auth_setUser} from '@amarty/store';
-import {Store} from '@ngrx/store';
-import {GraphQlAuthService} from '../../../utils/api/services/graph-ql-auth.service';
-import {TranslationPipe} from '@amarty/pipes';
-import {LOCALIZATION_KEYS} from '@amarty/localizations';
+import { UserProfileItemEnum, UserProfileItemResponse, UserProfileResponse, UserResponse } from '@amarty/models';
+import { BaseUnsubscribeComponent } from '@amarty/common';
+import { Component, Input } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { UserPreferencesDialogComponent } from '../../dialogs/user-preferences-dialog/user-preferences-dialog.component';
+import { CommonDialogService, DictionaryService, LocalizationService } from '@amarty/services';
+import { CommonModule } from '@angular/common';
+import { catchError, takeUntil, tap, throwError } from 'rxjs';
+import { ApolloQueryResult } from '@apollo/client';
+import { auth_setUser } from '@amarty/store';
+import { Store } from '@ngrx/store';
+import { GraphQlAuthService } from '../../../utils/api/services/graph-ql-auth.service';
+import { TranslationPipe } from '@amarty/pipes';
+import { LOCALIZATION_KEYS } from '@amarty/localizations';
 
 @Component({
   selector: 'app-profile-info',

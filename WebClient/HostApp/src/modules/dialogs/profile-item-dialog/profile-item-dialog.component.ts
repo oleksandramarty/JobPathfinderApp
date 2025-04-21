@@ -14,13 +14,13 @@ import {
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DictionaryService, LocalizationService } from '@amarty/services';
 import { Store } from '@ngrx/store';
-import {Observable, takeUntil, tap} from 'rxjs';
+import { Observable, takeUntil, tap } from 'rxjs';
 import { ApolloQueryResult } from '@apollo/client';
 import { GraphQlProfileService } from '../../../utils/api/services/graph-ql-profile.service';
 import { ProfileUserGenericProfileItem } from '../../profile-area/utils/profile-user-generic-profile-item';
 import { selectUser } from '@amarty/store';
 import { ProfileFormFactory } from '../../profile-area/utils/form-renderer/profile-form.factory';
-import {formatDateToYMD, mapEnumValue} from '@amarty/utils';
+import { formatDateToYMD } from '@amarty/utils';
 
 @Component({
   selector: 'app-profile-item-dialog',

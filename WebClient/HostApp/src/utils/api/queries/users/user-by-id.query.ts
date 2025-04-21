@@ -1,4 +1,4 @@
-import {gql} from '@apollo/client';
+import { gql } from '@apollo/client';
 
 export const USER_INFO = gql`
   query UserInfoById($id: Guid) {

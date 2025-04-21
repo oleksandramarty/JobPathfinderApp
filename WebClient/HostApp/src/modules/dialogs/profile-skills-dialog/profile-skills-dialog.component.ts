@@ -2,7 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CommonModule } from '@angular/common';
-import {UserSkillResponse, DataItem, BaseIdEntityOfGuid, BaseBoolResponse} from '@amarty/models';
+import { UserSkillResponse, DataItem, BaseIdEntityOfGuid, BaseBoolResponse } from '@amarty/models';
 import { DictionaryService, LocalizationService } from '@amarty/services';
 import { GenericFormRendererComponent } from '@amarty/components';
 import { TranslationPipe } from '@amarty/pipes';
@@ -10,7 +10,7 @@ import { ProfileFormFactory } from '../../profile-area/utils/form-renderer/profi
 import { GraphQlProfileService } from '../../../utils/api/services/graph-ql-profile.service';
 import { ProfileUserGenericProfileItem } from '../../profile-area/utils/profile-user-generic-profile-item';
 import { ApolloQueryResult } from '@apollo/client';
-import {Observable} from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-profile-skills-dialog',
@@ -26,7 +26,7 @@ import {Observable} from 'rxjs';
 })
 export class ProfileSkillsDialogComponent
   extends
-    ProfileUserGenericProfileItem<
+  ProfileUserGenericProfileItem<
       UserSkillResponse,
       ProfileSkillsDialogComponent,
       { profile_create_user_skill: BaseIdEntityOfGuid | undefined },

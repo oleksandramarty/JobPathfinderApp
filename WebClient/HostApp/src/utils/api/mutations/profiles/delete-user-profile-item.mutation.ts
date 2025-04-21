@@ -1,4 +1,4 @@
-import {gql} from '@apollo/client';
+import { gql } from '@apollo/client';
 
 export const PROFILE_DELETE_USER_PROFILE_ITEM = gql`
   mutation ProfileDeleteUserProfileItem($id: Guid!) {

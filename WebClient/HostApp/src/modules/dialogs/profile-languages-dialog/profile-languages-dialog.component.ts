@@ -1,7 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Store } from '@ngrx/store';
 import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
 import { ApolloQueryResult } from '@apollo/client';
@@ -28,7 +27,7 @@ import { ProfileUserGenericProfileItem } from '../../profile-area/utils/profile-
 })
 export class ProfileLanguagesDialogComponent
   extends
-    ProfileUserGenericProfileItem<
+  ProfileUserGenericProfileItem<
       UserLanguageResponse,
       ProfileLanguagesDialogComponent,
       { profile_create_user_language: BaseIdEntityOfGuid | undefined },

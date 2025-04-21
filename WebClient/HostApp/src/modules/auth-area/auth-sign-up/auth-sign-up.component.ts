@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-import {catchError, interval, takeUntil, tap, throwError} from 'rxjs';
+import { catchError, interval, takeUntil, tap, throwError } from 'rxjs';
 import { fadeInOut } from '@amarty/animations';
 import { generateRandomId } from '@amarty/utils';
 import { TranslationPipe } from '@amarty/pipes';
@@ -11,8 +11,8 @@ import { InputForm } from '@amarty/models';
 import { Router, RouterLink } from '@angular/router';
 import { AuthFormFactory } from '../utils/form-renderer/auth-form.factory';
 import { LOCALIZATION_KEYS } from '@amarty/localizations';
-import {GraphQlAuthService} from '../../../utils/api/services/graph-ql-auth.service';
-import {LocalizationService} from '@amarty/services';
+import { GraphQlAuthService } from '../../../utils/api/services/graph-ql-auth.service';
+import { LocalizationService } from '@amarty/services';
 
 @Component({
   selector: 'app-auth-sign-up',

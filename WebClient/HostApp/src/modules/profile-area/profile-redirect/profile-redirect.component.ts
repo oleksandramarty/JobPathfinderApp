@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import {Router, RouterModule} from '@angular/router';
-import {CommonModule} from '@angular/common';
-import {BaseUnsubscribeComponent} from '@amarty/common';
-import {Store} from '@ngrx/store';
-import {selectUser} from '@amarty/store';
-import {takeUntil, tap} from 'rxjs';
+import { Router, RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { BaseUnsubscribeComponent } from '@amarty/common';
+import { Store } from '@ngrx/store';
+import { selectUser } from '@amarty/store';
+import { takeUntil, tap } from 'rxjs';
 
 @Component({
   selector: 'app-profile-redirect',
@@ -28,12 +28,12 @@ export class ProfileRedirectComponent extends BaseUnsubscribeComponent {
       .pipe(
         takeUntil(this.ngUnsubscribe),
         tap((user) => {
-            if (!!user) {
-              this.router.navigate(['/profile', user.login]);
-            } else {
-              this.router.navigate(['/auth/sign-in']);
-            }
+          if (!!user) {
+            this.router.navigate(['/profile', user.login]);
+          } else {
+            this.router.navigate(['/auth/sign-in']);
           }
+        }
         )
       ).subscribe();
 
