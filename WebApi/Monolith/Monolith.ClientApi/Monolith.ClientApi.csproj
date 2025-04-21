@@ -27,4 +27,9 @@
         <PackageReference Include="NSwag.AspNetCore" Version="14.2.0" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\..\CommonModule\CommonModule.Facade\CommonModule.Facade.csproj" />
+      <ProjectReference Include="..\Monolith.GraphQL\Monolith.GraphQL.csproj" />
+    </ItemGroup>
+
 </Project>

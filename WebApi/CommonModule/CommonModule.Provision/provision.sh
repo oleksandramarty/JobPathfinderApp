@@ -10,15 +10,15 @@ SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd)
 echo "Provision running..."
 
 # Set the environment variable to use the custom appsettings file
-export ASPNETCORE_ENVIRONMENT=Development
+export ASPNETCORE_ENVIRONMENT=DevelopmentMonolith
 
 # Truncate the provision_logs.txt file
 truncate -s 0 "$SCRIPT_DIR/provision_logs.txt"
 
 # Set the dropMigrations parameter
-dropMigrations=false 
+dropMigrations=true 
 # Set the addNewMigration parameter
-addNewMigration=false
+addNewMigration=true
 # Set the isBulkUpdate parameter
 isBulkUpdate=true
 
@@ -41,11 +41,14 @@ chmod +x "$SCRIPT_DIR/provision_generator.sh"
 chmod +x "$SCRIPT_DIR/InitScripts/init_kafka.sh"
 "$SCRIPT_DIR/InitScripts/init_kafka.sh"
 
-# Initialize integration tests databases
-chmod +x "$SCRIPT_DIR/provision_tests.sh"
-"$SCRIPT_DIR/provision_tests.sh"
-echo "Provision completed."
 
+# Initialize integration tests databases
+if [ "$ASPNETCORE_ENVIRONMENT" = "DevelopmentMonolith" ]; then
+  # Initialize integration tests databases
+  chmod +x "$SCRIPT_DIR/provision_tests.sh"
+  "$SCRIPT_DIR/provision_tests.sh"
+fi
+echo "Provision completed."
 
 chmod +x "$SCRIPT_DIR/provision_demo.sh"
 "$SCRIPT_DIR/provision_demo.sh"

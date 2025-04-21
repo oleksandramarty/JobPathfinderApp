@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Define variables
+#db_name="JP_MonolithDb"
 localization_db="JP_LocalizationDb"
 dictionary_db="JP_DictionaryDb"
 users_db="JP_UserDb"
@@ -10,6 +11,11 @@ profile_db="JP_ProfileDb"
 # Function to get the database name based on the environment
 getDbName() {
   local db=$1
+#  if [ "$ASPNETCORE_ENVIRONMENT" = "Development" ]; then
+#    echo "$db"
+#  else
+#    echo "$db_name"
+#  fi
   echo "$db"
 }
 
