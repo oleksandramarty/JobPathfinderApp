@@ -4,6 +4,10 @@
 .input {
   &__container {
     position: relative;
+
+    & i {
+      color: var(--text);
+    }
   }
 
   &__label {
@@ -13,7 +17,7 @@
 }
 
 label {
-  color: var(--text-black);
+  color: var(--text);
   font-family: var(--font-alt), sans-serif;
   margin-bottom: #{m.pxToRem(4)};
 }

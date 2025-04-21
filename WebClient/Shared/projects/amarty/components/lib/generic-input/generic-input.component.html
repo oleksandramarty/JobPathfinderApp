@@ -1,7 +1,6 @@
 @if(formGroup && !hidden) {
   <div
     [ngClass]="className ? 'input__container ' + className : 'input__container'"
-    (click)="showDebugInfo()"
     [formGroup]="formGroup">
 
     @if(type === 'input' || type === 'select' || type === 'textarea' || type === 'password' || type === 'datepicker' || type === 'rangedatepicker' || type === 'autocomplete' || type === 'multiautocomplete') {
@@ -76,13 +75,19 @@
         <mat-datepicker-toggle matSuffix [for]="datepickerFormat === 'month-year' ? monthPicker : picker" class="hidden-datepicker-toggle"></mat-datepicker-toggle>
 
         @if(datepickerFormat === 'month-year') {
-          <mat-datepicker #monthPicker startView="multi-year" (monthSelected)="chosenMonthHandler($event, monthPicker)" panelClass="month-picker"></mat-datepicker>
+          <mat-datepicker
+            #monthPicker
+            startView="multi-year"
+            (monthSelected)="chosenMonthHandler($event, monthPicker)"
+            (opened)="onDatepickerOpened()"
+            panelClass="month-picker"></mat-datepicker>
         } @else {
-          <mat-datepicker #picker></mat-datepicker>
+          <mat-datepicker
+            #picker
+            (opened)="onDatepickerOpened()"></mat-datepicker>
         }
       </div>
     }
-
 
     @if(type === 'rangedatepicker') {
       <div class="datepicker-range" [formGroup]="formGroup">
@@ -106,7 +111,9 @@
         </mat-date-range-input>
 
         <mat-datepicker-toggle matSuffix [for]="rangePicker" class="hidden-datepicker-toggle"></mat-datepicker-toggle>
-        <mat-date-range-picker #rangePicker></mat-date-range-picker>
+        <mat-date-range-picker
+          #rangePicker
+          (opened)="onDatepickerOpened()"></mat-date-range-picker>
       </div>
     }
 

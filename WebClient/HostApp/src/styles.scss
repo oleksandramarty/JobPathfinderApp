@@ -4,6 +4,10 @@
 @use '@amarty/assets/lib/styles/_button.scss' as b;
 @use '@amarty/assets/lib/styles/_input.scss' as i;
 
+@use './utils/styles/_datepicker.scss' as dp;
+@use './utils/styles/_scrollbar.scss' as sb;
+@use './utils/styles/_autocomplete.scss' as ac;
+
 @use '@angular/material' as mat;
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap');
@@ -46,7 +50,19 @@ button:focus {
   outline: none;
 }
 
+.mdc-dialog--open .mat-mdc-dialog-surface, .mdc-dialog--closing .mat-mdc-dialog-surface {
+  background-color: var(--fh);
+}
+
+.mat-mdc-menu-content {
+  background-color: var(--background-light);
+}
+
 .custom-menu-header-position {
+  & button {
+    color: var(--text);
+  }
+
   & i {
     margin-right: #{m.pxToRem(8)};
   }
@@ -145,9 +161,10 @@ button:focus {
 .container {
   display: flex;
   justify-content: center;
-  min-height: calc(var(--container-min-height) - 32px);
+  min-height: calc(var(--container-min-height) - #{m.pxToRem(24)});
   font-family: var(--font-stack), serif;
   padding: m.pxToRem(16);
+  background-color: var(--background-light);
 
   @media (max-width: 1024px) {
     padding: m.pxToRem(12);
@@ -162,12 +179,14 @@ button:focus {
     margin: m.pxToRem(8) 0;
     background: var(--primary-white);
     border-radius: m.pxToRem(8);
+    background-color: var(--fh);
 
     &__header {
       &-title {
         border-bottom: m.pxToRem(1.5) solid var(--fh);
         margin-bottom: 0;
         text-align: center;
+        color: var(--text);
       }
       &-hint {
         position: relative;
@@ -175,6 +194,7 @@ button:focus {
         font-size: m.pxToRem(10);
         margin-top: m.pxToRem(5);
         min-height: m.pxToRem(16);
+        color: var(--text);
       }
     }
 
@@ -252,7 +272,7 @@ button:focus {
   justify-content: center;
   align-items: center;
   border-radius: m.pxToRem(8);
-  background: var(--primary-white);
+  background-color: var(--fh);
 }
 
 .chart {
@@ -274,7 +294,7 @@ button:focus {
   box-shadow: var(--shadow-light);
   text-align: center;
   margin-bottom: m.pxToRem(16);
-  background: var(--primary-white);
+  background-color: var(--background-light);
 
   &__header {
     display: flex;
@@ -282,10 +302,11 @@ button:focus {
     justify-content: space-between;
     gap: m.pxToRem(8);
 
-    &__title {
+    &-title {
       font-size: m.pxToRem(18);
       font-weight: 700;
       margin: 0 0 m.pxToRem(16) 0;
+      color: var(--text);
     }
   }
 }
@@ -351,6 +372,7 @@ input:disabled, select:disabled, textarea:disabled {
   display: flex;
   align-items: center;
   justify-content: center;
+  color: var(--text);
 
   & > p {
     margin: 0;
@@ -371,9 +393,10 @@ input:disabled, select:disabled, textarea:disabled {
   width: #{m.pxToRem(24)};
   height: #{m.pxToRem(24)};
   cursor: pointer;
+  color: var(--text);
 
   &:hover {
-    background: #f9f9f9;
+    background-color: var(--background-light);
   }
 }
 
@@ -383,4 +406,16 @@ input:disabled, select:disabled, textarea:disabled {
   padding-bottom: #{m.pxToRem(5)};
   font-family: var(--font-alt), sans-serif;
   padding-left: #{m.pxToRem(16)};
+}
+
+.dark-theme {
+  & .button {
+    color: var(--text);
+  }
+}
+
+.button {
+  &__filled__submit {
+    border: #{m.pxToRem(1)} solid var(--text);
+  }
 }

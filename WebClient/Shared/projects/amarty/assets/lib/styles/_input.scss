@@ -17,8 +17,8 @@
   border-radius: var(--radius-medium);
   cursor: pointer;
   border: #{m.pxToRem(1.5)} solid var(--btn-primary);
-  background-color: var(--primary-white);
-  color: var(--text-black);
+  background-color: var(--background-light) !important;
+  color: var(--text);
   min-width: #{m.pxToRem(170)};
 
   &:focus {
@@ -70,6 +70,7 @@
 .checkbox {
   input {
     position: relative;
+    background-color: var(--background-light);
 
     &:checked {
       border-color: var(--accent);
@@ -123,7 +124,7 @@
     cursor: pointer;
     border: #{m.pxToRem(1.5)} solid var(--btn-primary);
     background-color: var(--primary-white);
-    color: var(--text-black);
+    color: var(--text);
     min-width: #{m.pxToRem(170)};
     height: #{m.pxToRem(16)};
 

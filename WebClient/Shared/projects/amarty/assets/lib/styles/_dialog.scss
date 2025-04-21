@@ -7,7 +7,7 @@
 
 .modal {
   padding: m.pxToRem(16);
-  background: var(--background);
+  background-color: var(--fh);
   box-shadow: var(--shadow-heavy);
   border-radius: m.pxToRem(8);
 
@@ -22,6 +22,7 @@
     &-title {
       font-family: var(--font-alt), sans-serif !important;
       padding: 0 !important;
+      color: var(--text) !important;
 
       &:before {
         content: none !important;
@@ -34,7 +35,7 @@
     cursor: pointer;
     opacity: 0.6;
     transition: opacity var(--transition-fast);
-    color: var(--text-black);
+    color: var(--text);
 
     &:hover {
       opacity: 1;
@@ -46,7 +47,6 @@
     padding: 0 m.pxToRem(16);
     max-height: calc(100vh - 15rem);
     overflow-y: auto;
-    background: var(--background);
     border-radius: m.pxToRem(8);
     color: var(--text);
     margin: m.pxToRem(16) 0;

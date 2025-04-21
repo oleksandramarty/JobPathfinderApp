@@ -23,7 +23,7 @@
   &__title {
     font-size: m.pxToRem(24);
     font-weight: bold;
-    color: var(--text-black);
+    color: var(--text);
 
     @media (max-width: 768px) {
       font-size: m.pxToRem(20);
@@ -95,7 +95,7 @@
   cursor: pointer;
   transition: transform var(--transition-fast);
   min-width: m.pxToRem(160);
-  background: var(--primary-white);
+  background-color: var(--fh);
 
   @media (max-width: 768px) {
     min-width: m.pxToRem(180);
@@ -121,7 +121,7 @@
   &__label {
     font-size: m.pxToRem(12);
     opacity: 0.75;
-    color: var(--text-dark);
+    color: var(--text);
     text-align: left;
   }
 

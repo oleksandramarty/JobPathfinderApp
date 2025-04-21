@@ -1,0 +1,91 @@
+@use '@amarty/assets/lib/styles/_mixins.scss' as m;
+@use '@amarty/assets/lib/styles/_variables.scss' as v;
+
+.dark-theme,
+.light-theme {
+  .mat-calendar-previous-button,
+  .mat-calendar-next-button,
+  .mat-calendar-body-label {
+    color: var(--text) !important;
+    transition: color 0.3s;
+  }
+  .mat-calendar-table-header {
+    & th {
+      color: var(--text) !important;
+      transition: color 0.3s;
+    }
+  }
+  .mat-calendar-arrow {
+    color: var(--text);
+    transition: color 0.3s;
+  }
+  .mat-datepicker-content,
+  .mat-date-range-picker-content {
+    background-color: var(--background-light);
+    color: var(--text);
+    box-shadow: var(--shadow-medium);
+    border-radius: var(--radius-medium);
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+
+    .mat-calendar-body-cell-content {
+      color: var(--text);
+      transition: color 0.3s;
+    }
+
+    .mat-calendar-arrow,
+    .mat-calendar-period-button,
+    .mat-calendar-previous-button,
+    .mat-calendar-next-button {
+      color: var(--text);
+    }
+
+    .mat-calendar-table-header {
+      color: var(--muted-text);
+      font-weight: 500;
+    }
+
+    .mat-calendar-body-selected {
+      background-color: var(--accent);
+      color: var(--primary-white);
+    }
+
+    .mat-calendar-body-today:not(.mat-calendar-body-selected) {
+      border: 2px solid var(--accent);
+      color: var(--text);
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        right: 2px;
+        bottom: 2px;
+        border: 2px solid var(--accent);
+        border-radius: 50%;
+        box-sizing: border-box;
+      }
+    }
+
+    .mat-calendar-body-selected.mat-calendar-body-today {
+      background-color: var(--accent);
+      color: var(--primary-white);
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        right: -2px;
+        bottom: -2px;
+        border: 2px solid var(--accent);
+        border-radius: 50%;
+        box-sizing: border-box;
+      }
+    }
+
+    .mat-calendar-body-disabled {
+      color: var(--muted-text);
+      opacity: 0.5;
+    }
+  }
+}

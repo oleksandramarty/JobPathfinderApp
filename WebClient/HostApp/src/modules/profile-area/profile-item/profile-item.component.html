@@ -43,7 +43,10 @@
 
             </div>
             @if (isCurrentUser) {
-              <div class="profile__resume__item-edit" (click)="openItemDialog(item.id)">
+              <div class="button__icon" (click)="removeItem(item.id!)">
+                <i class="fa-solid fa-xmark"></i>
+              </div>
+              <div class="button__icon" (click)="openItemDialog(item.id)">
                 <i class="fa-solid fa-pencil"></i>
               </div>
             }

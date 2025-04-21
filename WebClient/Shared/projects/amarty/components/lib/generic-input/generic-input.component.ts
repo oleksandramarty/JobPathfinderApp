@@ -8,7 +8,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatDatepickerModule, MatDatepickerIntl, MatDatepicker } from '@angular/material/datepicker';
-import {MatNativeDateModule, DateAdapter, MAT_DATE_FORMATS} from '@angular/material/core';
+import { MatNativeDateModule, DateAdapter, MAT_DATE_FORMATS } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
 import { DataItem, InputError, InputType, InputDatepickerType, DATE_FORMATS_DAY_MONTH_YEAR, DATE_FORMATS_MONTH_YEAR } from '@amarty/models';
 import { generateRandomId } from '@amarty/utils';
@@ -17,7 +17,7 @@ import { TranslationPipe } from '@amarty/pipes';
 import { TranslationDirective } from '@amarty/directives';
 import { BaseUnsubscribeComponent } from '@amarty/common';
 import { LOCALIZATION_KEYS } from '@amarty/localizations';
-import {MonthYearDateAdapter} from '../month-year-date-adapter';
+import { MonthYearDateAdapter } from '../month-year-date-adapter';
 
 @Component({
   selector: 'app-generic-input',
@@ -82,6 +82,7 @@ export class GenericInputComponent extends BaseUnsubscribeComponent {
 
   @ViewChild('picker') picker?: MatDatepicker<Date>;
   @ViewChild('monthPicker') monthPicker?: MatDatepicker<Date>;
+  @ViewChild('rangePicker') rangePicker?: MatDatepicker<Date>;
 
   filteredDataItems?: Observable<DataItem[]>;
   selectedDataItems: DataItem[] = [];
@@ -137,19 +138,14 @@ export class GenericInputComponent extends BaseUnsubscribeComponent {
       autocomplete: new FormControl(this.dataItems?.find(x => x.id === this.currentValue))
     });
 
-    this.type === 'autocomplete' && this.formGroup?.get(this.controlName)?.valueChanges
-      .pipe(
-        takeUntil(this.ngUnsubscribe),
-        filter(value => !value),
-        tap(() => this.internalFormGroup?.get('autocomplete')?.setValue(undefined)),
-      )
-      .subscribe();
-
-    if (this.currentValue) {
-      const initialItem = this.dataItems?.find(item => item.id === String(this.currentValue));
-      if (initialItem) {
-        this.internalFormGroup?.get('autocomplete')?.setValue(initialItem);
-      }
+    if (this.type === 'autocomplete') {
+      this.formGroup?.get(this.controlName)?.valueChanges
+        .pipe(
+          takeUntil(this.ngUnsubscribe),
+          filter(value => !value),
+          tap(() => this.internalFormGroup?.get('autocomplete')?.setValue(undefined)),
+        )
+        .subscribe();
     }
 
     this.filteredDataItems = this.internalFormGroup?.get('autocomplete')?.valueChanges.pipe(
@@ -264,11 +260,27 @@ export class GenericInputComponent extends BaseUnsubscribeComponent {
     datepicker.close();
   }
 
-  public showDebugInfo(): void {
-    console.log('FormGroup:', this.formGroup);
-    console.log('Current Control:', this.currentControl);
-    console.log('Current Value:', this.currentValue);
-    console.log('Data Items:', this.dataItems);
+  public onDatepickerOpened(): void {
+    setTimeout(() => {
+      const datepickerOverlay = document.querySelector('.mat-datepicker-content') as HTMLElement;
+      const dateRangeOverlay = document.querySelector('.mat-date-range-picker-content') as HTMLElement;
+
+      const bodyClasses = document.body.classList;
+      const isDark = bodyClasses.contains('dark-theme');
+      const isLight = bodyClasses.contains('light-theme');
+
+      if (datepickerOverlay) {
+        datepickerOverlay.classList.remove('dark-theme', 'light-theme');
+        isDark && datepickerOverlay.classList.add('dark-theme');
+        isLight && datepickerOverlay.classList.add('light-theme');
+      }
+
+      if (dateRangeOverlay) {
+        dateRangeOverlay.classList.remove('dark-theme', 'light-theme');
+        isDark && dateRangeOverlay.classList.add('dark-theme');
+        isLight && dateRangeOverlay.classList.add('light-theme');
+      }
+    });
   }
 
   protected readonly LOCALIZATION_KEYS = LOCALIZATION_KEYS;

@@ -30,6 +30,7 @@
       &-menu {
         font-family: var(--font-alt), serif;
         &__item {
+          color: var(--text);
           display: flex;
           gap: #{m.pxToRem(8)};
         }

@@ -1,0 +1,44 @@
+@use '@amarty/assets/lib/styles/_mixins.scss' as m;
+@use '@amarty/assets/lib/styles/_variables.scss' as v;
+
+.dark-theme {
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--background-dark);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--muted-text);
+    border-radius: var(--radius-medium);
+    border: 2px solid var(--background-dark); // чтобы был "отступ"
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--text);
+  }
+}
+
+.light-theme {
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--background-light);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--muted-text);
+    border-radius: var(--radius-medium);
+    border: 2px solid var(--background-light);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--text);
+  }
+}

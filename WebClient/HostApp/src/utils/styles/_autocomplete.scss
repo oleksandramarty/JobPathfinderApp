@@ -1,0 +1,10 @@
+@use '@amarty/assets/lib/styles/_mixins.scss' as m;
+@use '@amarty/assets/lib/styles/_variables.scss' as v;
+
+.mat-mdc-autocomplete-panel {
+  background-color: var(--background-light) !important;
+
+  & mat-option {
+    color: var(--text) !important;
+  }
+}
