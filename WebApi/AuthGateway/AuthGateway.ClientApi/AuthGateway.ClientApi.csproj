@@ -17,9 +17,9 @@
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <ProjectReference Include="..\..\AuthGateway.GraphQL\AuthGateway.GraphQL.csproj" />
       <ProjectReference Include="..\..\CommonModule\CommonModule.Facade\CommonModule.Facade.csproj" />
       <ProjectReference Include="..\AuthGateway.Domain\AuthGateway.Domain.csproj" />
+      <ProjectReference Include="..\AuthGateway.GraphQL\AuthGateway.GraphQL.csproj" />
       <ProjectReference Include="..\AuthGateway.Mediatr\AuthGateway.Mediatr.csproj" />
     </ItemGroup>
 

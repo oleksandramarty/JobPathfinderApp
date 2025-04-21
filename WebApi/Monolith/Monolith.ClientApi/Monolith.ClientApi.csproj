@@ -4,7 +4,7 @@
         <TargetFramework>net9.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
-      <UserSecretsId>282e2141-7e20-4023-876e-34a7d059e1ef</UserSecretsId>
+      <UserSecretsId>879f59b7-d22f-434d-abdb-0e8e2373507e</UserSecretsId>
   </PropertyGroup>
 
     <ItemGroup>
@@ -25,13 +25,6 @@
         <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.11.0" />
         <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.4" />
         <PackageReference Include="NSwag.AspNetCore" Version="14.2.0" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\..\CommonModule\CommonModule.Facade\CommonModule.Facade.csproj" />
-      <ProjectReference Include="..\..\Profile\Profile.GraphQL\Profile.GraphQL.csproj" />
-      <ProjectReference Include="..\Profile.Domain\Profile.Domain.csproj" />
-      <ProjectReference Include="..\Profile.Mediatr\Profile.Mediatr.csproj" />
     </ItemGroup>
 
 </Project>
