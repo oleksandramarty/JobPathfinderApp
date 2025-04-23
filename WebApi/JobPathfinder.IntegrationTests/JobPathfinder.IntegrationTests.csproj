@@ -1,0 +1,62 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Autofac" Version="8.2.1" />
+        <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="10.0.0" />
+        <PackageReference Include="AWSSDK.DynamoDBv2" Version="4.0.0-preview.2" />
+        <PackageReference Include="FluentAssertions" Version="8.2.0" />
+        <PackageReference Include="FluentValidation" Version="11.11.0" />
+        <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.11.0" />
+        <PackageReference Include="GraphQL" Version="8.5.0" />
+        <PackageReference Include="GraphQL.MicrosoftDI" Version="8.5.0" />
+        <PackageReference Include="GraphQL.Server.Transports.AspNetCore" Version="8.2.0" />
+        <PackageReference Include="GraphQL.Server.Transports.WebSockets" Version="4.4.1" />
+        <PackageReference Include="GraphQL.Server.Ui.Playground" Version="8.2.0" />
+        <PackageReference Include="MediatR" Version="12.5.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="9.0.4" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.4" />
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="9.0.4" />
+        <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="9.0.4" />
+        <PackageReference Include="Microsoft.IdentityModel.JsonWebTokens" Version="8.8.0" />
+        <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="8.8.0" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.13.0" />
+        <PackageReference Include="MSTest.TestAdapter" Version="3.8.3" />
+        <PackageReference Include="MSTest.TestFramework" Version="3.8.3" />
+        <PackageReference Include="NUnit" Version="4.3.2" />
+        <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.8.0" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.4" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.4">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.IdentityModel.JsonWebTokens" Version="8.0.2" />
+        <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="8.0.2" />
+        <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.0.2" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.4" />
+        <PackageReference Include="NSwag.AspNetCore" Version="14.3.0" />
+        <PackageReference Include="NSwag.Generation.AspNetCore" Version="14.3.0" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="8.1.1" />
+        <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="8.1.1" />
+        <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="8.1.1" />
+        <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.0.2" />
+        <PackageReference Include="xunit.extensibility.core" Version="2.9.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\AuditTrail\AuditTrail.Domain\AuditTrail.Domain.csproj" />
+      <ProjectReference Include="..\AuthGateway\AuthGateway.Domain\AuthGateway.Domain.csproj" />
+      <ProjectReference Include="..\CommonModule\CommonModule.Core\CommonModule.Core.csproj" />
+      <ProjectReference Include="..\CommonModule\CommonModule.Interfaces\CommonModule.Interfaces.csproj" />
+      <ProjectReference Include="..\Dictionaries\Dictionaries.Domain\Dictionaries.Domain.csproj" />
+      <ProjectReference Include="..\Monolith\Monolith.ClientApi\Monolith.ClientApi.csproj" />
+      <ProjectReference Include="..\Profile\Profile.Domain\Profile.Domain.csproj" />
+    </ItemGroup>
+
+</Project>

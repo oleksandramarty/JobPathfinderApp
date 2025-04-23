@@ -90,6 +90,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Monolith.Infrastructure", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monolith.GraphQL", "Monolith\Monolith.GraphQL\Monolith.GraphQL.csproj", "{C149F5A9-08E2-4DA4-AD24-EC5884186311}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{5BE42E09-E17B-4380-A024-88E24F5E247E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobPathfinder.IntegrationTests", "JobPathfinder.IntegrationTests\JobPathfinder.IntegrationTests.csproj", "{1F2191D4-FDC6-4860-A7A9-A37F6E3C0C4B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -134,6 +138,7 @@ Global
 		{6CCD91B7-9367-4346-9A0C-25C09D2BAFFE} = {6D5B8028-8038-4442-9ECC-057FC9739810}
 		{D3716090-B7B6-41FD-A0CA-284FBC441BE3} = {6D5B8028-8038-4442-9ECC-057FC9739810}
 		{C149F5A9-08E2-4DA4-AD24-EC5884186311} = {D3716090-B7B6-41FD-A0CA-284FBC441BE3}
+		{1F2191D4-FDC6-4860-A7A9-A37F6E3C0C4B} = {5BE42E09-E17B-4380-A024-88E24F5E247E}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{D11FE131-E317-4730-A112-340A711C797D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -264,5 +269,9 @@ Global
 		{C149F5A9-08E2-4DA4-AD24-EC5884186311}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C149F5A9-08E2-4DA4-AD24-EC5884186311}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C149F5A9-08E2-4DA4-AD24-EC5884186311}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F2191D4-FDC6-4860-A7A9-A37F6E3C0C4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F2191D4-FDC6-4860-A7A9-A37F6E3C0C4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F2191D4-FDC6-4860-A7A9-A37F6E3C0C4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F2191D4-FDC6-4860-A7A9-A37F6E3C0C4B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
