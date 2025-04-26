@@ -37,7 +37,6 @@ public class MappingAuthProfile: Profile
                 dest.AuthType = UserAuthMethodEnum.Base;
             });
 
-        CreateMap<CreateUserSettingCommand, UserSettingEntity>();
         CreateMap<UpdateUserPreferencesCommand, UserSettingEntity>()
             .ForMember(dest => dest.Id, opt => opt.Ignore())
             .ForMember(dest => dest.UserId, opt => opt.Ignore());
