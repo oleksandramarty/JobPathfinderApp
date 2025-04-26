@@ -2,6 +2,7 @@ using System.Text;
 using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.DataModel;
 using AuditTrail.Business;
+using CommonModule.Core.Exceptions;
 using CommonModule.Core.Extensions;
 using CommonModule.Core.Filters;
 using CommonModule.Core.Kafka;
@@ -68,33 +69,23 @@ public static class WebAppExtension
     {
         app.Use(async (context, next) =>
         {
-            try
-            {
-                var tokenRepository = context.RequestServices.GetRequiredService<ITokenRepository>();
-                var token = context.Request.Headers["Authorization"].ToString().Split(' ').Last();
+            var tokenRepository = context.RequestServices.GetRequiredService<ITokenRepository>();
+            var token = context.Request.Headers["Authorization"].ToString().Split(' ').Last();
 
-                if (!string.IsNullOrEmpty(token) &&
-                    !await tokenRepository.IsTokenValidAsync(token))
+            if (!string.IsNullOrEmpty(token) &&
+                !await tokenRepository.IsTokenValidAsync(token))
+            {
+                var tokenFactory = context.RequestServices.GetRequiredService<IJwtTokenFactory>();
+
+                if (tokenRepository.IsTokenExpired(token) && tokenFactory.IsTokenRefreshable(token))
                 {
-                    var tokenFactory = context.RequestServices.GetRequiredService<IJwtTokenFactory>();
-
-                    if (tokenRepository.IsTokenExpired(token) && tokenFactory.IsTokenRefreshable(token))
-                    {
-                        var newToken = tokenFactory.GenerateNewJwtToken(context.User);
-                        context.Response.Headers.Add("Authorization", $"{AuthSchema.Schema} {newToken}");
-                    }
-                    else
-                    {
-                        context.Response.StatusCode = StatusCodes.Status401Unauthorized;
-                        return;
-                    }
+                    var newToken = tokenFactory.GenerateNewJwtToken(context.User);
+                    context.Response.Headers.Add("Authorization", $"{AuthSchema.Schema} {newToken}");
                 }
-            }
-            catch (Exception)
-            {
-                context.Response.StatusCode = StatusCodes.Status500InternalServerError;
-                await context.Response.WriteAsync("Internal Server Error");
-                return;
+                else
+                {
+                    throw new Exception("COMMON.UNAUTHORIZED_ACCESS");
+                }
             }
 
             await next();

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "Initializing integration tests databases..."
-integration_tests_dbs=("JP_MonolithDb" "JP_AuditTrailDb")
+integration_tests_dbs=("JP_MonolithDb" "JP_LocalizationDb" "JP_DictionaryDb" "JP_UserDb" "JP_AuditTrailDb" "JP_ProfileDb")
 
 # Copy each database in the array
 db_host="localhost"
