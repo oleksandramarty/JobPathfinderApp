@@ -79,24 +79,24 @@ public class CommonIntegrationTestSetup : IDisposable
     /// <param name="userLanguageDictionary">User languages</param>
     /// <param name="userProfileItemDictionary">User Profile Items</param>
     public async Task AddUserProfileGenericItems(
-        Guid userId,
+        IntegrationTestUserEntity user,
         Dictionary<int, int>? userSkillDictionary = null,
         Dictionary<int, int>? userLanguageDictionary = null,
         Dictionary<UserProfileItemEnum, Dictionary<int, int>>? userProfileItemDictionary = null)
     {
         if (userSkillDictionary != null)
         {
-            await Options.AddUserSkills(TestApplicationFactory, userId, userSkillDictionary);
+            await Options.AddUserSkills(TestApplicationFactory, user, userSkillDictionary);
         }
 
         if (userLanguageDictionary != null)
         {
-            await Options.AddUserLanguages(TestApplicationFactory, userId, userLanguageDictionary);
+            await Options.AddUserLanguages(TestApplicationFactory, user, userLanguageDictionary);
         }
 
         if (userProfileItemDictionary != null)
         {
-            await Options.AddUserProfileItems(TestApplicationFactory, userId, userProfileItemDictionary);
+            await Options.AddUserProfileItems(TestApplicationFactory, user, userProfileItemDictionary);
         }
     }
 

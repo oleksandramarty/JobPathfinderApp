@@ -132,7 +132,7 @@ public class IntegrationTestOptions
                 .FirstOrDefaultAsync(u => u.Id == user.Id),
             UserSkills = new List<UserSkillEntity>(),
             UserLanguages = new List<UserLanguageEntity>(),
-            UserProfileEntity = new List<UserProfileItemEntity>(),
+            UserProfileItems = new List<UserProfileItemEntity>(),
             Token = null
         };
 
@@ -173,7 +173,7 @@ public class IntegrationTestOptions
 
     public async Task AddUserSkills(
         IntegrationTestBase testApplicationFactory,
-        Guid userId,
+        IntegrationTestUserEntity user,
         Dictionary<int, int> data)
     {
         using var scope = testApplicationFactory.Services.CreateScope();
@@ -189,7 +189,7 @@ public class IntegrationTestOptions
                 {
                     Id = Guid.NewGuid(),
                     CreatedAt = DateTime.UtcNow,
-                    UserId = userId,
+                    UserId = user.User.Id,
                     SkillId = key,
                     SkillLevelId = value,
                     Status = StatusEnum.New
@@ -199,16 +199,13 @@ public class IntegrationTestOptions
 
         await profileDataContext.UserSkills.AddRangeAsync(userSkills);
         await profileDataContext.SaveChangesAsync();
-
-        if (CurrentUserEntity != null)
-        {
-            CurrentUserEntity.UserSkills = userSkills;
-        }
+        
+        user.UserSkills.AddRange(userSkills);
     }
 
     public async Task AddUserLanguages(
         IntegrationTestBase testApplicationFactory,
-        Guid userId,
+        IntegrationTestUserEntity user,
         Dictionary<int, int> data)
     {
         using var scope = testApplicationFactory.Services.CreateScope();
@@ -224,7 +221,7 @@ public class IntegrationTestOptions
                 {
                     Id = Guid.NewGuid(),
                     CreatedAt = DateTime.UtcNow,
-                    UserId = userId,
+                    UserId = user.User.Id,
                     LanguageId = key,
                     LanguageLevelId = value,
                     Status = StatusEnum.New
@@ -235,15 +232,12 @@ public class IntegrationTestOptions
         await profileDataContext.UserLanguages.AddRangeAsync(userLanguages);
         await profileDataContext.SaveChangesAsync();
 
-        if (CurrentUserEntity != null)
-        {
-            CurrentUserEntity.UserLanguages = userLanguages;
-        }
+        user.UserLanguages.AddRange(userLanguages);
     }
 
     public async Task AddUserProfileItems(
         IntegrationTestBase testApplicationFactory,
-        Guid userId,
+        IntegrationTestUserEntity user,
         Dictionary<UserProfileItemEnum, Dictionary<int, int>> data)
     {
         using var scope = testApplicationFactory.Services.CreateScope();
@@ -261,7 +255,7 @@ public class IntegrationTestOptions
                     {
                         Id = Guid.NewGuid(),
                         CreatedAt = DateTime.UtcNow,
-                        UserId = userId,
+                        UserId = user.User.Id,
                         Status = StatusEnum.New,
                         Position = $"Position {key}",
                         Company = $"Company {key}",
@@ -279,10 +273,7 @@ public class IntegrationTestOptions
         await profileDataContext.UserProfileItems.AddRangeAsync(userProfileItems);
         await profileDataContext.SaveChangesAsync();
 
-        if (CurrentUserEntity != null)
-        {
-            CurrentUserEntity.UserProfileEntity = userProfileItems;
-        }
+        user.UserProfileItems.AddRange(userProfileItems);
     }
 
     public async Task SignOutUserIfExist(IntegrationTestBase testApplicationFactory)

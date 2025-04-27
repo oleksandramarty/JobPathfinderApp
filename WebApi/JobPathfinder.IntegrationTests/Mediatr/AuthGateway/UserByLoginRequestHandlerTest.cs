@@ -1,5 +1,6 @@
 using AuthGateway.Mediatr.Mediatr.Auth.Requests;
 using CommonModule.Core.Exceptions;
+using CommonModule.Shared.Constants;
 using CommonModule.Shared.Enums;
 using CommonModule.Shared.Responses.AuthGateway.Users;
 using FluentAssertions;
@@ -37,19 +38,22 @@ public class UserByLoginRequestHandlerTest : CommonIntegrationTestSetup
 
     [TestCase(null)]
     [TestCase("")]
-    public void Handle_ShouldThrowEntityNotFoundException_WhenLoginIsNullOrEmpty(string login)
+    public async Task Handle_ShouldThrowEntityNotFoundException_WhenLoginIsNullOrEmpty(string login)
     {
         // Arrange & Act: send request with null or empty login
         using var scope = TestApplicationFactory.Services.CreateScope();
         IMediator mediator = new Mediator(scope.ServiceProvider);
-
-        // Assert: expect EntityNotFoundException for invalid login input
-        Func<Task> act = () => mediator.Send(new UserByLoginRequest { Login = login });
-        act.Should().ThrowAsync<EntityNotFoundException>();
+        
+        // Act & Assert
+        await TestUtilities.Handle_InvalidCommand<UserByLoginRequest, UserResponse, EntityNotFoundException>(
+            mediator,
+            new UserByLoginRequest { Login = login },
+            ErrorMessages.EntityNotFound
+        );
     }
 
     [Test]
-    public void Handle_ShouldThrowEntityNotFoundException_WhenUserNotFound()
+    public async Task Handle_ShouldThrowEntityNotFoundException_WhenUserNotFound()
     {
         // Arrange: pick a login that does not exist
         string nonexistentLogin = Guid.NewGuid().ToString();
@@ -57,9 +61,12 @@ public class UserByLoginRequestHandlerTest : CommonIntegrationTestSetup
         // Act
         using var scope = TestApplicationFactory.Services.CreateScope();
         IMediator mediator = new Mediator(scope.ServiceProvider);
-
-        // Assert: expect EntityNotFoundException for missing user
-        Func<Task> act = () => mediator.Send(new UserByLoginRequest { Login = nonexistentLogin });
-        act.Should().ThrowAsync<EntityNotFoundException>();
+        
+        // Act & Assert
+        await TestUtilities.Handle_InvalidCommand<UserByLoginRequest, UserResponse, EntityNotFoundException>(
+            mediator,
+            new UserByLoginRequest { Login = nonexistentLogin },
+            ErrorMessages.EntityNotFound
+        );
     }
 }

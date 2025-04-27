@@ -10,7 +10,7 @@ public class IntegrationTestUserEntity
     public UserEntity? User { get; set; }
     public List<UserSkillEntity>? UserSkills { get; set; }
     public List<UserLanguageEntity>? UserLanguages { get; set; }
-    public List<UserProfileItemEntity>? UserProfileEntity { get; set; }
+    public List<UserProfileItemEntity>? UserProfileItems { get; set; }
     public UserRoleEnum? Role { get; set; }
     
     public string? Token { get; set; }

@@ -145,10 +145,13 @@ public class UpdateUserPreferencesCommandHandlerTest : CommonIntegrationTestSetu
 
         using var scope = TestApplicationFactory.Services.CreateScope();
         IMediator mediator = new Mediator(scope.ServiceProvider);
-
-        // Act & Assert: userId is null => EntityNotFoundException
-        Func<Task> act = () => mediator.Send(command);
-        act.Should().ThrowAsync<EntityNotFoundException>();
+        
+        // Act & Assert
+        await TestUtilities.Handle_InvalidCommand<UpdateUserPreferencesCommand, BaseBoolResponse, EntityNotFoundException>(
+            mediator,
+            command,
+            ErrorMessages.EntityNotFound
+        );
     }
 
     [Test]
@@ -169,10 +172,13 @@ public class UpdateUserPreferencesCommandHandlerTest : CommonIntegrationTestSetu
 
         using var scope = TestApplicationFactory.Services.CreateScope();
         IMediator mediator = new Mediator(scope.ServiceProvider);
-
-        // Act & Assert: no user record => EntityNotFoundException
-        Func<Task> act = () => mediator.Send(command);
-        act.Should().ThrowAsync<EntityNotFoundException>();
+        
+        // Act & Assert
+        await TestUtilities.Handle_InvalidCommand<UpdateUserPreferencesCommand, BaseBoolResponse, EntityNotFoundException>(
+            mediator,
+            command,
+            ErrorMessages.EntityNotFound
+        );
     }
 
     [Test]
