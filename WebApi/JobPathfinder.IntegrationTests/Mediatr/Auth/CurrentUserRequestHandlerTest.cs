@@ -9,7 +9,7 @@ using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using NUnit.Framework;
 
-namespace JobPathfinder.IntegrationTests.Mediatr.AuthGateway;
+namespace JobPathfinder.IntegrationTests.Mediatr.Auth;
 
 [TestFixture]
 public class CurrentUserRequestHandlerTest(): CommonIntegrationTestSetup()
