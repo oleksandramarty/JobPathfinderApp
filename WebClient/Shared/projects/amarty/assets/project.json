@@ -10,6 +10,14 @@
           "Shared/projects/amarty/assets/lib/**/*.ts"
         ]
       }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/libs/amarty/assets"],
+      "options": {
+        "jestConfig": "Shared/projects/amarty/assets/jest.config.js",
+        "passWithNoTests": true
+      }
     }
   },
   "tags": []

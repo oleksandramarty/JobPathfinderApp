@@ -3,50 +3,44 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "build": "nx run-many --target=build --all",
+    "build:host-app": "nx run host-app:build",
     "lint": "nx run-many --target=lint --all",
     "lint:fix": "nx run-many --target=lint --all --fix",
-
+    "test": "nx run-many --target=test --all",
+    "test:watch": "nx run-many --target=test --all --watch",
+    "test:affected": "nx affected --target=test",
+    "lint:affected": "nx affected --target=lint",
+    "ci": "npm run lint && npm run test",
     "lint:host-app": "nx run host-app:lint",
     "lint:host-app:fix": "nx run host-app:lint --fix",
-
     "lint:amarty-animations": "nx run amarty-animations:lint",
     "lint:amarty-animations:fix": "nx run amarty-animations:lint --fix",
-
     "lint:amarty-api": "nx run amarty-api:lint",
     "lint:amarty-api:fix": "nx run amarty-api:lint --fix",
-
     "lint:amarty-assets": "nx run amarty-assets:lint",
     "lint:amarty-assets:fix": "nx run amarty-assets:lint --fix",
-
     "lint:amarty-common": "nx run amarty-common:lint",
     "lint:amarty-common:fix": "nx run amarty-common:lint --fix",
-
     "lint:amarty-components": "nx run amarty-components:lint",
     "lint:amarty-components:fix": "nx run amarty-components:lint --fix",
-
     "lint:amarty-dictionaries": "nx run amarty-dictionaries:lint",
     "lint:amarty-dictionaries:fix": "nx run amarty-dictionaries:lint --fix",
-
     "lint:amarty-directives": "nx run amarty-directives:lint",
     "lint:amarty-directives:fix": "nx run amarty-directives:lint --fix",
-
     "lint:amarty-localizations": "nx run amarty-localizations:lint",
     "lint:amarty-localizations:fix": "nx run amarty-localizations:lint --fix",
-
     "lint:amarty-models": "nx run amarty-models:lint",
     "lint:amarty-models:fix": "nx run amarty-models:lint --fix",
-
     "lint:amarty-pipes": "nx run amarty-pipes:lint",
     "lint:amarty-pipes:fix": "nx run amarty-pipes:lint --fix",
-
     "lint:amarty-services": "nx run amarty-services:lint",
     "lint:amarty-services:fix": "nx run amarty-services:lint --fix",
-
     "lint:amarty-store": "nx run amarty-store:lint",
     "lint:amarty-store:fix": "nx run amarty-store:lint --fix",
-
     "lint:amarty-utils": "nx run amarty-utils:lint",
-    "lint:amarty-utils:fix": "nx run amarty-utils:lint --fix"
+    "lint:amarty-utils:fix": "nx run amarty-utils:lint --fix",
+    "check:all": "npm run format:check && npm run lint && npm run test"
   },
   "devDependencies": {
     "@angular-devkit/architect": "^0.1800.7",
@@ -54,12 +48,19 @@
     "@angular-eslint/eslint-plugin": "^19.3.0",
     "@angular-eslint/eslint-plugin-template": "^19.3.0",
     "@angular-eslint/template-parser": "^19.3.0",
+    "@nx/jest": "^20.8.1",
+    "@types/jest": "^29.5.14",
     "@typescript-eslint/eslint-plugin": "^8.29.0",
     "@typescript-eslint/parser": "^8.29.0",
     "eslint": "^9.23.0",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-unused-imports": "^4.1.4",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^29.7.0",
+    "jest-preset-angular": "^14.5.5",
     "npm-run-all": "^4.1.5",
-    "nx": "^20.7.1"
+    "nx": "^20.7.1",
+    "ts-jest": "^29.3.2",
+    "ts-node": "^10.9.2"
   }
 }
