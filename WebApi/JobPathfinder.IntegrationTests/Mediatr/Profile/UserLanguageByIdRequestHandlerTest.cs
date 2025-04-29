@@ -25,7 +25,7 @@ public class UserLanguageByIdRequestHandlerTest : CommonIntegrationTestSetup
     public async Task Handle_ShouldReturnUserLanguageResponse_WhenUserOwnsEntity()
     {
         // Arrange: create & sign in a test user, then add two languages
-        var testUser = await CreateTestUser(UserRoleEnum.User);
+        var testUser = await CreateTestUser();
         await Options.AddUserLanguages(TestApplicationFactory, testUser, new Dictionary<int,int> {{ 7, 1 }});
         var created = testUser.UserLanguages.First();
 
@@ -50,7 +50,7 @@ public class UserLanguageByIdRequestHandlerTest : CommonIntegrationTestSetup
     public async Task Handle_ShouldThrowEntityNotFoundException_WhenUserNotAuthenticated()
     {
         // Arrange: create user but do not sign in, manually insert a language
-        var user = CreateTestUser(UserRoleEnum.User, false).Result;
+        var user = await CreateTestUser(UserRoleEnum.User, true, false);
         var manual = new UserLanguageEntity
         {
             Id = Guid.NewGuid(),
@@ -74,7 +74,7 @@ public class UserLanguageByIdRequestHandlerTest : CommonIntegrationTestSetup
         await TestUtilities.Handle_InvalidCommand<UserLanguageByIdRequest, UserLanguageResponse, EntityNotFoundException>(
             mediator,
             new UserLanguageByIdRequest { Id = manual.Id },
-            ErrorMessages.Forbidden
+            ErrorMessages.EntityNotFound
         );
     }
 
@@ -82,7 +82,7 @@ public class UserLanguageByIdRequestHandlerTest : CommonIntegrationTestSetup
     public async Task Handle_ShouldThrowEntityNotFoundException_WhenEntityDoesNotExist()
     {
         // Arrange: authenticated user but random ID
-        await CreateTestUser(UserRoleEnum.User);
+        await CreateTestUser();
         var fakeId = Guid.NewGuid();
 
         using var scope = TestApplicationFactory.Services.CreateScope();
@@ -92,7 +92,7 @@ public class UserLanguageByIdRequestHandlerTest : CommonIntegrationTestSetup
         await TestUtilities.Handle_InvalidCommand<UserLanguageByIdRequest, UserLanguageResponse, EntityNotFoundException>(
             mediator,
             new UserLanguageByIdRequest { Id = fakeId },
-            ErrorMessages.Forbidden
+            ErrorMessages.EntityNotFound
         );
     }
 
@@ -100,12 +100,12 @@ public class UserLanguageByIdRequestHandlerTest : CommonIntegrationTestSetup
     public async Task Handle_ShouldThrowForbiddenException_WhenEntityBelongsToAnotherUser()
     {
         // Arrange: user1 adds a language
-        var user1 = await CreateTestUser(UserRoleEnum.User);
+        var user1 = await CreateTestUser();
         await Options.AddUserLanguages(TestApplicationFactory, user1, new Dictionary<int,int> {{ 5, 1 }});
         var languageId = user1.UserLanguages.First().Id;
 
         // sign in as user2
-        await CreateTestUser(UserRoleEnum.User);
+        await CreateTestUser();
 
         using var scope = TestApplicationFactory.Services.CreateScope();
         var mediator = new Mediator(scope.ServiceProvider);

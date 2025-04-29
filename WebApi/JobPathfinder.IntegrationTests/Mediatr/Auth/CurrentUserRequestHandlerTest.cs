@@ -18,7 +18,6 @@ public class CurrentUserRequestHandlerTest(): CommonIntegrationTestSetup()
     public async Task Handle_ShouldReturnTokenResponse_WhenAuthSignInRequestIsValid(UserRoleEnum role)
     {
         // Arrange
-        await SignOutUserIfExist();
         IntegrationTestUserEntity userToBeSignIn = await CreateTestUser(role);
         
         // Act

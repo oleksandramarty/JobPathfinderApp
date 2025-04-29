@@ -28,8 +28,7 @@ public class LocalizationsRequestHandlerTest(): CommonIntegrationTestSetup()
     public async Task Handle_ShouldReturnLocalizations_WhenLocalizationRequestIsValid(UserRoleEnum role, bool isPublic)
     {
         // Arrange
-        await SignOutUserIfExist();
-        IntegrationTestUserEntity userToBeSignIn = await CreateTestUser(role);
+        IntegrationTestUserEntity userToBeSignIn = await CreateTestUser(role, true);
         
         // Act
         using (var scope = TestApplicationFactory.Services.CreateScope())

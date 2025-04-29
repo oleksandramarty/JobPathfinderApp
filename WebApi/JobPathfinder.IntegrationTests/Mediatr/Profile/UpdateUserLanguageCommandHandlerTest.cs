@@ -21,7 +21,7 @@ public class UpdateUserLanguageCommandHandlerTest : CommonIntegrationTestSetup
     public async Task Handle_ShouldUpdateUserLanguage_WhenUserOwnsEntity()
     {
         // Arrange: create & sign in a test user, add one language
-        var testUser = await CreateTestUser(UserRoleEnum.User);
+        var testUser = await CreateTestUser();
         await Options.AddUserLanguages(TestApplicationFactory, testUser, new Dictionary<int,int> { { 5, 2 } });
         var existing = testUser.UserLanguages.First();
         
@@ -54,7 +54,7 @@ public class UpdateUserLanguageCommandHandlerTest : CommonIntegrationTestSetup
     public async Task Handle_ShouldThrowEntityNotFoundException_WhenUserNotAuthenticated()
     {
         // Arrange: create user but do NOT sign in, add a language manually
-        var user = CreateTestUser(UserRoleEnum.User, false).Result;
+        var user = await CreateTestUser(UserRoleEnum.User, true, false);
         var newLang = new UserLanguageEntity
         {
             Id = Guid.NewGuid(),
@@ -93,7 +93,7 @@ public class UpdateUserLanguageCommandHandlerTest : CommonIntegrationTestSetup
     public async Task Handle_ShouldThrowEntityNotFoundException_WhenEntityNotFound()
     {
         // Arrange: authenticated user but random Id
-        await CreateTestUser(UserRoleEnum.User);
+        await CreateTestUser();
         var command = new UpdateUserLanguageCommand
         {
             Id = Guid.NewGuid(),
@@ -116,12 +116,12 @@ public class UpdateUserLanguageCommandHandlerTest : CommonIntegrationTestSetup
     public async Task Handle_ShouldThrowForbiddenException_WhenEntityBelongsToAnotherUser()
     {
         // Arrange: user1 with a language
-        var user1 = await CreateTestUser(UserRoleEnum.User);
+        var user1 = await CreateTestUser();
         await Options.AddUserLanguages(TestApplicationFactory, user1, new Dictionary<int,int> { { 9, 2 } });
         var langId = user1.UserLanguages.First().Id;
 
         // sign in as user2
-        await CreateTestUser(UserRoleEnum.User);
+        await CreateTestUser();
 
         var command = new UpdateUserLanguageCommand
         {

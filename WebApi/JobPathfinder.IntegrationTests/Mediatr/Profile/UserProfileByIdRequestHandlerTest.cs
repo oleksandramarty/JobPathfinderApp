@@ -16,7 +16,7 @@ public class UserProfileByIdRequestHandlerTest : CommonIntegrationTestSetup
     public async Task Handle_ShouldAggregateSkillsLanguagesAndItems()
     {
         // Arrange: create a test user
-        var testUser = await CreateTestUser(UserRoleEnum.User);
+        var testUser = await CreateTestUser();
 
         // add one skill
         await Options.AddUserSkills(TestApplicationFactory, testUser, new Dictionary<int,int> {{ 5, 1 }});
@@ -49,7 +49,7 @@ public class UserProfileByIdRequestHandlerTest : CommonIntegrationTestSetup
     public async Task Handle_ShouldReturnEmptyLists_WhenNoDataExists()
     {
         // Arrange: create a test user with no skills, languages or items
-        var testUser = await CreateTestUser(UserRoleEnum.User);
+        var testUser = await CreateTestUser();
 
         // Act
         using var scope = TestApplicationFactory.Services.CreateScope();

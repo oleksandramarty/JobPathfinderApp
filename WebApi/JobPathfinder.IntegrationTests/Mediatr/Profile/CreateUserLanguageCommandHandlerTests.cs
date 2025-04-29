@@ -20,7 +20,7 @@ public class CreateUserLanguageCommandHandlerTest : CommonIntegrationTestSetup
     public async Task Handle_ShouldCreateUserLanguage_WhenUserAuthenticated()
     {
         // Arrange: создать и аутентифицировать пользователя
-        var testUser = await CreateTestUser(UserRoleEnum.User);
+        var testUser = await CreateTestUser();
         var command = new CreateUserLanguageCommand
         {
             LanguageId = 42,
@@ -50,8 +50,7 @@ public class CreateUserLanguageCommandHandlerTest : CommonIntegrationTestSetup
     [Test]
     public async Task Handle_ShouldThrowEntityNotFoundException_WhenUserNotAuthenticated()
     {
-        // Arrange: создать пользователя, но не аутентифицировать
-        _ = CreateTestUser(UserRoleEnum.User, false);
+        await SignOutUserIfExist();
         var command = new CreateUserLanguageCommand
         {
             LanguageId = 1,

@@ -20,7 +20,6 @@ public class LocalesRequestHandlerTest(): CommonIntegrationTestSetup()
     public async Task Handle_ShouldReturnLocales_WhenLocalesRequestIsValid(UserRoleEnum role)
     {
         // Arrange
-        await SignOutUserIfExist();
         IntegrationTestUserEntity userToBeSignIn = await CreateTestUser(role);
         
         // Act

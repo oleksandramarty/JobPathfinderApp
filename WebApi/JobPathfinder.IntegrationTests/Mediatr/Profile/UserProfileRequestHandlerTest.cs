@@ -19,7 +19,7 @@ public class UserProfileRequestHandlerTest : CommonIntegrationTestSetup
     public async Task Handle_ShouldThrowEntityNotFoundException_WhenUserNotAuthenticated()
     {
         // Arrange: create a user but do NOT sign in
-        _ = await CreateTestUser(UserRoleEnum.User, false);
+        _ = await CreateTestUser(UserRoleEnum.User, true, false);
 
         using var scope = TestApplicationFactory.Services.CreateScope();
         var mediator = new Mediator(scope.ServiceProvider);
@@ -36,14 +36,14 @@ public class UserProfileRequestHandlerTest : CommonIntegrationTestSetup
     public async Task Handle_ShouldReturnAggregatedProfile_ForAuthenticatedUser()
     {
         // Arrange: create & sign in a test user
-        var testUser = await CreateTestUser(UserRoleEnum.User);
+        var testUser = await CreateTestUser(UserRoleEnum.User, true);
 
         // add one skill
         await Options.AddUserSkills(TestApplicationFactory, testUser,
-            new Dictionary<int,int> {{ 1, 2 }});
+            new Dictionary<int,int> {{ 1, 1 }});
         // add one language
         await Options.AddUserLanguages(TestApplicationFactory, testUser,
-            new Dictionary<int,int> {{ 3, 4 }});
+            new Dictionary<int,int> {{ 3, 1 }});
         // add one profile item
         await Options.AddUserProfileItems(TestApplicationFactory, testUser,
             new Dictionary<UserProfileItemEnum, Dictionary<int,int>>
@@ -72,7 +72,7 @@ public class UserProfileRequestHandlerTest : CommonIntegrationTestSetup
     public async Task Handle_ShouldReturnEmptyLists_WhenNoProfileData()
     {
         // Arrange: create & sign in user with no skills, languages, or items
-        _ = await CreateTestUser(UserRoleEnum.User);
+        _ = await CreateTestUser();
 
         using var scope = TestApplicationFactory.Services.CreateScope();
         var mediator = new Mediator(scope.ServiceProvider);

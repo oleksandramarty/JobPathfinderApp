@@ -21,8 +21,7 @@ public class AuthSignInRequestHandlerTest() : CommonIntegrationTestSetup()
     public async Task Handle_ShouldReturnTokenResponse_WhenAuthSignInRequestIsValid(UserRoleEnum role)
     {
         // Arrange
-        await SignOutUserIfExist();
-        IntegrationTestUserEntity userToBeSignIn = await CreateTestUser(role, false);
+        IntegrationTestUserEntity userToBeSignIn = await CreateTestUser(role, true, false);
 
         // Act
         using (var scope = TestApplicationFactory.Services.CreateScope())
@@ -59,8 +58,7 @@ public class AuthSignInRequestHandlerTest() : CommonIntegrationTestSetup()
     public async Task Handle_ShouldReturnException_WhenAuthSignInRequestIsInvalidPassword(UserRoleEnum role)
     {
         // Arrange
-        await SignOutUserIfExist();
-        IntegrationTestUserEntity userToBeSignIn = await CreateTestUser(role, false);
+        IntegrationTestUserEntity userToBeSignIn = await CreateTestUser(role, true , false);
 
         // Act
         using (var scope = TestApplicationFactory.Services.CreateScope())
@@ -86,8 +84,7 @@ public class AuthSignInRequestHandlerTest() : CommonIntegrationTestSetup()
     public async Task Handle_ShouldReturnException_WhenAuthSignInRequestIsInvalidLogin(UserRoleEnum role)
     {
         // Arrange
-        await SignOutUserIfExist();
-        IntegrationTestUserEntity userToBeSignIn = await CreateTestUser(role, false);
+        IntegrationTestUserEntity userToBeSignIn = await CreateTestUser(role, true , false);
 
         // Act
         using (var scope = TestApplicationFactory.Services.CreateScope())
@@ -113,8 +110,7 @@ public class AuthSignInRequestHandlerTest() : CommonIntegrationTestSetup()
     public async Task Handle_ShouldReturnException_WhenAuthSignInRequestWithBlockedUser(UserRoleEnum role, StatusEnum status, string errorMessage)
     {
         // Arrange
-        await SignOutUserIfExist();
-        IntegrationTestUserEntity userToBeSignIn = await CreateTestUser(role, false,
+        IntegrationTestUserEntity userToBeSignIn = await CreateTestUser(role, true, false,
             [
                 user => user.Status = status
             ]

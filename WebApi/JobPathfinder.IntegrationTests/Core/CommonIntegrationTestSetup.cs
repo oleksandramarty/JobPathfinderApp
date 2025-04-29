@@ -59,14 +59,21 @@ public class CommonIntegrationTestSetup : IDisposable
     /// Create test user
     /// </summary>
     /// <param name="role">User role</param>
+    /// <param name="signOutCurrentUser">Sign out current user if exist</param>
     /// <param name="withSignIn">Sign in user flag</param>
     /// <param name="userActions">User actions</param>
     /// <returns></returns>
     public async Task<IntegrationTestUserEntity> CreateTestUser(
-        UserRoleEnum role,
+        UserRoleEnum role = UserRoleEnum.User,
+        bool signOutCurrentUser = false,
         bool withSignIn = true,
         IEnumerable<Action<UserEntity>>? userActions = null)
     {
+        if (withSignIn || signOutCurrentUser)
+        {
+            await SignOutUserIfExist();
+        }
+        
         return await Options.CreateUser(TestApplicationFactory, role, withSignIn,
             userActions);
     }
@@ -168,7 +175,6 @@ public class CommonIntegrationTestSetup : IDisposable
         where TEntity : class
     {
         // Arrange
-        await SignOutUserIfExist();
         await CreateTestUser(role);
 
         // Act

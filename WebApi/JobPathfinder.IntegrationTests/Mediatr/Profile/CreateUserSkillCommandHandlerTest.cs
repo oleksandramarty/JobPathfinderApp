@@ -20,7 +20,7 @@ public class CreateUserSkillCommandHandlerTest : CommonIntegrationTestSetup
     public async Task Handle_ShouldCreateUserSkill_WhenUserAuthenticated()
     {
         // Arrange: create & sign in a test user
-        var testUser = await CreateTestUser(UserRoleEnum.User);
+        var testUser = await CreateTestUser();
         var command = new CreateUserSkillCommand
         {
             SkillId      = 100,
@@ -51,11 +51,10 @@ public class CreateUserSkillCommandHandlerTest : CommonIntegrationTestSetup
     [Test]
     public async Task Handle_ShouldThrowEntityNotFoundException_WhenUserNotAuthenticated()
     {
-        // Arrange: create a user but do not sign in
-        _ = CreateTestUser(UserRoleEnum.User, false);
+        await SignOutUserIfExist();
         var command = new CreateUserSkillCommand
         {
-            SkillId      = 1,
+            SkillId = 1,
             SkillLevelId = 1
         };
 

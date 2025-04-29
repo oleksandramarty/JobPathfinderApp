@@ -22,7 +22,7 @@ public class DeleteUserProfileItemCommandHandlerTest : CommonIntegrationTestSetu
     public async Task Handle_ShouldDeleteProfileItem_WhenUserOwnsEntity()
     {
         // Arrange: create & sign in user1, add one profile item
-        var user1 = await CreateTestUser(UserRoleEnum.User);
+        var user1 = await CreateTestUser();
         var itemsToAdd = new Dictionary<UserProfileItemEnum, Dictionary<int, int>>
         {
             { UserProfileItemEnum.Experience, new Dictionary<int,int> {{ 1, 1 }} }
@@ -49,7 +49,7 @@ public class DeleteUserProfileItemCommandHandlerTest : CommonIntegrationTestSetu
     public async Task Handle_ShouldThrowEntityNotFoundException_WhenUserNotAuthenticated()
     {
         // Arrange: create user but do NOT sign in, manually insert a profile item
-        var user = CreateTestUser(UserRoleEnum.User, false).Result;
+        var user = await CreateTestUser(UserRoleEnum.User, true, false);
         var newItem = new UserProfileItemEntity
         {
             Id = Guid.NewGuid(),
@@ -86,7 +86,7 @@ public class DeleteUserProfileItemCommandHandlerTest : CommonIntegrationTestSetu
     public async Task Handle_ShouldThrowEntityNotFoundException_WhenEntityDoesNotExist()
     {
         // Arrange: authenticated user but random Id
-        await CreateTestUser(UserRoleEnum.User);
+        await CreateTestUser();
         var fakeId = Guid.NewGuid();
 
         using var scope = TestApplicationFactory.Services.CreateScope();
@@ -104,7 +104,7 @@ public class DeleteUserProfileItemCommandHandlerTest : CommonIntegrationTestSetu
     public async Task Handle_ShouldThrowForbiddenException_WhenEntityBelongsToAnotherUser()
     {
         // Arrange: user1 with an item
-        var user1 = await CreateTestUser(UserRoleEnum.User);
+        var user1 = await CreateTestUser();
         var itemsToAdd = new Dictionary<UserProfileItemEnum, Dictionary<int, int>>
         {
             { UserProfileItemEnum.Project, new Dictionary<int,int> {{ 2, 1 }} }
@@ -113,7 +113,7 @@ public class DeleteUserProfileItemCommandHandlerTest : CommonIntegrationTestSetu
         var itemId = user1.UserProfileItems.First().Id;
 
         // Switch to user2
-        await CreateTestUser(UserRoleEnum.User);
+        await CreateTestUser();
 
         using var scope = TestApplicationFactory.Services.CreateScope();
         var mediator = new Mediator(scope.ServiceProvider);

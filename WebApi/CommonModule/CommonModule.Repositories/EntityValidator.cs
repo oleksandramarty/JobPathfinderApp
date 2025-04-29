@@ -1,8 +1,5 @@
 using System.Linq.Expressions;
-using System.Net;
-using CommonModule.Core.Exceptions;
 using CommonModule.Interfaces;
-using CommonModule.Shared.Common.BaseInterfaces;
 using CommonModule.Shared.Constants;
 using FluentValidation;
 using FluentValidation.Results;

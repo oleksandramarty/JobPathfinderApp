@@ -19,7 +19,7 @@ public class UserByLoginRequestHandlerTest : CommonIntegrationTestSetup
     public async Task Handle_ShouldReturnUserResponse_WhenLoginExists()
     {
         // Arrange: create a test user and persist it
-        IntegrationTestUserEntity testUser = await CreateTestUser(UserRoleEnum.User);
+        IntegrationTestUserEntity testUser = await CreateTestUser();
 
         // Act: send UserByLoginRequest with the existing login
         using var scope = TestApplicationFactory.Services.CreateScope();

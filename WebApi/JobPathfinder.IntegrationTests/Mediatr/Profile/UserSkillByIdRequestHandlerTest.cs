@@ -20,7 +20,7 @@ public class UserSkillByIdRequestHandlerTest : CommonIntegrationTestSetup
     public async Task Handle_ShouldReturnUserSkillResponse_WhenUserOwnsEntity()
     {
         // Arrange: authenticate a test user and add a skill
-        var testUser = await CreateTestUser(UserRoleEnum.User);
+        var testUser = await CreateTestUser();
         await Options.AddUserSkills(TestApplicationFactory, testUser, new Dictionary<int,int> { { 15, 3 } });
         var created = testUser.UserSkills.First();
 
@@ -46,7 +46,7 @@ public class UserSkillByIdRequestHandlerTest : CommonIntegrationTestSetup
     public async Task Handle_ShouldThrowEntityNotFoundException_WhenUserNotAuthenticated()
     {
         // Arrange: create a user but do not sign in, insert a skill manually
-        var user = CreateTestUser(UserRoleEnum.User, false).Result;
+        var user = await CreateTestUser(UserRoleEnum.User, true, false);
         var manual = new UserSkillEntity
         {
             Id = Guid.NewGuid(),
@@ -78,7 +78,7 @@ public class UserSkillByIdRequestHandlerTest : CommonIntegrationTestSetup
     public async Task Handle_ShouldThrowEntityNotFoundException_WhenEntityDoesNotExist()
     {
         // Arrange: authenticated user but random Id
-        await CreateTestUser(UserRoleEnum.User);
+        await CreateTestUser();
         var randomId = Guid.NewGuid();
 
         using var scope = TestApplicationFactory.Services.CreateScope();
@@ -96,21 +96,21 @@ public class UserSkillByIdRequestHandlerTest : CommonIntegrationTestSetup
     public async Task Handle_ShouldThrowForbiddenException_WhenEntityBelongsToAnotherUser()
     {
         // Arrange: user1 adds a skill
-        var user1 = await CreateTestUser(UserRoleEnum.User);
+        var user1 = await CreateTestUser();
         await Options.AddUserSkills(TestApplicationFactory, user1, new Dictionary<int,int> { { 25, 1 } });
         var skillId = user1.UserSkills.First().Id;
 
         // Authenticate as user2
-        await CreateTestUser(UserRoleEnum.User);
+        await CreateTestUser();
 
         using var scope = TestApplicationFactory.Services.CreateScope();
         var mediator = new Mediator(scope.ServiceProvider);
         
         // Act & Assert
-        await TestUtilities.Handle_InvalidCommand<UserSkillByIdRequest, UserSkillResponse, EntityNotFoundException>(
+        await TestUtilities.Handle_InvalidCommand<UserSkillByIdRequest, UserSkillResponse, ForbiddenException>(
             mediator,
             new UserSkillByIdRequest { Id = skillId },
-            ErrorMessages.EntityNotFound
+            ErrorMessages.Forbidden
         );
     }
 }

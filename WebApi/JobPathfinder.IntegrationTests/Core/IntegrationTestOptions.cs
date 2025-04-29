@@ -285,11 +285,13 @@ public class IntegrationTestOptions
             ITokenRepository tokenRepository = scope.ServiceProvider.GetRequiredService<ITokenRepository>();
             await tokenRepository.DeleteUserTokenAsync(CurrentUserEntity.User.Id);
 
-            HttpContextAccessorForTesting httpContextAccessorForTesting = new HttpContextAccessorForTesting();
-            httpContextAccessorForTesting.HttpContext = new DefaultHttpContext()
+            // <-- Важно: Получаем реальный IHttpContextAccessor из DI
+            var httpContextAccessor = scope.ServiceProvider.GetRequiredService<IHttpContextAccessor>();
+
+            if (httpContextAccessor.HttpContext != null)
             {
-                User = null
-            };
+                httpContextAccessor.HttpContext.User = new ClaimsPrincipal(); // пустой юзер
+            }
 
             CurrentUserEntity = null;
         }

@@ -21,7 +21,7 @@ public class DeleteUserLanguageCommandHandlerTest : CommonIntegrationTestSetup
     public async Task Handle_ShouldDeleteUserLanguage_WhenUserOwnsEntity()
     {
         // Arrange: create & sign in a test user and add one language
-        var testUser = await CreateTestUser(UserRoleEnum.User);
+        var testUser = await CreateTestUser();
         await Options.AddUserLanguages(TestApplicationFactory, testUser, new Dictionary<int, int> { { 10, 2 } });
         var toDelete = testUser.UserLanguages.First();
 
@@ -46,7 +46,7 @@ public class DeleteUserLanguageCommandHandlerTest : CommonIntegrationTestSetup
     public async Task Handle_ShouldThrowEntityNotFoundException_WhenUserNotAuthenticated()
     {
         // Arrange: create user without signing in and add a language directly in DB
-        var user = CreateTestUser(UserRoleEnum.User, false).Result;
+        var user = await CreateTestUser(UserRoleEnum.User, true, false);
         // add one language
         await Options.AddUserLanguages(TestApplicationFactory, user, new Dictionary<int,int> {{ 7, 1 }});
 
@@ -65,7 +65,7 @@ public class DeleteUserLanguageCommandHandlerTest : CommonIntegrationTestSetup
     public async Task Handle_ShouldThrowEntityNotFoundException_WhenEntityNotFound()
     {
         // Arrange: authenticated user but no such language in DB
-        await CreateTestUser(UserRoleEnum.User);
+        await CreateTestUser();
         var fakeId = Guid.NewGuid();
 
         using var scope = TestApplicationFactory.Services.CreateScope();
@@ -83,12 +83,12 @@ public class DeleteUserLanguageCommandHandlerTest : CommonIntegrationTestSetup
     public async Task Handle_ShouldThrowForbiddenException_WhenEntityBelongsToAnotherUser()
     {
         // Arrange: user1 with a language, user2 authenticated
-        var user1 = await CreateTestUser(UserRoleEnum.User);
+        var user1 = await CreateTestUser();
         await Options.AddUserLanguages(TestApplicationFactory, user1, new Dictionary<int, int> { { 20, 3 } });
         var langId = user1.UserLanguages.First().Id;
 
         // create & sign in as user2
-        var user2 = await CreateTestUser(UserRoleEnum.User);
+        var user2 = await CreateTestUser();
 
         using var scope = TestApplicationFactory.Services.CreateScope();
         var mediator = new Mediator(scope.ServiceProvider);

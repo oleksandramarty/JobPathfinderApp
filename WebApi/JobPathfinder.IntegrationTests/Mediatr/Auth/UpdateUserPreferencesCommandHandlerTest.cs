@@ -22,7 +22,7 @@ public class UpdateUserPreferencesCommandHandlerTest : CommonIntegrationTestSetu
     public async Task Handle_ShouldUpdateUserAndExistingSettings()
     {
         // Arrange: create and sign in a test user (settings exist by default)
-        IntegrationTestUserEntity testUser = await CreateTestUser(UserRoleEnum.User);
+        IntegrationTestUserEntity testUser = await CreateTestUser();
         var command = new UpdateUserPreferencesCommand
         {
             FirstName = "John",
@@ -85,6 +85,7 @@ public class UpdateUserPreferencesCommandHandlerTest : CommonIntegrationTestSetu
         IntegrationTestUserEntity testUser = await CreateTestUser(
             UserRoleEnum.User,
             true,
+            true,
             [
                 user => user.UserSetting = null
             ]);
@@ -137,10 +138,11 @@ public class UpdateUserPreferencesCommandHandlerTest : CommonIntegrationTestSetu
     public async Task Handle_ShouldThrowEntityNotFoundException_WhenNotAuthenticated()
     {
         // Arrange: create user but do not sign in
-        await CreateTestUser(UserRoleEnum.User, false);
+        await SignOutUserIfExist();
         var command = new UpdateUserPreferencesCommand
         {
-            Login = "irrelevant"
+            Login = "irrelevant",
+            DefaultLocale = "en"
         };
 
         using var scope = TestApplicationFactory.Services.CreateScope();
@@ -158,7 +160,7 @@ public class UpdateUserPreferencesCommandHandlerTest : CommonIntegrationTestSetu
     public async Task Handle_ShouldThrowEntityNotFoundException_WhenUserDeleted()
     {
         // Arrange: sign in user then remove from DB
-        IntegrationTestUserEntity testUser = await CreateTestUser(UserRoleEnum.User);
+        IntegrationTestUserEntity testUser = await CreateTestUser();
         using (var cleanupScope = TestApplicationFactory.Services.CreateScope())
         {
             var ctx = cleanupScope.ServiceProvider.GetRequiredService<AuthGatewayDataContext>();
@@ -185,8 +187,8 @@ public class UpdateUserPreferencesCommandHandlerTest : CommonIntegrationTestSetu
     public async Task Handle_ShouldThrowBusinessException_WhenLoginAlreadyExists()
     {
         // Arrange: two users in DB; second tries to take first’s login
-        IntegrationTestUserEntity user1 = await CreateTestUser(UserRoleEnum.User);
-        IntegrationTestUserEntity user2 = await CreateTestUser(UserRoleEnum.User);
+        IntegrationTestUserEntity user1 = await CreateTestUser();
+        IntegrationTestUserEntity user2 = await CreateTestUser();
         var command = new UpdateUserPreferencesCommand
         {
             Login = user1.User.Login

@@ -19,7 +19,6 @@ public class AuthSignOutRequestHandlerTest() : CommonIntegrationTestSetup()
     public async Task Handle_ShouldReturnTrue_WhenAuthSignOutRequestIsValid(UserRoleEnum role)
     {
         // Arrange
-        await SignOutUserIfExist();
         await CreateTestUser(role);
 
         // Act
@@ -44,9 +43,9 @@ public class AuthSignOutRequestHandlerTest() : CommonIntegrationTestSetup()
     public async Task Handle_ShouldReturnException_WhenAuthSignOutRequestWithBlockedUser(UserRoleEnum role, StatusEnum status, string errorMessage)
     {
         // Arrange
-        await SignOutUserIfExist();
         IntegrationTestUserEntity userToBeSignIn = await CreateTestUser(
-            role,
+            role, 
+            true,
             true,
             [
                 user => user.Status = status

@@ -21,7 +21,7 @@ public class UserProfileItemByIdRequestHandlerTest : CommonIntegrationTestSetup
     public async Task Handle_ShouldReturnUserProfileItemResponse_WhenUserOwnsEntity()
     {
         // Arrange: create & authenticate a test user, add a profile item
-        var testUser = await CreateTestUser(UserRoleEnum.User);
+        var testUser = await CreateTestUser();
         var itemsToAdd = new Dictionary<UserProfileItemEnum, Dictionary<int,int>>
         {
             { UserProfileItemEnum.Experience, new Dictionary<int,int> {{ 1, 1 }} }
@@ -57,7 +57,7 @@ public class UserProfileItemByIdRequestHandlerTest : CommonIntegrationTestSetup
     public async Task Handle_ShouldThrowEntityNotFoundException_WhenUserNotAuthenticated()
     {
         // Arrange: create user but do not sign in, insert a profile item manually
-        var user = CreateTestUser(UserRoleEnum.User, false).Result;
+        var user = await CreateTestUser(UserRoleEnum.User, true, false);
         var manual = new UserProfileItemEntity
         {
             Id = Guid.NewGuid(),
@@ -94,7 +94,7 @@ public class UserProfileItemByIdRequestHandlerTest : CommonIntegrationTestSetup
     public async Task Handle_ShouldThrowEntityNotFoundException_WhenEntityDoesNotExist()
     {
         // Arrange: authenticated user but random Id
-        await CreateTestUser(UserRoleEnum.User);
+        await CreateTestUser();
         var fakeId = Guid.NewGuid();
 
         using var scope = TestApplicationFactory.Services.CreateScope();
@@ -112,7 +112,7 @@ public class UserProfileItemByIdRequestHandlerTest : CommonIntegrationTestSetup
     public async Task Handle_ShouldThrowForbiddenException_WhenEntityBelongsToAnotherUser()
     {
         // Arrange: user1 adds a profile item
-        var user1 = await CreateTestUser(UserRoleEnum.User);
+        var user1 = await CreateTestUser();
         var itemsToAdd = new Dictionary<UserProfileItemEnum, Dictionary<int,int>>
         {
             { UserProfileItemEnum.Project, new Dictionary<int,int> {{ 2, 1 }} }
@@ -121,13 +121,13 @@ public class UserProfileItemByIdRequestHandlerTest : CommonIntegrationTestSetup
         var itemId = user1.UserProfileItems.First().Id;
 
         // Authenticate as user2
-        await CreateTestUser(UserRoleEnum.User);
+        await CreateTestUser();
 
         using var scope = TestApplicationFactory.Services.CreateScope();
         var mediator = new Mediator(scope.ServiceProvider);
 
         // Act & Assert
-        await TestUtilities.Handle_InvalidCommand<UserProfileItemByIdRequest, UserProfileItemResponse, EntityNotFoundException>(
+        await TestUtilities.Handle_InvalidCommand<UserProfileItemByIdRequest, UserProfileItemResponse, ForbiddenException>(
             mediator,
             new UserProfileItemByIdRequest { Id = itemId },
             ErrorMessages.Forbidden

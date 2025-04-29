@@ -21,7 +21,7 @@ public class DeleteUserSkillCommandHandlerTest : CommonIntegrationTestSetup
     public async Task Handle_ShouldDeleteUserSkill_WhenUserOwnsEntity()
     {
         // Arrange: create & sign in a test user, add two skills
-        var testUser = await CreateTestUser(UserRoleEnum.User);
+        var testUser = await CreateTestUser();
         await Options.AddUserSkills(TestApplicationFactory, testUser, new Dictionary<int,int> { { 7, 1 } });
         var skillToDelete = testUser.UserSkills.First();
 
@@ -44,7 +44,7 @@ public class DeleteUserSkillCommandHandlerTest : CommonIntegrationTestSetup
     public async Task Handle_ShouldThrowEntityNotFoundException_WhenUserNotAuthenticated()
     {
         // Arrange: create user without signing in, manually insert a skill
-        var user = CreateTestUser(UserRoleEnum.User, false).Result;
+        var user = await CreateTestUser(UserRoleEnum.User, true, false);
         var newSkill = new UserSkillEntity
         {
             Id = Guid.NewGuid(),
@@ -76,7 +76,7 @@ public class DeleteUserSkillCommandHandlerTest : CommonIntegrationTestSetup
     public async Task Handle_ShouldThrowEntityNotFoundException_WhenEntityNotFound()
     {
         // Arrange: authenticated user but random skill Id
-        await CreateTestUser(UserRoleEnum.User);
+        await CreateTestUser();
         var fakeId = Guid.NewGuid();
 
         using var scope = TestApplicationFactory.Services.CreateScope();
@@ -94,12 +94,12 @@ public class DeleteUserSkillCommandHandlerTest : CommonIntegrationTestSetup
     public async Task Handle_ShouldThrowForbiddenException_WhenEntityBelongsToAnotherUser()
     {
         // Arrange: user1 with a skill
-        var user1 = await CreateTestUser(UserRoleEnum.User);
+        var user1 = await CreateTestUser();
         await Options.AddUserSkills(TestApplicationFactory, user1, new Dictionary<int,int> { { 42, 1 } });
         var skillId = user1.UserSkills.First().Id;
 
         // create & sign in as user2
-        await CreateTestUser(UserRoleEnum.User);
+        await CreateTestUser();
 
         using var scope = TestApplicationFactory.Services.CreateScope();
         var mediator = new Mediator(scope.ServiceProvider);

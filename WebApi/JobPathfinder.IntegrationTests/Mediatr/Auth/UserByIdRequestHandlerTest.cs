@@ -18,7 +18,7 @@ public class UserByIdRequestHandlerTest : CommonIntegrationTestSetup
     public async Task Handle_ShouldReturnUserResponse_WhenUserExists()
     {
         // Arrange: create a test user with the "User" role and persist it
-        IntegrationTestUserEntity testUser = await CreateTestUser(UserRoleEnum.User);
+        IntegrationTestUserEntity testUser = await CreateTestUser();
 
         // Act: send the query
         using var scope = TestApplicationFactory.Services.CreateScope();
@@ -61,6 +61,7 @@ public class UserByIdRequestHandlerTest : CommonIntegrationTestSetup
     {
         // Arrange: create a user with an invalid status
         IntegrationTestUserEntity testUser = await CreateTestUser(role,
+            false,
             false,
             [
             user => user.Status = invalidStatus

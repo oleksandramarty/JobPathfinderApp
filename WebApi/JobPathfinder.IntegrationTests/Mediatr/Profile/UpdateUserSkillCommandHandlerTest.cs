@@ -21,7 +21,7 @@ public class UpdateUserSkillCommandHandlerTest : CommonIntegrationTestSetup
     public async Task Handle_ShouldUpdateUserSkill_WhenUserOwnsEntity()
     {
         // Arrange: create & sign in a test user, add one skill
-        var testUser = await CreateTestUser(UserRoleEnum.User);
+        var testUser = await CreateTestUser();
         await Options.AddUserSkills(TestApplicationFactory, testUser, new Dictionary<int,int> { { 7, 2 } });
         var existing = testUser.UserSkills.First();
 
@@ -55,7 +55,7 @@ public class UpdateUserSkillCommandHandlerTest : CommonIntegrationTestSetup
     public async Task Handle_ShouldThrowEntityNotFoundException_WhenUserNotAuthenticated()
     {
         // Arrange: create user without signing in, insert a skill manually
-        var user = CreateTestUser(UserRoleEnum.User, false).Result;
+        var user = await CreateTestUser(UserRoleEnum.User, true, false);
         var newSkill = new UserSkillEntity
         {
             Id = Guid.NewGuid(),
@@ -94,7 +94,7 @@ public class UpdateUserSkillCommandHandlerTest : CommonIntegrationTestSetup
     public async Task Handle_ShouldThrowEntityNotFoundException_WhenEntityNotFound()
     {
         // Arrange: authenticated user but random skill Id
-        await CreateTestUser(UserRoleEnum.User);
+        await CreateTestUser();
         var command = new UpdateUserSkillCommand
         {
             Id = Guid.NewGuid(),
@@ -117,12 +117,12 @@ public class UpdateUserSkillCommandHandlerTest : CommonIntegrationTestSetup
     public async Task Handle_ShouldThrowForbiddenException_WhenEntityBelongsToAnotherUser()
     {
         // Arrange: user1 with a skill
-        var user1 = await CreateTestUser(UserRoleEnum.User);
+        var user1 = await CreateTestUser();
         await Options.AddUserSkills(TestApplicationFactory, user1, new Dictionary<int,int> { { 15, 2 } });
         var skillId = user1.UserSkills.First().Id;
 
         // sign in as user2
-        await CreateTestUser(UserRoleEnum.User);
+        await CreateTestUser();
 
         var command = new UpdateUserSkillCommand
         {

@@ -22,7 +22,7 @@ public class UpdateUserProfileItemCommandHandlerTest : CommonIntegrationTestSetu
     public async Task Handle_ShouldUpdateUserProfileItem_WhenUserOwnsEntity()
     {
         // Arrange: create & sign in a test user, add one profile item
-        var testUser = await CreateTestUser(UserRoleEnum.User);
+        var testUser = await CreateTestUser();
         var itemsToAdd = new Dictionary<UserProfileItemEnum, Dictionary<int,int>>
         {
             { UserProfileItemEnum.Experience, new Dictionary<int,int> {{ 1, 1 }} }
@@ -73,7 +73,7 @@ public class UpdateUserProfileItemCommandHandlerTest : CommonIntegrationTestSetu
     public async Task Handle_ShouldThrowEntityNotFoundException_WhenUserNotAuthenticated()
     {
         // Arrange: create user but do NOT sign in, insert a profile item manually
-        var user = CreateTestUser(UserRoleEnum.User, false).Result;
+        var user = await CreateTestUser(UserRoleEnum.User, true, false);
         var newItem = new UserProfileItemEntity
         {
             Id = Guid.NewGuid(),
@@ -123,7 +123,7 @@ public class UpdateUserProfileItemCommandHandlerTest : CommonIntegrationTestSetu
     public async Task Handle_ShouldThrowEntityNotFoundException_WhenEntityDoesNotExist()
     {
         // Arrange: authenticated user but random Id
-        await CreateTestUser(UserRoleEnum.User);
+        await CreateTestUser();
         var command = new UpdateUserProfileItemCommand
         {
             Id = Guid.NewGuid(),
@@ -152,7 +152,7 @@ public class UpdateUserProfileItemCommandHandlerTest : CommonIntegrationTestSetu
     public async Task Handle_ShouldThrowForbiddenException_WhenEntityBelongsToAnotherUser()
     {
         // Arrange: user1 with a profile item
-        var user1 = await CreateTestUser(UserRoleEnum.User);
+        var user1 = await CreateTestUser();
         var itemsToAdd = new Dictionary<UserProfileItemEnum, Dictionary<int,int>>
         {
             { UserProfileItemEnum.Project, new Dictionary<int,int> {{ 2, 1 }} }
@@ -161,7 +161,7 @@ public class UpdateUserProfileItemCommandHandlerTest : CommonIntegrationTestSetu
         var itemId = user1.UserProfileItems.First().Id;
 
         // sign in as user2
-        await CreateTestUser(UserRoleEnum.User);
+        await CreateTestUser();
 
         var command = new UpdateUserProfileItemCommand
         {
