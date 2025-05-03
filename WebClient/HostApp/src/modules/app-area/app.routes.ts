@@ -14,6 +14,12 @@ export const routes: Routes = [
   },
 
   {
+    path: 'salary',
+    canActivate: [AuthGuard],
+    loadComponent: () => import('../common-area/salary-meter/salary-meter.component').then(m => m.SalaryMeterComponent)
+  },
+
+  {
     path: 'home',
     canActivate: [AuthGuard],
     loadComponent: () => import('../landing-area/landing.component').then(m => m.LandingComponent)

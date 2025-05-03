@@ -45,7 +45,8 @@ export class HeaderComponent extends BaseUnsubscribeComponent {
     { key: LOCALIZATION_KEYS.MENU.HOME, url: '/home' },
     { key: LOCALIZATION_KEYS.MENU.JOBS, url: '/jobs' },
     { key: LOCALIZATION_KEYS.MENU.COMPANIES, url: '/companies' },
-    { key: LOCALIZATION_KEYS.MENU.KARMA, url: '/karma' }
+    { key: LOCALIZATION_KEYS.MENU.KARMA, url: '/karma' },
+    { key: LOCALIZATION_KEYS.MENU.KARMA, url: '/salary' },
   ];
 
   public locales: LocaleResponse[] | undefined;
